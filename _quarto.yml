@@ -3,7 +3,7 @@ project:
   
 website:
   title: "Curso de Estadística (Inecol 2026)"
-  favicon: images/bar-chart.png
+  favicon: images/causalidad-2026.png
   navbar:
     right:
       - text: "Algo más"

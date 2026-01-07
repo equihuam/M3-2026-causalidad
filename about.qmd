@@ -6,7 +6,7 @@ about:
   links:
     - icon: github
       text: Github
-      href: https://github.com
+      href: C:/Users/equih/0 Versiones/Cursos/M3-2026-causalidad
 ---
 
 Blog de clase sobre Diseño de experimentos. Es el módulo III del curso de estadística que se imparte en el Inecol.
