@@ -1,0 +1,59 @@
+---
+title: "Ensayo de antivenenos"
+author: ["Miguel Equihua"]
+date: "2024-02-02"
+lang: es
+draft: false
+categories: [taller]
+format:
+  html:
+    code-fold: true
+---
+
+![](chemistry.jpg){width="400"}
+
+## Planteamiento
+
+![](bottles-5579576_1920.jpg){width="300"}
+
+El archivo Excel que se adjunta muestra el tiempo de sobrevivencia, en unidades de 10 horas, de animales a los que se administró uno de tres tipos de veneno (I II, III), seguido de uno de cuatro antídotos (A, B, C y D). Se usaron cuatro animales asignados al azar a las combinación de veneno y antídoto **¿Alguno de los antídotos es más eficaz que los otros?**
+
+::: {style="color:GoldenRod"}
+ 1. ¿Diseño experimental?
+ 2. ¿Arreglo de tratamientos?
+ 3. ¿Modelo que corresponde a este experimento?
+ 4. ¿Supuestos qe harás para apoyar tu análisis estadístico?
+ 5. ¿Define tu criterio o nivel de significancia?
+ 6. Realiza una exploración de los datos, numérica y gráfica, comenta
+ 7. Construye los modelos necesarios y selecciona el mínimo adecuado
+ 8. Valora la calidad del modelo, incluyendo el análisis de los residuos
+ 9. Resuelve que tratamientos difieren de los demás
+10. Argumenta tus conclusiones
+
+:::
+
+
+[Descargar los datos como un libro Excel](Venenos.xlsx)
+
+
+```{r}
+#| include: true
+#| eval: false
+#| code-fold: true
+  
+library(readxl)
+library(tidyverse)
+venenos <- read_excel("Venenos.xlsx", skip = 1, col_names = TRUE)
+venenos$Veneno <-  rep(c("I", "II", "III"), each = 4)
+names(venenos) <- str_to_lower(names(venenos))
+
+venenos <- venenos %>% pivot_longer(cols = c("a", "b", "c", "d"), 
+                         names_to = "antidoto", values_to = "tsv", )
+
+venenos <- venenos %>% mutate(veneno = factor(veneno), 
+                              antidoto = factor(antidoto))
+
+
+head(venenos)
+```
+

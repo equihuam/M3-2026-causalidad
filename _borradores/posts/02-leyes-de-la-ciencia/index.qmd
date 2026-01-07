@@ -1,0 +1,24 @@
+---
+title: "Leyes de la Ciencia"
+author: ["Miguel Equihua", "Octavio Pérez Maqueo", "Elio Lagunes"]
+date: "2025-01-29 10:00:00"
+lang: es
+draft: false
+categories: [clase]
+format:
+  html:
+    code-fold: true
+---
+
+![](images/abstract-95721_1920.jpg)
+
+En esta sesión continuaremmos con la reflexión sobre la intención o incluso necesidad de recurrir a enfoques numéricos o matemáticos para hacer ciencia. También, debemos considerar el propósito mismo de la actividad científica en la que estamos involucrados. Cuando hablamos de generación de conocimiento, ¿realmente a qué nos estamos refiriendo?. Podríamos considerar que la producción de conocimiento involucra la formulación de expresiones matemáticas. Con estas expresiones podemos describir la existencia de relaciones específicas entre procesos que observamos. ¿es esto así? Si es el caso, ¿es la única manera de hacerlo?. Si consideramos que nos es la única, entonces cabe preguntarnos ¿es la mejor manera de hacerlo?. Estas y otras inquietudes de este tipo serán el tema de reflexión y hasta debate si quieren en esta primera sesión.
+
+
+# Apoyo audiovisual de la sesión
+
+A continuación encontraran la presentación que usamos como apoyo audiovisual para conducir la exploración de los temas que discutimos en esta sesión (*haz click en la imágen*).
+
+::: {layout="[[-20, 60, -20]]" layout-valign="top"}
+[![](images/Caratula-1.png){width="800"}](../../presentaciones/02-leyes-de-la-ciencia/pres-leyes-ciencia.qmd)
+:::

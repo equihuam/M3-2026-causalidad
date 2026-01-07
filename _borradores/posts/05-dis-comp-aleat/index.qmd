@@ -1,0 +1,376 @@
+---
+title: "Experimentos completamente aleatorizados"
+author: ["Miguel Equihua"]
+date: "2025-01-31"
+lang: es
+draft: false
+categories: [clase]
+format:
+  html:
+    code-fold: true
+---
+
+![](maiz.jpg){width="400"}
+
+# Diseño completamente aleatorizado
+
+## Respuesta de Cultivares a fertilizantes
+
+Ejemplo tomado de Crawley (1998). **Glim for Ecologists**. Oxford. UK.
+
+Es un experimento en el que se midió el crecimiento (masa seca al cosechar = *y*) de plantas tratadas con 10 concentraciones diferentes de suplemento mineral como fertilizante, *f*. El experimento fue realizado con dos cultivares diferentes, *g*. Uno fue clonado de plantas de un ambiente árido y el otro de uno húmedo. Todas las plantas de cada tipo, sin restricciones, fueron asignadas aleatoriamente a los distintos niveles de fertilizante.
+
+
+
+### Lectura de datos
+
+```{r}
+library(stringr)
+
+url_fert <- "https://drive.google.com/file/d/1_545rzA2TMIB5XPFHhwNzoHl3A8SigMT/view?usp=drive_link"
+dat_fert_id <- str_extract(url_fert, "(?<=d/)(.*)(?=/view)")
+
+url_drive <- "https://docs.google.com/uc?id=%s&export=download" 
+fert_dat <- read.csv(sprintf(url_drive, dat_fert_id), 
+                  col.names=c("fertilizante", "rendimiento_peso")) 
+
+head(fert_dat)
+```
+
+A veces hay archivos que contienen datos faltantes o perdidos. Podemos enfrentar eso con la función `complete.cases()` que revisa linea por linea el archivo y regresa "verdadero" si todas las columnas tienen datos válidos y "falso" si hay huecos. Esta lista de "verdaderos" y "falsos" la podemos usar para elegir que filas del archivo de datos están completas y así podemos eliminarlas del conjunto de datos que vamos a procesar.
+
+Sobre los datos limpios, generamos la variable indicativa del tipo de ambiente del que se tomo la planta que se clonó.
+
+```{r}
+# En caso de que haya datos extra, elimino registros leidos como datos erróneos
+fert_dat <- fert_dat[complete.cases(fert_dat), ]
+```
+
+### Genera los factores genotipo y fertilizante
+
+```{r}
+fert_dat$cultivar <- factor(rep(c("seco","humedo"), each=10))
+fert_dat$fertilizante <- factor(fert_dat$fertilizante) 
+
+head(fert_dat)
+```
+
+### gráfica de masa seca contra fertilizante mineral - sin diferenciar tratamientos
+
+Veamos los datos en una gráfica simple. La función plot hace cosas distintas según el tipo de datos que le demos. Para generar la gráfica simple que queremos aquí, conviene que los valores de fertilizante sean interpretados como valores numéricos. Esto lo logramos con la funnción `as.numeric`
+
+```{r}
+plot(as.numeric(fert_dat$fertilizante), fert_dat$rendimiento_peso, xlab="fertilizante", ylab="biomasa", type="p")
+```
+
+Para explorar mejor los datos podemos marcar en la gráfica las obsevaciones que pertenecen a cada condición. En este caso, te propongo poner el nombre que le dimos al "tratamiento".
+
+Gráfica de masa seca contra fertilizante mineral diferenciando por genotipos
+
+```{r}
+plot(as.numeric(fert_dat$fertilizante), 
+     fert_dat$rendimiento_peso, xlab="fertilizante", ylab="biomasa", type="n")
+text (fert_dat$fertilizante, fert_dat$rendimiento_peso, labels=fert_dat$cultivar)
+```
+
+Podemos ver las características estadísticas de lo que pasa con la biomasa que produce cada genotipo
+
+### Resumen de los datos de masa por genotipo
+
+```{r}
+by (fert_dat, fert_dat$cultivar, summary)
+```
+
+Ahora podemos realizar el análisis estadístico mediante modelos. Hagamos un análisis con el enfoque "tradicional" en **R**. Lo primero que haremos es configurar el entorno de análisis, esto significa elegir el tipo de contrastes que queremos operar al ajustar modelos *reparametrizados*. Haremos esto con opción *contrasts* en la función `options(contrasts=...)`
+
+Para asegurarnos de que los estimadores del modelo toman el primer nivel como referencia hay que usar el modo de reparametrización "treatment". Hay otras formas de reparametrización, como podrás ver en la ayuda de `contr.treatment`.
+
+```{r}
+options(contrasts=c("contr.treatment", "contr.poly"))
+```
+
+### ajusta modelo nulo - sólo la media
+
+```{r}
+aj1 <- lm (rendimiento_peso ~ 1, data = fert_dat)
+summary(aj1)
+```
+
+```{r}
+# Agregamos el efecto del fertilizante
+aj2 <- update(aj1, .~ . + fertilizante)
+anova(aj2)
+```
+
+Nótese que el número de niveles de fertilizante es 10, así que los grados de libertad son 10-1=9. De modo semejante el número de observaciones es 20, así que los grados de libertad del residuo descuenta los grados de libertad del fertilizante y 1 (por la estimación de la media general): 20 - 9 - 1 = 10
+
+```{r}
+# agregamos el cultivar
+aj3 <- update(aj2,  .~ . + cultivar)
+anova(aj3)
+```
+
+Podemos intentar hacer un modelo completo, es decir con todos los posibles factores y combinaciones que pueden producirse. Sin embargo este modelo consume todos los grados de liberta (observaciones) con que contamos pues cada tratamiento fue ensayado una sola vez en este experimento. De todos modos lo podemos intentar para ver que nos dice **R**.
+
+```{r}
+# agregamos una pendiente diferente para cada genotipo
+aj4 <- update(aj3,  .~ . + cultivar:fertilizante)
+anova(aj4)
+```
+
+La secuencia de ajustes produce estos cambios en devianza
+
+```{r}
+anova(aj1, aj2, aj3)
+```
+
+### Modelo mínimo adecuado
+
+estos resultados sugieren que el modelo 3 es mínimo adecuado resumen del modelo mínimo adecuado
+
+```{r}
+summary(aj3)
+```
+
+Como un ejercicio haz el cálculo de los valores de *y*, a parir de los valores estimados por el modelo. Lo puedes hacer a mano, con ayuda de una calculadora del *super*, en Excel o equivalente, o quizás con ayuda de **R** mismo. En este último caso te doy como pista la función `coef`, con la que tendrás acceso a los coeficientes del modelo.
+
+[***¿Podrías escribir un programa/función en R para calcular los valores esperados?***]{style="color:GoldenRod"}
+
+Para comprender con exactitud que es lo que hace exactamente **R** al ajustar un modelo de regresión o ANDEVA como este, podemos usar la función `model.matrix()` aplicada al modelo que nos interese analizar. En este caso lo ejemplificaré con el modelo mínimo adecuado **aj3**. Así podemos ver en acción el uso de las formas de reparametrización
+
+```{r}
+model.matrix(aj3)
+```
+
+### Intervalos de confianza
+
+Como hemos visto. La valoración del modelos *mínimo adecuado* es una declaración de una posible hipótesis alternativa, la más cercana a la muestra que, **en esta ocasión** obtuvimos. Sin embargo, no hay garantía de ningún tipo de que en otra oportunidad los estimadores serán los mismos. Esto es un recordatorio de que la famosa *p* nos es en lo que debemos centrar nuestras esperanzas. El asunto es la reflexión sobre las hipótesis alternativas, es decir, las que realmente interesan al investigador y ojalá haga los más explícitas posibles. Una manera de ver el ámbito de **estados alternativos del sistema** la tenemos cuando visualizamos los intervalos de confianza que nuestro modelo mínimo adecuado produce. En el sitio *RPub* pueden encontrar ayuda para utilizar **R** en el análisis de sus datos, [aquí encontraran un texto sobre intervalos de confianza](https://rpubs.com/aaronsc32/regression-confidence-prediction-intervals). No deja de ser un ejercicio exploratorio y algo subjetivo, pero también potencialmente productivo para acercarnos a comprender mejor el comportamiento del sistema de nuestro interés.
+
+Un primer conjunto de intervalos de confianza son los asociados con los parámetros del modelo, es decir, la gama de valores de los *coeficientes de regresión* que podríamos esperar tener en el ajuste del modelo. A continuación les muestro como podemos obtener, con la función `confint` estos intervalos en **R**.
+
+[**¿Como interpretas estos valores**]{style="color:GoldenRod"}
+
+```{r}
+
+confint(aj3, level = 0.95)
+```
+
+Otro intervalo de confianza de interés es el que podemos asociar con lo que puede predecir el modelo. En **R** este intervalo de confianza lo podemos obtener así:
+
+```{r}
+
+predict(aj3, interval = "confidence", level = 0.95)
+```
+
+[**¿Qué muestran estos valores?**]{style="color:GoldenRod"}
+
+[**¿Qé se te ocurre para utilizar en tu reporte de resultados este tipo de intervalos de confianza?**]{style="color:GoldenRod"}
+
+### crítica al modelo y recursos diagnósticos
+
+```{r}
+plot(aj3)
+```
+
+# Ejemplo Proteina y alcaloide
+
+alcal_dat (p. 138) Proteína y alcaloide. Se midió el incremento en longitud (mm) de larvas de insectos. Se hicieron mediciones después de dos semanas de alimentarlas con una dieta artificial bajo condiciones controladas de temperatura. Uno de los factores fue la cantidad de proteína en la dieta, con tres niveles (bajo, medio, alto). El otro factor es la presencia o ausencia de un alcaloide. Cada tratamiento se repitió cuatro veces. La asignación de los tratamientos a los insectos se hizo en forma aleatoria entre todos los especímenes disponibles.
+
+En este ejemplo usaremos la biblioteca `readxl` para leer los datos directamente desde un libro de Excel. Esta biblioteca define la función `read_excel` que lee los datos y entrega una tabla. Hay que notar que esta tabla no es un `data.frame`, es una `tibble` que es una versión actual de `data.frame` y como tal tiene algunas peculiaridades para el manejo de su contenido.
+
+## Lectura de datos
+
+```{r}
+library(readxl)
+library(tidyverse)
+
+
+#alcal_dat_xls <- read_excel("alcal_dat.xlsx", skip = 0, col_names = TRUE)
+
+
+url_drive <- "https://docs.google.com/uc?id=%s&export=download" 
+url_prot <- "https://drive.google.com/file/d/1b-1binYTUJotvPWX9sCnImwxPctumezn/view?usp=sharing"
+dat_alcal_id <- str_extract(url_prot, "(?<=d/)(.*)(?=/view)")
+alcal_dat <- read.csv(sprintf(url_drive, dat_alcal_id)) 
+
+
+#alcal_dat <- read_excel("alcal_dat.xlsx",
+#    col_types = c("numeric", "numeric", "numeric"),
+#    col_names = TRUE)
+```
+
+## Definición de los factores
+
+Los datos contienen información cualitativa, así que necesitamos definir esas piezas de información como factores. Aprovecharemos para experimentar con los factores de tipo "ordenado". Esta variante de factor aprovecha el contenido *seminumérico* que pudiéramos tener en alguna variable. En este caso lo haremos así para el contenido de proteína.
+
+```{r}
+# Uso la función "ordered" que genera factores ordenados, 
+# útil para aprovechar datos "semicuantitativos" y probar polinomios
+
+# Enfoque antiguo con data.frame
+#alcal_dat$proteina <- ordered(alcal_dat$proteina, c(1,2,3), 
+#                           c("bajo", "medio", "alto"))
+#
+#alcal_dat$alcaloide <-factor(alcal_dat$alcaloide, c(1,2), c("ausente", "presente"))
+#
+
+# Enfoque actual con tibble
+alcal_dat <- alcal_dat %>% mutate(proteina = ordered(proteina, c(1,2,3), 
+                                     c("bajo", "medio", "alto")),
+                  alcaloide = factor(alcaloide, c(1,2), 
+                                      c("ausente", "presente")))
+```
+
+## exploración de medias
+
+Siempre es conveniente hacer una revisión previa de los datos y considerar los patrones que apreciamos en ellos como fuente de ideas o simplemente para verificar que no haya errores de algún tipo.
+
+```{R}
+#
+# Enfoque antiguo con data.frame
+# Para simplificar el acceso a los datos uso la función attach
+#attach(alcal_dat)
+#aggregate(list(talla=talla), list(proteina=proteina), mean)
+#aggregate(list(talla=talla), list(alcaloide=alcaloide),mean)
+#tapply(talla, list(proteina, alcaloide), mean)
+
+# Con un tibble es más práctico hacer esto
+alcal_dat %>% group_by(proteina) %>%
+           summarize(promedio = mean(talla, na.rm=TRUE))
+alcal_dat %>% group_by(alcaloide) %>%
+           summarize(promedio = mean(talla, na.rm=TRUE))
+
+# Genero una table resumen de promedios. 
+# alcal_dat.res<-aggregate(list(talla=alcal_dat$talla), 
+#                      list(proteina=alcal_dat$proteina,
+#                           alcaloide=alcal_dat$alcaloide), mean)
+
+alcal_dat %>% group_by(proteina, alcaloide) %>%
+           summarize(promedio = mean(talla, na.rm=TRUE)) %>%
+           pivot_wider(names_from = proteina, values_from = promedio)
+```
+
+## Exploración de varianzas
+
+```{r}
+
+#aggregate(list(talla=alcal_dat$talla),
+#          list(proteina=alcal_dat$proteina),var) 
+alcal_dat %>% group_by(proteina) %>%
+           summarize(var = var(talla, na.rm=TRUE))
+
+#aggregate(list(talla=alcal_dat$talla), 
+#          list(alcaloide=alcal_dat$alcaloide), var) 
+alcal_dat %>% group_by(alcaloide) %>%
+           summarize(var = var(talla, na.rm=TRUE))
+
+# tapply(alcal_dat$talla, list(alcal_dat$proteina, alcal_dat$alcaloide), var)
+alcal_dat %>% group_by(proteina, alcaloide) %>%
+           summarize(var = var(talla, na.rm=TRUE)) %>%
+           pivot_wider(names_from = proteina, values_from = var)
+```
+
+## Gráficas exploratorias
+
+```{r}
+interaction.plot(alcal_dat$proteina, alcal_dat$alcaloide, alcal_dat$talla) 
+
+#args(interaction.plot)
+```
+
+## Ajuste de modelos
+
+```{r}
+
+larvas.nulo <- lm(talla ~ 1, data=alcal_dat)
+
+# defino una simple función que extrae devianza y df de un ajuste y lo despliga
+
+# mediante la función "cat"
+
+devianza <- function(x) 
+  { cat("devianza=", deviance(x), "\ndf=",x$df.residual,"\n")}
+
+# devianza del modelo nulo
+
+devianza(larvas.nulo)
+
+# modelo completo
+
+larvas.completo <- update(larvas.nulo, . ~ . + proteina + alcaloide + proteina:alcaloide) 
+
+devianza(larvas.completo) 
+coefficients(larvas.completo)
+
+```
+
+### Otra forma de escribir el modelo completo
+
+```{r}
+
+
+larvas.completo <- update(larvas.nulo, . ~ . + proteina * alcaloide) 
+
+devianza(larvas.completo) 
+
+coefficients(larvas.completo)
+
+```
+
+### [***¿Significancia de los términos?***]{style="color:GoldenRod"}
+
+```{r}
+
+
+anova(larvas.completo)
+
+```
+
+### Comparaciones múltiples
+
+Esto es equivalente a una búsqueda, algo exploratoria, para dar respuesta a la pregunta: **¿Son necesarios todos los niveles de los factores?**
+
+```{r}
+
+
+summary(larvas.completo)
+
+# Generación de un factor re-codificado: tomaré: bame = bajo y medio, alto=alto
+
+# Por supuesto hay que considerar que esta fusión tenga sentido biológico.
+
+# Así podemos recodificar el factor proteína.
+
+alcal_dat$proteinaBM <- alcal_dat$proteina 
+levels(alcal_dat$proteinaBM) <- c("bame", "bame", "alto") # cuidar el orden
+
+```
+
+#### nuevo ajuste de modelo completo con el factor proteina recodificado.
+
+```{r}
+
+larvas.protBM <- lm(talla ~ proteinaBM * alcaloide, data = alcal_dat) 
+
+summary(larvas.protBM)
+
+```
+
+#### ¿qué significancia tiene este cambio en el modelo?
+
+```{r}
+
+anova(larvas.protBM,larvas.completo) 
+plot(larvas.protBM) 
+tapply(alcal_dat$talla, list(alcal_dat$proteinaBM, alcal_dat$alcaloide), mean) 
+
+alcal_dat.resBM <- aggregate(list(talla = alcal_dat$talla), 
+                          list(proteinaBM= alcal_dat$proteinaBM, 
+                               alcaloide = alcal_dat$alcaloide), mean)
+
+interaction.plot(alcal_dat$proteinaBM, alcal_dat$alcaloide, alcal_dat$talla)
+```
+
+## Conclusiones
+
+Con base en estos análisis ¿Cual es el modelo mínimo adecuado?. ¿cómo podemos interpretar estos resultados? ¿tienen sentido o relevancia?

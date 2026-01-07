@@ -1,0 +1,15 @@
+{
+  "hash": "347c165040b21c77ded059c056dcbf86",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Ensayo de antivenenos\"\nauthor: [\"Miguel Equihua\"]\ndate: \"2024-02-02\"\nlang: es\ndraft: false\ncategories: [taller]\nformat:\n  html:\n    code-fold: true\n---\n\n\n\n![](chemistry.jpg){width=\"400\"}\n\n## Planteamiento\n\n![](bottles-5579576_1920.jpg){width=\"300\"}\n\nEl archivo Excel que se adjunta muestra el tiempo de sobrevivencia, en unidades de 10 horas, de animales a los que se administró uno de tres tipos de veneno (I II, III), seguido de uno de cuatro antídotos (A, B, C y D). Se usaron cuatro animales asignados al azar a las combinación de veneno y antídoto **¿Alguno de los antídotos es más eficaz que los otros?**\n\n::: {style=\"color:GoldenRod\"}\n 1. ¿Diseño experimental?\n 2. ¿Arreglo de tratamientos?\n 3. ¿Modelo que corresponde a este experimento?\n 4. ¿Supuestos qe harás para apoyar tu análisis estadístico?\n 5. ¿Define tu criterio o nivel de significancia?\n 6. Realiza una exploración de los datos, numérica y gráfica, comenta\n 7. Construye los modelos necesarios y selecciona el mínimo adecuado\n 8. Valora la calidad del modelo, incluyendo el análisis de los residuos\n 9. Resuelve que tratamientos difieren de los demás\n10. Argumenta tus conclusiones\n\n:::\n\n\n[Descargar los datos como un libro Excel](Venenos.xlsx)\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nlibrary(readxl)\nlibrary(tidyverse)\nvenenos <- read_excel(\"Venenos.xlsx\", skip = 1, col_names = TRUE)\nvenenos$Veneno <-  rep(c(\"I\", \"II\", \"III\"), each = 4)\nnames(venenos) <- str_to_lower(names(venenos))\n\nvenenos <- venenos %>% pivot_longer(cols = c(\"a\", \"b\", \"c\", \"d\"), \n                         names_to = \"antidoto\", values_to = \"tsv\", )\n\nvenenos <- venenos %>% mutate(veneno = factor(veneno), \n                              antidoto = factor(antidoto))\n\n\nhead(venenos)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,30 @@
+---
+title: "DAG  experiments aleatorizados"
+author: 
+  - name: "Miguel Equihua"
+    email: "equihuam@gmail.com"
+  - name: "Elio Lagunes"
+    email: "elio.lagunes.mx"
+date: "2024-01-30"
+draft: true
+date-format: "[Xalapa, Ver.,] D MMMM YYYY"
+output:
+  html_document:
+    df_print: paged
+---
+
+Un experimento con asignación de tratamientos en forma completamente al azar, garantiza que no haya vías de influencia ocultas (backdoor). Técnicamente, se trata del recurso usualmente más confiable y práctico para reducir a un valor de probabilidad teóricamente controlable, la posibilidad de confusión inadvertida (backdoor). Esa proabilidad se relaaciona de manera inversamente proporciona con el tamaño del experimento. Por diseño, la respuesta de las unidades experimentales, *Y*, al tratamiento *T* sólo tiene a la asignación aleatoria *A* como única causa que antecede al tratamiento.
+
+$$
+\fbox{A} \rightarrow T \rightarrow Y
+$$
+
+En este DAG, el marco que rodea a la *A* indica *aleatorización*, y como sugiere el diagrama, es la única causa que actua sore el tratamiento. Si hubiera una vía de influencia alternativa (backdoor), a través de alguna tercera variable como podría ser en un caso de germinación de semillas, la luminosidad del sitio o el grado de humendad en el sustrato, entonces la aleatorización no sería el único factor que influiría sore el tratamiento. El recuadro alrededor de *A* (el proceso de aleatorización) indica que no existen factores actuando sobre *T*, es decir, *A* es una influencia puramente estocástica. Esta idea y el proceso de realización de un experimento controlado con aleatorización, da cuenta con toda claridad del valor de esta forma de realizar estudios para desentrañar relaciones de causalidad.
+
+Este DAG nos conduce al modelo linear siguiente
+
+$$
+y = \mu + T +  \varepsilon
+$$ 
+
+En donde *y* son las mediciones de la variable *Y* en respuesta al efecto de *T*, $\mu$ es un valor de referencia general (tradicionalmente la media general de la variale *Y*, aunque puede elegirse cualquier otro valor de referencia que convenga al estudio) y la épsilon da cuenta del efecto aleatorio inducido por $\fbox{A}$, por lo que es necesario postular una distribción de probabilidades apropiada para caracterizar su comportamiento.

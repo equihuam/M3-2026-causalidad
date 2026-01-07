@@ -1,0 +1,142 @@
+---
+title: "Bienvenidos al Módulo 3 de estadística"
+author: 
+  - name:  "Miguel Equihua"
+    email: "equihuam@gmail.com"
+date: "2026-01-26 09:00:00"
+lang: es
+draft: false
+code-fold: true
+categories: [operación]
+
+bibliography: references.bib
+
+nocite: |
+  @bezanilla-albisua2018,
+  @reviewf2024, 
+  @cookjohn2025
+---
+
+```{r warning=FALSE,echo=FALSE, message=FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+library(flextable)
+library(readr)
+library(tidyverse)
+library(readxl)
+library(calendR)
+library(readr)
+
+```
+
+![](img/data-structure.png){width="800"}
+
+## Objetivos del Módulo 3
+
+Durante las últimas semanas revisaron conceptos de probabilidad y matemáticas que necesitamos como un **lenguaje eficiente de comunicación**. También empezaron a explorar como es que se pueden analizar proposiciones sobre la existencia de asociación o incluso relaciones de dependencia entre dos variables: **modelos de regresión simple**. Ahora vamos a aplicar y extender estos aprendizajes para abordar el desafío de producir conocimiento que nos permita comprender como funciona el mundo. Asumir un interés en la comprensión causal requiere desarrollar las habilidades de pensamiento crítico, lo que constituye por tanto otro de los propósitos del módulo.
+
+Utilizaremos el lenguaje de programación **R** como plataforma de cómputo para el análisis de datos. Aspiramos a ofrecerles así un curso introductorio para su uso. También nos interesa acercarnos a los enfoques formales para el análisis causal actual, mediante la formulación de *Grafos Acíclicos Dirigidos* (**DAG**). Los invitamos a hacer explícitas y a dibujar las relaciones causales de sus proyectos para comprenderlas, comunicarlas y analizarlas con mayor eficiencia.
+
+Como ejercicio inicial les pedimos preparen y nos entreguen en **una sola cuartilla** la descripción de una de las preguntas de investigación que se han planteado en su proyecto de posgrado, con suficiente detalle como para comprender el asunto y la propuesta sobre como poner a prueba la idea planteada. *No se trata de todo el protocolo de su proyecto de investigación*. Escojan sólo un aspecto de él. Sólo lo que deseen compartir y explorar en este curso como oportunidad de aprendizaje.
+
+[Pacto del participante](pacto-contribuyente.qmd)
+
+## Plan de clase
+
+Habilité un espacio en [Milaulas](https://m3causalidad2026.milaulas.com/course/view.php?id=2) para llevar control de nuestras comunicaciones en una forma lo más ordenado posible.
+
+
+::: {.callout-note title="Calendario" collapse="true"}
+
+```{r }
+#| label: calendario
+#| tbl-cap: Aactividades del Módulo 3 
+
+dias_ene <- rep(NA, 31) 
+dias_ene[c(26:27, 29:30)] <- "M3 clase"
+dias_ene[c(28, 30)] <- "M3 lectura"
+dias_ene[c(25, 31)] <- "Descanso"
+
+ene <- calendR(month = 1,
+        lunar = TRUE,
+        special.days = dias_ene,
+        special.col = c("gray", "lightgreen", "pink"))
+
+dias_feb <- rep(NA, 28) 
+dias_feb[c(2, 5)] <- "M3 clase"
+dias_feb[c(3)] <- "M3 lectura"
+dias_feb[6] <- "M3 Mini simposio"
+dias_feb[c(1,4,7)] <- "Descanso"
+
+feb <- calendR(month = 2,
+        lunar = TRUE,
+        special.days = dias_feb,
+        special.col = c("gray", "lightgreen", "pink", "gold"),
+        legend.pos = "right")
+
+ene
+feb
+```
+
+:::
+
+```{r }
+contenido <- read_csv("contenido.csv", col_names = TRUE, show_col_types = FALSE)
+contenido$lectura <- c(" ", "debate")[contenido$lectura + 1]
+
+contenido %>% flextable(col_keys = c("dia", "lectura", "tema")) %>% 
+  set_header_labels(values = list(dia = "Día", 
+                                  lectura= "Lectura", 
+                                  tema = "Tema")) %>% 
+  autofit() %>% 
+  theme_zebra(odd_body = c("lightcyan1")) %>% 
+  bold(i = 1:9, j = 1)
+
+```
+
+
+## Lecturas
+
+Como parte de las experiencias de aprendizaje que realizaremos tenemos tres lecturas. Les pedimos que hagan una lectura crítica de los textos propuestos y que preparen un comentario que contenga sus apreciaciones en favor o en contra de los argumentos presentados. También esperamos comenten sobre las implicaciones amplias y para la práctica científica en lo general, de los argumentos que exponen los autores. Sus reacciones tendrán oportunidad de ser expuestas y debatidas en un espacio del programa del módulo 3 a lo largo de 60 minutos.
+
+
+::: {#refs}
+:::
+
+
+## Evaluación
+
+![](img/virtual-5663279_1280.png){width="400"}
+
+El Módulo III será evaluado a través de las tareas y controles de lectura que les pediremos que hagan conforme se desarrolle el curso. La participación en *quizes* y preguntas en línea vía [vevox](https://www.vevox.com/) tamién será considerada.
+
+## Participación activa
+
+Hemos previsto tener frecuentes eventos interactivos para dar
+seguimiento a los temas que iremos tratando o para generar espacios de
+enfoque que nos ayuden a generar contextos de discusión que nos ayuden a
+reflexionar sobre cómo es que hacemos ciencia. Para hacer esto
+utilizaremos la aplicación en línea a la que podrán acceder desde sus
+computadoras o teléfonos celulares:
+
+![](img/vevox-QR.png){width="400"}
+
+
+#  Estudiantes
+
+```{r}
+#| echo: false
+
+estudiantes_2026 <- read_csv("Lista-de-alumnos-2026.csv", 
+                             col_types = c(No = "i"))
+
+estudiantes_2026  |>  
+  arrange(alumno) |>  
+  mutate(inecol = if_else(!is.na(matricula), "inecol", "externo")) |> 
+  flextable(col_keys = c("inecol", "alumno")) |> 
+  set_header_labels(values = c("inecol" = "Registro", alumno = "Nombre")) |> 
+  bg(i = ~ str_detect(No, "baja"), bg = "gray80")  |>  
+  autofit() |> 
+  theme_vanilla()
+
+
+```

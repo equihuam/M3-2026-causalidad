@@ -1,0 +1,302 @@
+---
+title: "Modelo Estadístico Lineal"
+subtitle: "modelación y prueba de hipótesis"
+author: 
+  - name: "Miguel Equihua"
+    email: "equihuam@gmail.com"
+date: "2025-01-30 10:00:00"
+image: "images/mathematics-1233876_1280.jpg"
+draft: false
+date-format: "[Xalapa, Ver.,] D MMMM YYYY"
+categories: [presentación]
+lang: es
+footer: "[M3-Causalidad](http://m3-2025-causalidad.miequiz-ca.net/)"
+logo:  "images/Logo-Inecol.png"
+title-slide-attributes:
+    data-background-image: "images/gamma-plantilla_alfa.png"
+    data-background-size: "100%"
+    data-background-opacity: "60%"
+format: 
+    metropolis-revealjs
+reveal-header:
+    sc-sb-title: false
+    header: "."
+transition: convex
+execute: 
+  eval: true
+  echo: true
+preload-iframes: true
+embed-resources: true
+---
+
+
+```{r}
+#| label: inicio
+#| echo: false
+#| include: false
+#| warning: false
+#| output: false
+
+library(tidyverse)
+library(flextable)
+
+```
+
+# Al planear un estudio
+
+¿Descriptivo o comparativo?
+
+¿Cómo se miden las variables (escalas)?
+
+¿Cómo se definen los tratamientos?
+
+¿Cómo se asignan los tratamientos a las unidades de observación?
+
+¿Procesos de confusión?
+
+¿Se usó aleatorización en algún punto?
+
+# Procesos de confusión
+
+:::::: columns
+:::: {.column width="60%"}
+::: incremental
+-   Hacen aparecer una asociación que no existe.
+-   Ocultan o enmascaran la existencia de una asociación
+:::
+::::
+
+::: {.column width="40%"}
+![](images/clase3-Modelo-lineal0.png){width="100%"}
+:::
+::::::
+
+# Sesgo por selección
+
+:::::: columns
+:::: {.column width="60%"}
+::: incremental
+-   Cuando una variable explicativa y alguna otra variable actúan simultáneamente sobre la de respuesta.
+-   En este caso la variable de respuesta es un “colisionador”.
+-   Si no se maneja adecuadamente en el diseño del estudio o en el análisis, pueden producir resultados sesgados.
+:::
+::::
+
+::: {.column width="40%"}
+![](images/clase3-modelo-lineal1.png){width="100%"}
+:::
+::::::
+
+# Clasificación y medición {.center}
+
+-   La obtención de **datos cuantitativos** puede realizarse de muchas formas distintas, pero siempre se parte de alguna forma de **clasificación**.
+
+-   Aunque clasificar puede parecer una tarea simple, muchas cosas dependen justamente de como se hace.
+
+# Medición cualitativa
+
+-   **El tipo más simple de medición es aquel en el que las categorías sólo se etiquetan.**
+
+-   **Esta es la denominada escala de medición** *categórica* o *nominal* **.**
+
+-   **A veces resulta útil expresar mediciones continuas en forma nominal.**
+
+## El modelo estadístico lineal general{center}
+
+[**Estructura general**]{style="color:#A5A5A5"}
+
+![](images/clase3-modelo-lineal2.png)
+
+## Ejemplo de modelo lineal
+
+-   [Ganancia de peso en un grupo de orugas que declina conforme se incrementa el contenido de taninos en la dieta.]{style="color:#7F7F7F"}
+
+-   [Esta condición puede describirse en forma abreviada así:]{style="color:#7F7F7F"}
+
+```{r results='asis', echo=FALSE}
+
+mod_txt <- tibble(a = "ganancia de peso de cada oruga", b = "=", 
+                  c = "ganancia de peso base en general", d = "+",
+                  e = "efecto del contenido de taninos en la dieta", f = "+",
+                  g = "efecto de otros factores que fluctuan aleatoriamente")
+flextable(mod_txt) %>% 
+  delete_part(part = "header") %>% 
+  border_remove() %>% 
+  align_text_col(align = "center") %>% 
+  fontsize(size = 16, part = "body")
+
+```
+
+[Como modelo lineal se puede escribir así :]{style="color:#7F7F7F"}
+
+$$
+y_{ij} = \beta_0 x_0j + \sum_{i=1}^{k}\beta_i x_{ij} + \varepsilon_{j(i)}  
+$$
+
+# Interpretación de términos
+
+-   las *X* 's proporcionan información sobre el nivel del individuo *i* en los factores que estamos considerando.
+-   Las *β* son incógnitas que debemos estimar (en eso consiste ajustar el modelo).
+-   La primera incógnita y la variable $X_0$ que la acompaña, típicamente juegan el papel especial de reflejar el efecto de los factores constantes. Esto es, los factores que son comunes a todas las unidades experimentales. Para esto, usualmente $X_0$ toma simplemente el valor de 1 para todas las unidades experimentales observadas.
+
+## Modelos con variables explicativas cualitativas
+
+::: {layout="[[-10], [30], [-10]]"}
+### \[¿qué piensas de este experimento?\]
+:::
+
+Un agrónomo planea estudiar las tasas de producción de **cuatro híbridos de trigo** en **tres regiones geográficas** representantes de diferentes condiciones de sequía. Los sitios se escogen según la cantidad de lluvia como normal climatológica y la respuesta es el rendimiento por hectárea. Las semillas de los híbridos son asignadas aleatoriamente a los sitios.
+
+::: fragment
+-   ¿cómo piensas que se podría hacer esta aleatorización.
+:::
+
+::: fragment
+-   ¿cual sería el modelo lineal que lo podría describir?
+:::
+
+::: {.fragment .fade-in}
+$$
+y_{ijk} = \mu + R_i + H_j + RH_{ij} +  \varepsilon_{k(ij)}
+$$
+:::
+
+## El modelo en todo su esplendor {.center}
+
+$$
+\begin{gather*}
+y_{ijk} = \mu + \beta_{1k}R_{1k} + \beta_{2k}R_{2k} + \beta_{3k}R_{3k} + \\
+          \beta_{4k}H_{1k}   + \beta_{5k}H_{2k}   + \beta_{6k}H_{3k}   + \beta_{7k}H_{ik} + \\
+          \beta_{8k}RH_{1k}  + \beta_{9k}RH_{2k}  + \beta_{10k}RH_{3k} + \beta_{11k}RH_{ik}+ \\ 
+          \beta_{12k}RH_{1k} + \beta_{13k}RH_{2k} + \beta_{14k}RH_{3k} + \beta_{15k}RH_{ik}+\\ 
+          \beta_{16k}RH_{1k} + \beta_{17k}RH_{2k} + \beta_{18k}RH_{3k} + \beta_{19k}RH_{ik}+ 
+          \varepsilon_{k(ij)}
+\end{gather*}
+$$
+
+## ¿Qué valores toman las X, las R y las H?
+
+La forma más común de modelar datos cualitativos es:
+
+::::::: columns
+:::: {.column width="60%"}
+::: {style="font-size: 90%;"}
+-   Mediante variables usualmente llamadas **factores**.
+-   Un factor es una listas de nombres o códigos de identificación de estados o **niveles** mutuamente excluyentes.
+-   En la modelación se requiere convertir el factor a *variables indicadoras* o ***dummy***.
+-   Habrá tantas variables ***dummy*** como estados o niveles tenga el factor
+-   Cada variable se construye anotando la presencia/ausencia de la condición del factor.
+:::
+::::
+
+:::: {.column width="30%"}
+::: {style="font-size: 80%;"}
+$$
+H_1 = \left\{ 
+         \begin{align*}
+           \text{si } \color{red}{sí} \text{ es híbrido del tipo } a &: 1 \\ 
+           \text{si } \color{red}{no} \text{ es híbrido del tipo } a &: 0
+         \end{align*} 
+      \right\} 
+$$
+:::
+::::
+:::::::
+
+# Dependencia lineal
+
+-   Ocurre cuando los valores de una variable pueden expresarse como combinaciones lineales (sumas o restas de *múltiplos* o *submúltiplos*) de las otras variables en el conjunto.
+-   A la dependencia lineal También se le denomina **colinealidad** o **multicolinealidad**.
+
+¿a qué hace referencia este nombre?
+
+# ...ejemplo de dependencia...
+
+$$
+y = \mu + \beta_1x_1 + \beta_2x_2
+$$
+
+:::::::: columns
+::: {.column width="40%"}
+```{r}
+#| results: asis
+#| echo: false
+
+dat <- tibble(c = rep(1,4), x1 = 1:4, x2 = 0.5 *(1:4) + 1 )
+
+flextable(dat) %>% 
+  set_header_labels(values = list(c = "\u03BC")) %>% 
+  fontsize(size = 22, part = "all")  
+```
+:::
+
+:::::: {.column width="60%"}
+::: fragment
+-   ¿Cuál es la dependencia lineal en esta tabla de datos?
+:::
+
+:::: fragment
+::: {.fragment .highlight-red}
+$$
+x_2 = 1 + 0.5 x_1
+$$
+:::
+::::
+::::::
+::::::::
+
+# Y... ¿qué tenemos aquí?
+
+$$
+y = \mu + \beta_1x_1 + \beta_2x_2
+$$
+
+::::::: columns
+::: {.column width="40%"}
+```{r}
+#| results: asis
+#| echo: false
+
+dat <- tibble(c = rep(1,4), x1 = rep(0:1, times = 2), x2 = rep(1:0, times=2) )
+
+flextable(dat) %>% 
+  set_header_labels(values = list(c = "\u03BC")) %>% 
+  fontsize(size = 22, part = "all")  
+
+```
+:::
+
+::::: {.column width="60%"}
+:::: {.callout-important title="¿hay colinealidad en esta tabla de datos?"}
+::: incremental
+-   ¡La colinealidad impide resolver el ajuste de modelos!
+-   Para resolver este problema hay que reparametrizar.
+-   Una forma de reparametrizar: eliminar la primera variable dummy de un factor.
+:::
+::::
+:::::
+:::::::
+
+# Otro caso {.center}
+
+::: fragment
+-   ¿qué es esto?
+:::
+
+::: fragment
+-   Un ecólogo desea probar los efectos relativos de 8 tratamientos (“Xs”) sobre la sobrevivencia de plántulas de *Phaseolus vulgaris*. Supongamos que se cuenta con 64 plántulas relativamente homogéneas.
+:::
+
+::: fragment
+-   ¿qué solución de diseño experimental proponen?
+:::
+
+::: fragment
+-   ¿Modelo que proponen para describir este proceso ecológico?
+:::
+
+# ...que tal si.... {.center}
+
+-   $\ldots$se enteran que las 64 plántulas provienen en lotes de 8 de distintas cámaras y sustratos de germinación.
+
+-   **¿modificaría esto el diseño y al (los) modelo(s) asociado(s)?**

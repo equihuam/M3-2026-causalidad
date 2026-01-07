@@ -1,0 +1,143 @@
+Public Function NUMEROSALETRAS(ByVal numero As Double) As String
+    ' Si el número es negativo, se convierte a positivo
+    If numero < 0 Then numero = Abs(numero)
+    
+    ' Variables para almacenar las partes enteras y decimales del número
+    Dim parteEntera As Long
+    Dim parteDecimal As Long
+    parteEntera = Int(numero)
+    parteDecimal = Round((numero - parteEntera) * 100) ' Convertir decimales a número entero
+    
+    ' Variables para almacenar las secciones del número en texto
+    Dim textoEntero As String
+    Dim textoDecimal As String
+    textoEntero = ""
+    textoDecimal = ""
+    
+    ' Obtener el texto para la parte entera del número
+    If parteEntera = 0 Then
+        textoEntero = "cero"
+    Else
+        textoEntero = NumToText(parteEntera)
+    End If
+    
+    ' Obtener el texto para la parte decimal del número
+    If parteDecimal > 0 Then
+        textoDecimal = " punto " & NumToText(parteDecimal)
+    End If
+    
+    ' Combinar las partes en un solo texto y convertir todo a minúsculas
+    NUMEROSALETRAS = LCase(textoEntero & textoDecimal)
+End Function
+
+Private Function NumToText(ByVal numero As Long) As String
+    ' Esta función convierte un número entero en su representación en texto
+    Dim NumFormato As String
+    Dim pos As Integer
+    Dim cent As Integer
+    Dim dec As Integer
+    Dim uni As Integer
+    Dim resultado As String
+    
+    NumFormato = Format(numero, "000000000000000")
+    pos = 1
+    resultado = ""
+    
+    Dim i As Integer
+    For i = 0 To 4
+        cent = Val(Mid(NumFormato, pos, 1))
+        dec = Val(Mid(NumFormato, pos + 1, 1))
+        uni = Val(Mid(NumFormato, pos + 2, 1))
+        pos = pos + 3
+        
+        Select Case cent
+            Case 1
+                If dec + uni = 0 Then
+                    resultado = resultado & "cien "
+                Else
+                    resultado = resultado & "ciento "
+                End If
+            Case 2: resultado = resultado & "doscientos "
+            Case 3: resultado = resultado & "trescientos "
+            Case 4: resultado = resultado & "cuatrocientos "
+            Case 5: resultado = resultado & "quinientos "
+            Case 6: resultado = resultado & "seiscientos "
+            Case 7: resultado = resultado & "setecientos "
+            Case 8: resultado = resultado & "ochocientos "
+            Case 9: resultado = resultado & "novecientos "
+        End Select
+        Select Case dec
+            Case 1
+                If uni >= 0 And uni <= 9 Then
+                    Select Case uni
+                        Case 0: resultado = resultado & "diez "
+                        Case 1: resultado = resultado & "once "
+                        Case 2: resultado = resultado & "doce "
+                        Case 3: resultado = resultado & "trece "
+                        Case 4: resultado = resultado & "catorce "
+                        Case 5: resultado = resultado & "quince "
+                        Case 6: resultado = resultado & "dieciséis "
+                        Case 7: resultado = resultado & "diecisiete "
+                        Case 8: resultado = resultado & "dieciocho "
+                        Case 9: resultado = resultado & "diecinueve "
+                    End Select
+                    uni = 0
+                End If
+            Case 2
+                If uni = 0 Then
+                    resultado = resultado & "veinte "
+                ElseIf uni > 0 Then
+                    resultado = resultado & "veinti"
+                End If
+            Case 3: resultado = resultado & "treinta "
+            Case 4: resultado = resultado & "cuarenta "
+            Case 5: resultado = resultado & "cincuenta "
+            Case 6: resultado = resultado & "sesenta "
+            Case 7: resultado = resultado & "setenta "
+            Case 8: resultado = resultado & "ochenta "
+            Case 9: resultado = resultado & "noventa "
+        End Select
+        If dec <> 1 And uni > 0 Then
+            Select Case uni
+                Case 1: resultado = resultado & "y " & IIf(i = 4, "uno ", "un ")
+                Case 2: resultado = resultado & "y " & "dos "
+                Case 3: resultado = resultado & "y " & "tres "
+                Case 4: resultado = resultado & "y " & "cuatro "
+                Case 5: resultado = resultado & "y " & "cinco "
+                Case 6: resultado = resultado & "y " & "seis "
+                Case 7: resultado = resultado & "y " & "siete "
+                Case 8: resultado = resultado & "y " & "ocho "
+                Case 9: resultado = resultado & "y " &  "nueve "
+            End Select
+        End If
+        If cent + dec + uni > 0 Then
+            Select Case i
+                Case 0
+                    If cent + dec + uni = 1 Then
+                        resultado = resultado & "Millardo "
+                    Else
+                        resultado = resultado & "Millardos "
+                    End If
+                Case 1
+                    If cent + dec + uni >= 1 And Val(Mid(NumFormato, 7, 3)) = 0 Then
+                        resultado = resultado & "Mil Millones "
+                    ElseIf cent + dec + uni >= 1 Then
+                        resultado = resultado & "Mil "
+                    End If
+                Case 2
+                    If cent + dec = 0 And uni = 1 Then
+                        resultado = resultado & "Millón "
+                    ElseIf cent > 0 Or dec > 0 Or uni > 1 Then
+                        resultado = resultado & "Millones "
+                    End If
+                Case 3
+                    If cent + dec + uni >= 1 Then
+                        resultado = resultado & "Mil "
+                    End If
+                Case 4
+            End Select
+        End If
+    Next i
+    
+    NumToText = Trim(resultado)
+End Function

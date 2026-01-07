@@ -1,0 +1,10 @@
+dia,id_seq,tema, lectura
+Lunes 27,Clase 1,Un lenguaje para describir modelos (diseño de experimentos y de tratamientos), 0
+Martes 28,Clase 2,Causalidad y modelación gráfica: Grafos Acíclicos Dirigidos (DAG), 0
+Miércoles 29,Clase 3,Diseño de experimentos: hipótesis y la modelación estadística, 1  
+Jueves 30,Clase 4,Efectos fijos y aleatorios sus implicaciones en los modelos estadísticos, 0 
+Viernes 31,Clase 5,Evitar confusión por variables conocidas: Bloques aleatorizados, 1 
+Lunes 4,Clase 6,Muestreo dentro unidades experimentales: Diseños anidados, 0  
+Martes 5,Clase 7,Unidades experimentales múltinivel y anidadas: Diseños de Parcelas divididas, 1
+Jueves 6,Clase 8,Modelos jerárquicos (incluye medidas repetidas),0 
+Viernes 7,Clase 9,"Feria del diseño" para discutir los protocolos de los estudiantes, 0

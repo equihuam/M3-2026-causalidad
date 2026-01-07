@@ -1,0 +1,16 @@
+---
+title: "M3 - Diseño de Experimentos"
+lang: es
+listing:
+  contents:
+    - "posts/*/index.qmd"
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+

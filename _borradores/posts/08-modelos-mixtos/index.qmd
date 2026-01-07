@@ -1,0 +1,608 @@
+---
+title: "Modelos de Efectos Mixtos"
+author: ["Miguel Equihua"]
+date: "2025-02-05"
+lang: es
+draft: false
+categories: [clase]
+format:
+  html:
+    code-fold: true
+---
+
+![](images/arboles.jpeg){width="500"}
+
+# Modelos Lineales de efectos mixtos
+
+## Ejemplo de rieles
+
+
+::: {.callout-note title="Calidad de rieles de ferrocarril" collapse="true"}
+Uno de los principales problemas que enfrentan los ferrocarriles es la falla en las vías. Los defectos en los raíles, como parte básica de la vía, pueden provocar accidentes graves. La inspección de los rieles es crítica, considerando el enorme tráfico que soportan actualmente, la mayor velocidad y las cargas más pesadas. La inspección visual sólo puede detectar defectos superficiales y, a veces, signos evidentes de problemas internos, la _defectoscopia ultrasónica_ desempeña un papel insustituible en la inspección de los rieles durante su funcionamiento.
+
+![](images/ultrasonic-railway-rail-testing-01.jpg){wdth=60%}
+
+[Este ejemplo se explica en este libro](https://faculty.ksu.edu.sa/sites/default/files/probability_and_statistics_for_engineering_and_the_sciences.pdf). 
+:::
+
+El estudio de las fuerzas y tensiones no destructivas en los materiales proporciona información importante para un diseño de ingeniería eficaz. El artículo _Zero-Force Travel-Time Parameters for Ultrasonic Head-Waves in Railroad_ (Materials Evaluation,
+1985: 854-858) reporta un estudio del **tiempo de tránsito** de un _cierto tipo de onda_ que se obtiene al someter rieles de ferrocarril a esfuerzos de tensión longitudinal. Se realizaron tres mediciones en cada uno de seis rieles seleccionados aleatoriamente de una población más amplia de ellos. Los investigadores buscaban caracterizar la variación en el tiempo de viaje como referencia para describir la _variabilidad_ ___típica___ _entre los rieles_ que estaban adquiriendo y usando. Los ingenieros se interesaban en precisar la variabilidad atribuible al ejercicio de realizar las mediciones en un mismo riel y la variailidad que expresan los distintos rieles. Los datos son valores en nanosegundos, resultado de restar 36.1 $\mu s$ a cada observación.
+
+Este ejemplo es un caso simple de efectos aleatorios. En resumen, seis rieles fueron tomados al azar y sometidos a prueba tres veces cada uno mediante la medición del tiempo que le toma a cierto tipo de ondas ultrasónicas viajar a lo largo del riel. La Única _condición experimental_ que cambia entre observaciones es el riel.
+
+Claramente el estudio tiene un solo criterio de clasificación, como posible condición de contraste. La intención del estudio fue la determinación de: 
+
+1. **Tiempo de tránsito "típico"** de un riel (tiempo esperado de tránsito) 
+2. _Variación_ en el tiempo de tránsito promedio _entre los rieles_ (variabilidad entre rieles) 
+3. _Variación al medir_ el tiempo observado de tránsito _en un mismo riel_ (variabilidad dentro de rieles)
+
+
+$$
+y_{ij} = \mu + \beta_{1} R_{i} + \varepsilon_{i(j)}
+$$
+
+Utilizaremos la biblioteca `nlme` (_Linear and Nonlinear Mixed Effects Models_, de tipo Gausiano o normal) para ajustar los modelos de *efectos mixtos* y aprovecharé para que veamos dos bibliotecas de graficación de _calidad publicación_:  `lattice` y `ggplot2` .
+
+**Lattice contiene estas opciones:**
+
+| tipo de gráfica | descripción               | ejemplo de fórmula |
+|-----------------|---------------------------|--------------------|
+| barchart        | bar chart                 | x\~A or A\~x       |
+| bwplot          | boxplot                   | x\~A or A\~x       |
+| cloud           | 3D scatterplot            | z\~x\*y\|A         |
+| contourplot     | 3D contour plot           | z\~x\*y            |
+| densityplot     | kernal density plot       | \~x\|A\*B          |
+| dotplot         | dotplot                   | \~x\|A             |
+| histogram       | histogram                 | \~x                |
+| levelplot       | 3D level plot             | z\~y\*x            |
+| parallel        | parallel coordinates plot | data frame         |
+| splom           | scatterplot matrix        | data frame         |
+| stripplot       | strip plots               | A\~x or x\~A       |
+| xyplot          | scatterplot               | y\~x\|A            |
+| wireframe       | 3D wireframe graph        | z\~y\*x            |
+
+Las gráficas con `lattice` tienen todo un entorno de soporte. Por ejemplo los aspectos que pueden ajustarse se pueden ver con `trellis.par.get()` y se ajustan con `trellis.par.set()`. Se trata de una aproximación a la **visualización de datos** muy interesante que se desarrolló en la época en la que los lenguajes de programación **S** y más adelante **R**, estaban apareciendo. Quizás popr eso encontramos algo de `lattice` contruido dentro de `nlme`.
+
+Actualmente, resulta quizás más práctico el enfoque que ha desarrollado `ggplot2`, basada en una [semántica de graficación que Hadley Wickham explica originamente en su libro publicado en 2009](https://link.springer.com/book/10.1007/978-0-387-98141-3). Actualmente Hadley trabaja con otros dos coautores (Danielle Navarro y Thomas Lin Pedersen) en al 3ra. edición,  lo hacen como un [_preprint_ que pueden encontrar aquí](https://ggplot2-book.org/). La gran influencia de este planteamiento a la producción de gráficas de datos ha dado lugar a muchas ideas y recursos de ayuda que fácilmente se pueden encontrar en _la Web_ 
+
+los datos con los que trabajaremos en esta sesión están en la tabla `Rail` de la biblioteca *nlme*. Para acomodarlos a mis propósitos los copie a mi espacio de trabajo y los guardé en una variable con un nombre de mi gusto. Los datos de los rieles están ordenados según fueron ensayados.
+
+
+```{r}
+library(nlme)
+library(lattice)
+library(ggplot2)
+
+rieles <- Rail
+names(rieles) <- c("riel", "viaje")
+str(rieles)
+```
+
+La tabla `rieles` fue creada como una **estructura agrupada** con la función `groupeData` de la biblioteca `nlme`. Veremos más adelante como usar esta función. Esta función agrega *metadatos* a la tabla. Si interesa hacer cambios a los *metadatos* de la tabla agrupada hay que usar la función `update` que ejemplificaré a continuación. Lo primero es explorar los atributos asignados.
+
+```{r}
+attributes(rieles)
+```
+
+Ahora cambiemos estos atributos para que todo esté expresado en español y de paso corregir la fórmula, que tal como está, pierde la referencia adecuada a las variables que contiene la tabla, pues yo cambié los nombres de las variables.
+
+```{r}
+rieles  <- update(rieles, formula = viaje ~ 1 | riel, FUN = mean,
+                  labels = list(y = "Tiempo de viaje con fuerza cero"),
+                  units = list(y = "(nano segundos)"))
+
+# Encontré un detallito raro de atributos que se quedan con basura. 
+# Aunque no parecen producir ningún problema, esta es una manera de limpiarla.
+attributes(attributes(rieles)$formula)$".Environment" <- environment()
+environment(attributes(rieles)$FUN) <- environment()
+attributes(rieles)
+
+```
+
+A esta tabla se le ha aplicado la función `groupedData` con la fórmula:
+
+viaje \~ 1\| riel
+
+Esta estrategia permite darle mantenimiento a los metadatos, que incluyen indicaciones sobre el agrupamiento de los datos en la tablas. Para aprovechar esta estructura podemos usar funciones especiales, por cierto, dentro del paquete `nmle`, la función `plo` ha sido diseñada para usar opciones de graficación de *lattice*, puedes averiguar un poco más al respecto con `help(plot.nmGroupedData)`:
+
+-   `gapply` - aplica funciones por grupos
+-   `gsummary` - calcula los resúmenes de datos por grupos
+
+Por lo pronto veamos los datos, con la función de graficación de *lattice* `stripplot`, que toma el factor *riel*, por lo tanto se trata de *renglones* cualitativos sobre los que se grafican los datos de *velocidad de viaje*.
+
+```{r}
+options(repr.plot.width=10, repr.plot.height=6)
+
+stripplot(rieles$riel ~ rieles$viaje, pch = 19, col = "red", cex = 1.25,
+          main = list(label = "Análisis de integridad estructural de rieles", cex =2),
+          xlab = list(label = "tiempo de viaje (ns)", cex = 2),
+          ylab =  list(label = "riel", cex = 2), 
+          scales = list(tck = c(2,0), x = list(cex = 2), y = list(cex = 2)))
+```
+
+[¿Cómo se ven estos datos? ¿qué piensas que habría que hacer?]{style="color:GoldenRod"}
+
+```{r}
+ggplot(rieles, aes(x = viaje, y = riel, group = riel)) + 
+       geom_point(shape = 19, size = 4, color = "blue") +
+       labs(title = "Análisis de integridad estructural de rieles") +
+       xlab(label = "tiempo de viaje (ns)") +
+       ylab(label = "riel") +
+       theme(text = element_text(size=26), 
+             axis.text.x = element_text(angle=0, hjust=1)) 
+```
+
+```{r}
+gsummary(rieles)
+```
+
+¿Cómo se asigna la estructura de agrupación a una tabla de datos? Como dije al principio, se puede usar la función groupedData de la biblioteca *nlme*. Hagamos un ahora un ensayo de este proceso.
+
+```{r}
+rieles.sg <- as.data.frame(rieles)
+```
+
+Estructura de la tabla **sin** información de agrupamiento:
+
+```{r}
+str(rieles.sg) 
+```
+
+Los atributos quue contiene este objeto son estos:
+
+```{r}
+attributes(rieles.sg)
+```
+
+Tomo los datos sin agrupamiento y proporciono los *metadatos* que definen la **estructura de agrupamiento** que caracterizan a la tabla :
+
+```{r}
+rieles.g <- groupedData (viaje ~ 1 | riel, data = rieles.sg, 
+                         FUN = mean,
+                         units = list( x = "(ns)"),
+                         labels = list(x = "riel", 
+                                       y = "tiempo de tránsito de fuerza cero"),
+                         )
+str(rieles.g)
+```
+
+```{r}
+data.frame(sg=rieles.sg, g=rieles.g)
+```
+
+```{r}
+gsummary(rieles.sg)
+```
+
+```{r}
+gsummary(rieles.g)
+```
+
+```{r}
+ggplot(rieles.g, aes(x = viaje, y = riel, group = riel)) + 
+       geom_point(shape = 19, size = 4, color = "blue") +
+       labs(title = "Análisis de integridad estructural de rieles (rieles.g)") +
+       xlab(label = "tiempo de viaje (ns)") +
+       ylab(label = "riel") +
+       theme(text = element_text(size=26), 
+             axis.text.x = element_text(angle=0, hjust=1)) 
+```
+
+Como hemos visto, cambiar los metadatos de la tabla se hace con la función `update()`.
+
+Como una demostración simple de esto, le cambiaré la etiqueta asociada a la variable de respuesta en la estructura de agrupamiento. Con esto.
+
+```{r}
+rieles.g1 <- update(rieles.g, labels = list(y="tiempo (ns)"))
+plot(rieles.g1)
+```
+
+Primera posibilidad de análisis. Modelo lineal simple. Es una elección natural en este caso, pues estima la media general. Hay que recordar seleccionar contrastes de tipo "tratamiento" aun para factores ordenados.
+
+[¿Cómo representamos al riel en el modelo?]{style="color:GoldenRod"}
+
+```{r}
+options ()$contrasts
+```
+
+Empecemos por construir el modelo nulo. [¿qué resultados nos ofrece este modelo?]{style="color:GoldenRod"}.
+
+```{r}
+rieles.m1 <- lm(viaje ~ 1, data =rieles.g)
+summary(rieles.m1)
+```
+
+Así, tengo una estimación del tiempo promedio de tránsito de: 66.5. El error estándar que estimo es: 5.573
+
+[¿cómo quedan los residuos de este modelo?]{style="color:GoldenRod"}
+
+El gráfico de *cajas y bigotes* o *cajas y alambres* es interesante para explorar lo que está pasando con los rieles. La versión que produce la función `bwplot()` de la biblioteca *lattice* es un buen recurso.
+
+[¿Qué piensas de esta gráfica? ¿Te gusta lo que ves?]{style="color:GoldenRod"}
+
+```{r}
+bwplot(rieles.g$riel ~ resid(rieles.m1))
+```
+
+```{r}
+ggplot(rieles.g, aes(x = viaje, y = riel, group = riel)) + 
+       stat_boxplot(geom='errorbar', linetype=2, width=0.5) + 
+       geom_boxplot(shape = 19, size = 0.5, color = "blue") +
+       labs(title = "Análisis de integridad estructural de rieles (rieles.g)") +
+       xlab(label = "tiempo de viaje (ns)") +
+       ylab(label = "riel") +
+       theme(text = element_text(size=26), 
+             axis.text.x = element_text(angle=0, hjust=1)) 
+```
+
+Al ignorar el efecto de los rieles, dentro de los que repito la prueba para obtener las medidas de interés se produce un defecto que se ve claramente en esta gráfica de residuos.
+
+Los residuos de cada riel tienen todos el mismo signo. Es decir se mantiene un efecto sistemático importante en ellos.
+
+[Te parecería buena idea agregar el término que representa al riel para resolver este problema?]{style="color:GoldenRod"}
+
+[¿Es fijo o aleatorio?]{style="color:GoldenRod"}
+
+Este nuevo modelo permite que cada riel sea representado por una media diferente. Suponiendo efectos fijos, la estimación del parámetro de interés es esta.
+
+```{r}
+rieles.m2 <- lm(viaje ~ riel - 1, data =rieles.g)
+rieles.m2
+```
+
+```{r}
+anova(rieles.m2)
+```
+
+```{r}
+summary(rieles.m2)
+```
+
+
+[¿interpretación de este nuevo resultado?]{style="color:GoldenRod"}
+
+........... [¿y los residuos? ¿cómo se ven ahora?]{style="color:GoldenRod"}
+
+```{r}
+bwplot(rieles.g$riel ~ resid(rieles.m2))
+```
+
+```{r}
+res.m2 <- data.frame(resid = resid(rieles.m2), riel = rieles.g$riel)
+ggplot(res.m2, aes(x = resid, y = riel, group = riel)) + 
+       stat_boxplot(geom='errorbar', linetype=2, width=0.5) + 
+       geom_boxplot(shape = 19, size = 0.5, color = "blue") 
+```
+
+A pesar de que el modelo remueve los efectos sistemáticos asociados a las características particulares de los distintos rieles, no proporciona una representación satisfactoria del problema.
+
+[si los rieles fueran de efectos fijos ¿qué implicaría este modelo? ¿cuál sería una interpretación razonable del tratamiento **riel**?]{style="color:GoldenRod"}
+
+Al suponer efectos fijos surge el problema de que se modelan de algún modo *variantes individuales* de los rieles que se usaron para realizar las pruebas. Desafortunadamente, tal clasificación no tiene ningún sentido en el contexto. Lo que interesa es estimar el tiempo de tránsito típico de cualquier riel en la *población de rieles* de la que se tomó la muestra.
+
+Además, la misma falta de correspondencia conceptual entre el modelo y la estimación que interesa, hace que este nuevo modelo no proporcione una clara estimación de la variación (componente de varianza), entre rieles, que es otra de las preguntas centrales de este estudio. Otro problema de este modelo de efectos fijos es que el número de parámetros crece linealmente con el número de rieles que se usan para realizar la prueba, generando un comportamiento extraño en el modelo respecto de la pregunta.
+
+#### El Modelo de efectos aleatorios ¿resuelves estos problemas?.
+
+En este enfoque se considera a los rieles como un efecto aleatorio sobre la media general. Hay principalmente dos métodos para ajustar este tipo de modelos el de máxima verosimilitud (ML) y el de máxima verosimilitud restringida (REML, default). La función que utilizaremos para el caso lineal es `lme()` que se usa de modo muy semejante a `lm()` y `glm()`. Sin embargo, nótese que ahora el modelo tiene dos grupos de fórmulas, una para describir los efectos fijos (opción *fixed*) y otra para describir los aleatorios (opción *random*). Esté último es siempre una fórmula que tiene sólo el lado derecho (no hay interés en predecir medias, ¿recuerdas?) y da cuenta de los efectos aleatorios y de la estructura de agrupamiento de los datos. Un agrupamiento se representa mediante el símbolo de barra vertical: `|`. Ahora, ajustemos un modelo de este tipo para obtener la estimación de *máxima verosimilitud restringida* para los rieles.
+
+
+```{r}
+rieles.m3 <- lme(fixed = viaje ~ 1, 
+                 random = ~ 1 | riel, 
+                 data = rieles.g)
+rieles.m3
+```
+
+
+::: {.callou-caution style="color:GoldenRod"}
+## Ayúdame a comentar estos resultados ¿qué te llama la atención?
+
+```{r}
+summary (rieles.m3)
+```
+
+:::
+
+El ajuste produce los estimadores que buscamos: 1. tiempo de tránsito típico = 66.5 2. Variabilidad entre rieles = 24.81 3. Variabilidad dentro de rieles = 4.02
+
+En este caso los estimadores 1 y 3 son prácticamente idénticos a los obtenidos con el modelo lineal ordinario, pero esto no siempre es así. La coincidencia deriva de que la muestra está balanceada (mismo tamaño de muestra en cada riel). Además, ahora tengo un razonable estimador de la variación entre rieles (2).
+
+[¿Qué utilidad pueden tener estas estimaciones?]{style="color:GoldenRod"}
+
+El resumen del ajuste muestra dos criterios nuevos para comparar y evaluar modelos. Estas medidas son resultado de la búsqueda de alternativas para valorar modelos que no se centre en el famoso valor de *p*.
+
+-   AIC - Criterio de información de Akaike = -2 \* logVerosimilitud + 2 numParámetros
+-   BIC - Criterio de información bayesiano = -2 \* logVerosimilitud + numParámetros \* log(N)
+
+Es bueno contar con ellos para comparar la calidad general de los modelos ajustados, pero no olviden que centrar nuestra atención en los intervalos de confianza es más informativo y potencialmente interesante.
+
+En cualquier caso, "entre más pequeño el valor del criterio, mejor", pero no olvides que más interesantes son los intervalos de confianza que obtengas.Finalmente, veamos los residuos
+
+[¿Cómo se ven?]{style="color:GoldenRod"}
+
+[¿Qué nos sugieren estos resultados?]{style="color:GoldenRod"}
+
+```{r}
+bwplot(rieles.g$riel ~ resid(rieles.m3))
+```
+
+Puedo obtener los estimadores de los coeficientes igual que en el caso `lm()` y `glm()` con `coef()`, pero además puedo obtener los coeficientes de los componentes aleatorios con `random.effects()` (forma breve: `ranef()`). ¿Que hay de los intervalos de confianza de los parámetros de efectos fijos estimados?.
+
+Como he venido insistiendo, esta forma de mostrar resultados es cada vez más apreciada y es más conveniente que el enfoque de uso de valores de "*p*" en las publicaciones. La función `intervals()` supone un nivel de confianza del 95%, si no se le dice otra cosa.
+
+```{r}
+coef(rieles.m3)
+```
+
+```{r}
+ranef(rieles.m3)
+```
+
+[¿Qué piensas de estos estimadores de intervalos de confianza?]{style="color:GoldenRod"}
+
+```{r}
+intervals(rieles.m3, 0.95)
+```
+
+
+## El modelo de glucógeno en ratas revisitado
+
+Volvamos a ver el ejemplo GLEX38 (Crawley p. 149) de Hígados de rata en el ejemplo presentado originalmente en Sokal & Rohlf (1981). Te recuerdo que se trata de un experimento con un solo factor con tres tratamientos administrados a seis ratas, dos por tratamiento. El análisis se complica por el hecho de que, para el an?lisis, se tomaron tres muestras del hígado de cada rata y se hicieron dos determinaciones de contenido de glucógeno en cada muestra. Así, podríamos decir, un tanto derogativamente, que hay seis **pseudoréplicas** por rata para dar un total de 36 lecturas en total. Pero quizás en lugar de hablar en estos términos deberíamos simmplemente reconocer que lo que estamos haciendo es organizar un muestreao para obtener el dato de la variable de respuesta en el experimento, en lugar de hacer una "cosecha total", que es la práctica ideal (pues evita introducir un fuente de "ruido" adicional).
+
+```{r}
+ratas_g <- read.table("hígados-rata.DAT", col.names="glucogeno")
+ratas_g$tratamiento <- factor(rep(c("t1","t2","t3"),each=12))
+ratas_g$rata <- factor(rep(paste("r", 1:6, sep=""), each=6))
+ratas_g$muestraH <- factor(rep(c("m1", "m2", "m3"), times=6, each=2))
+```
+
+Le doy estructura de grupos a la tabla
+
+```{r}
+ratas_g <- groupedData(glucogeno ~  1 | ordered(rata) / muestraH,
+                       data = ratas_g,
+                       labels= list(x = "rata", y = "contenido de glucógeno" ),
+                       FUN = mean)
+str(ratas_g)
+```
+
+
+### Exploración de los datos
+
+Aprovechando las opciones de estructura de grupos puedo obtener resumenes exploratorios de manera muy simple.
+
+```{r}
+data.frame(promedio = tapply (ratas_g$glucogeno, ratas_g$rata, function(x) round(mean(x), 2)))
+```
+
+Graficación de los datos aprovechando la estructura agrupada que hemos adoptado.
+
+```{r}
+plot(ratas_g, inner =  ~ tratamiento, displayLeve=2)
+```
+
+```{r}
+bwplot(glucogeno ~ tratamiento, boxmeans=T, data=ratas_g, 
+     boxcol=14, xlab = "Tratamiento", ylab = "Contenido de glucógeno")
+```
+
+### Modelación
+
+Veamos el enfoque con un modelo lineal de efectos mixtos.
+
+::: {.callou-caution style="color:GoldenRod"}
+## ¿Cual es la estructura fija?, me puedes decir cuál es la ecuación correspondiente
+:::
+
+La estructura aleatoria de los datos, cuando tiene varias fuentes, se representa como una lista de efectos (modelos) en la función `lme()` de la biblioteca `nlme`. Otra posibilidad es usar la biblioteca `lme4` que contiene a la función `lmer()`. Al respecto, [esta lectura puede ser de innterés](http://staff.pubhealth.ku.dk/~jufo/courses/rm2018/nlmePackage.pdf)
+
+Este caso, como ya vimos, hay dos cosas en operación: 
+
+1. Hay una muestra aleatoria de ratas distintas en cada tratamiento. Cabe esperar un valor promedio de glucógeno distinto para cada animal. Esto lo representaré en el primer componente de la lista. 
+2. Hay una muestra aleatoria de fragmentos de hígado tomados de cada rata. Esperamos que estas muestras estimen una misma cantidad de glucógeno para cada animal. Esto lo representaré en el segundo componente de la lista.
+
+En el código siguiente tanto el modelo "1" como el "2" son equivalente. Los presento como dos formas de plantear el modelo de efectos aleatorios. Hay que notar que **no es correcto** hacer comparaciones entre modelos que cambian en cuanto al componente "fijo" **si el ajuste se hace mediante el método "REML"**, en caso de tener hipótesis de interés en esta parte del modelo hay que emplear el método "ML".
+
+```{r}
+ratas.lme.m1 <- lme(fixed=glucogeno ~ tratamiento - 1, 
+                    random=list(rata = ~ 1, muestraH= ~ 1),
+                    data=ratas_g)
+summary(ratas.lme.m1)
+```
+
+```{r}
+ratas.lme.m2 <- lme(fixed = glucogeno ~ tratamiento - 1, 
+                    random = ~ 1 | rata / muestraH,
+                    data=ratas_g) 
+summary(ratas.lme.m2)
+```
+
+Para comparar el efecto del tratamiento hay que usar el método "ML" y ajustar los modelos que contrastan la hipótesis de interés en el componente fijo.
+
+Modelo "nulo" en cuanto a efectos fijos
+
+```{r}
+str(ratas_g)
+```
+
+```{r}
+ratas.lme.m3 <- lme(fixed=glucogeno ~ 1, data=ratas_g, 
+                    random=~1|rata/muestraH, method="ML") 
+ratas.lme.m3
+```
+
+Modelo "completo"
+
+```{r}
+ratas.lme.m4 <- lme(fixed=glucogeno ~ tratamiento, data=ratas_g, 
+                random=~1|rata/muestraH, method="ML") 
+ratas.lme.m4
+```
+
+Así podemos comparar el análisis con modelos mixtos y el convencional en cuanto al efecto del tratamiento.
+
+```{r}
+anova(ratas.lme.m4, ratas.lme.m3)
+```
+
+```{r}
+ratas.completo.lm <- lm(glucogeno~tratamiento/rata/muestraH, data=ratas_g)
+anova(ratas.completo.lm)
+```
+
+### Intervalos de confianza
+
+Es importante contar con intervalos de confianza para describir de mmejor manera los resultados obtenidos. La forma de hacerlo para cada tipo de modelo pude varia, así que ilustraré un par de rutas para obtenerlos.
+
+## Modelo de efectos mixtos: `lme`
+
+```{r}
+ratas.lme4.ic <- predict(ratas.lme.m4, level = 0, type = "predict")
+```
+
+```{r}
+ratas.lme4.ic  <- data.frame(ajustado=as.numeric(ratas.lme4.ic), tratamiento=ratas_g$tratamiento)
+```
+
+```{r}
+intervals(ratas.lme.m4)$fixed
+```
+
+#### Modelo de regresión convencional: lm
+
+```{r}
+ratas.lm.ic <- as.data.frame(predict(ratas.completo.lm, interval = 'confidence',
+                                     conf.level=0.95, ci.fit=TRUE))
+```
+
+```{r}
+ratas.lm.ic$tratamiento <- ratas_g$tratamiento
+```
+
+```{r}
+data.frame(min=tapply(ratas.lm.ic$lwr, ratas.lm.ic$tratamiento, mean),
+           media=tapply(ratas.lm.ic$fit, ratas.lm.ic$tratamiento, mean),
+           max=tapply(ratas.lm.ic$upr, ratas.lm.ic$tratamiento, mean))
+```
+
+Bueno, veamos los residuos!!!
+
+```{r}
+plot(ratas.lme.m4, rata ~ resid(.) | tratamiento, xlab="residuos")
+```
+
+```{r}
+plot(ratas.lme.m4)
+```
+
+### Comparaciones múltiples
+
+Veamos qué está pasando con los efectos de los tratamientos una vez que hemos resuelto con la *prueba omnibus* que hay algún efecto de tratamiento.
+
+El modelo completo, ¿cambia significativamente al *recodifcar* los tratamientos de manera que supongamos que el *t1* no difiere del *t2*? Esto equivale a comparar los dos mmodelos respectivos.
+
+```{r}
+library(tidyverse, warn.conflicts = FALSE)
+ratas_g$trat_v1 <-recode_factor(ratas_g$tratamiento, "t2"="t1")
+ratas.lme.m4A <- lme(fixed=glucogeno ~ trat_v1, data=ratas_g, 
+                     random=~1|rata/muestraH, method="ML") 
+
+ratas_g$trat_v2 <-recode_factor(ratas_g$tratamiento, "t3"="t2")
+ratas.lme.m4B <- lme(fixed=glucogeno ~ trat_v2, data=ratas_g, 
+                     random=~1|rata/muestraH, method="ML") 
+
+ratas_g$trat_v3 <-recode_factor(ratas_g$tratamiento, "t3"="t1")
+ratas.lme.m4C <- lme(fixed=glucogeno ~ trat_v3, data=ratas_g, 
+                     random=~1|rata/muestraH, method="ML") 
+head(ratas_g)
+```
+
+[¿Qué sugieren estos resultados estadísticos?]{style="color:GoldenRod"}
+
+```{r}
+anova(ratas.lme.m4A, ratas.lme.m4)
+```
+
+Preguntémonos lo mismo respecto de los tratamientos *t2* y *t3*. Veamos lo que resulta al comparar los modelos
+
+```{r}
+anova(ratas.lme.m4B, ratas.lme.m4)
+```
+
+Ahora los tratamientos *t1* y *t3*. ¿qué resulta al comparar los modelos?
+
+```{r}
+anova(ratas.lme.m4C, ratas.lme.m4)
+```
+
+::: {.callou-caution style="color:GoldenRod"}
+##¿Qué decisión tomarás?
+
+```{r}
+anova(ratas.lme.m4C)
+```
+
+```{r}
+intervals(ratas.lme.m4)$fixed
+```
+
+:::
+
+Quizás es más interesante ver los resultados en términos de los valores estimados para cada tratamiento, en lugar de sobre sus diferencias.
+
+```{r}
+t(data.frame(trat_1 = intervals(ratas.lme.m4)$fixed[1,],
+             trat_2 = colSums(intervals(ratas.lme.m4)$fixed[1:2,]),
+             trat_3 = colSums(intervals(ratas.lme.m4)$fixed[1:3,])))
+```
+
+Si optáramos por tomar al modelo **C** como nuestro modelo mínimo adecuado para describir el experimento de glucógeno, los resultados se verían así:
+
+```{r}
+anova(ratas.lme.m4C)
+```
+
+Este modelo sugiere que es posible argumentar que el tratamiento combinando **t1** y **t3** difiere en forma apreciable o significativa con respecto del **t2**. Esto se aprecia al considerar los valores promedio de los tratamientos, pero no es realmente muy evidente. La forma como estoy calculando los valores tiene que considerar el tipo de reparametrización y la configuración del modelo, no olvides eso.
+
+```{r}
+nivel_confianza <- 0.90
+t(data.frame(trat_1 = intervals(ratas.lme.m4, level = nivel_confianza)$fixed[1,],
+             trat_2 = colSums(intervals(ratas.lme.m4, level = nivel_confianza)$fixed[1:2,]),
+                 trat_3 = colSums(intervals(ratas.lme.m4, level = nivel_confianza)$fixed[1:3,])))
+```
+
+```{r}
+t(data.frame(trat_1_y_3 = intervals(ratas.lme.m4C, level = nivel_confianza)$fixed[1,],
+             trat_2 = colSums(intervals(ratas.lme.m4C, level = nivel_confianza)$fixed[1:2,])))
+```
+
+# Modelo de las manos
+
+Hagamos juntos el reanálisis del ejemplo de las manos como un modelo de efectos mixto.
+
+
+::: {.callout-note}
+## El modelo puede ser este
+
+
+$$
+y_{ijk} = \mu +  L_i + \eta_{j(i)} + \varepsilon_{k(ij)}
+$$
+
++ ¿Te parece adecuado? 
++ ¿Lo puedes explicar?
+
+:::
+
+En caso de que no tengas los datos de las manos por ahí, te recuerdo como obtenerlos de nuestro repositorio en Google drive.
+
+```{r}
+library(stringr)
+url_manos <- "https://drive.google.com/file/d/1GSQMbbX7szydnIMDkWYDBlFBWqTdkC4k/view?usp=drive_link"
+dat_manos_id <- str_extract(url_manos, "(?<=d/)(.*)(?=/view)")
+
+url_drive <- "https://docs.google.com/uc?id=%s&export=download" 
+manos <- read.csv(sprintf(url_drive, dat_manos_id)) 
+
+```

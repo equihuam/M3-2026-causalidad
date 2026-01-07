@@ -1,0 +1,35 @@
+project:
+  type: website
+  
+website:
+  title: "Curso de Estadística (Inecol 2026)"
+  favicon: images/bar-chart.png
+  navbar:
+    right:
+      - text: "Algo más"
+        menu:
+          - about.qmd
+          - presentaciones.qmd
+          - ejercicios.qmd
+      - icon: github
+        href: https://github.com/equihuam/M3-2026_causalidad
+
+code-block-bg: true
+code-block-border-left: "black"
+highlight-style: tango
+
+format:
+  html:
+    theme: 
+      dark: Sandstone
+    css: styles.css
+    
+# Enable webR on all post pages
+webr:
+  channel-type: 'automatic'
+filters:
+  - webr
+
+editor: source
+execute: 
+  freeze: true

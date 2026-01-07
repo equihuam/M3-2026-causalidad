@@ -1,0 +1,7 @@
++ Bezanilla-Albisua, M. J., Poblete-Ruiz, M., Fernández-Nogueira, D., Arranz-Turnes, S., & Campo-Carrasco, L. (2018). El Pensamiento Crítico desde la Perspectiva de los Docentes Universitarios. Estudios pedagógicos (Valdivia), 44(1), 89-113. https://doi.org/10.4067/S0718-07052018000100089
++ Coan, T. G., Boussalis, C., Cook, J., & Nanko, M. O. (2021). Computer-assisted classification of contrarian claims about climate change. Scientific Reports, 11(1), 22320. https://doi.org/10.1038/s41598-021-01714-4
+El pensamiento crítico una innovación educativa. (2021). Ciencia Latina Revista Científica Multidisciplinar, 5(5), 9276-9288. https://doi.org/10.37811/cl_rcm.v5i5.987
++ Jiménez Rolland, M., & Gensollen, M. (2022). Ciencia ciudadana: Pluralidad científica y pensamiento crítico. CIENCIA ergo-sum, 29(2). https://doi.org/10.30878/ces.v29n2a6
++ Puig Mauriz, B., Blanco Anaya, P., & Bargiela, I. M. (2023). Integrar el Pensamiento Crítico en la Educación Científica en la Era de la Post-verdad. Revista Eureka sobre Enseñanza y Divulgación de las Ciencias, 20(3). https://doi.org/10.25267/Rev_Eureka_ensen_divulg_cienc.2023.v20.i3.3301
++ Siegel, K., & Dee, L. E. (2025). Foundations and Future Directions for Causal Inference in Ecological Research. Ecology Letters, 28(1), e70053. https://doi.org/10.1111/ele.70053
++ Soto-Uriol, D. D., Duran-Llaro, K. L., Muñoz-Paz, V. A., & Pérez-Tavera, S. E. (2023). Enseñanza desde el pensamiento crítico: Un reto en la labor docente. Revista Arbitrada Interdisciplinaria Koinonía, 8(2), 252-268. https://doi.org/10.35381/r.k.v8i2.2875

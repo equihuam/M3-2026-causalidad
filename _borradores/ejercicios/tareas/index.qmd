@@ -1,0 +1,116 @@
+---
+title: "Control de Entregas"
+author: ["Miguel Equihua"]
+date: last-modified
+lang: es
+draft: false
+categories: [clase]
+format:
+  html:
+    code-fold: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: inicial
+#| warning: false
+#| include: false
+#| echo: false
+
+suppressPackageStartupMessages(library(googledrive))
+suppressPackageStartupMessages(library(googlesheets4))
+library(tidyverse)
+library(DT)
+
+# Autenticación genérica
+suppressMessages(drive_auth(email = "miguel.equihua@ecologia.edu.mx"))
+
+m3_dir <- drive_ls(path = as_dribble('M3-estadística/2025/Tareas'), recursive = TRUE, type = "folder")
+
+```
+
+
+
+
+## Tareas
+
+::: {layout="[50, -1, 50]"}
+Esta es la lista de tareas que hemos recibido y reunido en la carpeta que tenemos en Google Drive. 
+
+![](images/homework-152957_1280.png){width=100px}
+
+:::
+
+\
+\
+\
+
+
+```{r }
+#| label: m3_ejercicios
+#| warning: false
+#| include: true
+#| echo: false
+
+m3_ejercicios <- drive_ls(path = as_id(m3_dir$id[grepl("ejercicios", m3_dir$name)]))
+
+m3_ejercicios %>% 
+   select(name) %>%  
+   mutate(name_lwr = str_to_lower(.$name)) %>% 
+   filter(str_detect(.$name_lwr, "tarea")) %>% 
+   mutate(tarea = str_extract(.$name_lwr,"(?<=tarea[\\-\\s_])(\\d)"), 
+          alumno = str_replace(.$name_lwr, "(tarea[\\-\\s_\\d]{3})([\\s_]*)", ""),
+          alumno = str_replace(alumno, "([Mm][Ii])*([\\s_]*(dag)*[\\s_\\-]*)", ""),
+          alumno = str_replace(alumno, "\\.doc[x]*", ""),
+          alumno = str_replace(alumno, "\\.ppt[x]*", ""),
+          alumno = str_replace(alumno, "\\.pdf", ""),
+          alumno = str_replace_all(alumno, "_", " ")) %>% 
+   select(tarea, alumno, name) %>% 
+   arrange(tarea) %>% 
+   datatable(colnames = c("Tarea", "Alumno", "Archivo"))
+
+```
+
+---------------------------------------
+
+## Lecturas
+
+::: {layout="[50, -1, 50]"}
+Esta es la colección de controles de lectura que hemos recibido.
+
+![](images/reading-glasses-153748_1280.png){width=200px}
+
+:::
+
+\
+\
+\
+
+```{r }
+#| label: m3_lecturas
+#| warning: false
+#| include: true
+#| echo: false
+
+m3_lecturas <- drive_ls(path = as_id(m3_dir$id[grepl("lecturas", m3_dir$name)]))
+
+m3_lecturas %>% 
+   select(name) %>% 
+   mutate(name_lwr = str_to_lower(.$name)) %>% 
+   filter(str_detect(.$name_lwr, "lectura")) %>% 
+   mutate(lectura = str_extract(.$name_lwr,"(?<=lectura[\\-\\s_])(\\d)"), 
+          alumno = str_replace(.$name_lwr, "(lectura[\\-\\s_\\d]{3})([\\s_]*)", ""),
+          alumno = str_replace(alumno, "([Mm][Ii])*([\\s_]*(dag)*[\\s_\\-]*)", ""),
+          alumno = str_replace(alumno, "\\.doc[x]*", ""),
+          alumno = str_replace(alumno, "\\.ppt[x]*", ""),
+          alumno = str_replace(alumno, "\\.pdf", ""),
+          alumno = str_replace_all(alumno, "_", " ")) %>% 
+   select(lectura, alumno, name) %>% 
+   arrange(lectura) %>%   
+   datatable(colnames = c("Lectura", "Alumno", "Archivo"))
+
+```
+
+
+

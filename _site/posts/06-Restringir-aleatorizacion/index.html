@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Miguel Equihua">
+
+<title>Restricciones a la aleatorización – Curso de Estadística (Inecol 2025)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/bar-chart.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc0c66d3a9e636430becf437bf8ba876.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-14d41249204da2b1aa42c37d647f6e65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cc0c66d3a9e636430becf437bf8ba876.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Curso de Estadística (Inecol 2025)</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-algo-más" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Algo más</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-algo-más">    
+        <li>
+    <a class="dropdown-item" href="../../about.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../presentaciones.html">
+ <span class="dropdown-text">M3-Presentaciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ejercicios.html">
+ <span class="dropdown-text">M3-ejercicios</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/equihuam/M3-2024_causalidad"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Restricciones a la aleatorización</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">clase</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Autor/a</div>
+      <div class="quarto-title-meta-contents">
+               <p>Miguel Equihua </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de publicación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">31 de enero de 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+
+<p><img src="images/2012-AJ-12-10.jpg" class="img-fluid" width="500"></p>
+<section id="restricciones-a-la-aleatorización" class="level3">
+<h3 class="anchored" data-anchor-id="restricciones-a-la-aleatorización">Restricciones a la aleatorización</h3>
+<p>Imaginemos que tenemos las dos situaciones experimentales que se ilustran en la figura. El análisis de estas situaciones experimentales sugiere dos posible aproximaciones prácticas</p>
+<p><img src="images/retricciones_a_la_aleatorización_1.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span style="color: GoldenRod; font-size: 1.5em;">¿qué modelos propondrías para analizarlos?</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si se supone ausencia de interacción entre Z y β, ambos casos se podría analizar con el mismo modelo:</p>
+<p><span class="math display">\[
+y_{ijk} = \mu + Z_{i} + B_{j} + \varepsilon_{k(ij)}
+\]</span></p>
+<p>En donde:</p>
+<ul>
+<li><span class="math inline">\(mu\)</span> es la media general<br>
+</li>
+<li><span class="math inline">\(Z_{i}\)</span> es el efecto del tratamiento <span class="math inline">\(i,\dots, t\)</span><br>
+</li>
+<li><span class="math inline">\(B_{j}\)</span> es el efecto del tratamiento <span class="math inline">\(j,\dots, b\)</span><br>
+</li>
+<li><span class="math inline">\(\varepsilon_{(ij)}\)</span> es el error aleatorio</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="errores-de-restricción-a-la-aleatorización" class="level3">
+<h3 class="anchored" data-anchor-id="errores-de-restricción-a-la-aleatorización">Errores de restricción a la aleatorización</h3>
+<p>Anderson (1970, 1974) notó que no podía ser que el mismo modelo fuera apropiado para dos situaciones tan distintas. Razonó que no se podían hacer inferencias sobre los <strong>bloques</strong> pues cada uno de ellos aparece sólo una vez.</p>
+<p><span style="color:GoldenRod"><strong>¿Concuerdas en que no es posible estimar su efecto?</strong></span></p>
+<p><span style="color:GoldenRod"><strong>¿Cuál es el efecto de restringir la aleatorización en la asignación de los tratamientos?</strong></span>.</p>
+<p>Anderson propuso incorporar en el modelo términos que dieran cuenta de restricciones en la aleatorización de las unidades experimentales. Llamó a estos términos “errores de restricción”, pues también sugirió que deberían ser considerados términos de <em>efectos aleatorios</em>.</p>
+<p>Así, el modelo de bloques se escribiría así:</p>
+<p><span class="math display">\[
+y_{ijkm} = \mu + Z_{i} + B_{j} + \delta_{k(j)} + \varepsilon_{m(ijk)}
+\]</span></p>
+<p>En donde los términos tienen la misma interpretación de arriba, y lo que agregamos es:</p>
+<ul>
+<li><p><span class="math inline">\(\delta_{k(j)}\)</span> , el componente de variación aleatoria introducido por la restricción a la aleatorización al formar bloques. Este error por lo pronto no es estimable.</p></li>
+<li><p><span class="math inline">\(\varepsilon_{m(ijk)}\)</span> es el componente aleatorio derivado de la precisión de las mediciones.</p></li>
+</ul>
+<p>El <em>error de restricción de bloques</em> representa las características particulares y aleatorias de cada conjunto de unidades que formen el bloque <em>j</em> (cosas como errores de medición, condiciones ambientales peculiares del bloque pero comunes en su interior, manipulación común al iinterior del bloque, etc.). Este nuevo término tiene estas características:</p>
+<ul>
+<li><p>Es aleatorio (se asume se distribuye parrecido a una normal con observaciones realizadas independientemente: ~DNI(0, <span class="math inline">\(\sigma_{k}^2\)</span>)</p></li>
+<li><p>No es estimable y tampoco lo son sus combinaciones, porque no hay grados de libertad.</p></li>
+<li><p>Es útil en el modelo para facilitar identificar qué efectos se pueden poner a prueba mediante razones <em>F</em>. Esto se determina al examinar las <em>esperanzas de cuadrados medios</em> (<strong>ECM</strong>).</p></li>
+<li><p>Es un <em>efecto confundido</em> (no se puede separar) del efecto de bloque o grupo de unidades experimentales.</p></li>
+</ul>
+<p>¿Cómo se ve el análisis del modelo en un cuadro de ANOVA?</p>
+<p><img src="images/Anova_caso_1.png" class="img-fluid"></p>
+<p><span style="color:GoldenRod">¿Qué tipo de efecto tienen los factores? ¿Qué se puede probar comparando cuadrados medios?</span></p>
+<p>Con la propuesta de Anderson de incluir términos para representar el efecto de no aplicar aleatorización en forma completa, el cuadro de ANOVA se vería como se muestra enseguida. Hay que notar que en esta argumentación de Anderson, se está considerando un modelo en el que el término de interacción no se incluye. Esto hace que su efecto quede confundido con el error de medición, pero más importante, en el análisis de la varianza, este termino que incluye la estimación confundida de la interacción más la del error de medición, se convierte en el denominador para las pruebas de <em>F</em> . Por esta misma razón, los grados de libertad corresponden a los de la interacción, es decir el producto de los grados de libertad de los factores involucrados en la interacción.</p>
+<p><span style="color:GoldenRod">¿Qué tipo de efecto tienen los factores? ¿Qué se puede probar</span></p>
+<p><img src="Images/Anova_Anderson.png" class="img-fluid"></p>
+<p>La idea de Anderson tiene validez general para experimentos <em>completos y balanceados</em>. Se puede utilizar para analizar con claridad el efecto de distintos arreglos experimentales que puedan interesar al investigador.</p>
+<section id="ejemplo-de-aplicación-del-error-de-restricción-en-la-planeación-de-experimentos" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo-de-aplicación-del-error-de-restricción-en-la-planeación-de-experimentos">Ejemplo de aplicación del error de restricción en la planeación de experimentos</h4>
+<p><img src="images/becerro.jpg" class="img-fluid" width="400"></p>
+<p>Se quieren probar 3 tipos de <em>ración de alimentación</em> (<strong>A</strong>, <strong>B</strong>, <strong>C</strong>), sobre el desempeño de vacas de la raza Holstein. Se dispone de 12 animales para realizar el ensayo. Se cuenta con corrales en los que caben hasta 4 animales en cada uno. Podemos optar por dar un tratamiento de alimentación a cada corral.</p>
+<p><img src="Images/Diseño_vacas_1.png" class="img-fluid"></p>
+<p><span style="color:GoldenRod">¿Consideras que hay algún inconvenientes en esta situación experimental?</span></p>
+<p>El modelo que razonablemente describe esta situación sería:</p>
+<p><span class="math display">\[
+Y_{ijk} =  \mu + T_{i} + \delta_{j(i)} + \varepsilon_{k(ij)}
+\]</span></p>
+<p>El cuadro de ANOVA se vería así:</p>
+<p><img src="Images/ANOVA_Modelo_vacas_1.png" class="img-fluid"></p>
+<p>Las reglas para el cálculo de los grados de libertad es la siguiente:</p>
+<ol type="1">
+<li>Para los términos entre paréntesis (componentes anidados en el diseño), multiplica los niveles que correspondan a los índices.</li>
+<li>Para los términos fuera de paréntesis (componentes cruzados), multiplica (niveles-1) que correspondan a cada índice</li>
+<li>Finalmente, multiplica los dos productos anteriores para obtener los grados de libertad correspondientes al componente de varianza.</li>
+<li>Los grados de libertad de la varianza total es simplemente el número de unidades experimentales (o de observación) menos uno o la suma de los grados de libertad de todas las fuentes de variación consideradas, lo que permite tener una validación sencilla.</li>
+</ol>
+<p>Así, en el caso que estamos viendo los números involucradas con este diseño son: raciones = 3 (índice <em>i</em>), Número de corrales por tratamiento = 1 (índice <em>k</em>) y finalmente vacas por corral= 4 (índice <em>j</em>). En estos términos:</p>
+<p><span class="math display">\[
+\begin{align}
+gl_{ración} &amp;= i - 1 = 2 \\
+gl_{corrales} &amp;= (k - 1) \times i = 0 \\
+gl_{ración} &amp;= (j - 1) \times i \times k = 9  \\
+gl_{total} &amp;= gl_{ración} + gl_{ración} + gl_{ración} = 11
+\end{align}
+\]</span></p>
+<p><span style="color:GoldenRod">¿Qué piensan de este otro arreglo experimental?</span></p>
+<p><img src="Images/Diseño_vacas_2.png" class="img-fluid"></p>
+<p>La situación ahora es, cada <em>ración</em> la asigno a un corral en el que tengo dos animales, y repito todo el experimento considerando los corrales una vez. Esto implica que los corrales, representados por <span class="math inline">\(\delta\)</span>, influirán sobre las vacas que tienen dentro con dos cosas: 1) el efecto del tratamiento y 2) el efecto de las características peculiares del corral. Para controlar estas últimas lo que habría que hacer es <strong>aleatorizar</strong> los corrales entre las <em>raciones</em>. Para no introducir un error particular para los animales, habrá que <strong>aleatorizar</strong> las vacas entre los corrales. De esta manera, los efectos de sus peculiaridades se convierten en variaciones aleatorias, independientes que se traducen en el error de ´medición o <em>residual</em>.</p>
+<p>El modelo es el mismo que en la situación anterior, pero ahora varían los términos estimables:</p>
+<p><span class="math display">\[
+Y_{ijk} =  \mu + T_{i} + \delta_{j(i)} + \varepsilon_{k(ij)}
+\]</span></p>
+<p>El cuadro de ANOVA se vería así:</p>
+<p><img src="Images/ANOVA_Modelo_vacas_2.png" class="img-fluid"></p>
+<p>Los números de entidades involucradas con este diseño son: raciones = 3 (índice <em>i</em>), vacas por corral = 2 (índice <em>k</em>) y finalmente repeticiones del experimento completo = 2 (índice <em>j</em>):</p>
+<p><span class="math display">\[
+\begin{align}
+gl_{ración} &amp;= i - 1 = 2 \\
+gl_{corrales} &amp;= (k - 1) \times i = 3 \\
+gl_{ración} &amp;= (j - 1) \times i \times k = 6  \\
+gl_{total} &amp;= gl_{ración} + gl_{ración} + gl_{ración} = 11
+\end{align}
+\]</span></p>
+<p>Como <a href="http://www.scielo.org.co/pdf/rccp/v20n2/v20n2a11.pdf">referencia sugerida encontré este artículo</a> que describe como hacer el análisis necesario para determinar las <em>esperanzas de cuadrados medios</em> (<strong>EMC</strong>).</p>
+</section>
+</section>
+<section id="manos" class="level2">
+<h2 class="anchored" data-anchor-id="manos">Manos</h2>
+<p>Considera que estamos midiendo la mano izquierda y la derecha de varios individuos, las medidas están emparejadas dentro de cada individuo. Es decir, queremos controlar estadísticamente las diferencias entre individuos, así nos aseguramos que la mano izquierda del <em>individuo A</em> sea analizada en conjunto con la mano derecha del <em>individuo A</em>, ya que suponemos que alguien con una mano izquierda grande tendrá una mano derecha grande. Por lo tanto, la variable <em>Individuo</em> se incluirá en el modelo como una variable aleatoria. Se podría pensar que cada Individuo representa un <strong>bloque</strong> que incluye una medida para la mano izquierda y una medida para la mano derecha.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>url_manos <span class="ot">&lt;-</span> <span class="st">"https://drive.google.com/file/d/1GSQMbbX7szydnIMDkWYDBlFBWqTdkC4k/view?usp=drive_link"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat_manos_id <span class="ot">&lt;-</span> <span class="fu">str_extract</span>(url_manos, <span class="st">"(?&lt;=d/)(.*)(?=/view)"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>url_drive <span class="ot">&lt;-</span> <span class="st">"https://docs.google.com/uc?id=%s&amp;export=download"</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>manos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">sprintf</span>(url_drive, dat_manos_id)) </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#manos &lt;- read.table("manos.dat", sep = ",", header = T, stringsAsFactors = T)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(manos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Individual Hand Length
+1          A Left   17.5
+2          B Left   18.4
+3          C Left   16.2
+4          D Left   14.5
+5          E Left   13.5
+6          F Left   18.9</code></pre>
+</div>
+</div>
+<section id="inspección-de-los-datos" class="level3">
+<h3 class="anchored" data-anchor-id="inspección-de-los-datos">Inspección de los datos</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(manos<span class="sc">$</span>Length, <span class="fu">list</span>(manos<span class="sc">$</span>Hand, manos<span class="sc">$</span>Individual), mean)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         A    B    C    D    E    F    G    H    I    J    K    L    M    N
+Left  17.5 18.4 16.2 14.5 13.5 18.9 19.5 21.1 17.8 16.8 18.4 17.3 18.9 16.4
+Right 17.6 18.5 15.9 14.9 13.7 18.9 19.5 21.5 18.5 17.1 18.9 17.5 19.5 16.5
+         O    P
+Left  17.5 15.0
+Right 17.4 15.6</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(manos<span class="sc">$</span>Individual,manos<span class="sc">$</span>Hand, manos<span class="sc">$</span>Length)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>manos_modelo_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> manos)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(manos_modelo_1)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Length ~ 1, data = manos)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.975 -1.125  0.025  1.425  4.025 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  17.4750     0.3415   51.16   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.932 on 31 degrees of freedom</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>manos_modelo_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Hand, <span class="at">data =</span> manos)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(manos_modelo_2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Length ~ Hand, data = manos)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.894 -1.109  0.075  1.306  3.906 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  17.3562     0.4900  35.418   &lt;2e-16 ***
+HandRight     0.2375     0.6930   0.343    0.734    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.96 on 30 degrees of freedom
+Multiple R-squared:  0.003899,  Adjusted R-squared:  -0.0293 
+F-statistic: 0.1174 on 1 and 30 DF,  p-value: 0.7342</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>manos_modelo_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Hand <span class="sc">+</span> Individual, <span class="at">data =</span> manos)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(manos_modelo_3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Length ~ Hand + Individual, data = manos)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.26875 -0.09062  0.00000  0.09062  0.26875 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 17.43125    0.14440 120.714  &lt; 2e-16 ***
+HandRight    0.23750    0.07004   3.391 0.004034 ** 
+IndividualB  0.90000    0.19812   4.543 0.000389 ***
+IndividualC -1.50000    0.19812  -7.571 1.69e-06 ***
+IndividualD -2.85000    0.19812 -14.386 3.50e-10 ***
+IndividualE -3.95000    0.19812 -19.938 3.30e-12 ***
+IndividualF  1.35000    0.19812   6.814 5.85e-06 ***
+IndividualG  1.95000    0.19812   9.843 6.15e-08 ***
+IndividualH  3.75000    0.19812  18.928 7.00e-12 ***
+IndividualI  0.60000    0.19812   3.029 0.008466 ** 
+IndividualJ -0.60000    0.19812  -3.029 0.008466 ** 
+IndividualK  1.10000    0.19812   5.552 5.54e-05 ***
+IndividualL -0.15000    0.19812  -0.757 0.460699    
+IndividualM  1.65000    0.19812   8.328 5.23e-07 ***
+IndividualN -1.10000    0.19812  -5.552 5.54e-05 ***
+IndividualO -0.10000    0.19812  -0.505 0.621065    
+IndividualP -2.25000    0.19812 -11.357 9.14e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1981 on 15 degrees of freedom
+Multiple R-squared:  0.9949,    Adjusted R-squared:  0.9895 
+F-statistic: 183.3 on 16 and 15 DF,  p-value: 2.887e-14</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(manos_modelo_3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: Length
+           Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+Hand        1   0.451  0.4513  11.497  0.004034 ** 
+Individual 15 114.680  7.6453 194.786 2.089e-14 ***
+Residuals  15   0.589  0.0392                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Es cierto que el efecto de <em>individuo</em> queda raro en este modelo, pes nos lo reporta en estimadores que tienen sentido como si se tratara de un factor de efectos fijos, es decir que nos interesa decir algo específico sobre esos individuos y ningún otro. Esto obviamente nos es así. El factor individuo es de efectos aleatorios, simplemente que <code>lm</code>` no prevé esta situación. Los resultados apuntan en la dirección correcta y los valores del factor <em>Hand</em> son válidos. Lo podemos manejar razonablemente simplemente recordando que el individuo es de <strong>efectos aleatorios</strong> y que por tanto no tienen mucho sentido, generalmente, hacer referencia a los estimadores puntuales que produce la regresión. Lo que sí tiene interés es la estimación de las varianzas, que permite así corregir e idealmente lograr mayor precisión en la estimación en los tratamientos de interés. En este caso habría que notar que la varianza estimada en el residuo da cuenta tanto de la variación aleatoria que tenemos al medir las unidades experimentales como la del <em>error de restricción</em> asociado con las peculiaridades de, en este caso, cada persona que se midió: <span class="math inline">\(\sigma^{2} + t \sigma^{2}_{\delta}\)</span> . La medición de esta varianza combinada, persona + sus peculiaridades = 7.6453, sugiere que es buena idea controlar su efecto. En esto mismos términos la varianza del factor <strong><em>hand</em></strong> es <span class="math inline">\(\sigma + t\sigma\^{2}_{\delta} + r\sigma^{2}_{H}\)</span>, lo qe hace válido probar el efecto <em>fijo</em> de <strong>hand</strong>.</p>
+<p><span class="math display">\[
+F = \frac {Mean Sq Hand} {Mn Sq error} = \frac {0.4513}{0.0392} = 11.497
+\]</span> con 1 y 15 grados de libertad. En <strong>R</strong> tenemos acceso a la distribbución de <em>F</em> con la función <code>qf</code>que calcula la probabilidad acumulada entre el dato <em>q</em> que le doy, así como los grados de libertad asociados.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>varianza <span class="ot">&lt;-</span> <span class="fu">anova</span>(manos_modelo_3)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> varianza<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>], <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">15</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.004034071</code></pre>
+</div>
+</div>
+<p>Aunque la forma como analizamos estos datos no es la ideal para el caso, podemos ver que produce resultados perfectamente adecuados para la variable de interés, siempre y cuando seamos cocientes de que la función usada aquí en <strong>R</strong>, no maneja apropiadamente los factores de efectos aleatorios y por lo tanto no debemos hacer mayores interpretaciones de los términos correspondientes a esos factores.</p>
+</section>
+</section>
+<section id="qué-tanto-tiempo-puede-correr-un-experimento" class="level2">
+<h2 class="anchored" data-anchor-id="qué-tanto-tiempo-puede-correr-un-experimento">Qué tanto tiempo puede “correr” un experimento</h2>
+<p>Cuando Fisher concibió hacer experimentos en la estación experimental de Rothamsted en Inglaterra, recurriendo al auxilio del enfoque estadístico que él y otros investigadores de la época idearon, pensaban a largo plazo. <a href="https://repository.cimmyt.org/bitstream/handle/10883/18146/56637_2017_IX%2840%29.pdf?sequence=112&amp;isAllowed=y">Encontré este documento que podría ser de su interés</a>. La estación experimental tiene disponiible los datos de estos experimentos. Por ejemplo <a href="https://www.era.rothamsted.ac.uk/dataset/rbk1/01-FISHER1921">Este “dataset”</a> son los rendimientos anuales de trigo de “parcelas selectas” del experimento de trigo que aún hoy corren en Broadbalk . La serie tiene los datos de 1852-1918, tal y como los usó R.A. Fisher para su artículo de 1921 ‘Studies in crop variation’.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,210 @@
+---
+title: "venenos"
+author: ["Miguel Equihua", "Elio Lagunes"]
+date: "2024-02-06"
+draft: true
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<center>Tratamiento</center>
+
+| Veneno | A    | B    | C    | D    |
+|--------|------|------|------|------|
+| I      | 0.31 | 0.82 | 0.43 | 0.45 |
+|        | 0.45 | 1.10 | 0.45 | 0.71 |
+|        | 0.46 | 0.88 | 0.63 | 0.66 |
+|        | 0.43 | 0.72 | 0.76 | 0.62 |
+| II     | 0.36 | 0.92 | 0.44 | 0.56 |
+|        | 0.29 | 0.61 | 0.35 | 1.02 |
+|        | 0.40 | 0.49 | 0.31 | 0.71 |
+|        | 0.23 | 1.24 | 0.40 | 0.38 |
+| III    | 0.22 | 0.30 | 0.23 | 0.30 |
+|        | 0.21 | 0.37 | 0.25 | 0.36 |
+|        | 0.18 | 0.38 | 0.24 | 0.31 |
+|        | 0.23 | 0.29 | 0.22 | 0.33 |
+
+```{r}
+library(readxl)
+library(tidyverse)
+venenos <- read_excel("Venenos.xlsx", skip = 1, col_names = TRUE)
+venenos$Veneno <-  rep(c("I", "II", "III"), each = 4)
+names(venenos) <- str_to_lower(names(venenos))
+
+venenos <- venenos %>% pivot_longer(cols = c("a", "b", "c", "d"), 
+                         names_to = "antidoto", values_to = "tsv", )
+
+venenos <- venenos %>% mutate(veneno = factor(veneno), 
+                              antidoto = factor(antidoto))
+
+
+head(venenos)
+```
+
+### Exploración de los datos
+
+```{r}
+
+# Medias
+ven_med <- venenos %>% group_by(veneno, antidoto) %>% 
+            summarise(media = mean(tsv, na.rm = TRUE), .groups = "drop")
+ven_med  %>% pivot_wider(names_from = antidoto, values_from = media) %>%
+             knitr::kable(caption = "Medias de los tratamientos", digits = 2)
+
+#Varianzas
+venenos %>% group_by(veneno, antidoto) %>% 
+            summarise(var = var(tsv, na.rm = TRUE), .groups = "drop") %>%                              pivot_wider(names_from = antidoto, values_from = var) %>%  
+            knitr::kable(caption = "Varianzas de los tratamientos", digits = 4)
+
+#tapply(venenos$tsv, list(venenos$veneno, venenos$antidoto), mean)	
+#tapply(venenos$tsv, list(venenos$veneno, venenos$antidoto), var)
+```
+
+se nota algo de heterogeneidad de varianzas Intentemos como primer modelo el completo.
+
+```{r}
+interaction.plot(venenos$veneno, 
+                 trace.factor = venenos$antidoto,
+                 response = venenos$tsv,
+                 ylab = "sobrevivencia (horas)",
+                 trace.label = "antidoto",
+                 xlab = "veneno")
+```
+
+```{r}
+ggplot(venenos, aes(x = veneno, y = tsv, group = antidoto, color = antidoto)) + 
+  geom_point(show.legend = FALSE) +
+  stat_summary(fun.y = mean, geom = "line", aes(linetype = antidoto))
+
+```
+
+```{r}
+veneno.lm1 <- lm(tsv ~ veneno * antidoto, data=venenos)
+summary(veneno.lm1)
+anova(veneno.lm1)
+```
+
+Este modelo sugiere que la interacción veneno:antidoto no es significativa. sin embargo, esta situación podría deberse a la heterogeneidad de varianzas. una posibilidad es transformar a logaritmos la variable de respuesta.
+
+```{r}
+#tapply(log(tsv), list(veneno, antidoto), mean)	
+#tapply(log(tsv), list(veneno, antidoto), var)
+
+# Medias
+venenos %>% group_by(veneno, antidoto) %>% 
+            summarise(m_log = mean(log(tsv), na.rm = TRUE), .groups = "drop") %>% 
+            pivot_wider(names_from = antidoto, values_from = m_log) %>%  
+            knitr::kable(caption = "Medias de los tratamientos", digits = 2)
+
+#Varianzas
+venenos %>% group_by(veneno, antidoto) %>% 
+            summarise(v_log = var(log(tsv), na.rm = TRUE), .groups = "drop") %>%  
+            pivot_wider(names_from = antidoto, values_from = v_log) %>%  
+            knitr::kable(caption = "Varianzas de los tratamientos", digits = 4)
+
+```
+
+```{r}
+veneno.lm2 <- lm(log(tsv) ~ veneno * antidoto, data=venenos)
+summary(veneno.lm2)
+anova(veneno.lm2)
+```
+
+El resultado se sostiene, ahora aún más claramente.
+
+**¿cual es el antidoto más eficaz?**\
+Es el que produce el tiempo de sobrevivencia más grande. Aparentemente este antídoto es el B para todos los venenos probados (recordar que la interacción no fue significativa). ¿Es este antídoto significativamente diferente de los demás?
+
+y = a + b1x1 + b2x2 + b3z1 + b4z2
+
+las betas son los valores estimados. Es lo que está en la columna *Estimate*
+
+AI: a BI: a + b1 CI: a + b2.......
+
+```{r}
+contrasts(venenos$antidoto)
+contrasts(venenos$veneno)
+```
+
+### Estimadores
+
+```{r}
+#tapply(log(venenos$tsv), list(venenos$veneno, venenos$antidoto), mean)
+
+venenos %>% group_by(veneno, antidoto) %>% 
+            summarise(media = mean(log(tsv), na.rm = TRUE), .groups = "drop") %>%
+            pivot_wider(names_from = antidoto, values_from = media) %>%  
+            knitr::kable(caption = "Medias de los tratamientos (resumen)", digits = 2)
+
+betas <- coef(veneno.lm2)
+design <- unique(model.matrix(veneno.lm2))
+knitr::kable(t(array(betas %*% t(design), dim = c(4,3), 
+               dimnames = list(levels(venenos$antidoto), levels(venenos$veneno)))),
+             caption = "Medias de los tratamientos (matriz)", digits = 2)
+```
+
+```{r}
+veneno.lm3 <- lm(log(tsv) ~ veneno + antidoto, data=venenos)
+summary(veneno.lm3)
+anova(veneno.lm3)
+```
+
+```{r}
+design <- unique(model.matrix(veneno.lm3))
+design
+```
+
+Para poner a prueba la diferencia entre niveles sigo el camino de recodificar los niveles del factor *antidoto*. Para hacerlo uso la función `{r}ecode_factor()` de la biblioteca *dplyr*
+
+```{r}
+venenos$CvsOtros <-recode_factor(venenos$antidoto, "b"="a", "d"="a")
+venenos$CAvsOtros <-recode_factor(venenos$antidoto, "c"="a")
+venenos
+```
+
+```{r}
+veneno.lm4 <- lm(log(tsv) ~ CAvsOtros + veneno, data=venenos)
+summary(veneno.lm4)
+anova(veneno.lm4)
+```
+
+```{r}
+anova(veneno.lm3, veneno.lm4)
+```
+
+Comparando el mejor modelo hasta ahora, el `veneno.lm3`, con el que acabo de construir
+
+```{r}
+anova(veneno.lm4, veneno.lm3)
+```
+
+El resultado no fue muy bueno.
+
+**Ejercicio:** Propón otros modelos con *recodificación* del factor *antidoto* y comenta los resultados.
+
+obtengo intervalos de confianza para los términos en el modelo. Para facilitar la interpretabilidad de los resultados aplica el *anti logarítmo*,`exp()`, de la respuesta *tsv*. Recuerda que los coeficientes están expresados todos con relación al tratamiento factorial *venenoI* y *antiveneoA*.
+
+**Ejercicio:** Haz los cálculos para recuperar los valores promedio predichos por el modelo para cada condición.
+
+```{r}
+veneno_coef <- coefficients(veneno.lm3)
+
+tarea <- c(veneno_coef[1])
+for (v in veneno_coef[2:length(veneno_coef)])
+{
+   tarea <- rbind(tarea, veneno_coef[1] + v) 
+}
+
+exp(tarea)
+tapply(venenos$tsv, list(venenos$veneno, venenos$antidoto), mean)
+```
+
+```{r}
+venenos.interv <- exp(confint(veneno.lm3, ci.fit=T, conf.level=0.95))
+venenos.interv
+```
+
+este resultado sugiere que el veneno que produce el mayor tiempo de sobrevivencia es el antídoto "B".
