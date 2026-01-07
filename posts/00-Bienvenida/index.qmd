@@ -25,6 +25,7 @@ library(tidyverse)
 library(readxl)
 library(calendR)
 library(readr)
+library(patchwork)
 
 ```
 
@@ -50,6 +51,8 @@ Habilité un espacio en [Milaulas](https://m3causalidad2026.milaulas.com/course/
 ```{r }
 #| label: calendario
 #| tbl-cap: Aactividades del Módulo 3 
+#| warning: false
+#| echo: false
 
 dias_ene <- rep(NA, 31) 
 dias_ene[c(26:27, 29:30)] <- "M3 clase"
@@ -59,7 +62,9 @@ dias_ene[c(25, 31)] <- "Descanso"
 ene <- calendR(month = 1,
         lunar = TRUE,
         special.days = dias_ene,
-        special.col = c("gray", "lightgreen", "pink"))
+        special.col = c("gray", "lightgreen", "pink"),
+        title.size = 15,
+        day.size = 4)
 
 dias_feb <- rep(NA, 28) 
 dias_feb[c(2, 5)] <- "M3 clase"
@@ -71,7 +76,9 @@ feb <- calendR(month = 2,
         lunar = TRUE,
         special.days = dias_feb,
         special.col = c("gray", "lightgreen", "pink", "gold"),
-        legend.pos = "right")
+        legend.pos = "bottom",
+        title.size = 15,
+        day.size = 4)
 
 ene
 feb
