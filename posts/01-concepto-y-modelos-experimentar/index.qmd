@@ -5,20 +5,20 @@ date: "2026-01-26 10:00:00"
 lang: es
 draft: false
 categories: [clase]
-
-
 format: html
 engine: knitr 
 filters:
   - webr
-
 theme: 
-    dark: Sandstone
     
+    dark: Sandstone
 webr:
-  packages: ['gt', 'dplyr', 'tidyr']
   
+  packages: ['gt', 'dplyr', 'tidyr']
 bibliography: references.bib
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r}
@@ -35,7 +35,21 @@ library(dplyr)
 
 ![](images/vampiro-dracula.png){width="300"}
 
-Lógica, probabilidad y heurística son tres ideas centrales en la historia intelectual del intelecto humano. La teoría de la probabilidad que surge a mediados del siglo XVII, substituyó la certeza de la lógica por una teoría más modesta de la racionalidad. Su aparición ayudó a reconocer que existe una incertidumbre fundamental en la conducta humana. Usamos estas herramientas para decidir cosas, a veces suponiendo que reproducen la forma como [opera nuestra mente](https://www.bbc.com/mundo/noticias-59060022). Pero conviene no olvidar que también importa desde dónde, para qué y bajo qué condiciones decidimos o afirmamos nuestras convicciones. Veremos a cotinuación un ejemplo a este respecto que nos comparte McElreath (2020). Se trata del hipotético ejemplo de *la prueba de sangre para vampirismo*, que nos ayudaría a deciri si alguién es mortal o vampiro. Inicia por pedirnos imaginar que hay un análisis de sangre que detecta correctamente 95% de las veces, la afiliación de un individuo al linaje del conde Drácula y los inmortales vampiros. En notación matemática:
+Lógica, probabilidad y heurística
+son tres ideas centrales en la historia del intelecto humano. A la
+aspiración de la lógica aristotélica se agregó a mediados del siglo XVII
+la teoría de la probabilidades, que matizó la certeza de la lógica al
+aportar una teoría con una postura más modesta en torno a la
+racionalidad. Su aparición ayudó a reconocer la existencia de una
+incertidumbre fundamental en la conducta humana. @einstein1905 introdujo
+el uso de la noción de [heurística](https://psicologiaymente.com/inteligencia/heuristicos-atajos-mentales-pensamiento) (sin definirla), como referencia al uso de la imaginación
+creativa a la que recurrimos los seres humanos para descubrir cosas nuevas, desde entonces el término ha florecido con matices diversos en todos los campos de la ciencia y las artes. Usamos estas tres herramientas para *decidir científicamente*, a veces suponiendo que reproducen la forma como [opera nuestra mente](https://www.bbc.com/mundo/noticias-59060022). Veremos a continuación un
+ejemplo a este respecto que nos comparte McElreath (2020). Se trata del
+hipotético ejemplo de *la prueba de sangre para vampirismo*, que nos
+ayudaría a decidir si alguien es mortal o vampiro. Inicia por pedirnos
+imaginar que hay un análisis de sangre que detecta correctamente 95% de
+las veces, la afiliación de un individuo al linaje del conde Drácula y
+los inmortales vampiros. En notación matemática:
 
 $$
 {Pr(resultado~ positivo~de~la~prueba|vampiro) = 0.95}
@@ -43,8 +57,8 @@ $$
 
 Es una prueba muy precisa, casi siempre identificando *vampiros* reales.
 Sin embargo, también falla a veces y reporta falsos positivos. Es así
-que el uno por ciento de las puebas realizadas diagnostican incorrectamente a 
-*simples mortales* como *vampiros*:
+que el uno por ciento de las pruebas realizadas diagnostican
+incorrectamente a *simples mortales* como *vampiros*:
 
 $$
 {Pr(resultado~positivo~de~la~prueba|mortal) = 0.01}
@@ -52,7 +66,8 @@ $$
 
 La última pieza de información que necesitamos es saber que los
 *vampiros* en realidad son bastante raros. Sólo el 0.1% de la población
-lo es (esta es la que llamamos probabilidad *a priori*), lo que anotamos así:
+lo es (esta es la que llamamos probabilidad *a priori*), lo que anotamos
+así:
 
 $$
 {Pr(vampiro) = 0.001}
@@ -120,7 +135,7 @@ pr |>
 ```
 
 Tomamos la fórmula de Bayes para *invertir la probabilidad*, pues
-queremos saber qué está pasando cuando tenemos la fortuna de toparnos
+queremos saber qué está pasando cuando tenemos la fortuna o desgracia de toparnos
 con un resultado positivo en la prueba de sangre:
 
 $$
@@ -160,12 +175,17 @@ pr |>
 
 ```
 
-Por lo tanto, esta es la probabilidad de que el amigo sea en realidad un
-vampiro.
+Por lo tanto, esta es una estimación de la probabilidad de que el amigo sea en realidad un vampiro.
 
 ::: {.callout-tip title="¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?"}
 ![](images/questions-1922477_1280.jpg){width="30%"}
 :::
+
+Quizás para ayudar a apreciar lo que todo esto significa conviene recordar la frase que se atribuye al economista John Maynard Keynes: 
+
+> Cuando las circunstancias cambian, yo cambio de opinión. ¿Usted que hace?"
+
+
 
 Este es un resultado muy importante. Exactamente así, o algo muy
 parecido, es el procedimiento que se sigue en la realiad al efectuar
@@ -247,7 +267,6 @@ polémicas. Podría ser que de entrada sólo podemos encontrarnos con
 conteos en el mundo real. Quizás sea cierto que nadie ha visto nunca una
 probabilidad andando por ahí. Independientemente de la explicación de
 este fenómeno, podemos explotarlo en muchas situaciones cotidianas.
-
 :::
 
 Los eventos muestreados en el análisis de las distribuciones de
@@ -436,12 +455,14 @@ y si fuera una razonable aproximación ¿a qué nos conduce?
 
 ¿Qué conclusiones surgen de esta experiencia?
 
-- [ ] ¿Lo más importante es mejorar la probabilidad de detección base, ${Pr(V)}$?
-- [ ] ¿Qué implicaría y cómo se podría lograr mejorar ${Pr(V)}$?
-- [ ] ¿Es posible hacer que esa probabilidad crezca? 
-- [ ] ¿Simpre incrementar el número de veces que se repite el tratamiento (tamaño de muestra?
-- [ ] ¿Sólo aceptar como significativos resultados muy altamente significativos?
-
+-   [ ] ¿Lo más importante es mejorar la probabilidad de detección base,
+    ${Pr(V)}$?
+-   [ ] ¿Qué implicaría y cómo se podría lograr mejorar ${Pr(V)}$?
+-   [ ] ¿Es posible hacer que esa probabilidad crezca?
+-   [ ] ¿Simpre incrementar el número de veces que se repite el
+    tratamiento (tamaño de muestra?
+-   [ ] ¿Sólo aceptar como significativos resultados muy altamente
+    significativos?
 :::
 ::::
 
@@ -516,7 +537,6 @@ prepublicación](https://blog.scielo.org/es/2020/10/15/son-los-preprints-un-prob
 [Open Science Facility](https://osf.io/preprints)
 
 [Science](https://www.science.org/content/article/preprints-often-make-news-many-people-don-t-know-what-they-are)
-
 
 # El enfoque de modelación
 
@@ -727,7 +747,6 @@ for (i in 8:14) lines (c(i,i), c(means[2], y[i]))
 ```
 
 ::: {.callout-tip title="¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?" collapse="true"}
-
 ```{webr-r}
 
 dist_tot_s <- sum(m1=sum((y[1:7] - means[1])**2), 
@@ -740,7 +759,6 @@ dist_tot_s
 ### [**Si las dos *medias* fueran iguales ¿cómo compararían estas dos gráficas?**]{style="color:GoldenRod"}
 
 ::: {.callout-tip title="¿Qué interpretación tiene la diferencia entre las dos sumas mencionadas arriba?" collapse="true"}
-
 Esta diferencia se asocia con la siguiente gráfica:
 
 ```{webr-r}
@@ -793,7 +811,6 @@ detach(anova.data)
 
 ```
 :::
-
 
 ## DAG de un diseño experimental simple
 
@@ -1083,9 +1100,7 @@ preguntas como:
 -   ¿Cuál es la potencia ($1-\beta$) dado un *n* y cierta diferencia con
     $H_{a}$ de interés?
 
-
-
-###  Quiz: Prueba estadística de hipótesis
+### Quiz: Prueba estadística de hipótesis
 
 Participa: vevox.app ID: 125-688-362
 
@@ -1094,7 +1109,6 @@ Participa: vevox.app ID: 125-688-362
 :::
 
 \
-
 
 ## Disposición de tratamientos e intereses sobre los factores
 

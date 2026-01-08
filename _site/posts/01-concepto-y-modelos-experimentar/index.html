@@ -2220,11 +2220,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="un-cuento-de-vampiros-y-ciencia" class="level1">
 <h1>Un cuento de Vampiros y Ciencia</h1>
 <p><img src="images/vampiro-dracula.png" class="img-fluid" width="300"></p>
-<p>Lógica, probabilidad y heurística son tres ideas centrales en la historia intelectual del intelecto humano. La teoría de la probabilidad que surge a mediados del siglo XVII, substituyó la certeza de la lógica por una teoría más modesta de la racionalidad. Su aparición ayudó a reconocer que existe una incertidumbre fundamental en la conducta humana. Usamos estas herramientas para decidir cosas, a veces suponiendo que reproducen la forma como <a href="https://www.bbc.com/mundo/noticias-59060022">opera nuestra mente</a>. Pero conviene no olvidar que también importa desde dónde, para qué y bajo qué condiciones decidimos o afirmamos nuestras convicciones. Veremos a cotinuación un ejemplo a este respecto que nos comparte McElreath (2020). Se trata del hipotético ejemplo de <em>la prueba de sangre para vampirismo</em>, que nos ayudaría a deciri si alguién es mortal o vampiro. Inicia por pedirnos imaginar que hay un análisis de sangre que detecta correctamente 95% de las veces, la afiliación de un individuo al linaje del conde Drácula y los inmortales vampiros. En notación matemática:</p>
+<p>Lógica, probabilidad y heurística son tres ideas centrales en la historia del intelecto humano. A la aspiración de la lógica aristotélica se agregó a mediados del siglo XVII la teoría de la probabilidades, que matizó la certeza de la lógica al aportar una teoría con una postura más modesta en torno a la racionalidad. Su aparición ayudó a reconocer la existencia de una incertidumbre fundamental en la conducta humana. <span class="citation" data-cites="einstein1905">EINSTEIN (<a href="#ref-einstein1905" role="doc-biblioref">1905</a>)</span> introdujo el uso de la noción de <a href="https://psicologiaymente.com/inteligencia/heuristicos-atajos-mentales-pensamiento">heurística</a> (sin definirla), como referencia al uso de la imaginación creativa a la que recurrimos los seres humanos para descubrir cosas nuevas, desde entonces el término ha florecido con matices diversos en todos los campos de la ciencia y las artes. Usamos estas tres herramientas para <em>decidir científicamente</em>, a veces suponiendo que reproducen la forma como <a href="https://www.bbc.com/mundo/noticias-59060022">opera nuestra mente</a>. Veremos a continuación un ejemplo a este respecto que nos comparte McElreath (2020). Se trata del hipotético ejemplo de <em>la prueba de sangre para vampirismo</em>, que nos ayudaría a decidir si alguien es mortal o vampiro. Inicia por pedirnos imaginar que hay un análisis de sangre que detecta correctamente 95% de las veces, la afiliación de un individuo al linaje del conde Drácula y los inmortales vampiros. En notación matemática:</p>
 <p><span class="math display">\[
 {Pr(resultado~ positivo~de~la~prueba|vampiro) = 0.95}
 \]</span></p>
-<p>Es una prueba muy precisa, casi siempre identificando <em>vampiros</em> reales. Sin embargo, también falla a veces y reporta falsos positivos. Es así que el uno por ciento de las puebas realizadas diagnostican incorrectamente a <em>simples mortales</em> como <em>vampiros</em>:</p>
+<p>Es una prueba muy precisa, casi siempre identificando <em>vampiros</em> reales. Sin embargo, también falla a veces y reporta falsos positivos. Es así que el uno por ciento de las pruebas realizadas diagnostican incorrectamente a <em>simples mortales</em> como <em>vampiros</em>:</p>
 <p><span class="math display">\[
 {Pr(resultado~positivo~de~la~prueba|mortal) = 0.01}
 \]</span></p>
@@ -2266,7 +2266,7 @@ Pr(positivo) = Pr(positivo|vampiro)\times Pr(vampiro) + Pr(positivo|mortal) \tim
 <p>Si quisieras presentarla como una bonita tabla en tu reporte será mejor usar algo como<code>flextable</code> o <code>gt</code></p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Tomamos la fórmula de Bayes para <em>invertir la probabilidad</em>, pues queremos saber qué está pasando cuando tenemos la fortuna de toparnos con un resultado positivo en la prueba de sangre:</p>
+<p>Tomamos la fórmula de Bayes para <em>invertir la probabilidad</em>, pues queremos saber qué está pasando cuando tenemos la fortuna o desgracia de toparnos con un resultado positivo en la prueba de sangre:</p>
 <p><span class="math display">\[
 Pr(positivo|vampiro)
 \]</span></p>
@@ -2276,7 +2276,7 @@ Pr(vampiro|positivo)
 \]</span></p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Por lo tanto, esta es la probabilidad de que el amigo sea en realidad un vampiro.</p>
+<p>Por lo tanto, esta es una estimación de la probabilidad de que el amigo sea en realidad un vampiro.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2290,6 +2290,10 @@ Pr(vampiro|positivo)
 <p><img src="images/questions-1922477_1280.jpg" class="img-fluid" style="width:30.0%"></p>
 </div>
 </div>
+<p>Quizás para ayudar a apreciar lo que todo esto significa conviene recordar la frase que se atribuye al economista John Maynard Keynes:</p>
+<blockquote class="blockquote">
+<p>Cuando las circunstancias cambian, yo cambio de opinión. ¿Usted que hace?”</p>
+</blockquote>
 <p>Este es un resultado muy importante. Exactamente así, o algo muy parecido, es el procedimiento que se sigue en la realiad al efectuar pruebas diagnósticas: <em>las pruebas de PCR</em>, <em>antígeno</em> o <em>anticuerpos para SarsCov-2</em>, <em>la prueba del VIH</em> la del <em>DNA en un perfil criminal</em> y por supuesto la <em>prueba de significancia estadística</em>.</p>
 <p>Quizás ayude a mejorar la intuición que tenemos de las cosas el considerar que siempre que la condición de interés sea muy rara, desarrollar una <em>prueba excelente</em>, capaz de diagnosticar bien todos los casos verdaderos (aunque invitablemente produzca también algunos falsos positivos), puede no ser garantía suficiente de que un resultado positivo en general conlleve información categóricamente significativa.</p>
 <p>La razón es que usualmente resulta inevitable tener <strong>falsos positivos</strong> y por simple aritmética, esos casos serán la mayoría de los resultados que tendremos, incluso si todos los <em>verdaderos positivos</em> fueran <em>detectados correctamente</em>.</p>
@@ -2962,6 +2966,9 @@ y = \mu + T +  \varepsilon
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-einstein1905" class="csl-entry" role="listitem">
+EINSTEIN, ALBERT. 1905. <span>«On a heuristic viewpoint of the creation and modification of light»</span>. <em>Ann. d. Phys</em> 17: 133148. <a href="http://xdel.ru/downloads/www.nonloco-physics.0catch.com/photon.pdf">http://xdel.ru/downloads/www.nonloco-physics.0catch.com/photon.pdf</a>.
+</div>
 <div id="ref-gigerenzer2017" class="csl-entry" role="listitem">
 Gigerenzer, Gerd, y Wayne D. Gray. 2017. <span>«A Simple Heuristic Successfully Used by Humans, Animals, and Machines: The Story of the RAF and Luftwaffe, Hawks and Ducks, Dogs and Frisbees, Baseball Outfielders and Sidewinder Missiles<span></span>Oh My!»</span> <em>Topics in Cognitive Science</em> 9 (2): 260-63. <a href="https://doi.org/10.1111/tops.12269">https://doi.org/10.1111/tops.12269</a>.
 </div>

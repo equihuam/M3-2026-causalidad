@@ -6,14 +6,14 @@
     ]
   },
   {
+    "listing": "/ejercicios.html",
+    "items": []
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/posts/01-concepto-y-modelos-experimentar/index.html",
       "/posts/00-Bienvenida/index.html"
     ]
-  },
-  {
-    "listing": "/ejercicios.html",
-    "items": []
   }
 ]
