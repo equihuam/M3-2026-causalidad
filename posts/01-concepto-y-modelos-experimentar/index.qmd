@@ -35,19 +35,15 @@ library(dplyr)
 
 ![](images/vampiro-dracula.png){width="300"}
 
-McElreath (2020) presenta en su libro el hipotético ejemplo de *la
-prueba de sangre para vampirismo*. Propone que hay un análisis de sangre
-que detecta correctamente 95% de las veces, la afiliación de un
-individuo al linaje del conde Drácula y los inmortales vampiros. En
-notación matemática:
+Lógica, probabilidad y heurística son tres ideas centrales en la historia intelectual del intelecto humano. La teoría de la probabilidad que surge a mediados del siglo XVII, substituyó la certeza de la lógica por una teoría más modesta de la racionalidad. Su aparición ayudó a reconocer que existe una incertidumbre fundamental en la conducta humana. Usamos estas herramientas para decidir cosas, a veces suponiendo que reproducen la forma como [opera nuestra mente](https://www.bbc.com/mundo/noticias-59060022). Pero conviene no olvidar que también importa desde dónde, para qué y bajo qué condiciones decidimos o afirmamos nuestras convicciones. Veremos a cotinuación un ejemplo a este respecto que nos comparte McElreath (2020). Se trata del hipotético ejemplo de *la prueba de sangre para vampirismo*, que nos ayudaría a deciri si alguién es mortal o vampiro. Inicia por pedirnos imaginar que hay un análisis de sangre que detecta correctamente 95% de las veces, la afiliación de un individuo al linaje del conde Drácula y los inmortales vampiros. En notación matemática:
 
 $$
 {Pr(resultado~ positivo~de~la~prueba|vampiro) = 0.95}
 $$
 
 Es una prueba muy precisa, casi siempre identificando *vampiros* reales.
-Sin embargo, también comete errores y produce falsos positivos. Es así
-que el uno por ciento de las veces diagnostica incorrectamente a los
+Sin embargo, también falla a veces y reporta falsos positivos. Es así
+que el uno por ciento de las puebas realizadas diagnostican incorrectamente a 
 *simples mortales* como *vampiros*:
 
 $$
@@ -56,7 +52,7 @@ $$
 
 La última pieza de información que necesitamos es saber que los
 *vampiros* en realidad son bastante raros. Sólo el 0.1% de la población
-lo es, lo que implica:
+lo es (esta es la que llamamos probabilidad *a priori*), lo que anotamos así:
 
 $$
 {Pr(vampiro) = 0.001}
@@ -66,6 +62,7 @@ A partir de este conocimiento científico, supongamos que un amigo da
 positivo en el test de vampirismo.
 
 ::: {.callout-tip title="¿Cuál es la probabilidad de que sea un inmortal chupasangre" collapse="true"}
+
 El enfoque de investigación formal empezaría por usar el *teorema de
 Bayes* para deducir la probabilidad ${Pr(vampiro|positivo)}$, lo que en
 cierta forma implica "invertir la probabilidad", pues lo que ahora
@@ -262,7 +259,7 @@ El formalismo bayesiano trata las distribuciones de los parámetros como
 una plausibilidad relativa, no como un proceso aleatorio que ocurre en
 el mundo físico. En cualquier caso, la aleatoriedad es siempre una
 propiedad de la información, nunca del mundo real. Para continuar
-ecplorando esta idea puede interesarte los textos de
+explorando esta idea puede interesarte los textos de
 [Gigerenzer](https://onlinelibrary.wiley.com/authored-by/Gigerenzer/Gerd?pageSize=20&startPage=1))
 
 

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .title { font-family: "Inter", "Segoe UI", Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #111; }
+      .subtitle { font-family: "Inter", "Segoe UI", Arial, sans-serif; font-size: 18px; font-weight: 500; fill: #333; }
+      .h { font-family: "Inter", "Segoe UI", Arial, sans-serif; font-size: 22px; font-weight: 700; fill: #111; }
+      .t { font-family: "Inter", "Segoe UI", Arial, sans-serif; font-size: 18px; font-weight: 500; fill: #111; }
+      .s { font-family: "Inter", "Segoe UI", Arial, sans-serif; font-size: 16px; font-weight: 500; fill: #222; }
+      .small { font-family: "Inter", "Segoe UI", Arial, sans-serif; font-size: 14px; font-weight: 500; fill: #222; }
+      .muted { fill: #555; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2.2; rx: 18; ry: 18; }
+      .pill { fill: #fff; stroke: #111; stroke-width: 2; rx: 999; ry: 999; }
+      .dash { fill: none; stroke: #111; stroke-width: 2; stroke-dasharray: 8 8; }
+      .arrow { fill: none; stroke: #111; stroke-width: 2.2; marker-end: url(#arrow); }
+      .arrowThin { fill: none; stroke: #111; stroke-width: 1.8; marker-end: url(#arrowThin); }
+      .arrowDash { fill: none; stroke: #111; stroke-width: 2.2; stroke-dasharray: 7 7; marker-end: url(#arrow); }
+      .bg { fill: #fafafa; }
+      .panel { fill: #f4f4f5; stroke: #111; stroke-width: 2.2; rx: 22; ry: 22; }
+    ]]></style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <marker id="arrowThin" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect class="bg" x="0" y="0" width="1400" height="800"/>
+
+  <!-- title -->
+  <text class="title" x="70" y="78">Modelo híbrido ciencia–sociedad para decidir bajo incertidumbre</text>
+  <text class="subtitle" x="70" y="110">Coproducción de conocimiento + deliberación + aprendizaje adaptativo (heurísticas colectivas explícitas)</text>
+
+  <!-- left panel: Ciencia -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="70" y="160" width="380" height="540"/>
+  </g>
+  <text class="h" x="110" y="215">CIENCIA (evidencia)</text>
+  <text class="s muted" x="110" y="245">Modelos • datos • probabilidad • escenarios</text>
+
+  <!-- science boxes -->
+  <rect class="box" x="110" y="285" width="300" height="92"/>
+  <text class="t" x="130" y="325">Evidencia</text>
+  <text class="small muted" x="130" y="352">mediciones, experimentos, monitoreo</text>
+
+  <rect class="box" x="110" y="400" width="300" height="92"/>
+  <text class="t" x="130" y="440">Incertidumbre</text>
+  <text class="small muted" x="130" y="467">intervalos, sensibilidad, límites del modelo</text>
+
+  <rect class="box" x="110" y="515" width="300" height="92"/>
+  <text class="t" x="130" y="555">Escenarios</text>
+  <text class="small muted" x="130" y="582">trade-offs, riesgos, futuros plausibles</text>
+
+  <rect class="box" x="110" y="630" width="300" height="52"/>
+  <text class="t" x="130" y="664">Criterio: validez empírica</text>
+
+  <!-- right panel: Sociedad -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="950" y="160" width="380" height="540"/>
+  </g>
+  <text class="h" x="990" y="215">SOCIEDAD (sentido)</text>
+  <text class="s muted" x="990" y="245">Valores • experiencias • instituciones • poder</text>
+
+  <!-- society boxes -->
+  <rect class="box" x="990" y="285" width="300" height="92"/>
+  <text class="t" x="1010" y="325">Valores</text>
+  <text class="small muted" x="1010" y="352">prioridades, justicia, ética, metas</text>
+
+  <rect class="box" x="990" y="400" width="300" height="92"/>
+  <text class="t" x="1010" y="440">Conocimiento situado</text>
+  <text class="small muted" x="1010" y="467">prácticas locales, saberes, narrativas</text>
+
+  <rect class="box" x="990" y="515" width="300" height="92"/>
+  <text class="t" x="1010" y="555">Instituciones</text>
+  <text class="small muted" x="1010" y="582">reglas, incentivos, capacidades, conflicto</text>
+
+  <rect class="box" x="990" y="630" width="300" height="52"/>
+  <text class="t" x="1010" y="664">Criterio: legitimidad</text>
+
+  <!-- center: co-production -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="470" y="205" width="460" height="370"/>
+  </g>
+  <text class="h" x="515" y="255">NÚCLEO HÍBRIDO: INTERFAZ CIENCIA–SOCIEDAD</text>
+  <text class="s muted" x="515" y="285">Traducción • negociación • integración (sin reducir una lógica a la otra)</text>
+
+  <!-- core items -->
+  <rect class="pill" x="520" y="315" width="360" height="52"/>
+  <text class="t" x="545" y="348">Coproducción de conocimiento</text>
+
+  <rect class="pill" x="520" y="385" width="360" height="52"/>
+  <text class="t" x="545" y="418">Deliberación y evaluación de trade-offs</text>
+
+  <rect class="pill" x="520" y="455" width="360" height="52"/>
+  <text class="t" x="545" y="488">Gestión explícita de incertidumbre</text>
+
+  <!-- heuristics box -->
+  <rect class="box" x="520" y="525" width="360" height="72"/>
+  <text class="t" x="545" y="557">Heurísticas colectivas diseñadas</text>
+  <text class="small muted" x="545" y="582">umbrales • semáforos de riesgo • precaución • reglas simples</text>
+
+  <!-- arrows from science to core -->
+  <path class="arrow" d="M 410 331 C 455 331, 455 331, 470 331"/>
+  <path class="arrow" d="M 410 446 C 455 446, 455 446, 470 446"/>
+  <path class="arrow" d="M 410 561 C 455 561, 455 561, 470 561"/>
+
+  <!-- arrows from society to core -->
+  <path class="arrow" d="M 990 331 C 945 331, 945 331, 930 331"/>
+  <path class="arrow" d="M 990 446 C 945 446, 945 446, 930 446"/>
+  <path class="arrow" d="M 990 561 C 945 561, 945 561, 930 561"/>
+
+  <!-- core to outputs -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="470" y="595" width="460" height="105"/>
+  </g>
+  <text class="h" x="515" y="640">SALIDAS</text>
+  <text class="t" x="515" y="673">Decisión • Acción • Monitoreo</text>
+  <text class="small muted" x="515" y="698">políticas, manejo adaptativo, indicadores, revisión periódica</text>
+
+  <path class="arrow" d="M 700 575 C 700 585, 700 585, 700 595"/>
+
+  <!-- feedback loop -->
+  <path class="arrowDash" d="M 900 650 C 1010 650, 1040 620, 1060 560"/>
+  <path class="arrowDash" d="M 500 650 C 390 650, 360 620, 340 560"/>
+  <text class="small muted" x="560" y="735">Bucle de aprendizaje: monitoreo → ajuste de modelos y reglas → nueva deliberación</text>
+
+  <!-- bottom note -->
+  <text class="small muted" x="70" y="770">Uso sugerido: ciencia post-normal, IPBES, gestión de riesgos, gobernanza socioecológica policéntrica.</text>
+</svg>
