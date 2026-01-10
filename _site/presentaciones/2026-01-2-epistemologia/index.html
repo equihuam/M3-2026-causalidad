@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="es"><head>
 <link href="../../images/causalidad-2026.png" rel="icon" type="image/png">
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
@@ -7,11 +7,16 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
+<link href="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Miguel Equihua">
-  <title>Curso de Estadística (Inecol 2026) – Racionalidad, heurísticas y epistemologías en contraste</title>
+  <title>Curso de Estadística (Inecol 2026) – Contraste de epistemologías</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,11 +35,13 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-a8819e6ca7f54f0034a0a3a88f3c83b0.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-c2728c421b99fc9ce137f5509d1ea569.css">
   <link rel="stylesheet" href="presentacion.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -128,28 +135,438 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Racionalidad, heurísticas y epistemologías en contraste</h1>
-  <p class="subtitle">Del positivismo a modelos híbridos ciencia–sociedad</p>
+<section id="title-slide" data-background-image="img/gamma-plantilla_alfa.png" data-background-opacity="60%" data-background-size="100%" class="quarto-title-block center">
+  <h1 class="title">Contraste de epistemologías</h1>
+  <p class="subtitle">Diseño de estudios y experimentos</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
 Miguel Equihua 
 </div>
+<div class="quarto-title-author-email">
+<a href="mailto:equihuam@gmail.com">equihuam@gmail.com</a>
+</div>
 </div>
 </div>
 
+  <p class="date">Xalapa, Ver., 28 enero, 2026</p>
 </section>
 <section>
-<section id="racionalidad-heurísticas-y-epistemologías" class="title-slide slide level1 center">
-<h1>Racionalidad, heurísticas y epistemologías</h1>
-
+<section id="fundamentos-del-ideal-científico" class="title-slide slide level1 center">
+<h1><span class="r-fit-text">🧱 Fundamentos del ideal científico</span></h1>
+<aside class="notes">
+<p>≈15 min</p>
+<p><strong>Pregunta guía:</strong></p>
+<blockquote>
+<p>¿Qué promete la ciencia moderna?</p>
+</blockquote>
+<p><strong>Objetivo didáctico:</strong> Mostrar que <strong>la ciencia moderna nace de supuestos fuertes</strong>, no de neutralidad pura.</p>
+<p>🧠 <em>Mensaje clave:</em> La ciencia <strong>no empieza sin filosofía</strong>; empieza con <strong>filosofía implícita</strong>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="del-positivismo-a-modelos-híbridos-cienciasociedad" class="slide level2 center">
-<h2>Del positivismo a modelos híbridos ciencia–sociedad</h2>
+<section id="bacon-y-la-ciencia-occidental" class="slide level2">
+<h2>Bacon y la ciencia occidental</h2>
+<ul>
+<li><strong>Sir Francis Bacon (1561-1626)</strong> clave en el origen de la ciencia occidental.</li>
+<li>En su <em>Novum Organum</em> (1620) plantea substituir el ya entonces viejo método aristotélico (dominate por más de 1800 años), por un <em>nuevo órgano</em> basado en el <strong>estudio inductivo de la naturaleza</strong>.</li>
+<li>Intentaba:
+<ul>
+<li><span style="color:#A61C00"><em>Iniciar una reconstrucción total de las ciencias, las artes prácticas y todo el conocimiento humano, erigida sobre fundamentos apropiados</em></span> .</li>
+</ul></li>
+<li>Propone el <strong>método de experimentación</strong> .</li>
+<li>Concibe que la manipulación deliberada de variables debería reemplazar el limitado empirismo prevaleciente que consistía en <em>“observar y nombrar”</em>.</li>
+</ul>
 </section>
-<section id="punto-de-partida-histórico" class="slide level2 center">
+<section id="consecuencias-baconianas" class="slide level2">
+<h2>Consecuencias baconianas</h2>
+<div class="r-fit-text">
+<ul>
+<li><p>Consecuencias positivas y negativas de La reconstrucción baconiana sobre la concepción de ciencia iniciadas hace 400 años y que prevalecen hasta hoy.</p></li>
+<li><p>El ideal baconiano de ciencia consiste en lo siguiente:</p>
+<ul>
+<li><p><span style="color:#1155CC">Al principio de su investigación, los experimentadores habrán de eliminar de sus pensamientos “todos los ‘ídolos’ o ilusiones seculares y las falacias nacidas de las idiosincrasias personales, de sus juicios o de las creencias tradicionales y de los dogmas de su grupo”.</span></p></li>
+<li><p><span style="color:#A64D79">En la visión baconiana, las observaciones se realizan en una forma puramente objetiva por individuos que no tienen lealtad alguna a ninguna hipótesis o creencia que les pueda causar ceguera hacia alguna porción de la evidencia empírica.</span></p></li>
+<li><p><span style="color:#1155CC">Las conclusiones correctas y los principios explicativos emergen de las pruebas en una forma relativamente automática y sin que los preconceptos filosóficos del experimentador jueguen papel alguno.</span></p></li>
+<li><p><span style="color:#A64D79">La naturaleza misma dictaría sin ambigüedades, por así decirlo, la adopción de teorías verdaderas. El conjunto total de las ciencia, pensaba, sería puramente objetivo, empírico y racional.</span></p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="bacon-hoy." class="slide level2">
+<h2>Bacon hoy….</h2>
+<p>Aunque esta visión de la ciencia todavía está presente en algunos círculos, es claro que tiene <strong>defectos</strong> serios.</p>
+<div class="r-fit-text">
+<ul>
+<li>Inevitalemente los <strong>juicios personale</strong> tienen un papel en la ciencia.</li>
+<li>En gran parte juegan un papel creativo fundamental.
+<ul>
+<li>Están presentes a cada paso de la creación científica</li>
+<li>Se involucran en el complicado proceso inductivo</li>
+<li>No los podemos excluir de la forma como <strong>explicamos los hallazgos</strong></li>
+<li>No debemos minimizar las jugarretas que nuestra propia psique nos puede jugar.</li>
+<li>Existe, por ejemplo, el llamado <em>efecto de disponibilidad</em> (¡usamos los conceptos que tenemos a la mano!).</li>
+<li><strong>No existe un proceso lógico riguroso para concebir teorías</strong></li>
+<li><strong>No hay reglas fijas para idear nuevos conceptos</strong></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="legalidad-de-la-naturaleza" class="slide level2">
+<h2>“Legalidad” de la naturaleza</h2>
+<ul>
+<li><p>Esta noción, que posiblemente sea un corolario de una suposición filosófica más básica, implica la creencia de que los eventos de la naturaleza presentan cierto <strong>apego a reglas</strong> y es indudablemente un prerrequisito necesario para la ciencia.</p></li>
+<li><p>Esta suposición permite que la tarea de <strong>catalogar y entender las regularidades</strong> de la naturaleza sea concebible.</p></li>
+</ul>
+</section>
+<section id="corolarios-comprensibilidad-uniformidad-causalidad" class="slide level2">
+<h2>Corolarios: comprensibilidad, uniformidad, causalidad</h2>
+<ul>
+<li><strong>La naturaleza es comprensible</strong> . Einstein afirmaba que: la cosa más incomprensible del universo es que sea comprensible.</li>
+<li><strong>La naturaleza es uniforme</strong> . Es decir los procesos y patrones observados sólo en una escala limitada se mantendrán universalmente (esto es obviamente imprescindible en ciencias como la Astronomía).
+<ul>
+<li>¿Qué pasa con este supuesto en ciencias como la Ecología, la Psicología o las Ciencias sociales? De paso, hay que notar que este supuesto implica la homogeneidad del material experimental.</li>
+</ul></li>
+<li><strong>La causalidad existe</strong> . El principio de causalidad es la noción que consiste en que “cada evento (o fenómeno) natural se supone tiene una causa, de modo que si tal situación causal puede ser restituida, el evento será duplicado” (Underwood1957).</li>
+</ul>
+</section></section>
+<section>
+<section id="el-problema-de-la-causalidad" class="title-slide slide level1 center">
+<h1><span class="r-fit-text">🧱 El problema de la causalidad</span></h1>
+<aside class="notes">
+<p>≈20 min <strong>Pregunta guía:</strong></p>
+<blockquote>
+<p>¿Qué significa decir que algo causa algo?</p>
+</blockquote>
+<p><strong>Objetivo didáctico:</strong> Separar claramente:</p>
+<ul>
+<li>correlación ≠ causalidad</li>
+<li>causalidad ≠ determinismo simple</li>
+</ul>
+<p>🧠 <em>Mensaje clave:</em> La causalidad <strong>no desaparece</strong>, pero <strong>ya no es ingenua</strong>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="centrar-contenedor">
+<blockquote>
+<p>¿Hasta qué punto el diseño puede ‘rescatar’ la causalidad?</p>
+</blockquote>
+</div>
+</section>
+<section id="causalidad-y-los-empiristas" class="slide level2">
+<h2>Causalidad y los empiristas</h2>
+<ul>
+<li>La posición del filósofo empirista escocés David Hume (1711-1776) tuvo un inmenso peso durante mucho tiempo.</li>
+<li>Hume sostenía que la inferencia de relaciones de causalidad entre inobservables carece siempre de justificación lógica:
+<ul>
+<li><span style="color:#1155CC"><em>Lo que observamos no es un evento causando a otro, sino la correlación entre sus desarrollos</em></span> .</li>
+</ul></li>
+<li>En consecuencia, la correlación entre eventos es todo lo que podemos conocer acerca de la causalidad.</li>
+</ul>
+</section>
+<section id="interpretaciónes-causales" class="slide level2">
+<h2>Interpretaciónes causales</h2>
+<ul>
+<li><p>Para los filósofos empiristas es indispensable que <strong>las causas y los efectos ocurran en “constante conjunción”</strong> , es decir que la causa es necesaria y suficiente para el efecto.</p></li>
+<li><p>Naturalmente se concebia que la <strong>causalidad en ciencia documentaba</strong> <strong>procesos</strong> <strong>deterministas</strong>.</p></li>
+<li><p>¿Sigue siendo esta nuestra convicción o habrá cambiado?</p></li>
+</ul>
+</section>
+<section id="cómo-debe-interpretarse-esto" class="slide level2">
+<h2>1. ¿Cómo debe interpretarse esto?</h2>
+<div class="header">
+<p><strong>Participa: vevox.app ID: 144-565-419</strong></p>
+</div>
+<div class="quarto-layout-panel" data-layout="[[-1], [80], [80, 20]]">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<ul>
+<li>90% de las semillas en un grupo tratado germinan.</li>
+<li>20% lo hacen en el grupo control.</li>
+</ul>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: flex-start;">
+<p>Elije la respuesta que consideres más apropiada</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<p><img data-src="img/vevox-epistemologia.png" width="200"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2" data-background-iframe="https://vevox.app/#/m/144565419?integration=embed" data-background-interactive="true">
+<h2></h2>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="centrar-contenedor">
+<blockquote>
+<p>¿Puede haber causalidad sin metafísica?</p>
+</blockquote>
+</div>
+</section>
+<section id="positivismo" class="slide level2">
+<h2>Positivismo</h2>
+<ul>
+<li><p>Las ideas de Hume permean en el positivismo del siglo XIX de Auguste Comte (1798-1857), que empujó al quehacer científico bajo su influencia a tomar una actitud temerosa para proponer relaciones causales como base de la construcción de hipótesis.</p></li>
+<li><p>En lugar de causas, se buscan <strong>relaciones funcionales</strong> entre observables o entre términos teóricos, cada uno de los cuales es definido operativamente por un instrumento de medición o conjunto de operaciones en un estudio.</p></li>
+</ul>
+</section>
+<section id="causalidad-en-crisis" class="slide level2">
+<h2>Causalidad en crisis</h2>
+<div class="r-fit-text">
+<ul>
+<li><p>Durante los últimos 50 años han emergido toda una gama de posiciones en relación con lo que se entiende al decir que <strong>un evento causa a otro</strong></p></li>
+<li><p>También se ha cestionado si reaalmente podemos <strong>adquirir conocimiento acerca de una relación causal</strong>.</p></li>
+<li><p>Cook y Campbell (1979) afirmaban hace tiempo que “la epistemología de la causalidad y de los métodos científicos más en general, atraviesaba por un <em>productivo estado</em> de casi caos”.</p></li>
+<li><p>¿Habremos superado ya esta compleja encrusijada?</p></li>
+<li><p>Actualmente se acepta que <strong>la causalidad puede tomar una forma probabilística</strong> .</p></li>
+<li><p>Judea Pearl y Dana Mackenzie publicaron en 2018 <em>The Book of Why: The New Science of Cause and Effect.</em></p></li>
+</ul>
+</div>
+</section>
+<section id="qué-tan-de-acuerdo-estás-con-la-siguiente-aseveración" class="slide level2">
+<h2>2. ¿Qué tan de acuerdo estás con la siguiente aseveración?</h2>
+<div class="header">
+<p><strong>Participa: vevox.app ID: 144-565-419</strong></p>
+</div>
+<p><strong>“La causalidad implica correlación”</strong></p>
+</section>
+<section id="section-3" class="slide level2" data-background-iframe="https://vevox.app/#/m/144565419?integration=embed" data-background-interactive="true">
+<h2></h2>
+</section>
+<section id="causalidad-hoy" class="slide level2">
+<h2>Causalidad hoy…</h2>
+<ul>
+<li><p>Estas perspectivas de la causalidad actualmente se reconocen limitadas.</p></li>
+<li><p>La causalidad se considera ahora como algo <strong>diferente de la mera correlación</strong> .</p></li>
+<li><p>Esto puede ser confuso en el uso de técnicas estadísticas que lo mismo se aplican para establecer correlación que para hablar de causas.</p></li>
+<li><p>La fuerza con la que podemos apoyar una relación como causal, depende críticamente de <strong>la naturaleza del diseño empleado y no del modelo estadístico empleado</strong> .</p></li>
+</ul>
+</section>
+<section id="gama-de-relaciones-causales" class="slide level2">
+<h2>Gama de relaciones causales</h2>
+<ul>
+<li><p>Hay toda una gama de posibilidades acerca de los tipos de relaciones de causalidad que pueden ser descubiertas a través de la experimentación.</p></li>
+<li><p>El suponer <strong>el principio de causalidad significa adoptar el determinismo como un paradigma de trabajo</strong> en el laboratorio y en el campo.</p></li>
+<li><p>Debe notarse que en cualquier situación hay toda una variedad de niveles en los que puede conducirse un análisis causal. Tanto <strong>la naturaleza como la ciencia están estratificadas</strong> .</p></li>
+<li><p>Por ejemplo si apago la luz en una habitación <em>¿cuál es el conjunto de posibles escenarios causales?</em></p></li>
+</ul>
+</section>
+<section id="causalidad-y-realidad-realismo-vs-positivismo" class="slide level2">
+<h2>Causalidad y realidad (realismo vs positivismo)</h2>
+<div class="r-fit-text">
+<ul>
+<li>Nos queda meditar el significado de las relaciones de causalidad descubiertas.</li>
+<li>Para los realistas (¡en el sentido filosófico!), se trata de un logro en el camino de la búsqueda de la verdad acerca de mecanismos ocultos, pero reales, cuyas propiedades y relaciones explican los fenómenos observables.
+<ul>
+<li>Un físico positivista diría solamente que un globo se encoge como una función del tiempo.</li>
+<li>Un físico realista agregaría que la pérdida de moléculas de gas causaron el encogimiento observado.</li>
+</ul></li>
+<li>Es decir, no se trata sólo de una relación causal construida en la mente del físico, se trata de que existe una relación causal real entre las entidades fuera de la mente humana:
+<ul>
+<li>“Las aseveraciones teóricas tienen un contenido objetivo que puede ser cierto o falso”.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="causalidad-finita" class="slide level2">
+<h2>Causalidad finita</h2>
+<ul>
+<li><p>La ciencia no sólo presupone que <strong>hay causas naturaleza de los eventos</strong> , sino también que <strong>esas causas son finitas en número</strong> y que <strong>pueden ser descubiertas</strong>.</p></li>
+<li><p>La ciencia se construye sobre la convicción de que <strong>la generalización de algún tipo es posible</strong> . Es decir, no es necesario reproducir el prácticamente infinito número de elementos que operan cuando un efecto es observado inicialmente, a fin de tener una causa suficiente para volver a producir el efecto.</p></li>
+<li><p>Si la ciencia es posible, debemos <strong>suponer que el efecto de un factor no depende de todos los posibles niveles de todas las otras variables presentes</strong> cuando se efectúa la observación.</p></li>
+</ul>
+</section>
+<section id="causalidad-finita-y-desprecio" class="slide level2">
+<h2>Causalidad finita y desprecio…</h2>
+<ul>
+<li>Para Bachelard, uno de los signos distintivos del espíritu científico y del espíritu filosófico es el <strong>derecho a despreciar</strong> . Para él, el espíritu científico explicita clara y distintamente este derecho a despreciar lo despreciable</li>
+<li>Derecho que incansablemente el espíritu filosófico le rehúsa.</li>
+<li>Para ilustrar esto, recurre a Ostwald:
+<ul>
+<li><span style="color:#A64D79">“Cualquiera</span> <span style="color:#A64D79">que sea el fenómeno considerado, siempre hay un número extremadamente grande de circunstancias que no tienen influencia mesurable sobre él”.</span></li>
+<li><span style="color:#BF9000">¿Cómo influye el color de un proyectil en sus propiedades balísticas?</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="conoces-alguna-metodología-científica-para-describir-y-analizar-estructuras-de-relación-causa-efecto" class="slide level2">
+<h2>3. ¿Conoces alguna metodología científica para describir y analizar estructuras de relación causa efecto?</h2>
+<div class="header">
+<p><strong>Participa: vevox.app ID: 144-565-419</strong></p>
+</div>
+</section>
+<section id="section-4" class="slide level2" data-background-iframe="https://vevox.app/#/m/144565419?integration=embed" data-background-interactive="true">
+<h2></h2>
+</section></section>
+<section>
+<section id="simplicidad-complejidad-y-límites" class="title-slide slide level1 center">
+<h1><span class="r-fit-text">🧱 Simplicidad, complejidad y límites</span></h1>
+<aside class="notes">
+<p>≈10 min <strong>Pregunta guía:</strong></p>
+<blockquote>
+<p>¿Hasta dónde puede simplificar la ciencia?</p>
+</blockquote>
+<p><strong>Objetivo didáctico:</strong> Preparar el terreno para <strong>aceptar límites sin abandonar rigor</strong>.</p>
+<p>🧠 <em>Mensaje clave:</em> La ciencia <strong>necesita simplificar</strong>, pero <strong>no puede creerse simple</strong>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="simplicidad" class="slide level2">
+<h2>Simplicidad…</h2>
+<ul>
+<li>Muchos científicos, particularmente los físicos, enfatizan la importancia de la fuerte creencia en la simplicidad última de las leyes científicas.</li>
+<li>Albert Einstein escribió alguna vez
+<ul>
+<li><span style="color:#A64D79">“Nuestras experiencias nos justifican al creer que la naturaleza es la realización de las ideas matemáticas más simples concebibles”.</span></li>
+</ul></li>
+<li>Sin embargo, como cualquier ecólogo sabe, hay una enorme complejidad en los sistemas vivientes, lo que puede hacer cuestionable o por lo menos dificultar grandemente el empleo de modelos simples.</li>
+</ul>
+</section>
+<section id="simplicidad-1" class="slide level2">
+<h2>…Simplicidad…</h2>
+<ul>
+<li>Una buena guía a seguir la encontramos en las palabras del científico Alfred North Whitehead:
+<ul>
+<li><span style="color:#A64D79">“Busca la simplicidad y desconfía de ella”</span></li>
+</ul></li>
+<li>El mismo autor afirmaba que la ciencia tiene como meta
+<ul>
+<li><span style="color:#134F5C">“Buscar la explicación más simple de hechos complejos, tratando al mismo tiempo de evitar el error de concluir que la naturaleza es más simple de lo que realmente es”.</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<div class="centrar-contenedor">
+<blockquote>
+<p>¿Cuándo es que simplificar se vuelve engañoso?</p>
+</blockquote>
+</div>
+</section></section>
+<section>
+<section id="crisis-del-ideal-positivista" class="title-slide slide level1 center">
+<h1><span class="r-fit-text">🧱 Crisis del ideal positivista</span></h1>
+<aside class="notes">
+<p>≈10 min <strong>Pregunta guía:</strong></p>
+<blockquote>
+<p>¿Por qué el positivismo deja de ser suficiente?</p>
+</blockquote>
+<p><strong>Objetivo didáctico:</strong> Mostrar que la crisis es:</p>
+<ul>
+<li>epistemológica,</li>
+<li>social,</li>
+<li>política.</li>
+</ul>
+<p>🧠 <em>Mensaje clave:</em> La crisis no es “anti-ciencia”, es <strong>anti-simplificación excesiva</strong>.</p>
+<p>📌 <strong>Slide bisagra (discusión):</strong> crítica posmoderna</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div class="centrar-contenedor">
+<blockquote>
+<p>¿La crítica posmoderna debilita o fortalece a la ciencia?</p>
+</blockquote>
+</div>
+</section>
+<section id="ciencia-en-problemas" class="slide level2">
+<h2>Ciencia en Problemas</h2>
+<ul>
+<li>Al inicio del siglo XXI la profesión científica enfrenta serios problemas en relación con su postura pública y credibilidad.</li>
+<li>Crisis del posmodernismo. En todas las esferas culturales (arte, literatura, diseño)
+<ul>
+<li><span style="color:#A64D79">La idea de un</span> <span style="color:#A64D79"><em>estilo superior</em></span> <span style="color:#A64D79">y las ideas de</span> <span style="color:#A64D79"><em>avance</em></span> <span style="color:#A64D79">y</span> <span style="color:#A64D79"><em>progreso</em></span> <span style="color:#A64D79">están siendo cuestionadas</span></li>
+<li><span style="color:#38761D">El pluralismo y la multiplicidad son preferidos.</span></li>
+</ul></li>
+<li>La condición posmodernista implica una pérdida de aprecio a la autoridad.</li>
+<li>Existe también una crisis del determinismo (Lyotard, 1984)</li>
+</ul>
+<p><strong>Fuente: Yearley, S. (2005).</strong> <em>Making sense of science (understanding the social study of science).</em> <strong>Sage. London, 205 pp.</strong></p>
+</section>
+<section id="verdades-posmodernistas" class="slide level2">
+<h2>Verdades posmodernistas</h2>
+<ul>
+<li>El oficio de la ciencia es construir y defender representaciones de la realidad.</li>
+<li>Irónicamente, el mismo éxito y alto perfil social de la ciencia la han abierto a la reconstrucción y al escepticismo.</li>
+<li>La ciencia es cada vez más y más una necesidad, pero al mismo tiempo, es menos y menos suficiente para la definición socialmente aglutinadora de verdad (Beck, 1992).</li>
+</ul>
+<p><strong>Fuente: Yearley, S. (2005).</strong> <em>Making sense of science (understanding the social study of science).</em> <strong>Sage. London, 205 pp.</strong></p>
+</section></section>
+<section>
+<section id="racionalidad-humana-real" class="title-slide slide level1 center">
+<h1><span class="r-fit-text">🧱 Racionalidad humana real</span></h1>
+<aside class="notes">
+<p>≈20 min <strong>Pregunta guía:</strong></p>
+<blockquote>
+<p>¿Cómo decidimos realmente?</p>
+</blockquote>
+<p><strong>Objetivo didáctico:</strong> Desplazar la pregunta:</p>
+<blockquote>
+<p>¿Somos racionales?<br>
+<strong>hacia</strong> ¿Qué tipo de racionalidad es posible?</p>
+</blockquote>
+<p>🧠 <em>Mensaje clave:</em> La racionalidad <strong>no es defectuosa</strong>; es <strong>situada y distribuida</strong>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="punto-de-partida-histórico" class="slide level2">
 <h2>Punto de partida histórico</h2>
 <ul>
 <li>Lógica clásica → certeza</li>
@@ -160,17 +577,7 @@ Miguel Equihua
 <p>“La probabilidad es sentido común reducido a cálculo”</p>
 </blockquote>
 </section>
-<section id="ideal-positivista-de-la-racionalidad" class="slide level2 center">
-<h2>Ideal positivista de la racionalidad</h2>
-<ul>
-<li>Racionalidad universal</li>
-<li>Formalización matemática</li>
-<li>Predicción y control</li>
-<li>Neutralidad del observador</li>
-</ul>
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg" class="absolute" style="top: 200px; left: 650px; width: 450px; "></p>
-</section>
-<section id="el-proyecto-positivista-comte-1798-1857" class="slide level2 center">
+<section id="el-proyecto-positivista-comte-1798-1857" class="slide level2">
 <h2>El proyecto positivista (Comte 1798-1857)</h2>
 <ul>
 <li>Leyes empíricas universales</li>
@@ -183,7 +590,17 @@ Miguel Equihua
 <p>la ciencia puede gobernar a la sociedad</p>
 </blockquote>
 </section>
-<section id="racionalidad-limitada" class="slide level2 center">
+<section id="ideal-positivista-de-la-racionalidad" class="slide level2">
+<h2>Ideal positivista de la racionalidad</h2>
+<ul>
+<li>Racionalidad universal</li>
+<li>Formalización matemática</li>
+<li>Predicción y control</li>
+<li>Neutralidad del observador</li>
+</ul>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg" class="absolute" style="top: 200px; left: 650px; width: 450px; "></p>
+</section>
+<section id="racionalidad-limitada" class="slide level2">
 <h2>Racionalidad limitada</h2>
 <ul>
 <li>Información incompleta</li>
@@ -191,14 +608,14 @@ Miguel Equihua
 <li>Decisiones satisfactorias</li>
 <li>Uso sistemático de heurísticas</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>La racionalidad se vuelve empírica</li>
 </ul>
 </div>
 <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/2/25/Simple_decision_tree.svg" class="absolute" style="top: 100px; left: 750px; width: 350px; "></p>
 </section>
-<section id="heurísticas-y-sesgos" class="slide level2 center">
+<section id="heurísticas-y-sesgos" class="slide level2">
 <h2>Heurísticas y sesgos</h2>
 <ul>
 <li>Reglas simples de decisión</li>
@@ -207,21 +624,21 @@ Miguel Equihua
 <li>No son anomalías individuales</li>
 </ul>
 </section>
-<section id="fallamos-al-razonar" class="slide level2 smaller center">
+<section id="fallamos-al-razonar" class="slide level2 smaller">
 <h2>¿Fallamos al razonar?</h2>
 <p>Dos interpretaciones:</p>
 <ul>
 <li>Sesgos → desviaciones del modelo normativo</li>
 <li>Heurísticas → adaptaciones a entornos reales</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>El error se vuelve estructural</li>
 </ul>
 </div>
 <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg" class="absolute" style="top: 50px; left: 550px; width: 550px; "></p>
 </section>
-<section id="límite-del-positivismo-clásico" class="slide level2 center">
+<section id="límite-del-positivismo-clásico" class="slide level2">
 <h2>Límite del positivismo clásico</h2>
 <p>El modelo normativo:</p>
 <ul>
@@ -234,7 +651,7 @@ Miguel Equihua
 <p>¿Quién define qué es racional?</p>
 </blockquote>
 </section>
-<section id="enfoques-no-positivistas" class="slide level2 center">
+<section id="enfoques-no-positivistas" class="slide level2">
 <h2>Enfoques no positivistas</h2>
 <p>Tres críticas convergentes:</p>
 <ul>
@@ -242,30 +659,38 @@ Miguel Equihua
 <li>La experiencia importa</li>
 <li>El poder importa</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>La racionalidad no es solo cálculo</li>
 </ul>
 </div>
 </section>
-<section id="hermenéutica" class="slide level2 center">
+<section id="hermenéutica" class="slide level2">
 <h2>Hermenéutica</h2>
 <ul>
 <li>Comprensión como proceso iterativo</li>
 <li>Lenguaje, historia, tradición</li>
 <li>Decisión como interpretación</li>
 </ul>
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/8/87/Hermeneutic_Circle.jpg" class="absolute" style="top: 100px; left: 750px; "></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/8/87/Hermeneutic_Circle.jpg" class="absolute" style="top: 100px; left: 750px; width: 450px; "></p>
 </section>
-<section id="cognición-encarnada---fenomenología" class="slide level2 center">
+<section id="section-7" class="slide level2">
+<h2></h2>
+
+<img data-src="img/ilustracion_hermeneutica_circulo.svg" class="r-stretch quarto-figure-center"><p class="caption">Hermenéutica: círculo de comprensión</p></section>
+<section id="cognición-encarnada---fenomenología" class="slide level2">
 <h2>Cognición encarnada - Fenomenología</h2>
 <ul>
 <li>Cuerpo y mente inseparables</li>
 <li>Percepción–acción unificadas</li>
-<li>Conocimiento como experiencia <img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b4/The_scope_of_embodied_cognition_06.10.2021.png" class="absolute" style="top: 200px; left: 750px; " alt="Embodied cognition"></li>
+<li>Conocimiento como experiencia <img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b4/The_scope_of_embodied_cognition_06.10.2021.png" class="absolute" style="top: 200px; left: 750px; width: 450px; " alt="Embodied cognition"></li>
 </ul>
 </section>
-<section id="cognición-situada" class="slide level2 center">
+<section id="section-8" class="slide level2">
+<h2></h2>
+
+<img data-src="img/ilustracion_fenomenologia_percepcion_accion.svg" class="r-stretch quarto-figure-center"><p class="caption">Fenomenología: percepción–acción encarnada</p></section>
+<section id="cognición-situada" class="slide level2">
 <h2>Cognición situada</h2>
 <ul>
 <li>Saber inseparable de la acción</li>
@@ -274,7 +699,11 @@ Miguel Equihua
 </ul>
 <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/9/90/Sgimage1.gif" class="absolute" style="top: 75px; left: 750px; "></p>
 </section>
-<section id="teoría-crítica" class="slide level2 center">
+<section id="section-9" class="slide level2">
+<h2></h2>
+
+<img data-src="img/ilustracion_cognicion_situada.svg" class="r-stretch quarto-figure-center"><p class="caption">Cognición situada: mente–tarea–entorno–instituciones</p></section>
+<section id="teoría-crítica" class="slide level2">
 <h2>Teoría crítica</h2>
 <ul>
 <li>Racionalidad instrumental</li>
@@ -283,7 +712,7 @@ Miguel Equihua
 </ul>
 
 <img data-src="https://upload.wikimedia.org/wikipedia/commons/7/72/Systems_Thinking_Diagram.png" class="r-stretch quarto-figure-center"><p class="caption">Pensamiento sistémico</p></section>
-<section id="síntesis-epistemológica" class="slide level2 center">
+<section id="síntesis-epistemológica" class="slide level2">
 <h2>Síntesis epistemológica</h2>
 <table class="caption-top">
 <thead>
@@ -321,29 +750,61 @@ Miguel Equihua
 </tr>
 </tbody>
 </table>
+</section></section>
+<section>
+<section id="salida-constructiva-ciencia-hoy" class="title-slide slide level1 center">
+<h1><span class="r-fit-text">🧱 Salida constructiva: ciencia hoy</span></h1>
+<aside class="notes">
+<p>≈15 min</p>
+<p><strong>Pregunta guía:</strong></p>
+<blockquote>
+<p>¿Cómo hacer ciencia y decidir hoy?</p>
+</blockquote>
+<p>🧠 <em>Mensaje clave:</em> Usamos ciencia <strong>consciente de sus límites</strong>, no a pesar de ellos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="fracasó-el-positivismo" class="slide level2 center">
+<section id="fracasó-el-positivismo" class="slide level2">
 <h2>¿Fracasó el positivismo?</h2>
+<div class="centrar-contenedor">
 <p>Respuesta corta:</p>
 <blockquote>
-<p>💀 como proyecto totalizante<br>
-🗽 Como infraestructura científica</p>
+<p><span style="font-style: normal;">💀</span> Como proyecto totalizante<br>
+<span style="font-style: normal;">🗽</span> Como infraestructura científica</p>
 </blockquote>
+</div>
 </section>
-<section id="la-paradoja" class="slide level2 center">
+<section id="la-paradoja" class="slide level2">
 <h2>La paradoja</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <blockquote>
 <p>El positivismo fracasa<br>
 <strong>porque tiene demasiado éxito</strong></p>
 </blockquote>
+</div><div class="column" style="width:50%;">
+<p><br>
+<br>
+<br>
+</p>
 <p>Al medir y modelar:</p>
 <ul>
 <li>revela incertidumbre</li>
 <li>expone límites cognitivos</li>
 <li>muestra complejidad social</li>
 </ul>
+</div></div>
 </section>
-<section id="emergencia-de-modelos-híbridos" class="slide level2 center">
+<section id="emergencia-de-modelos-híbridos" class="slide level2">
 <h2>Emergencia de modelos híbridos</h2>
 <p>Aparecen cuando:</p>
 <ul>
@@ -352,14 +813,14 @@ Miguel Equihua
 <li>las decisiones son urgentes</li>
 <li>el riesgo es colectivo</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>La ciencia sola no basta</li>
 <li>La sociedad sola tampoco</li>
 </ul>
 </div>
 </section>
-<section id="qué-es-un-modelo-híbrido" class="slide level2 center">
+<section id="qué-es-un-modelo-híbrido" class="slide level2">
 <h2>¿Qué es un modelo híbrido?</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -380,8 +841,10 @@ la decisión emerge de su interacción</p>
 </ul>
 </div></div>
 </section>
-<section id="lógicas-que-se-articulan" class="slide level2 center">
+<section id="lógicas-que-se-articulan" class="slide level2">
 <h2>Lógicas que se articulan</h2>
+<p><br>
+</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -409,7 +872,7 @@ la decisión emerge de su interacción</p>
 </tbody>
 </table>
 </section>
-<section id="heurísticas-colectivas-diseñadas" class="slide level2 center">
+<section id="heurísticas-colectivas-diseñadas" class="slide level2">
 <h2>Heurísticas colectivas diseñadas</h2>
 <p>Ejemplos:</p>
 <ul>
@@ -418,13 +881,21 @@ la decisión emerge de su interacción</p>
 <li>principio de precaución</li>
 <li>escenarios plausibles</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>Racionalidad limitada institucionalizada</li>
 </ul>
 </div>
 </section>
-<section id="desafíos-de-la-ciencia-en-crisis" class="slide level2 center">
+<section id="section-10" class="slide level2">
+<h2></h2>
+<div class="centrar-contenedor r-fit-text">
+<blockquote>
+<p>¿Sesgos o adaptaciones?</p>
+</blockquote>
+</div>
+</section>
+<section id="desafíos-de-la-ciencia-en-crisis" class="slide level2">
 <h2>desafíos de la ciencia en crisis</h2>
 <p>La racionalidad limitada no se corrige, se <strong>organiza colectivamente</strong>.</p>
 <ul>
@@ -434,13 +905,21 @@ la decisión emerge de su interacción</p>
 </li>
 <li>nadie decide solo</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>Heurísticas explícitas en lugar de una optimización perfecta</li>
 </ul>
 </div>
 </section>
-<section id="oferta-de-la-ciencia-abierta" class="slide level2 center">
+<section id="section-11" class="slide level2">
+<h2></h2>
+<div class="centrar-contenedor">
+<blockquote>
+<p>¿Quién debe decidir bajo incertidumbre?</p>
+</blockquote>
+</div>
+</section>
+<section id="oferta-de-la-ciencia-abierta" class="slide level2">
 <h2>Oferta de la Ciencia Abierta</h2>
 <ul>
 <li>Evidencia como bien común<br>
@@ -453,20 +932,20 @@ la decisión emerge de su interacción</p>
 </li>
 <li>Aprendizaje adaptativo</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>Infraestructura práctica para modelos híbridos ciencia–sociedad</li>
 </ul>
 </div>
 </section>
-<section id="section" class="slide level2 center">
+<section id="section-12" class="slide level2">
 <h2></h2>
 
 <img data-src="img/esquema_ciencia_abierta_heuristicas.png" class="r-stretch"></section>
-<section id="section-1" class="slide level2 center" data-background-image="img/figura_modelo_hibrido_ciencia_sociedad.png" data-background-size="80%">
+<section id="section-13" class="slide level2" data-background-image="img/figura_modelo_hibrido_ciencia_sociedad.png" data-background-size="80%">
 <h2></h2>
 </section>
-<section id="qué-cambia-respecto-al-positivismo-de-comte" class="slide level2 center">
+<section id="qué-cambia-respecto-al-positivismo-de-comte" class="slide level2">
 <h2>¿Qué cambia respecto al positivismo de Comte?</h2>
 <ul>
 <li>La ciencia ya no gobierna sola</li>
@@ -474,33 +953,61 @@ la decisión emerge de su interacción</p>
 <li>La incertidumbre no se elimina</li>
 <li>Los valores se hacen explícitos</li>
 </ul>
-<div class="planta">
+<div class="apuntar">
 <ul>
 <li>Pero la ciencia sigue siendo indispensable</li>
 </ul>
 </div>
 </section>
-<section id="implicación-final" class="slide level2 center">
+<section id="implicación-final" class="slide level2">
 <h2>Implicación final</h2>
+<div class="centrar-contenedor">
 <blockquote>
 <p>Usamos herramientas positivistas<br>
 para decidir en un mundo no positivista</p>
 </blockquote>
+</div>
 </section>
-<section id="para-reflexionar" class="slide level2 center">
-<h2>Para reflexionar</h2>
+<section id="para-una-reflexión-en-calma" class="slide level2">
+<h2>Para una reflexión en calma</h2>
+<div class="centrar-contenedor">
 <blockquote>
-<p>Gobernar bajo incertidumbre<br>
-no es aplicar modelos,<br>
-sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
+<p>Gobernar procesos bajo incertidumbre<br>
+no se resuelve sólo con aplicar modelos,<br>
+se requiere <strong>articular evidencia, valores y las reglas prácticas de la cultura</strong></p>
 </blockquote>
+</div>
+</section>
+<section id="cuáles-son-los-aspectos-clave-para-diseñar-un-experimentoestudio" class="slide level2">
+<h2>4 ¿Cuáles son los aspectos CLAVE para diseñar un experimento/estudio?</h2>
+<div class="header">
+<p><strong>Participa: vevox.app ID: 144-565-419</strong></p>
+</div>
+</section>
+<section id="section-14" class="slide level2" data-background-iframe="https://vevox.app/#/m/144565419?integration=embed" data-background-interactive="true">
+<h2></h2>
 
 
+<div class="reveal-header">
+<div class="header-logo">
+<img data-src="">
+</div>
+<div class="sc-title">
+<p> </p>
+</div>
+<div class="header-text">
+<p> </p>
+</div>
+<div class="sb-title">
+<p> </p>
+</div>
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="img/Logo-Inecol.png" class="slide-logo"></p>
 <div class="footer footer-default">
-
+<p><a href="https://2026-m3-causalidad.netlify.app/">M3-Causalidad</a></p>
 </div>
 </div></div>
 
@@ -511,6 +1018,7 @@ sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
   <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -532,7 +1040,8 @@ sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -582,7 +1091,7 @@ sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
         disableLayout: false,
 
         // Vertical centering of slides
-        center: true,
+        center: false,
 
         // Enables touch navigation on devices with touch input
         touch: true,
@@ -624,7 +1133,7 @@ sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
         autoPlayMedia: null,
 
         // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
+        preloadIframes: true,
 
         // Number of milliseconds between automatically proceeding to the
         // next slide, disabled when set to 0, this value can be overwritten
@@ -658,7 +1167,7 @@ sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
+        transition: 'convex',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -703,7 +1212,7 @@ sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -734,12 +1243,12 @@ sino <strong>articular evidencia, valores y reglas prácticas</strong></p>
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copiado");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copiado");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",
