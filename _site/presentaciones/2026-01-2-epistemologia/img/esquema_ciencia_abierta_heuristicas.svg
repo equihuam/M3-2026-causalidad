@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill:#fafafa; }
+      .title { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:34px; font-weight:800; fill:#111; }
+      .subtitle { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:18px; font-weight:500; fill:#333; }
+      .h { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:22px; font-weight:800; fill:#111; }
+      .t { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:18px; font-weight:600; fill:#111; }
+      .s { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:16px; font-weight:500; fill:#222; }
+      .small { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:14px; font-weight:500; fill:#444; }
+      .box { fill:#fff; stroke:#111; stroke-width:2.2; rx:18; ry:18; }
+      .pill { fill:#fff; stroke:#111; stroke-width:2.2; rx:999; ry:999; }
+      .panel { fill:#f4f4f5; stroke:#111; stroke-width:2.2; rx:22; ry:22; }
+      .arrow { fill:none; stroke:#111; stroke-width:2.2; marker-end:url(#arrow); }
+      .arrowDash { fill:none; stroke:#111; stroke-width:2.2; stroke-dasharray:7 7; marker-end:url(#arrow); }
+      .muted { fill:#555; }
+    ]]></style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="800"/>
+
+  <text class="title" x="70" y="78">Ciencia abierta como infraestructura para heurísticas colectivas</text>
+  <text class="subtitle" x="70" y="110">Racionalidad limitada asumida → diseño de prácticas simples, compartidas y auditables</text>
+
+  <!-- Top: constraints -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="70" y="155" width="1260" height="170"/>
+  </g>
+  <text class="h" x="110" y="205">Racionalidad limitada (condición de partida)</text>
+  <text class="s muted" x="110" y="235">Nadie domina el sistema completo: ni modelos, ni datos, ni decisiones.</text>
+
+  <rect class="pill" x="110" y="255" width="360" height="52"/>
+  <text class="t" x="140" y="288">Nadie entiende todo el modelo</text>
+
+  <rect class="pill" x="520" y="255" width="340" height="52"/>
+  <text class="t" x="550" y="288">Nadie controla todos los datos</text>
+
+  <rect class="pill" x="900" y="255" width="340" height="52"/>
+  <text class="t" x="940" y="288">Nadie decide solo</text>
+
+  <!-- Middle: open science infrastructure -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="250" y="355" width="900" height="150"/>
+  </g>
+  <text class="h" x="295" y="405">Ciencia abierta (infraestructura socio-técnica)</text>
+  <text class="s muted" x="295" y="435">Datos y código compartidos • metadatos • versiones • trazabilidad • revisión abierta</text>
+
+  <rect class="box" x="295" y="455" width="810" height="40"/>
+  <text class="s" x="320" y="482">Objetivo: evidencia <tspan font-weight="800">visible</tspan>, <tspan font-weight="800">reutilizable</tspan> y supuestos/incertidumbre <tspan font-weight="800">auditables</tspan></text>
+
+  <!-- Arrows down -->
+  <path class="arrow" d="M 290 325 C 290 345, 290 345, 290 355"/>
+  <path class="arrow" d="M 700 325 C 700 345, 700 345, 700 355"/>
+  <path class="arrow" d="M 1110 325 C 1110 345, 1110 345, 1110 355"/>
+
+  <!-- Bottom: needs -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="70" y="535" width="1260" height="195"/>
+  </g>
+  <text class="h" x="110" y="585">Prácticas necesarias (para decidir y aprender)</text>
+
+  <rect class="box" x="110" y="610" width="280" height="80"/>
+  <text class="t" x="135" y="642">Visualizaciones simples</text>
+  <text class="small muted" x="135" y="668">hacer comprensible lo complejo</text>
+
+  <rect class="box" x="420" y="610" width="280" height="80"/>
+  <text class="t" x="445" y="642">Indicadores comprensibles</text>
+  <text class="small muted" x="445" y="668">señales para deliberar</text>
+
+  <rect class="box" x="730" y="610" width="280" height="80"/>
+  <text class="t" x="755" y="642">Umbrales explícitos</text>
+  <text class="small muted" x="755" y="668">riesgo, precaución, límites</text>
+
+  <rect class="box" x="1040" y="610" width="280" height="80"/>
+  <text class="t" x="1065" y="642">Reglas compartidas</text>
+  <text class="small muted" x="1065" y="668">protocolos y acuerdos</text>
+
+  <!-- Output: collective heuristics -->
+  <rect class="pill" x="410" y="715" width="580" height="58"/>
+  <text class="t" x="455" y="752">Heurísticas explícitas y colectivas (no optimización perfecta)</text>
+
+  <path class="arrowDash" d="M 700 505 C 700 520, 700 520, 700 535"/>
+  <text class="small muted" x="520" y="523">traduce incertidumbre en reglas de decisión practicables</text>
+
+</svg>

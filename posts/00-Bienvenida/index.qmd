@@ -29,7 +29,7 @@ library(patchwork)
 
 ```
 
-![](img/data-structure.png){width="800"}
+![](img/causalidad-dags-diseño.png){width=600}
 
 ## Objetivos del Módulo 3
 

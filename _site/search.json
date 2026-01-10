@@ -4,21 +4,21 @@
     "href": "presentaciones.html",
     "title": "M3-Presentaciones",
     "section": "",
-    "text": "Heurística, racionalidad y epistemologías en contraste\n\n\nDel positivismo a enfoques no positivistas\n\n\n\n\n\n\n\n\nMiguel Eq.\n\n\n\n\n\nNo hay resultados"
+    "text": "Racionalidad, heurísticas y epistemologías en contraste\n\n\nDel positivismo a modelos híbridos ciencia–sociedad\n\n\n\n\n\n\n\n\nMiguel Equihua\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "posts/01-concepto-y-modelos-experimentar/index.html",
     "href": "posts/01-concepto-y-modelos-experimentar/index.html",
     "title": "Conceptos y Modelos en la experimentación",
     "section": "",
-    "text": "Lógica, probabilidad y heurística son tres ideas centrales en la historia del intelecto humano. A la aspiración de la lógica aristotélica se agregó a mediados del siglo XVII la teoría de la probabilidades, que matizó la certeza de la lógica al aportar una teoría con una postura más modesta en torno a la racionalidad. Su aparición ayudó a reconocer la existencia de una incertidumbre fundamental en la conducta humana. EINSTEIN (1905) introdujo el uso de la noción de heurística (sin definirla), como referencia al uso de la imaginación creativa a la que recurrimos los seres humanos para descubrir cosas nuevas, desde entonces el término ha florecido con matices diversos en todos los campos de la ciencia y las artes. Usamos estas tres herramientas para decidir científicamente, a veces suponiendo que reproducen la forma como opera nuestra mente. Veremos a continuación un ejemplo a este respecto que nos comparte McElreath (2020). Se trata del hipotético ejemplo de la prueba de sangre para vampirismo, que nos ayudaría a decidir si alguien es mortal o vampiro. Inicia por pedirnos imaginar que hay un análisis de sangre que detecta correctamente 95% de las veces, la afiliación de un individuo al linaje del conde Drácula y los inmortales vampiros. En notación matemática:\n\\[\n{Pr(resultado~ positivo~de~la~prueba|vampiro) = 0.95}\n\\]\nEs una prueba muy precisa, casi siempre identificando vampiros reales. Sin embargo, también falla a veces y reporta falsos positivos. Es así que el uno por ciento de las pruebas realizadas diagnostican incorrectamente a simples mortales como vampiros:\n\\[\n{Pr(resultado~positivo~de~la~prueba|mortal) = 0.01}\n\\]\nLa última pieza de información que necesitamos es saber que los vampiros en realidad son bastante raros. Sólo el 0.1% de la población lo es (esta es la que llamamos probabilidad a priori), lo que anotamos así:\n\\[\n{Pr(vampiro) = 0.001}\n\\]\nA partir de este conocimiento científico, supongamos que un amigo da positivo en el test de vampirismo.\n\n\n\n\n\n\n¿Cuál es la probabilidad de que sea un inmortal chupasangre\n\n\n\n\n\nEl enfoque de investigación formal empezaría por usar el teorema de Bayes para deducir la probabilidad \\({Pr(vampiro|positivo)}\\), lo que en cierta forma implica “invertir la probabilidad”, pues lo que ahora sabemos es el valor de \\({Pr(positivo|vampiro)}\\). El cálculo puede presentarse como:\n\\[\n\\Pr(vampiro|positivo) = \\frac{Pr(positivo|vampiro) \\times Pr(vampiro)}{Pr(positivo)}\n\\]\nen donde \\({Pr(positivo)}\\) es la probabilidad promedio de los resultados positivos de la prueba, es decir,\n\\[\nPr(positivo) = Pr(positivo|vampiro)\\times Pr(vampiro) + Pr(positivo|mortal) \\times ({1 − Pr(vampiro)})\n\\]\n\n\n\nTodo esto lo podemos hacer en R.\nPrimero tomamos nota de lo que ya sabemos a partir del enunciado anterior, ¡a priori! Por favor proporciona los datos requeridos en el recuadro siguiente.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSi queremos verificar los datos podemos verlos simplemente anotando el nombre de la tabla, en este caso: pr\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSi quisieras presentarla como una bonita tabla en tu reporte será mejor usar algo comoflextable o gt\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTomamos la fórmula de Bayes para invertir la probabilidad, pues queremos saber qué está pasando cuando tenemos la fortuna o desgracia de toparnos con un resultado positivo en la prueba de sangre:\n\\[\nPr(positivo|vampiro)\n\\]\nEsto equivale a preguntarnos, dado que ya vimos el resultado científico que significa la prueba de sangre, ¿será vampiro el sujeto de quien se obtuvo esa muestra?:\n\\[\nPr(vampiro|positivo)\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nPor lo tanto, esta es una estimación de la probabilidad de que el amigo sea en realidad un vampiro.\n\n\n\n\n\n\n¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?\n\n\n\n\n\n\nQuizás para ayudar a apreciar lo que todo esto significa conviene recordar la frase que se atribuye al economista John Maynard Keynes:\n\nCuando las circunstancias cambian, yo cambio de opinión. ¿Usted que hace?”\n\nEste es un resultado muy importante. Exactamente así, o algo muy parecido, es el procedimiento que se sigue en la realiad al efectuar pruebas diagnósticas: las pruebas de PCR, antígeno o anticuerpos para SarsCov-2, la prueba del VIH la del DNA en un perfil criminal y por supuesto la prueba de significancia estadística.\nQuizás ayude a mejorar la intuición que tenemos de las cosas el considerar que siempre que la condición de interés sea muy rara, desarrollar una prueba excelente, capaz de diagnosticar bien todos los casos verdaderos (aunque invitablemente produzca también algunos falsos positivos), puede no ser garantía suficiente de que un resultado positivo en general conlleve información categóricamente significativa.\nLa razón es que usualmente resulta inevitable tener falsos positivos y por simple aritmética, esos casos serán la mayoría de los resultados que tendremos, incluso si todos los verdaderos positivos fueran detectados correctamente.\nLa regla de Bayes es útil aquí, aunque, como dice McElreath, no es la única manera de razonar en este caso. Podríamos pensar que la ecuación que usamos aquí salio de la nada, aunque quizás la recuerdes de algún curso previo, de alguna charla interesante por ahí o incluso de lo que viste con Rosario ¡hace unas semanas!\nQuizás el ejemplo puede verse en forma más intuitiva utilizando otra narrativa para comprender lo que está ocurriendo. Digamos que en lugar de informar sobre las probabilidades, como antes, te digo lo siguiente:\n\nEn una población de 100,000 personas, 100 son vampiros.\nDe los 100 que son vampiros 95 darán positivo en la prueba de vampirismo.\nDe los 99,900 simples mortales restantes, 999 darán positivo a la prueba de vampirismo.\n\nAhora piensa en esto, si hacemos pruebas a las 100,000 personas, ¿qué proporción de los que dan positivo en las pruebas de vampirismo son realmente vampiros?\nMuchas personas, aunque ciertamente no todas, encuentran esta forma de contar la historia mucho más fácil. Sigamos por este camino.\n\n\n\n\n\n\n¿Qué tal si contamos el número de personas que dan positivo?\n\n\n\n\n\nAnota los valores que consideres adecuados en el recuadro\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nDe este total de pruebas positivas, sabemos que sólo 95 provienen verdaderamente de vampiros, lo que nos lleva sencillamente a pregutarnos sobre la fracción que significa esa cantidad de vampiros entre la totalidad de pruebas positivas.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n¿Qué valor obtuviste?\nSi todo marcho bien deberías tener exactamente la misma respuesta que por el camino bayesiano que encontramos antes. L diferencia es que en este caso, no tuvimos que recordar la ´“formula mágica” de Bayes, nada más tuvimos que imgainar la situación de otra manera y simplemente contar y pensar con calma.\nEsta forma de presentar el problema mediante el “conteo de los actores” en lugar de recurrir a probabilidades, suele denominarse formato de frecuencia o frecuencias naturales. En odo caso, lo importante es apreciar que el razonamiento puede beneficiarse de adoptar formas frugales e intuitivas (Gigerenzer y Gray 2017; HICKS et al. 2012).\nLas razones propuestas para explicar el por qué el formato de frecuencia ayuda a la gente a intuir el enfoque correcto siguen siendo polémicas. Podría ser que de entrada sólo podemos encontrarnos con conteos en el mundo real. Quizás sea cierto que nadie ha visto nunca una probabilidad andando por ahí. Independientemente de la explicación de este fenómeno, podemos explotarlo en muchas situaciones cotidianas.\n\n\n\nLos eventos muestreados en el análisis de las distribuciones de probabilidades de modelos estadísticos en algún análisis de datos, son los valores de los parámetros. La mayoría de los parámetros no tienen una “materialización” empírica exacta.\nEl formalismo bayesiano trata las distribuciones de los parámetros como una plausibilidad relativa, no como un proceso aleatorio que ocurre en el mundo físico. En cualquier caso, la aleatoriedad es siempre una propiedad de la información, nunca del mundo real. Para continuar explorando esta idea puede interesarte los textos de Gigerenzer)\n\n\n\nEl ejemplo del vampirismo que acabamos de ver tiene la misma estructura lógica que muchos problemas de detección considerando que:\n\nHay algún estado binario al que no tenemos acceso.\nObservamos un indicio imperfecto del estado oculto.\n(Deberíamos/podríamos) usar el teorema de Bayes para deducir lógicamente el impacto del indicio en nuestra incertidumbre (aunque ve lo que salió en el periódico)\n\nLa inferencia científica puede enmarcase en términos similares:\n\nUna hipótesis es verdadera o falsa, pero no podemos saberlo;\nObtenemos un indicio estadístico de la falsedad de la hipótesis;\nDebemos/podemos utilizar el teorema de Bayes para deducir lógicamente el impacto del indicio en el estado de la hipótesis.\n\nEs el tercer paso el que casi nunca se hace. Sin debatir por lo pronto si debemos o no usar a Bayes, consideremos por un momento la idea como un ejemplo de juguete.\n\n\n\n\n\nSupongamos que la probabilidad de obtener un hallazgo positivo, cuando la hipótesis postulada es cierta, es \\({Pr(señal~detectada|verdadero) =Pr(H|V) = 0.95}\\).\nEse es lo que se suele llamar la potencia de la prueba.\n\n\n\nSupongamos que la probabilidad de un hallazgo positivo, cuando una hipótesis es falsa, es \\({Pr(señal~detectada|falso) = Pr(H|F) = 0.05}\\).\nEsa es la tasa de falsos positivos, se trata del, digamos 5%, de la prueba de significancia que usamos convencionalmente.\n\n\n\nFinalmente, tenemos que establecer la tasa base con la que ocurren las hipótesis que son verdaderas. Supongamos, por ejemplo, que 1 de cada 100 hipótesis resulta ser verdadera. Entonces\n\\({Pr(verdadero) = P(V) = 0.01}\\).\nEn realidad nadie conoce este valor ni se ve posible conocerlo, pero la historia de la ciencia sugiere que es pequeño.\n\n\n\nPara averiguar esto, calculamos la componente a posteriori:\n\\[\nPr(detectada|Hipótesis) = \\frac{Pr(Hipótesis|detectada) Pr(detectado)} {Pr(Hipótesis)} = \\\\\n\\\\\n\\frac{Pr(H|V) Pr(V)} {Pr(H|V) Pr(V) + Pr(H|F) Pr(F)}\n\\\\\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nComo podemos ver, al substituir los valores imaginados, encontramos que la respuesta es aproximadamente \\({Pr(V|H) = 0.16}\\).\nAsí que un resultado positivo corresponde a un 16% de probabilidad de que la hipótesis sea cierta.\nEste es el mismo fenómeno de baja tasa de base que se aplica en las pruebas médicas (y también en nuestro ejemplo de vampiros).\n\n\n\n\n\n\n¿Podremos mejorar la práctica científica?\n\n\n\n\n\n\n\n\n\n\n\n\nExperimentos pensados\n\n\n\n\n\nUna manera de explorar lo que puede pasar en distintos escenarios, asumiendo un razonamiento específico, nos da oportunidad de valorar la utilidad de hacer un escript, algoritmo o programa. Así podemos automatizar una tarea repetitiva y potencialmente aburrida para ver las implicaciones de la idea en todo tipo de situaciones. Qizás podríamos considerarlo semejante a lo qe Einstein llamaba experimento pensado. Veamos como hacerlo.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nHemos definido un programa como una función en R. Esta función puede tomar datos y procesarlos de acuerdo con la lógica que le hemos especificado.\nAhora podemos experimentar para tener una idea aproximada de lo que está pasando.\n\nElegimos una serie de valores de interés (cada uno sería un escenario)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPreparamos un espacio en la memoria para anotar los resultados.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nVeamos los resultados del experimento con ayuda de una gráfica.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n¿Tú que piensas?\n\n\n\n\n\nUna investigación muy exigente que reduce la detección de falsos positivos a 1%, nos permite llevar la probabilidad posterior de descubrimientos exitosos hasta 0.5.\nApenas tan buena como el lanzamiento de una moneda.\nPodemos pensar que lo que hemos hecho hasta aquí es prácticamente un juego, pero ¿qué tan cercano podría ser a lo que ocurre en la vida real? y si fuera una razonable aproximación ¿a qué nos conduce?\n¿Qué conclusiones surgen de esta experiencia?\n\n¿Lo más importante es mejorar la probabilidad de detección base, \\({Pr(V)}\\)?\n¿Qué implicaría y cómo se podría lograr mejorar \\({Pr(V)}\\)?\n¿Es posible hacer que esa probabilidad crezca?\n¿Simpre incrementar el número de veces que se repite el tratamiento (tamaño de muestra?\n¿Sólo aceptar como significativos resultados muy altamente significativos?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFuente: Stoddart, C. (2016). Is there a reproducibility crisis in science?. Nature\n\n\n\n\n\n\n\n\n\n\n¿Ha mejorado la situación?\n\n\n\n\n\n\n\n\nLa falta de reproducibilidad de los experimentos se traduce en artículos que son cuestionados y se ven forzados a retirarse. Claro, no es la única razón para retirar un artículo, pero si la más frecuente. A fines del año pasado salió esta noticia en Nature.\n\n\n\n\n \n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\nSin duda la forma como hemos optado por hacer ciencia está teniendo problemas que debemos afrontar. La cuestión es que podemos o más bien que debemos hacer para enfrentarlos productivamente y así producir una ciencia mejor.\n\n\n\n\n\n\nBuscar la verdad\n\n\n\n\n\n\n\n\n\nLa búsqueda de la verdad siempre debería prevalecer sobre el deseo defensivo del ego de tener la razón. Esto no es fácil, porque a la mayoría de la gente le resulta difícil admitir que se equivoca. Y es precisamente por esto por lo que la ciencia resulta tan liberadora. Provee un marco de trabajo para la autocorrección, porque el conocimiento científico siempre es provisional. Un hecho científico aceptado hoy puede ser refutado mañana. Por tanto, el método científico engendra humildad epistemológica.\n\n\n\n \n\n\n\n\n\n\nGad Saad\n\n\n\n\n\n\nReflexión sobre prepublicación\nEcoEvorxiv\npreprints.org\nNature\nOpen Science Facility\nScience"
+    "text": "Lógica, probabilidad y heurísticason tres ideas centrales en la historia del intelecto humano. A la aspiración de la lógica aristotélica se agregó a mediados del siglo XVII la teoría de las probabilidades, que matizó la certeza de la lógica al aportar una teoría con una postura más modesta en torno a la racionalidad. Su aparición ayudó a reconocer la existencia de una incertidumbre fundamental en la conducta humana. EINSTEIN (1905) revaloró la intuición, con su uso de la noción de heurística,como recurso que recurre a la imaginación creativa y a la perspicacia de los seres humanos para descubrir cosas nuevas. Desde entonces el término ha florecido con matices diversos en todos los campos de la ciencia, la tecnología y las artes. Usamos estas tres herramientas para decidir científicamente, a veces suponiendo que reproducen la forma como opera nuestra mente. Veremos a continuación un ejemplo a este respecto que nos comparte McElreath (2020). Se trata del hipotético ejemplo de la prueba de sangre para vampirismo, que nos ayudaría a decidir si alguien es mortal o vampiro.\nInicia por pedirnos imaginar que hay un análisis de sangre que detecta correctamente 95% de las veces, la afiliación de un individuo al linaje del conde Drácula y los inmortales vampiros. En notación matemática:\n\\[\n{Pr[resultado~ positivo~de~la~prueba|vampiro]= 0.95}\n\\]\nEs una prueba muy precisa, casi siempre identificando vampiros reales. Sin embargo, también falla a veces y reporta falsos positivos. Es así que el uno por ciento de las pruebas realizadas diagnostican incorrectamente a simples mortales como vampiros:\n\\[\n{Pr[resultado~positivo~de~la~prueba|mortal]= 0.01}\n\\]\nLa última pieza de información que necesitamos es saber que los vampiros en realidad son bastante raros. Sólo el 0.1% de la población lo es (esta es la que llamamos probabilidad a priori), lo que anotamos así:\n\\[\n{Pr[vampiro]= 0.001}\n\\]\nA partir de este conocimiento científico, supongamos que un amigo da positivo en el test de vampirismo.\n\n\n\n\n\n\n¿Cuál es la probabilidad de que sea un inmortal chupasangre\n\n\n\n\n\nEl enfoque de investigación formal empezaría por usar el teorema de Bayes para deducir la probabilidad \\({Pr(vampiro|positivo)}\\), lo que en cierta forma implica “invertir la probabilidad”, pues lo que ahora sabemos es el valor de \\({Pr(positivo|vampiro)}\\). El cálculo puede presentarse como:\n\\[\nPr[vampiro|positivo]= \\frac{Pr[positivo|vampiro]\\times Pr[vampiro]}{Pr[positivo]}\n\\]\nen donde \\({Pr[positivo]}\\) es la probabilidad promedio de los resultados positivos de la prueba, es decir,\n\\[\nPr[positivo]= Pr[positivo|vampiro]\\times Pr[vampiro] + Pr[positivo|mortal] \\times ({1 − Pr[vampiro]})\n\\]\n\n\n\nTodo esto lo podemos hacer en R.\nPrimero tomamos nota de lo que ya sabemos a partir del enunciado anterior, ¡a priori! Por favor proporciona los datos requeridos en el recuadro siguiente.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSi queremos verificar los datos podemos verlos simplemente anotando el nombre de la tabla, en este caso: pr\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSi quisieras presentarla como una bonita tabla en tu reporte será mejor usar algo comoflextable o gt\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTomamos la fórmula de Bayes para invertir la probabilidad, pues queremos saber qué está pasando cuando tenemos la fortuna o desgracia de toparnos con un resultado positivo en la prueba de sangre:\n\\[\nPr[positivo|vampiro]\n\\]\nEsto equivale a preguntarnos, dado que ya vimos el resultado científico que significa la prueba de sangre, ¿será vampiro el sujeto de quien se obtuvo esa muestra?. Esta es una manera de estimar la probabilidad de que el amigo sea en realidad un vampiro, dado el conocimiento y la evidencia que tenemos a la mano.\n\\[\nPr[vampiro|positivo]\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?\n\n\n\n\n\n\nQuizás para ayudar a apreciar lo que todo esto significa conviene recordar la frase que se atribuye al economista John Maynard Keynes:\n\nCuando las circunstancias cambian, yo cambio de opinión. ¿Tú que haces?”\n\nSi hubiera nueva evidencia dispoible, el proceso se aplicaría en secuencia. Lo que lleva a la siguiente expresión que sugiere como se puede generalizar este proceso de razoamiento. Pero por ahora ya no ahondaremos más en esto.\n\\[\nPr[H|E_1,E_2] = \\frac{Pr[E_2|H,E_1] \\times Pr[H|E_1]} {Pr[E_2|E_1]}\n\\]\nEste es un resultado muy importante. Exactamente así, o algo muy parecido, es el procedimiento que se sigue en la realiad al efectuar pruebas diagnósticas: las pruebas de PCR, antígeno o anticuerpos para SarsCov-2, la prueba del VIH la del DNA en un perfil criminal, etc. La prueba de significancia estadística, ¿entrará en este mismo marco conceptual?.\nQuizás ayude a mejorar la intuición que tenemos de las cosas el considerar que siempre que la condición de interés sea muy rara, desarrollar una prueba excelente, capaz de diagnosticar bien todos los casos verdaderos (aunque invitablemente produzca también algunos falsos positivos), puede no ser garantía suficiente de que un resultado positivo en general conlleve información categóricamente significativa.\nLa razón es que usualmente resulta inevitable tener falsos positivos y por simple aritmética, esos casos serán la mayoría de los resultados que tendremos, incluso si todos los verdaderos positivos fueran detectados correctamente.\nLa regla de Bayes es útil aquí, aunque, como dice McElreath, no es la única manera de razonar en este caso. Podríamos cuestionar que la ecuación que usamos aquí salio de la nada; aunque quizás la recuerdes de algún curso previo, de alguna charla interesante por ahí o incluso de lo que viste con Rosario ¡hace unas semanas!\nQuizás el ejemplo puede verse en forma más intuitiva utilizando otra narrativa para comprender lo que está ocurriendo. Digamos que en lugar de informar sobre las probabilidades, como hicimos arriba, te digo lo siguiente:\n\nEn una población de 100,000 personas, 100 son vampiros.\nDe los 100 que son vampiros 95 darán positivo en la prueba de vampirismo.\nDe los 99,900 simples mortales restantes, 999 darán positivo a la prueba de vampirismo.\n\nAhora piensa en esto, si hacemos pruebas a las 100,000 personas, ¿qué proporción de los que dan positivo en las pruebas de vampirismo son realmente vampiros?\nMuchas personas, aunque ciertamente no todas, encuentran esta forma de contar la historia mucho más fácil de comprender. Sigamos por este camino.\n\n\n\n\n\n\n¿Qué tal si contamos el número de personas que dan positivo?\n\n\n\n\n\nAnota los valores que consideres adecuados en el recuadro\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nDe este total de pruebas positivas, sabemos que sólo 95 provienen verdaderamente de vampiros, lo que nos lleva sencillamente a pregutarnos sobre la fracción que significa esa cantidad de vampiros entre la totalidad de pruebas positivas.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n¿Qué valor obtuviste?\nSi todo marcho bien deberías tener exactamente la misma respuesta que por el camino bayesiano que encontramos antes. La diferencia es que ahora, no tuvimos que recordar la “formula mágica” de Bayes, nada más tuvimos que imgainar la situación de otra manera y simplemente contar y pensar con calma.\nEsta forma de presentar el problema mediante el “conteo de los actores” en lugar de recurrir a probabilidades, suele denominarse formato de frecuencia o frecuencias naturales. En todo caso, lo importante es apreciar que el razonamiento puede beneficiarse de adoptar formas de razonamiento frugales e intuitivas (Gigerenzer y Gray 2017; HICKS et al. 2012).\nLas razones propuestas para explicar el por qué el formato de frecuencia ayuda a la gente a intuir el enfoque correcto siguen siendo polémicas. Podría ser que de entrada sólo podemos encontrarnos con conteos en el mundo real. Quizás sea cierto que nadie ha visto nunca una probabilidad andando por ahí. Independientemente de la explicación de este fenómeno, podemos explotarlo en muchas situaciones cotidianas.\n\n\n\nLos eventos muestreados en el análisis de las distribuciones de probabilidades de modelos estadísticos en algún análisis de datos, son los valores de los parámetros. La mayoría de los parámetros no tienen una “materialización” empírica exacta.\nEl formalismo bayesiano trata las distribuciones de los parámetros como una plausibilidad relativa, no como un proceso aleatorio que ocurre en el mundo físico. En cualquier caso, la aleatoriedad es siempre una propiedad de la información, nunca del mundo real. Para continuar explorando esta idea puede interesarte los textos de Gigerenzer)\n\n\n\nEl ejemplo del vampirismo que acabamos de ver tiene la misma estructura lógica que muchos problemas de detección considerando que:\n\nHay algún estado binario al que no tenemos acceso.\nObservamos un indicio imperfecto del estado oculto.\n(Deberíamos/podríamos) usar el teorema de Bayes para deducir lógicamente el impacto del indicio en nuestra incertidumbre (aunque ve lo que salió en el periódico)\n\nLa inferencia científica puede enmarcase en términos similares:\n\nUna hipótesis es verdadera o falsa, pero no podemos saberlo;\nObtenemos un indicio estadístico de la falsedad de la hipótesis;\nDebemos/podemos utilizar el teorema de Bayes para deducir lógicamente el impacto del indicio en el estado de la hipótesis.\n\nEs el tercer paso el que casi nunca se hace. Sin debatir por lo pronto si debemos o no usar a Bayes, consideremos por un momento la idea como un ejemplo de juguete.\n\n\n\n\n\nSupongamos que la probabilidad de obtener un hallazgo positivo, cuando la hipótesis postulada es cierta, es \\({Pr[señal~detectada|verdadero]=Pr[H|V]= 0.95}\\).\nEse es lo que se suele llamar la potencia de la prueba.\n\n\n\nSupongamos que la probabilidad de un hallazgo positivo, cuando una hipótesis es falsa, es \\({Pr[señal~detectada|falso]= Pr[H|F]= 0.05}\\).\nEsa es la tasa de falsos positivos, se trata del, digamos 5%, de la prueba de significancia que usamos convencionalmente.\n\n\n\nFinalmente, tenemos que establecer la tasa base con la que ocurren las hipótesis que son verdaderas. Supongamos, por ejemplo, que 1 de cada 100 hipótesis resulta ser verdadera. Entonces\n\\({Pr[verdadero]= P(V) = 0.01}\\).\nEn realidad nadie conoce este valor ni se ve posible conocerlo, pero la historia de la ciencia sugiere que es pequeño.\n\n\n\nPara averiguar esto, calculamos la componente a posteriori:\n\\[\nPr[detectada|Hipótesis]= \\frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipótesis)} = \\\\\n\\\\\n\\frac{Pr[H|V]Pr[V)} {Pr(H|V]Pr[V]+ Pr[H|F]Pr(F)}\n\\\\\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nComo podemos ver, al substituir los valores imaginados, encontramos que la respuesta es aproximadamente \\({Pr[V|H]= 0.16}\\).\nAsí que un resultado positivo corresponde a un 16% de probabilidad de que la hipótesis sea cierta.\nEste es el mismo fenómeno de baja tasa de base que se aplica en las pruebas médicas (y también en nuestro ejemplo de vampiros).\n\n\n\n\n\n\n¿Podremos mejorar la práctica científica?\n\n\n\n\n\n\n\n\n\n\n\n\nExperimentos pensados\n\n\n\n\n\nUna manera de explorar lo que puede pasar en distintos escenarios, asumiendo un razonamiento específico, nos da oportunidad de valorar la utilidad de hacer un escript, algoritmo o programa. Así podemos automatizar una tarea repetitiva y potencialmente aburrida para ver las implicaciones de la idea en todo tipo de situaciones. Qizás podríamos considerarlo semejante a lo qe Einstein llamaba experimento pensado. Veamos como hacerlo.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nHemos definido un programa como una función en R. Esta función puede tomar datos y procesarlos de acuerdo con la lógica que le hemos especificado.\nAhora podemos experimentar para tener una idea aproximada de lo que está pasando.\n\nElegimos una serie de valores de interés (cada uno sería un escenario)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPreparamos un espacio en la memoria para anotar los resultados.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nVeamos los resultados del experimento con ayuda de una gráfica.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n¿Tú que piensas?\n\n\n\n\n\nUna investigación muy exigente que reduce la detección de falsos positivos a 1%, nos permite llevar la probabilidad posterior de descubrimientos exitosos hasta 0.5.\nApenas tan buena como el lanzamiento de una moneda.\nPodemos pensar que lo que hemos hecho hasta aquí es prácticamente un juego, pero ¿qué tan cercano podría ser a lo que ocurre en la vida real? y si fuera una razonable aproximación ¿a qué nos conduce?\n¿Qué conclusiones surgen de esta experiencia?\n\n¿Lo más importante es mejorar la probabilidad de detección base, \\({Pr(V)}\\)?\n¿Qué implicaría y cómo se podría lograr mejorar \\({Pr(V)}\\)?\n¿Es posible hacer que esa probabilidad crezca?\n¿Simpre incrementar el número de veces que se repite el tratamiento (tamaño de muestra?\n¿Sólo aceptar como significativos resultados muy altamente significativos?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFuente: Stoddart, C. (2016). Is there a reproducibility crisis in science?. Nature\n\n\n\n\n\n\n\n\n\n\n¿Ha mejorado la situación?\n\n\n\n\n\n\n\n\nLa falta de reproducibilidad de los experimentos se traduce en artículos que son cuestionados y se ven forzados a retirarse. Claro, no es la única razón para retirar un artículo, pero si la más frecuente. A fines del año pasado salió esta noticia en Nature.\n\n\n\n\n \n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\nSin duda la forma como hemos optado por hacer ciencia está teniendo problemas que debemos afrontar. La cuestión es que podemos o más bien que debemos hacer para enfrentarlos productivamente y así producir una ciencia mejor.\n\n\n\n\n\n\nBuscar la verdad\n\n\n\n\n\n\n\n\n\nLa búsqueda de la verdad siempre debería prevalecer sobre el deseo defensivo del ego de tener la razón. Esto no es fácil, porque a la mayoría de la gente le resulta difícil admitir que se equivoca. Y es precisamente por esto por lo que la ciencia resulta tan liberadora. Provee un marco de trabajo para la autocorrección, porque el conocimiento científico siempre es provisional. Un hecho científico aceptado hoy puede ser refutado mañana. Por tanto, el método científico engendra humildad epistemológica.\n\n\n\n \n\n\n\n\n\n\nGad Saad\n\n\n\n\n\n\nReflexión sobre prepublicación\nEcoEvorxiv\npreprints.org\nNature\nOpen Science Facility\nScience"
   },
   {
     "objectID": "posts/01-concepto-y-modelos-experimentar/index.html#estadística-para-mejorar-la-ciencia",
     "href": "posts/01-concepto-y-modelos-experimentar/index.html#estadística-para-mejorar-la-ciencia",
     "title": "Conceptos y Modelos en la experimentación",
     "section": "",
-    "text": "El ejemplo del vampirismo que acabamos de ver tiene la misma estructura lógica que muchos problemas de detección considerando que:\n\nHay algún estado binario al que no tenemos acceso.\nObservamos un indicio imperfecto del estado oculto.\n(Deberíamos/podríamos) usar el teorema de Bayes para deducir lógicamente el impacto del indicio en nuestra incertidumbre (aunque ve lo que salió en el periódico)\n\nLa inferencia científica puede enmarcase en términos similares:\n\nUna hipótesis es verdadera o falsa, pero no podemos saberlo;\nObtenemos un indicio estadístico de la falsedad de la hipótesis;\nDebemos/podemos utilizar el teorema de Bayes para deducir lógicamente el impacto del indicio en el estado de la hipótesis.\n\nEs el tercer paso el que casi nunca se hace. Sin debatir por lo pronto si debemos o no usar a Bayes, consideremos por un momento la idea como un ejemplo de juguete.\n\n\n\n\n\nSupongamos que la probabilidad de obtener un hallazgo positivo, cuando la hipótesis postulada es cierta, es \\({Pr(señal~detectada|verdadero) =Pr(H|V) = 0.95}\\).\nEse es lo que se suele llamar la potencia de la prueba.\n\n\n\nSupongamos que la probabilidad de un hallazgo positivo, cuando una hipótesis es falsa, es \\({Pr(señal~detectada|falso) = Pr(H|F) = 0.05}\\).\nEsa es la tasa de falsos positivos, se trata del, digamos 5%, de la prueba de significancia que usamos convencionalmente.\n\n\n\nFinalmente, tenemos que establecer la tasa base con la que ocurren las hipótesis que son verdaderas. Supongamos, por ejemplo, que 1 de cada 100 hipótesis resulta ser verdadera. Entonces\n\\({Pr(verdadero) = P(V) = 0.01}\\).\nEn realidad nadie conoce este valor ni se ve posible conocerlo, pero la historia de la ciencia sugiere que es pequeño.\n\n\n\nPara averiguar esto, calculamos la componente a posteriori:\n\\[\nPr(detectada|Hipótesis) = \\frac{Pr(Hipótesis|detectada) Pr(detectado)} {Pr(Hipótesis)} = \\\\\n\\\\\n\\frac{Pr(H|V) Pr(V)} {Pr(H|V) Pr(V) + Pr(H|F) Pr(F)}\n\\\\\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nComo podemos ver, al substituir los valores imaginados, encontramos que la respuesta es aproximadamente \\({Pr(V|H) = 0.16}\\).\nAsí que un resultado positivo corresponde a un 16% de probabilidad de que la hipótesis sea cierta.\nEste es el mismo fenómeno de baja tasa de base que se aplica en las pruebas médicas (y también en nuestro ejemplo de vampiros).\n\n\n\n\n\n\n¿Podremos mejorar la práctica científica?\n\n\n\n\n\n\n\n\n\n\n\n\nExperimentos pensados\n\n\n\n\n\nUna manera de explorar lo que puede pasar en distintos escenarios, asumiendo un razonamiento específico, nos da oportunidad de valorar la utilidad de hacer un escript, algoritmo o programa. Así podemos automatizar una tarea repetitiva y potencialmente aburrida para ver las implicaciones de la idea en todo tipo de situaciones. Qizás podríamos considerarlo semejante a lo qe Einstein llamaba experimento pensado. Veamos como hacerlo.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nHemos definido un programa como una función en R. Esta función puede tomar datos y procesarlos de acuerdo con la lógica que le hemos especificado.\nAhora podemos experimentar para tener una idea aproximada de lo que está pasando.\n\nElegimos una serie de valores de interés (cada uno sería un escenario)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPreparamos un espacio en la memoria para anotar los resultados.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nVeamos los resultados del experimento con ayuda de una gráfica.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n¿Tú que piensas?\n\n\n\n\n\nUna investigación muy exigente que reduce la detección de falsos positivos a 1%, nos permite llevar la probabilidad posterior de descubrimientos exitosos hasta 0.5.\nApenas tan buena como el lanzamiento de una moneda.\nPodemos pensar que lo que hemos hecho hasta aquí es prácticamente un juego, pero ¿qué tan cercano podría ser a lo que ocurre en la vida real? y si fuera una razonable aproximación ¿a qué nos conduce?\n¿Qué conclusiones surgen de esta experiencia?\n\n¿Lo más importante es mejorar la probabilidad de detección base, \\({Pr(V)}\\)?\n¿Qué implicaría y cómo se podría lograr mejorar \\({Pr(V)}\\)?\n¿Es posible hacer que esa probabilidad crezca?\n¿Simpre incrementar el número de veces que se repite el tratamiento (tamaño de muestra?\n¿Sólo aceptar como significativos resultados muy altamente significativos?"
+    "text": "El ejemplo del vampirismo que acabamos de ver tiene la misma estructura lógica que muchos problemas de detección considerando que:\n\nHay algún estado binario al que no tenemos acceso.\nObservamos un indicio imperfecto del estado oculto.\n(Deberíamos/podríamos) usar el teorema de Bayes para deducir lógicamente el impacto del indicio en nuestra incertidumbre (aunque ve lo que salió en el periódico)\n\nLa inferencia científica puede enmarcase en términos similares:\n\nUna hipótesis es verdadera o falsa, pero no podemos saberlo;\nObtenemos un indicio estadístico de la falsedad de la hipótesis;\nDebemos/podemos utilizar el teorema de Bayes para deducir lógicamente el impacto del indicio en el estado de la hipótesis.\n\nEs el tercer paso el que casi nunca se hace. Sin debatir por lo pronto si debemos o no usar a Bayes, consideremos por un momento la idea como un ejemplo de juguete.\n\n\n\n\n\nSupongamos que la probabilidad de obtener un hallazgo positivo, cuando la hipótesis postulada es cierta, es \\({Pr[señal~detectada|verdadero]=Pr[H|V]= 0.95}\\).\nEse es lo que se suele llamar la potencia de la prueba.\n\n\n\nSupongamos que la probabilidad de un hallazgo positivo, cuando una hipótesis es falsa, es \\({Pr[señal~detectada|falso]= Pr[H|F]= 0.05}\\).\nEsa es la tasa de falsos positivos, se trata del, digamos 5%, de la prueba de significancia que usamos convencionalmente.\n\n\n\nFinalmente, tenemos que establecer la tasa base con la que ocurren las hipótesis que son verdaderas. Supongamos, por ejemplo, que 1 de cada 100 hipótesis resulta ser verdadera. Entonces\n\\({Pr[verdadero]= P(V) = 0.01}\\).\nEn realidad nadie conoce este valor ni se ve posible conocerlo, pero la historia de la ciencia sugiere que es pequeño.\n\n\n\nPara averiguar esto, calculamos la componente a posteriori:\n\\[\nPr[detectada|Hipótesis]= \\frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipótesis)} = \\\\\n\\\\\n\\frac{Pr[H|V]Pr[V)} {Pr(H|V]Pr[V]+ Pr[H|F]Pr(F)}\n\\\\\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nComo podemos ver, al substituir los valores imaginados, encontramos que la respuesta es aproximadamente \\({Pr[V|H]= 0.16}\\).\nAsí que un resultado positivo corresponde a un 16% de probabilidad de que la hipótesis sea cierta.\nEste es el mismo fenómeno de baja tasa de base que se aplica en las pruebas médicas (y también en nuestro ejemplo de vampiros).\n\n\n\n\n\n\n¿Podremos mejorar la práctica científica?\n\n\n\n\n\n\n\n\n\n\n\n\nExperimentos pensados\n\n\n\n\n\nUna manera de explorar lo que puede pasar en distintos escenarios, asumiendo un razonamiento específico, nos da oportunidad de valorar la utilidad de hacer un escript, algoritmo o programa. Así podemos automatizar una tarea repetitiva y potencialmente aburrida para ver las implicaciones de la idea en todo tipo de situaciones. Qizás podríamos considerarlo semejante a lo qe Einstein llamaba experimento pensado. Veamos como hacerlo.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nHemos definido un programa como una función en R. Esta función puede tomar datos y procesarlos de acuerdo con la lógica que le hemos especificado.\nAhora podemos experimentar para tener una idea aproximada de lo que está pasando.\n\nElegimos una serie de valores de interés (cada uno sería un escenario)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPreparamos un espacio en la memoria para anotar los resultados.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nVeamos los resultados del experimento con ayuda de una gráfica.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n¿Tú que piensas?\n\n\n\n\n\nUna investigación muy exigente que reduce la detección de falsos positivos a 1%, nos permite llevar la probabilidad posterior de descubrimientos exitosos hasta 0.5.\nApenas tan buena como el lanzamiento de una moneda.\nPodemos pensar que lo que hemos hecho hasta aquí es prácticamente un juego, pero ¿qué tan cercano podría ser a lo que ocurre en la vida real? y si fuera una razonable aproximación ¿a qué nos conduce?\n¿Qué conclusiones surgen de esta experiencia?\n\n¿Lo más importante es mejorar la probabilidad de detección base, \\({Pr(V)}\\)?\n¿Qué implicaría y cómo se podría lograr mejorar \\({Pr(V)}\\)?\n¿Es posible hacer que esa probabilidad crezca?\n¿Simpre incrementar el número de veces que se repite el tratamiento (tamaño de muestra?\n¿Sólo aceptar como significativos resultados muy altamente significativos?"
   },
   {
     "objectID": "posts/01-concepto-y-modelos-experimentar/index.html#crisis-de-reproducibilidad",
@@ -170,30 +170,30 @@
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#punto-de-partida-histórico",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#punto-de-partida-histórico",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Punto de partida histórico",
-    "text": "Punto de partida histórico\n\nLógica clásica → certeza\nProbabilidad moderna → incertidumbre\nCiencia como cálculo del comportamiento humano\n\n\nLa probabilidad fue concebida como\nsentido común reducido a cálculo"
+    "text": "Punto de partida histórico\n\nLógica clásica → certeza\nProbabilidad moderna → incertidumbre\nCiencia como cálculo del comportamiento humano\n\n\n“La probabilidad es sentido común reducido a cálculo”"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#ideal-positivista-de-la-racionalidad",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#ideal-positivista-de-la-racionalidad",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Ideal positivista de la racionalidad",
-    "text": "Ideal positivista de la racionalidad\n\nExiste una racionalidad universal\nPuede formalizarse matemáticamente\nEl error es desviación del modelo normativo\nObjetivo: predicción y control\n\n\nIlustración sugerida: diagrama de probabilidad clásica"
+    "text": "Ideal positivista de la racionalidad\n\nRacionalidad universal\nFormalización matemática\nPredicción y control\nNeutralidad del observador"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#racionalidad-limitada",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#racionalidad-limitada",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Racionalidad limitada",
-    "text": "Racionalidad limitada\n\nInformación incompleta\nTiempo y capacidad cognitiva finitos\nDecisiones satisfactorias, no óptimas\n\nIdea clave:\n&gt; la racionalidad es empírica, no ideal\n\nIlustración sugerida: toma de decisiones bajo restricciones"
+    "text": "Racionalidad limitada\n\nInformación incompleta\nTiempo y capacidades finitas\nDecisiones satisfactorias\nUso sistemático de heurísticas\n\n\n\nLa racionalidad se vuelve empírica"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#heurísticas-y-sesgos",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#heurísticas-y-sesgos",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Heurísticas y sesgos",
-    "text": "Heurísticas y sesgos\n\nReglas simples de decisión\nFuncionan rápido\nProducen errores sistemáticos\n\nEjemplos: - Disponibilidad\n- Representatividad\n- Anclaje\n\nIlustración sugerida: heuristics and biases diagram"
+    "text": "Heurísticas y sesgos\n\nReglas simples de decisión\nFuncionan rápido\nProducen errores sistemáticos\nNo son anomalías individuales"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#giro-crítico-contemporáneo",
@@ -205,30 +205,30 @@
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#hermenéutica",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#hermenéutica",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Hermenéutica",
-    "text": "Hermenéutica\n\nRacionalidad como comprensión\nMediación del lenguaje y la tradición\nDecidir es interpretar, no calcular\n\nCrítica: &gt; La heurística no es regla cognitiva\n&gt; sino práctica de sentido\n\nIlustración sugerida: círculo hermenéutico"
+    "text": "Hermenéutica\n\nComprensión como proceso iterativo\nLenguaje, historia, tradición\nDecisión como interpretación"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#fenomenología",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#fenomenología",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Fenomenología",
-    "text": "Fenomenología\n\nRacionalidad encarnada\nAcción pre-reflexiva\nPrimacía de la experiencia vivida\n\nCrítica: &gt; El sujeto no calcula primero,\n&gt; actúa en el mundo\n\nIlustración sugerida: cuerpo y percepción"
+    "text": "Fenomenología\n\nRacionalidad encarnada\nAcción pre-reflexiva\nPercepción–acción acopladas\n\n\nPerception–Action Cycle"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#constructivismo-social",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#constructivismo-social",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Constructivismo social",
-    "text": "Constructivismo social\n\nRacionalidad producida colectivamente\nNormas, rutinas, instituciones\nHeurísticas como prácticas sociales\n\nCrítica: &gt; No hay sesgos universales sin contexto social\n\nIlustración sugerida: interacción social"
+    "text": "Constructivismo social\n\nRacionalidad producida colectivamente\nNormas, rutinas, instituciones\nHeurísticas como prácticas sociales\n\n\nCognición situada"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#teoría-crítica",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#teoría-crítica",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Teoría crítica",
-    "text": "Teoría crítica\n\nRacionalidad instrumental\nOrientada a eficiencia y control\nModelos como tecnologías de poder\n\nCrítica: &gt; No es cómo decidimos,\n&gt; sino qué racionalidad se impone\n\nIlustración sugerida: sistema técnico-social"
+    "text": "Teoría crítica\n\nRacionalidad instrumental\nOrientada a eficiencia y control\nModelos como tecnologías de poder\n\n\nPensamiento sistémico"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#comparación-sintética",
@@ -254,23 +254,23 @@
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#cierre",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#cierre",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Cierre",
-    "text": "Cierre\n\nLa racionalidad humana\nno es absoluta,\npero sigue siendo objeto legítimo de ciencia\nsi se reconoce su historicidad y contexto"
+    "text": "Cierre\n\nGobernar bajo incertidumbre\nno es aplicar modelos,\nsino articular evidencia, valores y reglas prácticas"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#fracasó-el-positivismo",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#fracasó-el-positivismo",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "¿Fracasó el positivismo?",
-    "text": "¿Fracasó el positivismo?\nPregunta guía: &gt; ¿Falló el programa positivista de Comte\n&gt; o simplemente mostró sus límites?"
+    "text": "¿Fracasó el positivismo?\nRespuesta corta:\n\n💀 como proyecto totalizante\n🗽 Como infraestructura científica"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#el-proyecto-positivista-comte",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#el-proyecto-positivista-comte",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "El proyecto positivista (Comte)",
-    "text": "El proyecto positivista (Comte)\n\nLeyes empíricas universales\nPredicción y control\nCiencia como base del orden social\nRacionalidad objetiva y neutral\n\nSupuesto clave:\n&gt; la ciencia puede gobernar la sociedad"
+    "text": "El proyecto positivista (Comte)\n\nLeyes empíricas universales\nCiencia como base del orden social\nSupresión de la metafísica\nSociedad como objeto gobernable\n\nSupuesto fuerte:\n\nla ciencia puede gobernar a la sociedad"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#dónde-triunfó",
@@ -317,9 +317,9 @@
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#emergencia-de-modelos-híbridos",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#emergencia-de-modelos-híbridos",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Emergencia de modelos híbridos",
-    "text": "Emergencia de modelos híbridos\nLos modelos híbridos aparecen cuando:\n\nla incertidumbre es alta\nlos valores están en disputa\nlas decisiones son urgentes\nel riesgo es colectivo\n\n👉 Ciencia sola no basta\n👉 Sociedad sola tampoco"
+    "text": "Emergencia de modelos híbridos\nAparecen cuando:\n\nla incertidumbre es alta\nlos valores están en disputa\nlas decisiones son urgentes\nel riesgo es colectivo\n\n\n\nLa ciencia sola no basta\nLa sociedad sola tampoco"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#qué-es-un-modelo-híbrido-cienciasociedad",
@@ -331,9 +331,9 @@
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#lógicas-que-se-articulan",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#lógicas-que-se-articulan",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Lógicas que se articulan",
-    "text": "Lógicas que se articulan\n\n\n\nCiencia\nSociedad\n\n\n\n\nModelos\nValores\n\n\nProbabilidad\nExperiencia\n\n\nEvidencia\nLegitimidad\n\n\nPredicción\nSentido\n\n\n\n👉 No se reducen, se coordinan"
+    "text": "Lógicas que se articulan\n\n\n\nCiencia\nSociedad\n\n\n\n\nEvidencia\nValores\n\n\nProbabilidad\nExperiencia\n\n\nModelos\nLegitimidad\n\n\nPredicción\nSentido"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#núcleo-híbrido-coproducción",
@@ -345,21 +345,21 @@
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#heurísticas-colectivas-diseñadas",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#heurísticas-colectivas-diseñadas",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Heurísticas colectivas diseñadas",
-    "text": "Heurísticas colectivas diseñadas\nEjemplos: - umbrales ecológicos - semáforos de riesgo - principio de precaución - escenarios plausibles\n👉 Racionalidad limitada institucionalizada"
+    "text": "Heurísticas colectivas diseñadas\nEjemplos:\n\numbrales ecológicos\nsemáforos de riesgo\nprincipio de precaución\nescenarios plausibles\n\n\n\nRacionalidad limitada institucionalizada"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#figura-conceptual",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#figura-conceptual",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "Figura conceptual",
     "text": "Figura conceptual\n\nModelo híbrido ciencia–sociedad"
   },
   {
     "objectID": "presentaciones/2026-01-2-epistemologia/index.html#qué-cambia-respecto-a-comte",
     "href": "presentaciones/2026-01-2-epistemologia/index.html#qué-cambia-respecto-a-comte",
-    "title": "Heurística, racionalidad y epistemologías en contraste",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
     "section": "¿Qué cambia respecto a Comte?",
     "text": "¿Qué cambia respecto a Comte?\n\nLa ciencia ya no gobierna sola\nLa racionalidad no es universal\nLa incertidumbre no se elimina\nLos valores se hacen explícitos\n\n👉 Pero la ciencia sigue siendo indispensable"
   },
@@ -376,5 +376,159 @@
     "title": "Heurística, racionalidad y epistemologías en contraste",
     "section": "Cierre",
     "text": "Cierre\n\nGobernar bajo incertidumbre\nno es aplicar modelos,\nsino articular evidencia, valores y reglas prácticas\n\nGracias."
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#del-positivismo-a-modelos-híbridos-cienciasociedad",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#del-positivismo-a-modelos-híbridos-cienciasociedad",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Del positivismo a modelos híbridos ciencia–sociedad",
+    "text": "Del positivismo a modelos híbridos ciencia–sociedad"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#fallamos-al-razonar",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#fallamos-al-razonar",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "¿Fallamos al razonar?",
+    "text": "¿Fallamos al razonar?\nDos interpretaciones:\n\nSesgos → desviaciones del modelo normativo\nHeurísticas → adaptaciones a entornos reales\n\n\n\nEl error se vuelve estructural"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#límite-del-positivismo-clásico",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#límite-del-positivismo-clásico",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Límite del positivismo clásico",
+    "text": "Límite del positivismo clásico\nEl modelo normativo:\n\nDescribe mal cómo decidimos\nIgnora valores y poder\nNo resuelve conflictos sociales\n\nPregunta clave:\n\n¿Quién define qué es racional?"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#enfoques-no-positivistas",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#enfoques-no-positivistas",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Enfoques no positivistas",
+    "text": "Enfoques no positivistas\nTres críticas convergentes:\n\nLa intención importa\nLa experiencia importa\nEl poder importa\n\n\n\nLa racionalidad no es solo cálculo"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#síntesis-epistemológica",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#síntesis-epistemológica",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Síntesis epistemológica",
+    "text": "Síntesis epistemológica\n\n\n\nEnfoque\nRacionalidad\nHeurísticas\n\n\n\n\nPositivismo\nMecanismo\nReglas\n\n\nHermenéutica\nComprensión\nPrácticas\n\n\nFenomenología\nExperiencia\nAcción\n\n\nConstructivismo\nProducto social\nRutinas\n\n\nTeoría crítica\nInstrumento\nNormalización"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#la-paradoja",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#la-paradoja",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "La paradoja",
+    "text": "La paradoja\n\nEl positivismo fracasa\nporque tiene demasiado éxito\n\nAl medir y modelar:\n\nrevela incertidumbre\nexpone límites cognitivos\nmuestra complejidad social"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#qué-es-un-modelo-híbrido",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#qué-es-un-modelo-híbrido",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "¿Qué es un modelo híbrido?",
+    "text": "¿Qué es un modelo híbrido?\n\n\n\nLa ciencia informa\nla sociedad delibera\nla decisión emerge de su interacción\n\n\n\n\n\nNo es:\n\ndivulgación\nrelativismo\ntecnocracia"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#traducción-final",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#traducción-final",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Traducción final",
+    "text": "Traducción final\n\nUsamos herramientas positivistas\npara decidir en un mundo no positivista"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#cognición-encarnada---fenomenología",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#cognición-encarnada---fenomenología",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Cognición encarnada - Fenomenología",
+    "text": "Cognición encarnada - Fenomenología\n\nCuerpo y mente inseparables\nPercepción–acción unificadas\nConocimiento como experiencia"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#cognición-situada",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#cognición-situada",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Cognición situada",
+    "text": "Cognición situada\n\nSaber inseparable de la acción\nContexto, cultura y ambiente\nCognición como actividad integrada"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#background-colorimgfigura_modelo_hibrido_ciencia_sociedad.png",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#background-colorimgfigura_modelo_hibrido_ciencia_sociedad.png",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "{background-color=“img/figura_modelo_hibrido_ciencia_sociedad.png”}}",
+    "text": "{background-color=“img/figura_modelo_hibrido_ciencia_sociedad.png”}}"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#background-imageimgfigura_modelo_hibrido_ciencia_sociedad.png",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#background-imageimgfigura_modelo_hibrido_ciencia_sociedad.png",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "{background-image=“img/figura_modelo_hibrido_ciencia_sociedad.png”}}",
+    "text": "{background-image=“img/figura_modelo_hibrido_ciencia_sociedad.png”}}"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#implicación-final",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#implicación-final",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Implicación final",
+    "text": "Implicación final\n\nUsamos herramientas positivistas\npara decidir en un mundo no positivista"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#para-reflexionar",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#para-reflexionar",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Para reflexionar",
+    "text": "Para reflexionar\n\nGobernar bajo incertidumbre\nno es aplicar modelos,\nsino articular evidencia, valores y reglas prácticas"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#ciencia-abierta",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#ciencia-abierta",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Ciencia abierta",
+    "text": "Ciencia abierta\nLa racionalidad limitada no se corrige, se organiza colectivamente.\n\nnadie entiende todo\n\nnadie controla todo\n\nnadie decide solo\n\n\n\nHeurísticas explícitas en lugar de una optimización perfecta"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#ciencia-abierta-1",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#ciencia-abierta-1",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Ciencia abierta",
+    "text": "Ciencia abierta\nLa racionalidad limitada no se corrige,\nse organiza colectivamente.\n\nnadie entiende todo\n\nnadie controla todo\n\nnadie decide solo\n\n👉 Heurísticas explícitas &gt; optimización perfecta"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#propuesta-de-la-ciencia-abierta",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#propuesta-de-la-ciencia-abierta",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Propuesta de la Ciencia abierta",
+    "text": "Propuesta de la Ciencia abierta\n\nEvidencia como bien común\n\nDatos con supuestos visibles\n\nIncertidumbre explícita\n\nHeurísticas colectivas compartidas\n\nAprendizaje adaptativo\n\n\n\nInfraestructura práctica para modelos híbridos ciencia–sociedad"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#section",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#section",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "",
+    "text": "Ciencia abierta como infraestructura para heurísticas colectivas"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#el-proyecto-positivista-comte-1798-1857",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#el-proyecto-positivista-comte-1798-1857",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "El proyecto positivista (Comte 1798-1857)",
+    "text": "El proyecto positivista (Comte 1798-1857)\n\nLeyes empíricas universales\nCiencia como base del orden social\nSupresión de la metafísica\nSociedad como objeto gobernable\n\nSupuesto fuerte:\n\nla ciencia puede gobernar a la sociedad"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#qué-cambia-respecto-al-positivismo-de-comte",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#qué-cambia-respecto-al-positivismo-de-comte",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "¿Qué cambia respecto al positivismo de Comte?",
+    "text": "¿Qué cambia respecto al positivismo de Comte?\n\nLa ciencia ya no gobierna sola\nLa racionalidad no es universal\nLa incertidumbre no se elimina\nLos valores se hacen explícitos\n\n\n\nPero la ciencia sigue siendo indispensable"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#desafíos-de-la-ciencia-en-crisis",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#desafíos-de-la-ciencia-en-crisis",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "desafíos de la ciencia en crisis",
+    "text": "desafíos de la ciencia en crisis\nLa racionalidad limitada no se corrige, se organiza colectivamente.\n\nnadie entiende todo\n\nnadie controla todo\n\nnadie decide solo\n\n\n\nHeurísticas explícitas en lugar de una optimización perfecta"
+  },
+  {
+    "objectID": "presentaciones/2026-01-2-epistemologia/index.html#oferta-de-la-ciencia-abierta",
+    "href": "presentaciones/2026-01-2-epistemologia/index.html#oferta-de-la-ciencia-abierta",
+    "title": "Racionalidad, heurísticas y epistemologías en contraste",
+    "section": "Oferta de la Ciencia Abierta",
+    "text": "Oferta de la Ciencia Abierta\n\nEvidencia como bien común\n\nDatos con supuestos visibles\n\nIncertidumbre explícita\n\nHeurísticas colectivas compartidas\n\nAprendizaje adaptativo\n\n\n\nInfraestructura práctica para modelos híbridos ciencia–sociedad"
   }
 ]

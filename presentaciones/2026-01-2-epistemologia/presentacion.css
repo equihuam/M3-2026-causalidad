@@ -1,0 +1,15 @@
+figcaption {    
+    text-align: center;   
+    }  
+
+/* cada "ul"" implica un nuevo subnivel */
+
+.planta ul {
+  list-style-type: circle;
+  list-style-position: outside; 
+  list-style-image: url("img/pointing-backpack-girl.png");
+}
+
+.planta ul li {
+  padding-left: 20px; 
+}

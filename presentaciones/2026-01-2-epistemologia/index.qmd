@@ -1,15 +1,23 @@
 ---
-title: "Heurística, racionalidad y epistemologías en contraste"
-subtitle: "Del positivismo a enfoques no positivistas"
-author: "Miguel Eq."
+title: "Racionalidad, heurísticas y epistemologías en contraste"
+subtitle: "Del positivismo a modelos híbridos ciencia–sociedad"
+author: "Miguel Equihua"
+
 format:
   revealjs:
+    css: presentacion.css
     theme: simple
-    slide-number: true
+#    slide-number: true
     transition: fade
     center: true
+
 ---
 
+
+# Racionalidad, heurísticas y epistemologías  
+## Del positivismo a modelos híbridos ciencia–sociedad
+
+---
 
 ## Punto de partida histórico
 
@@ -17,102 +25,123 @@ format:
 - Probabilidad moderna → incertidumbre
 - Ciencia como cálculo del comportamiento humano
 
-> La probabilidad fue concebida como  
-> *sentido común reducido a cálculo*
+> “La probabilidad es sentido común reducido a cálculo”
 
 ---
 
 ## Ideal positivista de la racionalidad
 
-- Existe una racionalidad universal
-- Puede formalizarse matemáticamente
-- El error es desviación del modelo normativo
-- Objetivo: predicción y control
+- Racionalidad universal
+- Formalización matemática
+- Predicción y control
+- Neutralidad del observador
 
-![Ilustración sugerida: diagrama de probabilidad clásica](https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg)
+![](https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg){.absolute top=200 left=650 width="450"}
 
----
+## El proyecto positivista (Comte 1798-1857)
+
+- Leyes empíricas universales
+- Ciencia como base del orden social
+- Supresión de la metafísica
+- Sociedad como objeto gobernable
+
+**Supuesto fuerte:**  
+
+> la ciencia puede gobernar a la sociedad
+
 
 ## Racionalidad limitada
 
 - Información incompleta
-- Tiempo y capacidad cognitiva finitos
-- Decisiones satisfactorias, no óptimas
+- Tiempo y capacidades finitas
+- Decisiones satisfactorias
+- Uso sistemático de heurísticas
 
-**Idea clave:**  
-> la racionalidad es empírica, no ideal
+::: {.planta}
+- La racionalidad se vuelve empírica
+:::
 
-![Ilustración sugerida: toma de decisiones bajo restricciones](https://upload.wikimedia.org/wikipedia/commons/0/0b/Simple_decision_tree.svg)
+![](https://upload.wikimedia.org/wikipedia/commons/2/25/Simple_decision_tree.svg){.absolute top=100 left=750 width="350"}
 
----
+
 
 ## Heurísticas y sesgos
 
 - Reglas simples de decisión
 - Funcionan rápido
 - Producen errores sistemáticos
+- No son anomalías individuales
 
-Ejemplos:
-- Disponibilidad  
-- Representatividad  
-- Anclaje  
 
-![Ilustración sugerida: heuristics and biases diagram](https://upload.wikimedia.org/wikipedia/commons/5/55/Cognitive_bias_codex_en.svg)
+## ¿Fallamos al razonar? {.smaller}
 
----
+Dos interpretaciones:
 
-## Giro crítico contemporáneo
+- Sesgos → desviaciones del modelo normativo
+- Heurísticas → adaptaciones a entornos reales
 
-Pregunta central:
-> ¿Son las heurísticas fallas cognitivas  
-> o adaptaciones al entorno?
+::: {.planta}
+- El error se vuelve estructural
 
-Dos respuestas:
-- Sesgos → desviaciones
-- Heurísticas → racionalidad ecológica
+:::
 
----
+![](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg){.absolute top=50 left=550 width=550}
+
+
+
+## Límite del positivismo clásico
+
+El modelo normativo:
+
+- Describe mal cómo decidimos
+- Ignora valores y poder
+- No resuelve conflictos sociales
+
+Pregunta clave:
+
+> ¿Quién define qué es racional?
+
+
+
+## Enfoques no positivistas
+
+Tres críticas convergentes:
+
+- La intención importa
+- La experiencia importa
+- El poder importa
+
+::: {.planta}
+- La racionalidad no es solo cálculo
+:::
+
 
 ## Hermenéutica
 
-- Racionalidad como comprensión
-- Mediación del lenguaje y la tradición
-- Decidir es **interpretar**, no calcular
+- Comprensión como proceso iterativo
+- Lenguaje, historia, tradición
+- Decisión como interpretación
 
-Crítica:
-> La heurística no es regla cognitiva  
-> sino práctica de sentido
+![](https://upload.wikimedia.org/wikipedia/commons/8/87/Hermeneutic_Circle.jpg ){.absolute top=100 left=750}
 
-![Ilustración sugerida: círculo hermenéutico](https://upload.wikimedia.org/wikipedia/commons/8/8f/Hermeneutic_circle.svg)
 
----
+## Cognición encarnada - Fenomenología
 
-## Fenomenología
+- Cuerpo y mente inseparables
+- Percepción–acción unificadas
+- Conocimiento como experiencia
+![Embodied cognition](https://upload.wikimedia.org/wikipedia/commons/b/b4/The_scope_of_embodied_cognition_06.10.2021.png){.absolute top=200 left=750}
 
-- Racionalidad encarnada
-- Acción pre-reflexiva
-- Primacía de la experiencia vivida
 
-Crítica:
-> El sujeto no calcula primero,  
-> actúa en el mundo
+## Cognición situada
 
-![Ilustración sugerida: cuerpo y percepción](https://upload.wikimedia.org/wikipedia/commons/2/2b/Phenomenology_diagram.png)
+- Saber inseparable de la acción
+- Contexto, cultura y ambiente
+- Cognición como actividad integrada
+ 
+ 
+![](https://upload.wikimedia.org/wikipedia/commons/9/90/Sgimage1.gif){.absolute top=75 left=750}
 
----
-
-## Constructivismo social
-
-- Racionalidad producida colectivamente
-- Normas, rutinas, instituciones
-- Heurísticas como prácticas sociales
-
-Crítica:
-> No hay sesgos universales sin contexto social
-
-![Ilustración sugerida: interacción social](https://upload.wikimedia.org/wikipedia/commons/3/3a/Social_network_diagram.svg)
-
----
 
 ## Teoría crítica
 
@@ -120,244 +149,161 @@ Crítica:
 - Orientada a eficiencia y control
 - Modelos como tecnologías de poder
 
-Crítica:
-> No es cómo decidimos,  
-> sino qué racionalidad se impone
+![Pensamiento sistémico](https://upload.wikimedia.org/wikipedia/commons/7/72/Systems_Thinking_Diagram.png)
 
-![Ilustración sugerida: sistema técnico-social](https://upload.wikimedia.org/wikipedia/commons/6/6b/Systems_thinking_diagram.svg)
 
----
-
-## Comparación sintética
+## Síntesis epistemológica
 
 | Enfoque | Racionalidad | Heurísticas |
-|------|------------|-------------|
-| Positivismo | Mecanismo cognitivo | Reglas |
+|------|-------------|-------------|
+| Positivismo | Mecanismo | Reglas |
 | Hermenéutica | Comprensión | Prácticas |
 | Fenomenología | Experiencia | Acción |
 | Constructivismo | Producto social | Rutinas |
 | Teoría crítica | Instrumento | Normalización |
 
----
-
-## Tensiones epistemológicas
-
-- Universalidad vs. contextualidad
-- Cálculo vs. sentido
-- Predicción vs. comprensión
-- Control vs. emancipación
-
----
-
-## Puentes posibles
-
-- Modelos probabilísticos + contexto social
-- Heurísticas como indicadores, no defectos
-- Ciencia empírica + interpretación situada
-
-Especialmente relevantes para:
-- gobernanza ambiental
-- decisiones colectivas
-- incertidumbre socioecológica
-
----
-
-## Cierre
-
-> La racionalidad humana  
-> no es absoluta,  
-> pero sigue siendo objeto legítimo de ciencia  
-> **si se reconoce su historicidad y contexto**
-
 
 ## ¿Fracasó el positivismo?
 
-Pregunta guía:
-> ¿Falló el programa positivista de Comte  
-> o simplemente mostró sus límites?
+Respuesta corta:
 
----
+>💀 como proyecto totalizante  
+>🗽 Como infraestructura científica  
 
-## El proyecto positivista (Comte)
 
-- Leyes empíricas universales
-- Predicción y control
-- Ciencia como base del orden social
-- Racionalidad objetiva y neutral
-
-**Supuesto clave:**  
-> la ciencia puede gobernar la sociedad
-
----
-
-## ¿Dónde triunfó?
-
-- Método científico moderno
-- Estadística y probabilidad
-- Modelación y experimentación
-- Toma de decisiones basada en evidencia
-
-👉 Infraestructura epistemológica vigente
-
-![Distribución normal](https://upload.wikimedia.org/wikipedia/commons/3/3a/Normal_Distribution_PDF.svg)
-
----
-
-## ¿Dónde fracasó?
-
-- No existen leyes sociales invariantes
-- La ciencia no es neutral ni externa
-- La racionalidad humana es limitada
-- Los valores no desaparecen
-
-👉 La sociedad no se deja gobernar solo por modelos
-
----
-
-## La paradoja central
+## La paradoja
 
 > El positivismo fracasa  
 > **porque tiene demasiado éxito**
 
-Al medir, modelar y cuantificar:
-- revela incertidumbre estructural
+Al medir y modelar:
+
+- revela incertidumbre
 - expone límites cognitivos
-- hace visible la complejidad social
+- muestra complejidad social
 
----
 
-## Racionalidad limitada (corrección interna)
-
-- Información incompleta
-- Tiempo y capacidades finitas
-- Decisiones satisfactorias
-- Uso de heurísticas
-
-👉 La racionalidad se vuelve empírica
-
-![Árbol de decisión simple](https://upload.wikimedia.org/wikipedia/commons/0/0b/Simple_decision_tree.svg)
-
----
-
-## Heurísticas: ¿fallas o adaptaciones?
-
-Dos lecturas:
-
-- Sesgos cognitivos → desviaciones
-- Heurísticas → reglas eficientes en contextos reales
-
-👉 El error deja de ser anomalía
-
-![Cognitive Bias Codex](https://upload.wikimedia.org/wikipedia/commons/c/c2/Cognitive_bias_codex_en_uk.svg)
-
----
-
-## El límite del positivismo clásico
-
-El modelo normativo:
-- describe mal cómo decidimos
-- ignora valores y poder
-- no resuelve conflictos
-
-Pregunta crítica:
-> ¿Quién decide qué cuenta como racional?
-
----
 
 ## Emergencia de modelos híbridos
 
-Los modelos híbridos aparecen cuando:
+Aparecen cuando:
 
 - la incertidumbre es alta
 - los valores están en disputa
 - las decisiones son urgentes
 - el riesgo es colectivo
 
-👉 Ciencia sola no basta  
-👉 Sociedad sola tampoco
+::: {.planta}
+- La ciencia sola no basta
+- La sociedad sola tampoco
+:::
 
----
 
-## ¿Qué es un modelo híbrido ciencia–sociedad?
+## ¿Qué es un modelo híbrido?
 
+:::{.columns}
+::::{.column width=60%}
 > La ciencia informa  
 > la sociedad delibera  
 > la decisión emerge de su interacción
+::::
+
+::::{.column width=40%}
+\
+\
 
 No es:
+
 - divulgación
 - relativismo
 - tecnocracia
+::::
+:::
 
----
 
 ## Lógicas que se articulan
 
 | Ciencia | Sociedad |
 |------|---------|
-| Modelos | Valores |
+| Evidencia | Valores |
 | Probabilidad | Experiencia |
-| Evidencia | Legitimidad |
+| Modelos | Legitimidad |
 | Predicción | Sentido |
-
-👉 No se reducen, se coordinan
-
----
-
-## Núcleo híbrido: coproducción
-
-- Traducción entre saberes
-- Negociación de criterios
-- Gestión explícita de incertidumbre
-- Deliberación estructurada
-
-👉 La racionalidad se vuelve colectiva
 
 ---
 
 ## Heurísticas colectivas diseñadas
 
 Ejemplos:
+
 - umbrales ecológicos
 - semáforos de riesgo
 - principio de precaución
 - escenarios plausibles
 
-👉 Racionalidad limitada **institucionalizada**
+::: {.planta}
+- Racionalidad limitada institucionalizada
+:::
 
 ---
 
-## Figura conceptual
+## desafíos de la ciencia en crisis
 
-![Modelo híbrido ciencia–sociedad](figura_modelo_hibrido_ciencia_sociedad.svg)
+La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
+- nadie entiende todo  
+- nadie controla todo  
+- nadie decide solo  
+
+::: {.planta}
+- Heurísticas explícitas en lugar de una optimización perfecta
+:::
 ---
 
-## ¿Qué cambia respecto a Comte?
+## Oferta de la Ciencia Abierta
+
+- Evidencia como bien común  
+- Datos con supuestos visibles  
+- Incertidumbre explícita  
+- Heurísticas colectivas compartidas  
+- Aprendizaje adaptativo
+
+::: {.planta}
+- Infraestructura práctica para modelos híbridos ciencia–sociedad
+:::
+---
+
+
+##
+
+![](img/esquema_ciencia_abierta_heuristicas.png)
+
+
+## {background-image="img/figura_modelo_hibrido_ciencia_sociedad.png" background-size="80%"}
+
+
+## ¿Qué cambia respecto al positivismo de Comte?
 
 - La ciencia ya no gobierna sola
 - La racionalidad no es universal
 - La incertidumbre no se elimina
 - Los valores se hacen explícitos
 
-👉 Pero la ciencia sigue siendo indispensable
+::: {.planta}
+- Pero la ciencia sigue siendo indispensable
+:::
 
 ---
 
-## Traducción fuerte
+## Implicación final
 
-> No estamos después del positivismo  
-> estamos **dentro de sus ruinas productivas**
-
-Usamos herramientas positivistas  
-para decidir en un mundo no positivista
+> Usamos herramientas positivistas  
+> para decidir en un mundo no positivista
 
 ---
 
-## Cierre
+## Para reflexionar
 
 > Gobernar bajo incertidumbre  
 > no es aplicar modelos,  
 > sino **articular evidencia, valores y reglas prácticas**
-
-Gracias.
