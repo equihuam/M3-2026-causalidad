@@ -4,12 +4,12 @@ subtitle: "Diseño de estudios y experimentos"
 author: 
   - name: "Miguel Equihua"
     email: "equihuam@gmail.com"
-date: "2025-01-29"
+date: "2026-01-28"
 draft: false
 date-format: "[Xalapa, Ver.,] D MMMM, YYYY"
 categories: [presentación]
 lang: es
-footer: "[M3-Causalidad](https://m3-2025-causalidad.netlify.app/)"
+footer: "[M3-Causalidad](https://2026-m3-causalidad.netlify.app/)"
 logo:  "images/Logo-Inecol.png"
 title-slide-attributes:
     data-background-image: "images/gamma-plantilla_alfa.png"
@@ -31,39 +31,6 @@ execute:
 embed-resources: false
 preload-iframes: true
 ---
-
-
-## Instrucciones para participar
-
-::: {.callout-tip appearance="default"}
-### lo que hay que hacer es
-
--   **En tu computadora ir** [vevox.app]{style="color:#00AEEF"}
--   **Para usar el celular instala** [Vevox]{style="color:#00AEEF"} **desde la tienda de** *apps*
-
-::: {layout="[[25, -40, 15]]" layout-valign="top"}
-![](images/clase_1-Leyes-en-ecologia0.png)
-
-![](images/clase_1-Leyes-en-ecologia1.png)
-:::
-:::
-
-
-## 1. Para ti, ¿qué es la ciencia?
-
-::: header
-Participa: vevox.app ID: 152-551-925
-:::
-
-::: {layout="[[-1], [80], [80, 20]]" layout-valign="top"}
-(escribe de 3 a 20 palabras que reflejan tu percepción)
-
-**Escribe una palabra y oprime enviar**
-
-![](images/clase_1-Leyes-en-ecologia1.png){width="200"}
-:::
-
-##  {background-iframe="https://vevox.app/#/m/152551925?integration=embed" background-interactive="true"}
 
 # Bacon y la ciencia occidental
 
@@ -177,7 +144,7 @@ Elije la respuesta que consideres más apropiada
 
 -   Las ideas de Hume permean en el positivismo del siglo XIX de Auguste Comte (1798-1857), que empujó al quehacer científico bajo su influencia a tomar una actitud temerosa para proponer relaciones causales como base de la construcción de hipótesis.
 
--   En lugar de causas, se buscaban **relaciones funcionales** entre observables o entre términos teóricos, cada uno de los cuales era definido operativamente por un instrumento de medición o conjunto de operaciones en un estudio.
+-   En lugar de causas, se buscan **relaciones funcionales** entre observables o entre términos teóricos, cada uno de los cuales es definido operativamente por un instrumento de medición o conjunto de operaciones en un estudio.
 
 # Causalidad en crisis
 
@@ -257,14 +224,7 @@ Elije la respuesta que consideres más apropiada
 ::: header
 **Participa: vevox.app ID: 152-551-925**
 :::
-
-##  {background-iframe="https://vevox.app/#/m/152551925?integration=embed" background-interactive="true"}
-
-# Tres niveles de conocimiento
-
--   [Axiomas]{style="color:#AD8C00"} .- Planteamientos de la información científica preexistente en la que se basa su estudio.
--   [Postulados]{style="color:#AD8C00"} .- Son las preguntas focales pero formuladas en forma de proposiciones lógicas que puedan ser clasificadas como ciertas, falsas o aceptables con cierta probabilidad.
--   [Declaración de datos]{style="color:#AD8C00"} .- Definen los datos necesarios para clasificar los postulados como ciertos, falsos o asignarles valores de probabilidad. Incluyen las técnicas de investigación que se usarán para recolectarlos.
+---
 
 # Simplicidad...
 
@@ -299,10 +259,4 @@ Elije la respuesta que consideres más apropiada
 
 **Fuente: Yearley, S. (2005).** *Making sense of science (understanding the social study of science).* **Sage. London, 205 pp.**
 
-## 6 ¿Cuáles son los aspectos CLAVE para diseñar un experimento/estudio?
 
-::: header
-**Participa: vevox.app ID: 152-551-925**
-:::
-
-##  {background-iframe="https://vevox.app/#/m/152551925?integration=embed" background-interactive="true"}

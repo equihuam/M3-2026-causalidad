@@ -1,0 +1,198 @@
+---
+title: "Contraste de epistemologías, causalidad y diseño científico"
+subtitle: "Apuntes para curso de doctorado"
+author: "Miguel Eq."
+date: "2026"
+lang: es
+
+format:
+  pdf:
+    documentclass: article
+    classoption: [12pt]
+    geometry: margin=2.5cm
+    number-sections: true
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+
+fontsize: 12pt
+linestretch: 1.3
+
+bibliography: ../references.bib
+csl: apa.csl
+  
+---
+
+# Introducción
+## ¿Por qué epistemología en el diseño de estudios?
+
+El diseño de estudios científicos no es una actividad meramente técnica. Toda decisión metodológica —qué medir, qué controlar, qué ignorar, qué inferir— presupone una concepción implícita de cómo funciona el mundo, qué significa explicar, qué cuenta como evidencia y hasta dónde es legítimo inferir causalidad.
+
+::: {.callout-note}
+Idea central
+Los problemas metodológicos profundos son, en realidad, problemas epistemológicos mal reconocidos.
+:::
+
+El objetivo de estos apuntes no es ofrecer una filosofía abstracta de la ciencia, sino hacer explícitos los supuestos que ya operan en la práctica científica, particularmente en campos donde la complejidad, la incertidumbre y la dimensión social son ineludibles.
+
+
+# El ideal moderno de ciencia
+## Bacon y la promesa fundacional
+
+La ciencia moderna occidental se consolida a partir de una promesa fuerte: que el conocimiento puede construirse mediante un método sistemático, empírico y progresivo, capaz de sustituir tanto la especulación metafísica como la autoridad de la tradición.
+
+En Novum Organum, Francis Bacon propone reemplazar el método aristotélico —basado en silogismos y categorías heredadas— por un programa inductivo apoyado en la experimentación deliberada. La naturaleza debía ser interrogada mediante la manipulación controlada de variables, no simplemente observada y descrita.
+
+Este proyecto implica supuestos fundamentales: que la naturaleza presenta regularidades, que dichas regularidades son accesibles a la razón humana, que la observación puede aspirar a la objetividad y que las teorías verdaderas emergen de los datos si el método es correcto.
+
+::: {.callout-warning}
+Advertencia histórica
+Estos supuestos no son ingenuos: son condiciones de posibilidad de la ciencia moderna.
+:::
+
+
+# Causalidad: el corazón del problema
+## De la regularidad a la causa
+
+La epistemología moderna hereda una tensión profunda a partir del empirismo, especialmente con David Hume. Según Hume, nunca observamos causalidad como tal; observamos únicamente la sucesión regular de eventos.
+
+Desde esta perspectiva:
+
+- no percibimos causas,
+- inferimos hábitos,
+- la causalidad carece de justificación lógica necesaria.
+
+::: {.callout-note}
+Distinción clave
+Correlación no equivale a causalidad, aunque históricamente se haya tratado como su sustituto epistemológico.
+:::
+
+Esta posición influye decisivamente en el positivismo del siglo XIX, que privilegia relaciones funcionales entre observables y evita hablar de causas en sentido fuerte.
+
+## Causalidad en crisis y reconstrucción
+
+Durante el siglo XX, esta postura se vuelve insostenible para la práctica científica. La ciencia continúa explicando en términos causales, aun cuando la epistemología dominante no sepa cómo justificarlos plenamente.
+
+En las últimas décadas se acepta que:
+
+- la causalidad no es necesariamente determinista,
+- puede ser probabilística,
+- involucra mecanismos no siempre observables,
+- depende críticamente del diseño del estudio.
+
+::: {.callout-important}
+Principio metodológico
+La fuerza de una inferencia causal depende más del diseño del estudio que del modelo estadístico utilizado.
+:::
+
+## Realismo, causalidad y estratificación
+
+Desde posiciones realistas, las relaciones causales no son meras construcciones mentales, sino descripciones aproximadas de mecanismos reales que operan en el mundo.
+
+La causalidad puede analizarse en distintos niveles:
+
+- físico,
+- biológico,
+- social,
+- institucional.
+
+Esta estratificación implica que no existe una única narrativa causal “correcta”, sino explicaciones complementarias dependiendo del nivel de análisis.
+
+## Causalidad finita y el derecho a despreciar
+
+La ciencia presupone no solo que existen causas, sino que estas son finitas en número y descubribles. Si cada efecto dependiera de todas las variables posibles, la ciencia sería impracticable.
+
+Gaston Bachelard introduce aquí una idea clave: el derecho a despreciar. La ciencia progresa identificando qué factores pueden ignorarse sin perder poder explicativo.
+
+::: {.callout-warning}
+Advertencia epistemológica
+Despreciar no es ignorar arbitrariamente: exige justificación empírica y diseño riguroso.
+:::
+
+## Simplicidad y complejidad
+
+Muchos científicos han enfatizado la simplicidad como ideal último de la ciencia. Sin embargo, en sistemas complejos —especialmente los vivientes— esta aspiración enfrenta límites claros.
+
+Alfred North Whitehead sintetiza esta tensión con una advertencia célebre: “Busca la simplicidad y desconfía de ella”.
+
+La ciencia necesita modelos simples para operar, pero no puede asumir que la naturaleza sea simple por principio.
+
+## Crisis del ideal positivista
+
+A finales del siglo XX, la ciencia enfrenta una crisis de legitimidad:
+
+- cuestionamiento del progreso lineal,
+- pérdida de autoridad epistémica,
+- reconocimiento de su dimensión social,
+- crisis del determinismo fuerte.
+
+::: {.callout-note}
+Aclaración importante
+Esta crisis no es un rechazo de la ciencia, sino del mito de una racionalidad única, neutral y autosuficiente.
+:::
+
+# Racionalidad humana real
+## Más allá del decisor ideal
+
+El positivismo presupone un agente racional ideal: informado, coherente y optimizador. La investigación contemporánea muestra que este modelo no describe cómo decidimos realmente.
+
+La racionalidad humana es limitada:
+
+- en información,
+- en tiempo,
+- en capacidad cognitiva.
+
+Las heurísticas no son fallas accidentales, sino estrategias adaptativas.
+
+## Enfoques no positivistas de la racionalidad
+
+Desde la hermenéutica, la fenomenología y la cognición situada, la racionalidad se entiende como:
+
+- encarnada,
+- histórica,
+- contextual,
+- distribuida entre personas y artefactos.
+- La decisión emerge de prácticas situadas, no de cálculos abstractos.
+
+::: {.callout-important}
+Reformulación clave
+La racionalidad no desaparece: se vuelve situada, limitada y socialmente distribuida.
+::: 
+
+# Ciencia bajo incertidumbre
+## Modelos híbridos y ciencia abierta
+
+Aceptar racionalidad limitada y causalidad no determinista no conduce al relativismo, sino a nuevas formas de organización del conocimiento.
+
+Los modelos híbridos ciencia–sociedad reconocen que:
+
+- la evidencia científica es indispensable,
+- pero no suficiente para decidir,
+- debe articularse con valores, contextos e instituciones.
+
+La ciencia abierta aparece aquí como una infraestructura epistemológica, no como una moda:
+
+- datos compartidos,
+- supuestos visibles,
+- incertidumbre explícita,
+- heurísticas colectivas diseñadas.
+
+::: {.callout-note}
+Síntesis operativa
+La racionalidad limitada no se corrige: se organiza colectivamente.
+:::
+
+
+# Cierre del curso
+
+La ciencia contemporánea no abandona el proyecto moderno; lo reformula. Seguimos usando herramientas positivistas —datos, modelos, experimentos— pero lo hacemos: 
+
+- conscientes de sus límites,
+- explícitos sobre supuestos,
+- abiertos a la deliberación,
+- responsables de las implicaciones sociales de nuestras inferencias.
+
+::: {.callout-important}
+Idea final
+Gobernar bajo incertidumbre no es aplicar modelos, sino articular evidencia, valores y reglas prácticas.
+:::

@@ -1,0 +1,253 @@
+Perfecto. A continuación te entrego **exactamente las cuatro cosas que pediste**, pensadas **explícitamente para un curso doctoral (90 minutos)** y **sin reescribir tu contenido**, solo **ordenándolo, marcándolo y haciéndolo enseñable**.
+
+---
+
+# 1️⃣ `.qmd` REORDENADO (ARQUITECTURA NARRATIVA)
+
+No copio todo el archivo para no hacerlo inmanejable; te doy la **estructura exacta**, con **títulos de bloque**, **orden de slides** y **qué se mueve dónde**. Esto lo puedes aplicar mecánicamente.
+
+---
+
+## 🧱 BLOQUE I — Fundamentos del ideal científico (≈15 min)
+
+**Pregunta guía:**
+
+> ¿Qué prometía la ciencia moderna?
+
+**Slides (en este orden):**
+
+1. Bacon y la ciencia occidental
+2. Consecuencias baconianas
+3. Bacon hoy…
+4. “Legalidad” de la naturaleza
+5. Corolarios: comprensibilidad, uniformidad, causalidad
+
+**Objetivo didáctico:**
+Mostrar que **la ciencia moderna nace de supuestos fuertes**, no de neutralidad pura.
+
+🧠 *Mensaje clave:*
+La ciencia **no empieza sin filosofía**; empieza con **filosofía implícita**.
+
+---
+
+## 🧱 BLOQUE II — El problema de la causalidad (≈20 min)
+
+**Pregunta guía:**
+
+> ¿Qué significa decir que algo causa algo?
+
+**Slides:**
+6. Causalidad y los empiristas (Hume)
+7. Interpretaciones causales
+8. Positivismo (Comte)
+9. Causalidad en crisis
+10. Causalidad hoy…
+11. Gama de relaciones causales
+12. Causalidad y realidad (realismo vs positivismo)
+13. Causalidad finita
+14. Causalidad finita y “derecho a despreciar”
+
+**Objetivo didáctico:**
+Separar claramente:
+
+* correlación ≠ causalidad
+* causalidad ≠ determinismo simple
+
+🧠 *Mensaje clave:*
+La causalidad **no desaparece**, pero **ya no es ingenua**.
+
+📌 **Slide bisagra para discusión corta (2–3 min):**
+
+> “¿Hasta qué punto el diseño puede ‘rescatar’ la causalidad?”
+
+---
+
+## 🧱 BLOQUE III — Simplicidad, complejidad y límites (≈10 min)
+
+**Pregunta guía:**
+
+> ¿Hasta dónde puede simplificar la ciencia?
+
+**Slides:**
+15. Simplicidad…
+16. …Simplicidad…
+
+**Objetivo didáctico:**
+Preparar el terreno para **aceptar límites sin abandonar rigor**.
+
+🧠 *Mensaje clave:*
+La ciencia **necesita simplificar**, pero **no puede creerse simple**.
+
+---
+
+## 🧱 BLOQUE IV — Crisis del ideal positivista (≈10 min)
+
+**Pregunta guía:**
+
+> ¿Por qué el positivismo deja de ser suficiente?
+
+**Slides:**
+17. Ciencia en problemas
+18. Verdades posmodernistas
+
+**Objetivo didáctico:**
+Mostrar que la crisis es:
+
+* epistemológica,
+* social,
+* política.
+
+🧠 *Mensaje clave:*
+La crisis no es “anti-ciencia”, es **anti-simplificación excesiva**.
+
+📌 **Slide bisagra (discusión):**
+
+> “¿La crítica posmoderna debilita o fortalece a la ciencia?”
+
+---
+
+ ## 🧱 BLOQUE V — Racionalidad humana real (≈20 min)
+
+**Pregunta guía:**
+
+> ¿Cómo decidimos realmente?
+
+**Slides (orden clave):**
+19. Punto de partida histórico (lógica → probabilidad)
+20. Ideal positivista de la racionalidad
+21. Racionalidad limitada
+22. Heurísticas y sesgos
+23. ¿Fallamos al razonar?
+24. Límite del positivismo clásico
+25. Enfoques no positivistas
+26. Hermenéutica
+27. (SVG) Hermenéutica: círculo de comprensión
+28. Fenomenología / cognición encarnada
+29. (SVG) Percepción–acción
+30. Cognición situada
+31. (SVG) Cognición situada
+32. Teoría crítica
+33. Síntesis epistemológica (tabla)
+
+**Objetivo didáctico:**
+Desplazar la pregunta:
+
+> “¿Somos racionales?”
+> hacia
+> “¿Qué tipo de racionalidad es posible?”
+
+🧠 *Mensaje clave:*
+La racionalidad **no es defectuosa**; es **situada y distribuida**.
+
+---
+
+## 🧱 BLOQUE VI — Salida constructiva: ciencia hoy (≈15 min)
+
+**Pregunta guía:**
+
+> ¿Cómo hacer ciencia y decidir hoy?
+
+**Slides:**
+34. ¿Fracasó el positivismo?
+35. La paradoja
+36. Emergencia de modelos híbridos
+37. ¿Qué es un modelo híbrido?
+38. Lógicas que se articulan
+39. Heurísticas colectivas diseñadas
+40. Desafíos de la ciencia en crisis
+41. Oferta de la ciencia abierta
+42. (SVG) Ciencia abierta y heurísticas
+43. (SVG) Modelo híbrido ciencia–sociedad
+44. ¿Qué cambia respecto a Comte?
+45. Implicación final
+46. Para reflexionar
+
+🧠 *Mensaje clave:*
+Usamos ciencia **consciente de sus límites**, no a pesar de ellos.
+
+---
+
+# 2️⃣ VERSIONES 45 vs 90 MIN (EXPLÍCITAS)
+
+### ⏱️ Versión **90 min** (doctorado)
+
+* Todos los bloques
+* Discusión breve en bloques II, IV y V
+* Figuras SVG **en vivo**
+
+### ⏱️ Versión **45 min**
+
+Eliminar:
+
+* Bloque III (simplicidad)
+* Bloque IV (posmodernismo)
+* Detalles finos de causalidad (mantener Pearl + diseño)
+
+---
+
+# 3️⃣ SLIDES “BISAGRA” PARA DISCUSIÓN
+
+Te marco **4 momentos ideales para detenerte**:
+
+1. **Después de Hume / Comte**
+
+   > “¿Puede haber causalidad sin metafísica?”
+
+2. **Después de simplicidad**
+
+   > “¿Cuándo simplificar se vuelve engañoso?”
+
+3. **Después de heurísticas**
+
+   > “¿Sesgos o adaptaciones?”
+
+4. **Antes de ciencia abierta**
+
+   > “¿Quién debe decidir bajo incertidumbre?”
+
+Estas pausas **son pedagógicamente oro** en doctorado.
+
+---
+
+# 4️⃣ SYLLABUS (VERSIÓN CORTA)
+
+### Sesión: *Epistemología de la causalidad y la decisión científica*
+
+**Nivel:** Doctorado
+**Duración:** 90 minutos
+
+**Objetivos**
+
+* Comprender los supuestos epistemológicos de la ciencia moderna
+* Analizar críticamente causalidad, racionalidad y diseño
+* Conectar epistemología con prácticas contemporáneas (ciencia abierta)
+
+**Lecturas sugeridas**
+
+* Bacon, *Novum Organum* (selección)
+* Hume, *Enquiry* (secciones sobre causalidad)
+* Pearl & Mackenzie (2018), *The Book of Why*
+* Kahneman (2011), *Thinking, Fast and Slow*
+* Yearley (2005), *Making Sense of Science*
+
+**Evaluación sugerida**
+
+* Ensayo corto:
+
+  > *¿Cómo cambia el diseño científico cuando se asume racionalidad limitada?*
+
+---
+
+## Cierre honesto
+
+Lo que tienes ahora **ya no es una presentación**.
+Es un **andamiaje epistemológico completo** para formación doctoral.
+
+Si quieres, el siguiente paso natural sería:
+
+* 📄 convertir esto en **apuntes de curso**,
+* 🧠 generar **preguntas de examen doctoral**,
+* ✍️ o destilarlo en un **artículo de reflexión metodológica**.
+
+Tú decides.
+       
