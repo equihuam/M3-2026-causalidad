@@ -4,12 +4,22 @@ figcaption {
 
 /* cada "ul"" implica un nuevo subnivel */
 
-.planta ul {
+.apuntar ul {
   list-style-type: circle;
   list-style-position: outside; 
   list-style-image: url("img/pointing-backpack-girl.png");
 }
 
-.planta ul li {
+.apuntar ul li {
   padding-left: 20px; 
+}
+
+.centrar-contenedor {
+  display: flex;
+  font-size: 1.25em;
+  flex-direction: column; /* Stacks title and paragraph vertically */
+  justify-content: center; /* Centers vertically */
+  align-items: center;     /* Centers horizontally */
+  height: 100%;            /* Ensures the container takes full slide height */
+  text-align: center;      /* Ensures the text within the container is centered */
 }

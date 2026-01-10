@@ -116,17 +116,6 @@ Como parte de las experiencias de aprendizaje que realizaremos tenemos tres lect
 
 El Módulo III será evaluado a través de las tareas y controles de lectura que les pediremos que hagan conforme se desarrolle el curso. La participación en *quizes* y preguntas en línea vía [vevox](https://www.vevox.com/) tamién será considerada.
 
-## Participación activa
-
-Hemos previsto tener frecuentes eventos interactivos para dar
-seguimiento a los temas que iremos tratando o para generar espacios de
-enfoque que nos ayuden a generar contextos de discusión que nos ayuden a
-reflexionar sobre cómo es que hacemos ciencia. Para hacer esto
-utilizaremos la aplicación en línea a la que podrán acceder desde sus
-computadoras o teléfonos celulares:
-
-![](img/vevox-QR.png){width="400"}
-
 
 #  Estudiantes
 
@@ -147,3 +136,47 @@ estudiantes_2026  |>
 
 
 ```
+
+
+# Participación activa
+
+Hemos previsto tener frecuentes eventos interactivos para dar
+seguimiento a los temas que iremos tratando o para generar espacios de
+enfoque que nos ayuden a generar contextos de discusión que nos ayuden a
+reflexionar sobre cómo es que hacemos ciencia. Para hacer esto
+utilizaremos la aplicación en línea a la que podrán acceder desde sus
+computadoras o teléfonos celulares:
+
+
+## Instrucciones para participar
+
+::: {.callout-tip appearance="default"}
+### lo que hay que hacer es
+
+- **En tu computadora ir** [vevox.app]{style="color:#00AEEF"}
+- **Para usar el celular instala** [Vevox]{style="color:#00AEEF"} **desde la tienda de** *apps*
+
+:::: {.columns}
+:::::{.column width=30%}
+![](img/clase_1-Leyes-en-ecologia0.png)
+:::::
+:::::{.column width=30%}
+:::::
+:::::{.column width=30%}
+![](img/clase_1-Leyes-en-ecologia1.png)
+:::::
+::::
+
+``` {=html}
+<iframe 
+   width="100%" 
+   height="100%" 
+   src="https://vevox.app/#/m/152551925?integration=embed"
+   style="min-height: 800px;" 
+   frameBorder="5"
+   title="participación Vevox">
+  </irame>
+```
+:::
+
+
