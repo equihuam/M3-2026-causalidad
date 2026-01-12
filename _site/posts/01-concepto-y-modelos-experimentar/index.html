@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,18 +54,19 @@ div.csl-indent {
 <link href="../../images/causalidad-2026.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e41caad1b6b9b62eb3087831f3b4c651.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-e41caad1b6b9b62eb3087831f3b4c651.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e41caad1b6b9b62eb3087831f3b4c651.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-cc0c66d3a9e636430becf437bf8ba876.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-14d41249204da2b1aa42c37d647f6e65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-cc0c66d3a9e636430becf437bf8ba876.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-9f9210b263e96d54cf2af0ff29f9e6a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-2fb77ccd341c7b5dc4ea2940181b5c0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-9f9210b263e96d54cf2af0ff29f9e6a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,7 +81,7 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -1661,7 +1662,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -1847,6 +1848,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Curso de Estadística (Inecol 2026)</span>
     </a>
@@ -2235,12 +2238,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 \]</span></p>
 <p>A partir de este conocimiento científico, supongamos que un amigo da positivo en el test de vampirismo.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Cuál es la probabilidad de que sea un inmortal chupasangre">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Cuál es la probabilidad de que sea un inmortal chupasangre
+<span class="screen-reader-only">Tip</span>¿Cuál es la probabilidad de que sea un inmortal chupasangre
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2283,7 +2286,7 @@ Pr[vampiro|positivo]
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?
+<span class="screen-reader-only">Tip</span>¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2311,12 +2314,12 @@ Pr[H|E_1,E_2] = \frac{Pr[E_2|H,E_1] \times Pr[H|E_1]} {Pr[E_2|E_1]}
 <p>Ahora piensa en esto, si hacemos pruebas a las 100,000 personas, ¿qué proporción de los que dan positivo en las pruebas de vampirismo son realmente <em>vampiros</em>?</p>
 <p>Muchas personas, aunque ciertamente no todas, encuentran esta forma de contar la historia mucho más fácil de comprender. Sigamos por este camino.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Qué tal si contamos el número de personas que dan positivo?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Qué tal si contamos el número de personas que dan positivo?
+<span class="screen-reader-only">Tip</span>¿Qué tal si contamos el número de personas que dan positivo?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2392,7 +2395,7 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Podremos mejorar la práctica científica?
+<span class="screen-reader-only">Advertencia</span>¿Podremos mejorar la práctica científica?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2400,12 +2403,12 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Experimentos pensados">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Experimentos pensados
+<span class="screen-reader-only">Nota</span>Experimentos pensados
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2433,12 +2436,12 @@ Experimentos pensados
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><img src="images/doubt-2137526_1280.png" class="img-fluid" style="width:10.0%"></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Tú que piensas?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Tú que piensas?
+<span class="screen-reader-only">Tip</span>¿Tú que piensas?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2479,12 +2482,12 @@ Experimentos pensados
 <br>
 </p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Ha mejorado la situación?
+<span class="screen-reader-only">Tip</span>¿Ha mejorado la situación?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2518,12 +2521,12 @@ Experimentos pensados
 </div>
 <p>Sin duda la forma como hemos optado por hacer ciencia está teniendo problemas que debemos afrontar. La cuestión es que podemos o más bien que debemos hacer para enfrentarlos productivamente y así producir una ciencia mejor.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Buscar la verdad">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Buscar la verdad
+<span class="screen-reader-only">Tip</span>Buscar la verdad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2568,7 +2571,7 @@ Buscar la verdad
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Podríamos usarlo para intervenir en él?
+<span class="screen-reader-only">Tip</span>¿Podríamos usarlo para intervenir en él?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2583,7 +2586,7 @@ Buscar la verdad
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Piensas que sería válido restringir un modelo con valores de algún parámetro con un valor que no sea cero?
+<span class="screen-reader-only">Tip</span>¿Piensas que sería válido restringir un modelo con valores de algún parámetro con un valor que no sea cero?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2597,7 +2600,7 @@ Buscar la verdad
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Es éste un modelo de regresión simple?
+<span class="screen-reader-only">Tip</span>¿Es éste un modelo de regresión simple?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2606,7 +2609,7 @@ Buscar la verdad
 y_{i} = \mu + \varepsilon_{i}
 \]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2637,7 +2640,7 @@ IPE=\frac{\frac{(E_{R}-E_{C})}{gl_{C}-gl_{R}}}{\frac{E_{C}}{gl_{C}}} \\
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Mesaje clave
+<span class="screen-reader-only">Importante</span>Mesaje clave
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2672,7 +2675,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Cómo es que esta hipótesis se pone a prueba en un ANDEVA?
+<span class="screen-reader-only">Tip</span>¿Cómo es que esta hipótesis se pone a prueba en un ANDEVA?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2686,12 +2689,12 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?
+<span class="screen-reader-only">Tip</span>¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2709,12 +2712,12 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?
+<span class="screen-reader-only">Tip</span>¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2729,12 +2732,12 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 <section id="si-las-dos-medias-fueran-iguales-cómo-compararían-estas-dos-gráficas" class="level3">
 <h3 class="anchored" data-anchor-id="si-las-dos-medias-fueran-iguales-cómo-compararían-estas-dos-gráficas"><span style="color:GoldenRod"><strong>Si las dos <em>medias</em> fueran iguales ¿cómo compararían estas dos gráficas?</strong></span></h3>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Qué interpretación tiene la diferencia entre las dos sumas mencionadas arriba?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Qué interpretación tiene la diferencia entre las dos sumas mencionadas arriba?
+<span class="screen-reader-only">Tip</span>¿Qué interpretación tiene la diferencia entre las dos sumas mencionadas arriba?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2757,12 +2760,12 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 </ol>
 <p>En el cuadro de análisis de varianza se suele etiquetar a los componentes de error de acuerdo con su <em>fuente</em>. Se les acompaña con los grados de libertad, la <em>suma de cuadrados</em> de las distancias que mostré en las tres gráficas anteriores y luego los llamados <em>cuadrados medios</em>. Para referencia podemos pedrle a <strong>R</strong> que nos reporte el cuadro de ANOVA de este modelo.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Analiza la correspondencia entre los valores y las gráficas que vimos arriba con lo que reporta **R**">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Analiza la correspondencia entre los valores y las gráficas que vimos arriba con lo que reporta <strong>R</strong>
+<span class="screen-reader-only">Tip</span>Analiza la correspondencia entre los valores y las gráficas que vimos arriba con lo que reporta <strong>R</strong>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2849,7 +2852,7 @@ y = \mu + T +  \varepsilon
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Qué piensas de la paradoja de Lindley y sus implicaciones
+<span class="screen-reader-only">Tip</span>¿Qué piensas de la paradoja de Lindley y sus implicaciones
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2876,7 +2879,7 @@ y = \mu + T +  \varepsilon
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Por qué funcionaría esto?
+<span class="screen-reader-only">Tip</span>¿Por qué funcionaría esto?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2892,7 +2895,7 @@ y = \mu + T +  \varepsilon
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Cómo se puede hacer esto?
+<span class="screen-reader-only">Tip</span>¿Cómo se puede hacer esto?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2941,7 +2944,7 @@ y = \mu + T +  \varepsilon
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-¿Puedes darnos un ejemplo en el que distingas entre efectos fijos y aleatorios?
+<span class="screen-reader-only">Tip</span>¿Puedes darnos un ejemplo en el que distingas entre efectos fijos y aleatorios?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3044,13 +3047,14 @@ HICKS, JOHN S., MARK A. BURGMAN, JULIAN N. MAREWSKI, FIONA FIDLER, y GERD GIGERE
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
