@@ -22,10 +22,14 @@ format:
     metropolis-revealjs:
       chalkboard: true
       css: presentacion.css
+      auto-stretch: false
+      navigation-mode: grid
+      controls: false
 
 reveal-header:
-    sc-sb-title: false
+    sc-sb-title: false  
     header: "."
+
 transition: convex
 
 image: img/pay-937884_1280.jpg
@@ -38,7 +42,8 @@ preload-iframes: true
 ---
 
 
-# [🧱 Fundamentos del ideal científico]{.r-fit-text}
+# ![](img/icon-1-A-alfa.png){.icono} Fundamentos del ideal científico {.texto-fig}
+
 
 ::: {.notes}
 ≈15 min
@@ -111,8 +116,8 @@ Aunque esta visión de la ciencia todavía está presente en algunos círculos, 
     -   ¿Qué pasa con este supuesto en ciencias como la Ecología, la Psicología o las Ciencias sociales? De paso, hay que notar que este supuesto implica la homogeneidad del material experimental.
 -   **La causalidad existe** . El principio de causalidad es la noción que consiste en que “cada evento (o fenómeno) natural se supone tiene una causa, de modo que si tal situación causal puede ser restituida, el evento será duplicado” (Underwood1957).
 
+# ![](img/icon-2-B.png){.icono} El problema de la causalidad {.texto-fig}
 
-# [🧱 El problema de la causalidad]{.r-fit-text}
 
 ::: {.notes}
 ≈20 min
@@ -266,7 +271,8 @@ Elije la respuesta que consideres más apropiada
 ##  {background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
 
 
-# [🧱 Simplicidad, complejidad y límites]{.r-fit-text}
+# ![](img/icon-3.png){.icono} Simplicidad, complejidad y límites{.texto-fig}
+
 
 ::: {.notes}
 ≈10 min
@@ -303,7 +309,8 @@ La ciencia **necesita simplificar**, pero **no puede creerse simple**.
 > ¿Cuándo es que simplificar se vuelve engañoso?
 :::
 
-# [🧱 Crisis del ideal positivista]{.r-fit-text}
+# ![](img/icon-4-B.png){.icono} Crisis del ideal positivista{.texto-fig}
+
 
 ::: {.notes}
 ≈10 min
@@ -352,7 +359,8 @@ La crisis no es “anti-ciencia”, es **anti-simplificación excesiva**.
 
 
 
-# [🧱 Racionalidad humana real]{.r-fit-text}
+# ![](img/icon-5-C.png){.icono} Racionalidad humana real{.texto-fig}
+
 
 ::: {.notes}
 ≈20 min
@@ -528,10 +536,8 @@ Tres críticas convergentes:
 | Teoría crítica | Instrumento | Normalización |
 
 
+# ![](img/icon-6-B.png){.icono} Salida constructiva: ciencia hoy{.texto-fig}
 
-
-
-# [🧱 Salida constructiva: ciencia hoy]{.r-fit-text}
 
 ::: {.notes}
 ≈15 min
@@ -715,7 +721,9 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 > Gobernar procesos bajo incertidumbre  
 > no se resuelve sólo con aplicar modelos,  
 > se requiere 
-> **articular evidencia, valores y las reglas prácticas de la cultura**
+> **articular evidencia, valores
+> y también las reglas prácticas 
+> de la cultura involucrada**
 :::
 
 ## 4 ¿Cuáles son los aspectos CLAVE para diseñar un experimento/estudio?
