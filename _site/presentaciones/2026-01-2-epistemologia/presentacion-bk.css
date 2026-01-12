@@ -15,7 +15,7 @@ figcaption {
 }
 
 
-/* centrar todo elcontenido de la diapo y aoilar los items*/
+/* centrar todo elcontenido de la diapo y apilar los items*/
 .centrar-contenedor {
   display: flex;
   font-size: 1.25em;
@@ -48,6 +48,29 @@ figcaption {
 }
 
 
+/* La sección se vuelve el contenedor de posicionamiento */
+.reveal .slides section.titulo-centro {
+  position: relative;          /* contexto para el h2 absoluto */
+  text-align: center;          /* centra el texto dentro del h2 */
+  padding: 0;                  /* sin relleno que desplace */
+}
+
+/* Centra el h2 exactamente al medio de la slide */
+.reveal .slides section.titulo-centro > h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* centra en ambas direcciones */
+  margin: 0;
+  line-height: 1.2;
+}
+
+
+/* La sección o contenedor debe ser relativo */
+.reveal .slides {
+  position: relative;
+}
+
 /* Contenedor del texto libre */
 .texto-libre {
   position: absolute;
@@ -55,8 +78,6 @@ figcaption {
   top: var(--y, 50%);        /* posición vertical */
   transform: translate(-50%, -50%); /* centra respecto al punto */
   text-align: center;
-  pointer-events: auto; /* habilita interacción */
-  z-index: 9999; /* asegura que esté por encima de otros elementos */
 }
 
 /* Ajustes del texto */

@@ -42,7 +42,7 @@ preload-iframes: true
 ---
 
 
-# ![](img/icon-1-A-alfa.png){.icono} Fundamentos del ideal científico {.texto-fig style="--sep: 3rem"}
+# ![](img/icon-1-A-alfa.png){.icono} Fundamentos del ideal científico {.texto-fig style="--sep: 3rem" #bloque-1}
 
 
 ::: {.notes}
@@ -116,7 +116,11 @@ Aunque esta visión de la ciencia todavía está presente en algunos círculos, 
     -   ¿Qué pasa con este supuesto en ciencias como la Ecología, la Psicología o las Ciencias sociales? De paso, hay que notar que este supuesto implica la homogeneidad del material experimental.
 -   **La causalidad existe** . El principio de causalidad es la noción que consiste en que “cada evento (o fenómeno) natural se supone tiene una causa, de modo que si tal situación causal puede ser restituida, el evento será duplicado” (Underwood1957).
 
-# ![](img/icon-2-B.png){.icono} El problema de la causalidad {.texto-fig style="--sep: 3rem"}
+::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
+Vamos al [siguiente bloque](#bloque-2)
+:::
+
+# ![](img/icon-2-B.png){.icono} El problema de la causalidad {.texto-fig style="--sep: 3rem" #bloque-2}
 
 
 ::: {.notes}
@@ -270,8 +274,11 @@ Elije la respuesta que consideres más apropiada
 
 ##  {background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
 
+::: {.texto-libre style="--x: 90%; --y: 90%; font-size: 0.5em"}
+Vamos al [siguiente bloque](#bloque-3)
+:::
 
-# ![](img/icon-3.png){.icono} Simplicidad, complejidad y límites{.texto-fig style="--sep: 3rem"}
+# ![](img/icon-3.png){.icono} Simplicidad, complejidad y límites {.texto-fig style="--sep: 3rem" #bloque-3}
 
 
 ::: {.notes}
@@ -309,7 +316,11 @@ La ciencia **necesita simplificar**, pero **no puede creerse simple**.
 > ¿Cuándo es que simplificar se vuelve engañoso?
 :::
 
-# ![](img/icon-4-B.png){.icono} Crisis del ideal positivista{.texto-fig style="--sep: 3rem"}
+::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
+Vamos al [siguiente bloque](#bloque-4)
+:::
+
+# ![](img/icon-4-B.png){.icono} Crisis del ideal positivista {.texto-fig style="--sep: 3rem" #bloque-4}
 
 
 ::: {.notes}
@@ -357,9 +368,11 @@ La crisis no es “anti-ciencia”, es **anti-simplificación excesiva**.
 
 **Fuente: Yearley, S. (2005).** *Making sense of science (understanding the social study of science).* **Sage. London, 205 pp.**
 
+::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
+Vamos al [siguiente bloque](#bloque-5)
+:::
 
-
-# ![](img/icon-5-C.png){.icono} Racionalidad humana real{.texto-fig style="--sep: 3rem"}
+# ![](img/icon-5-C.png){.icono} Racionalidad humana real {.texto-fig style="--sep: 3rem" #bloque-5}
 
 
 ::: {.notes}
@@ -536,7 +549,11 @@ Tres críticas convergentes:
 | Teoría crítica | Instrumento | Normalización |
 
 
-# ![](img/icon-6-B.png){.icono} Salida constructiva: ciencia hoy{.texto-fig style="--sep: 3rem"}
+::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
+Vamos al [siguiente bloque](#bloque-6)
+:::
+
+# ![](img/icon-6-B.png){.icono} Salida constructiva: ciencia hoy {.texto-fig style="--sep: 3rem" #bloque-6}
 
 
 ::: {.notes}

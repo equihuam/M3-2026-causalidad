@@ -14,6 +14,8 @@ figcaption {
   padding-left: 20px; 
 }
 
+
+/* centrar todo elcontenido de la diapo y aoilar los items*/
 .centrar-contenedor {
   display: flex;
   font-size: 1.25em;
@@ -24,6 +26,7 @@ figcaption {
   align-items: center;     /* Centers horizontally */
   margin: 0;
 }
+
 
 
 /* Aplica a títulos dentro de secciones con .texto-fig */
@@ -44,6 +47,23 @@ figcaption {
   transform: translateY(0.06em); /* micro ajuste: sube/baja según signo */
 }
 
+
+/* Contenedor del texto libre */
+.texto-libre {
+  position: absolute;
+  left: var(--x, 50%);       /* posición horizontal */
+  top: var(--y, 50%);        /* posición vertical */
+  transform: translate(-50%, -50%); /* centra respecto al punto */
+  text-align: center;
+  pointer-events: auto; /* habilita interacción */
+  z-index: 9999; /* asegura que esté por encima de otros elementos */
+}
+
+/* Ajustes del texto */
+.texto-libre {
+  margin: 0;
+  font-size: 2em;
+}
 
 
 

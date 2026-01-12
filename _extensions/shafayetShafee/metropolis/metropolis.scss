@@ -319,14 +319,14 @@ h1.title {
  * LINKS
  *********************************************/
 .reveal a {
-    color: #51483D;
+    color: $link-color;
     text-decoration: none;
     -webkit-transition: color 0.15s ease;
     -moz-transition: color 0.15s ease;
     transition: color 0.15s ease; }
 
 .reveal a:hover {
-    color: #8b7c69;
+    color: #3b519e;
     text-shadow: none;
     border: none; }
 
