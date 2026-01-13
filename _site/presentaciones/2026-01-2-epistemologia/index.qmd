@@ -481,7 +481,7 @@ Pregunta clave:
 
 Tres críticas convergentes:
 
-- La intención importa
+- El sentido del asunto concreto importa
 - La experiencia importa
 - El poder importa
 
@@ -503,18 +503,20 @@ Tres críticas convergentes:
 ![Hermenéutica: círculo de comprensión](img/ilustracion_hermeneutica_circulo.svg)
 
 
-## Cognición encarnada - Fenomenología
+## Cognición encarnada - Fenomenología{.smaller}
+
+::: {.columns style="font-size: 0.8em;"}
+::::{.column width="20%" }
+La experiencia humana es lo central.
 
 - Cuerpo y mente inseparables
 - Percepción–acción unificadas
 - Conocimiento como experiencia
-![Embodied cognition](https://upload.wikimedia.org/wikipedia/commons/b/b4/The_scope_of_embodied_cognition_06.10.2021.png){.absolute top=200 left=750 width=450}
-
-
-##
-
-![Fenomenología: percepción–acción encarnada](img/ilustracion_fenomenologia_percepcion_accion.svg)
-
+::::
+::::{.column width="80%"}
+![](img/ilustracion_fenomenologia_percepcion_accion.png){width="90%"}
+::::
+:::
 
 ## Cognición situada
 
@@ -526,7 +528,7 @@ Tres críticas convergentes:
 ![](https://upload.wikimedia.org/wikipedia/commons/9/90/Sgimage1.gif){.absolute top=75 left=750}
 
 ##
-![Cognición situada: mente–tarea–entorno–instituciones](img/ilustracion_cognicion_situada.svg)
+![Cognición situada: mente–tarea–entorno–instituciones](img/ilustracion_cognicion_situada.png)
 
 
 ## Teoría crítica
