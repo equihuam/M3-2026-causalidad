@@ -851,7 +851,7 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 ------------------------------------------------------------------------
 
-## Para una reflexión en calma{.smaller}
+## Para una reflexión con calma{.smaller}
 
 ::: centrar-contenedor
 :::: {style="text-align:left;"}
