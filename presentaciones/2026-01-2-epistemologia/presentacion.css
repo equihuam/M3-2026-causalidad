@@ -15,7 +15,7 @@ figcaption {
 }
 
 
-/* centrar todo elcontenido de la diapo y aoilar los items*/
+/* centrar todo elcontenido de la diapo y apilar los items*/
 .centrar-contenedor {
   display: flex;
   font-size: 1.25em;
@@ -65,5 +65,11 @@ figcaption {
   font-size: 2em;
 }
 
+.texto-libre blockquote {
+  display: block;
+  margin-right: 0;
+  margin-left: 1.5em;
+  padding-right: 5em;
+}
 
 
