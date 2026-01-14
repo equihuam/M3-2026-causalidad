@@ -25,6 +25,7 @@ format:
       auto-stretch: false
       navigation-mode: grid
       controls: false
+      fig-align: center 
 
 reveal-header:
     sc-sb-title: false  
@@ -39,126 +40,170 @@ execute:
   echo: true
 embed-resources: false
 preload-iframes: true
+
+bibliography: ../../references.bib
+csl: apa.csl
 ---
 
+# ![](img/icon-1-A-alfa.png){.icono} Fundamentos del ideal científico {#bloque-1 .texto-fig style="--sep: 1.5rem"}
 
-# ![](img/icon-1-A-alfa.png){.icono} Fundamentos del ideal científico {.texto-fig style="--sep: 1.5rem" #bloque-1}
-
-
-::: {.notes}
+::: notes
 ≈15 min
 
 **Pregunta guía:**
 
-> ¿Qué promete la ciencia moderna? 
+> ¿Qué promete la ciencia moderna?
 
+**Objetivo didáctico:** Mostrar que **la ciencia moderna nace de
+supuestos fuertes**, no de neutralidad pura.
 
-**Objetivo didáctico:**
-Mostrar que **la ciencia moderna nace de supuestos fuertes**, no de neutralidad pura.
-
-🧠 *Mensaje clave:*
-La ciencia **no empieza sin filosofía**; empieza con **filosofía implícita**.
-   
+🧠 *Mensaje clave:* La ciencia **no empieza sin filosofía**; empieza con
+**filosofía implícita**.
 :::
 
 ## Bacon y la ciencia occidental
 
--   **Sir Francis Bacon (1561-1626)** clave en el origen de la ciencia occidental.
--   En su *Novum Organum* (1620) plantea substituir el ya entonces viejo método aristotélico (dominate por más de 1800 años), por un *nuevo órgano* basado en el **estudio inductivo de la naturaleza**.
+-   **Sir Francis Bacon (1561-1626)** clave en el origen de la ciencia
+    occidental.
+-   En su *Novum Organum* (1620) [@bacon2010]plantea substituir el ya
+    entonces viejo método aristotélico (dominate por más de 1800 años),
+    por un *nuevo órgano* basado en el **estudio inductivo de la
+    naturaleza**.
 -   Intentaba:
-    -   [*Iniciar una reconstrucción total de las ciencias, las artes prácticas y todo el conocimiento humano, erigida sobre fundamentos apropiados*]{style="color:#A61C00"} .
+    -   [*Iniciar una reconstrucción total de las ciencias, las artes
+        prácticas y todo el conocimiento humano, erigida sobre
+        fundamentos apropiados*]{style="color:#A61C00"} .
 -   Propone el **método de experimentación** .
--   Concibe que la manipulación deliberada de variables debería reemplazar el limitado empirismo prevaleciente que consistía en *"observar y nombrar"*.
+-   Concibe que la manipulación deliberada de variables debería
+    reemplazar el limitado empirismo prevaleciente que consistía en
+    *"observar y nombrar"*.
 
 ## Consecuencias baconianas
 
 ::: r-fit-text
--   Consecuencias positivas y negativas de La reconstrucción baconiana sobre la concepción de ciencia iniciadas hace 400 años y que prevalecen hasta hoy.
+-   Consecuencias positivas y negativas de La reconstrucción baconiana
+    sobre la concepción de ciencia iniciadas hace 400 años y que
+    prevalecen hasta hoy.
 
 -   El ideal baconiano de ciencia consiste en lo siguiente:
 
-    -   [Al principio de su investigación, los experimentadores habrán de eliminar de sus pensamientos “todos los ‘ídolos’ o ilusiones seculares y las falacias nacidas de las idiosincrasias personales, de sus juicios o de las creencias tradicionales y de los dogmas de su grupo”.]{style="color:#1155CC"}
+    -   [Al principio de su investigación, los experimentadores habrán
+        de eliminar de sus pensamientos “todos los ‘ídolos’ o ilusiones
+        seculares y las falacias nacidas de las idiosincrasias
+        personales, de sus juicios o de las creencias tradicionales y de
+        los dogmas de su grupo”.]{style="color:#1155CC"}
 
-    -   [En la visión baconiana, las observaciones se realizan en una forma puramente objetiva por individuos que no tienen lealtad alguna a ninguna hipótesis o creencia que les pueda causar ceguera hacia alguna porción de la evidencia empírica.]{style="color:#A64D79"}
+    -   [En la visión baconiana, las observaciones se realizan en una
+        forma puramente objetiva por individuos que no tienen lealtad
+        alguna a ninguna hipótesis o creencia que les pueda causar
+        ceguera hacia alguna porción de la evidencia
+        empírica.]{style="color:#A64D79"}
 
-    -   [Las conclusiones correctas y los principios explicativos emergen de las pruebas en una forma relativamente automática y sin que los preconceptos filosóficos del experimentador jueguen papel alguno.]{style="color:#1155CC"}
+    -   [Las conclusiones correctas y los principios explicativos
+        emergen de las pruebas en una forma relativamente automática y
+        sin que los preconceptos filosóficos del experimentador jueguen
+        papel alguno.]{style="color:#1155CC"}
 
-    -   [La naturaleza misma dictaría sin ambigüedades, por así decirlo, la adopción de teorías verdaderas. El conjunto total de las ciencia, pensaba, sería puramente objetivo, empírico y racional.]{style="color:#A64D79"}
+    -   [La naturaleza misma dictaría sin ambigüedades, por así decirlo,
+        la adopción de teorías verdaderas. El conjunto total de las
+        ciencia, pensaba, sería puramente objetivo, empírico y
+        racional.]{style="color:#A64D79"}
 :::
 
 ## Bacon hoy....
 
-Aunque esta visión de la ciencia todavía está presente en algunos círculos, es claro que tiene **defectos** serios.
+Aunque esta visión de la ciencia todavía está presente en algunos
+círculos, es claro que tiene **defectos** serios.
 
 ::: r-fit-text
--   Inevitalemente los **juicios personale** tienen un papel en la ciencia.
+-   Inevitalemente los **juicios personale** tienen un papel en la
+    ciencia.
 -   En gran parte juegan un papel creativo fundamental.
     -   Están presentes a cada paso de la creación científica
     -   Se involucran en el complicado proceso inductivo
-    -   No los podemos excluir de la forma como **explicamos los hallazgos**
-    -   No debemos minimizar las jugarretas que nuestra propia psique nos puede jugar.
-    -   Existe, por ejemplo, el llamado *efecto de disponibilidad* (¡usamos los conceptos que tenemos a la mano!).
+    -   No los podemos excluir de la forma como **explicamos los
+        hallazgos**
+    -   No debemos minimizar las jugarretas que nuestra propia psique
+        nos puede jugar.
+    -   Existe, por ejemplo, el llamado *efecto de disponibilidad*
+        (¡usamos los conceptos que tenemos a la mano!), o la burbuja
+        algorítmica [@krause2025].
     -   **No existe un proceso lógico riguroso para concebir teorías**
     -   **No hay reglas fijas para idear nuevos conceptos**
 :::
 
-
 ## “Legalidad” de la naturaleza
 
--   Esta noción, que posiblemente sea un corolario de una suposición filosófica más básica, implica la creencia de que los eventos de la naturaleza presentan cierto **apego a reglas** y es indudablemente un prerrequisito necesario para la ciencia.
+-   Esta noción, que posiblemente sea un corolario de una suposición
+    filosófica más básica, implica la creencia de que los eventos de la
+    naturaleza presentan cierto **apego a reglas** y es indudablemente
+    un prerrequisito necesario para la ciencia.
 
--   Esta suposición permite que la tarea de **catalogar y entender las regularidades** de la naturaleza sea concebible.
+-   Esta suposición permite que la tarea de **catalogar y entender las
+    regularidades** de la naturaleza sea concebible.
 
 ## Corolarios: comprensibilidad, uniformidad, causalidad
 
--   **La naturaleza es comprensible** . Einstein afirmaba que: la cosa más incomprensible del universo es que sea comprensible.
--   **La naturaleza es uniforme** . Es decir los procesos y patrones observados sólo en una escala limitada se mantendrán universalmente (esto es obviamente imprescindible en ciencias como la Astronomía).
-    -   ¿Qué pasa con este supuesto en ciencias como la Ecología, la Psicología o las Ciencias sociales? De paso, hay que notar que este supuesto implica la homogeneidad del material experimental.
--   **La causalidad existe** . El principio de causalidad es la noción que consiste en que “cada evento (o fenómeno) natural se supone tiene una causa, de modo que si tal situación causal puede ser restituida, el evento será duplicado” (Underwood1957).
+-   **La naturaleza es comprensible** . Einstein afirmaba que: la cosa
+    más incomprensible del universo es que sea comprensible.
+-   **La naturaleza es uniforme** . Es decir los procesos y patrones
+    observados sólo en una escala limitada se mantendrán universalmente
+    (esto es obviamente imprescindible en ciencias como la Astronomía).
+    -   ¿Qué pasa con este supuesto en ciencias como la Ecología, la
+        Psicología o las Ciencias sociales? De paso, hay que notar que
+        este supuesto implica la homogeneidad del material experimental.
+-   **La causalidad existe** . El principio de causalidad es la noción
+    que consiste en que “cada evento (o fenómeno) natural se supone
+    tiene una causa, de modo que si tal situación causal puede ser
+    restituida, el evento será duplicado” [@UNDERWOOD1957].
 
 ::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
 Vamos al [siguiente bloque](#bloque-2)
 :::
 
-# ![](img/icon-2-B.png){.icono} El problema de la causalidad {.texto-fig style="--sep: 1.5rem" #bloque-2}
+# ![](img/icon-2-B.png){.icono} El problema de la causalidad {#bloque-2 .texto-fig style="--sep: 1.5rem"}
 
-
-::: {.notes}
-≈20 min
-**Pregunta guía:**
+::: notes
+≈20 min **Pregunta guía:**
 
 > ¿Qué significa decir que algo causa algo?
 
-**Objetivo didáctico:**
-Separar claramente:
+**Objetivo didáctico:** Separar claramente:
 
-* correlación ≠ causalidad
-* causalidad ≠ determinismo simple
+-   correlación ≠ causalidad
+-   causalidad ≠ determinismo simple
 
-🧠 *Mensaje clave:*
-La causalidad **no desaparece**, pero **ya no es ingenua**.
+🧠 *Mensaje clave:* La causalidad **no desaparece**, pero **ya no es
+ingenua**.
 :::
 
-##
+##  {#bisagra-1 data-menu-title="Pregunta bisagra-1"}
 
-:::{.centrar-contenedor}
+::: centrar-contenedor
 > ¿Hasta qué punto el diseño puede ‘rescatar’ la causalidad?
 :::
----
+
+------------------------------------------------------------------------
 
 ## Causalidad y los empiristas
 
--   La posición del filósofo empirista escocés David Hume (1711-1776) tuvo un inmenso peso durante mucho tiempo.
--   Hume sostenía que la inferencia de relaciones de causalidad entre inobservables carece siempre de justificación lógica:
-    -   [*Lo que observamos no es un evento causando a otro, sino la correlación entre sus desarrollos*]{style="color:#1155CC"} .
--   En consecuencia, la correlación entre eventos es todo lo que podemos conocer acerca de la causalidad.
-
+-   La posición del filósofo empirista escocés David Hume (1711-1776)
+    tuvo un inmenso peso durante mucho tiempo.
+-   Hume sostenía que la inferencia de relaciones de causalidad entre
+    inobservables carece siempre de justificación lógica [@hume1748]:
+    -   [*Lo que observamos no es un evento causando a otro, sino la
+        correlación entre sus desarrollos*]{style="color:#1155CC"} .
+-   En consecuencia, la correlación entre eventos es todo lo que podemos
+    conocer acerca de la causalidad.
 
 ## Interpretaciónes causales
 
--   Para los filósofos empiristas es indispensable que **las causas y los efectos ocurran en “constante conjunción”** , es decir que la causa es necesaria y suficiente para el efecto.
+-   Para los filósofos empiristas es indispensable que **las causas y
+    los efectos ocurran en “constante conjunción”** , es decir que la
+    causa es necesaria y suficiente para el efecto.
 
--   Naturalmente se concebia que la **causalidad en ciencia documentaba** **procesos** **deterministas**.
+-   Naturalmente se concebia que la **causalidad en ciencia
+    documentaba** **procesos** **deterministas**.
 
 -   ¿Sigue siendo esta nuestra convicción o habrá cambiado?
 
@@ -170,42 +215,56 @@ La causalidad **no desaparece**, pero **ya no es ingenua**.
 
 ::: {layout="[[-1], [80], [80, 20]]" layout-valign="top"}
 -   90% de las semillas en un grupo tratado germinan.
--   20% lo hacen en el grupo control.   
+-   20% lo hacen en el grupo control.
 
 Elije la respuesta que consideres más apropiada
 
 ![](img/vevox-epistemologia.png){width="200"}
 :::
 
+##  {#vevox-1 background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true" data-menu-title="vevox-1"}
 
-##  {background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
+##  {#bisgra-2 data-menu-title="pregunta bisagra-2"}
 
-##
-
-:::{.centrar-contenedor}
+::: centrar-contenedor
 > ¿Puede haber causalidad sin metafísica?
 :::
 
 ## Positivismo
 
--   Las ideas de Hume permean en el positivismo del siglo XIX de Auguste Comte (1798-1857), que empujó al quehacer científico bajo su influencia a tomar una actitud temerosa para proponer relaciones causales como base de la construcción de hipótesis.
+-   Las ideas de Hume permean en el positivismo del siglo XIX de Auguste
+    Comte (1798-1857), que empujó al quehacer científico bajo su
+    influencia a tomar una actitud temerosa para proponer relaciones
+    causales como base de la construcción de hipótesis.
 
--   En lugar de causas, se buscan **relaciones funcionales** entre observables o entre términos teóricos, cada uno de los cuales es definido operativamente por un instrumento de medición o conjunto de operaciones en un estudio.
+-   En lugar de causas, se buscan **relaciones funcionales** entre
+    observables o entre términos teóricos, cada uno de los cuales es
+    definido operativamente por un instrumento de medición o conjunto de
+    operaciones en un estudio.
 
 ## Causalidad en crisis
 
+\
+
 ::: r-fit-text
--   Durante los últimos 50 años han emergido toda una gama de posiciones en relación con lo que se entiende al decir que **un evento causa a otro**
+-   Durante los últimos 50 años han emergido toda una gama de posiciones
+    en relación con lo que se entiende al decir que **un evento causa a
+    otro**
 
--   También se ha cestionado si reaalmente podemos **adquirir conocimiento acerca de una relación causal**.
+-   También se ha cestionado si reaalmente podemos **adquirir
+    conocimiento acerca de una relación causal**.
 
--   Cook y Campbell (1979) afirmaban hace tiempo que “la epistemología de la causalidad y de los métodos científicos más en general, atraviesaba por un *productivo estado* de casi caos”.
+-   Cook y Campbell (1979) afirmaban hace tiempo que “la epistemología
+    de la causalidad y de los métodos científicos más en general,
+    atraviesaba por un *productivo estado* de casi caos”.
 
 -   ¿Habremos superado ya esta compleja encrusijada?
 
--   Actualmente se acepta que **la causalidad puede tomar una forma probabilística** .
+-   Actualmente se acepta que **la causalidad puede tomar una forma
+    probabilística** .
 
--   Judea Pearl y Dana Mackenzie publicaron en 2018 *The Book of Why: The New Science of Cause and Effect.*
+-   Judea Pearl y Dana Mackenzie publicaron en 2018 *The Book of Why:
+    The New Science of Cause and Effect.*
 :::
 
 ## 2. ¿Qué tan de acuerdo estás con la siguiente aseveración?
@@ -216,54 +275,91 @@ Elije la respuesta que consideres más apropiada
 
 **“La causalidad implica correlación”**
 
-##  {background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
+##  {#vevox-2 background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true" data-menu-title="vevox-2"}
 
 ## Causalidad hoy...
 
--   Estas perspectivas de la causalidad actualmente se reconocen limitadas.
+-   Estas perspectivas de la causalidad actualmente se reconocen
+    limitadas.
 
--   La causalidad se considera ahora como algo **diferente de la mera correlación** .
+-   La causalidad se considera ahora como algo **diferente de la mera
+    correlación** .
 
--   Esto puede ser confuso en el uso de técnicas estadísticas que lo mismo se aplican para establecer correlación que para hablar de causas.
+-   Esto puede ser confuso en el uso de técnicas estadísticas que lo
+    mismo se aplican para establecer correlación que para hablar de
+    causas.
 
--   La fuerza con la que podemos apoyar una relación como causal, depende críticamente de **la naturaleza del diseño empleado y no del modelo estadístico empleado** .
+-   La fuerza con la que podemos apoyar una relación como causal,
+    depende críticamente de **la naturaleza del diseño empleado y no del
+    modelo estadístico empleado** .
 
 ## Gama de relaciones causales
 
--   Hay toda una gama de posibilidades acerca de los tipos de relaciones de causalidad que pueden ser descubiertas a través de la experimentación.
+-   Hay toda una gama de posibilidades acerca de los tipos de relaciones
+    de causalidad que pueden ser descubiertas a través de la
+    experimentación.
 
--   El suponer **el principio de causalidad significa adoptar el determinismo como un paradigma de trabajo** en el laboratorio y en el campo.
+-   El suponer **el principio de causalidad significa adoptar el
+    determinismo como un paradigma de trabajo** en el laboratorio y en
+    el campo.
 
--   Debe notarse que en cualquier situación hay toda una variedad de niveles en los que puede conducirse un análisis causal. Tanto **la naturaleza como la ciencia están estratificadas** .
+-   Debe notarse que en cualquier situación hay toda una variedad de
+    niveles en los que puede conducirse un análisis causal. Tanto **la
+    naturaleza como la ciencia están estratificadas** .
 
--   Por ejemplo si apago la luz en una habitación *¿cuál es el conjunto de posibles escenarios causales?*
+-   Por ejemplo si apago la luz en una habitación *¿cuál es el conjunto
+    de posibles escenarios causales?*
 
 ## Causalidad y realidad (realismo vs positivismo)
 
 ::: r-fit-text
--   Nos queda meditar el significado de las relaciones de causalidad descubiertas.
--   Para los realistas (¡en el sentido filosófico!), se trata de un logro en el camino de la búsqueda de la verdad acerca de mecanismos ocultos, pero reales, cuyas propiedades y relaciones explican los fenómenos observables.
-    -   Un físico positivista diría solamente que un globo se encoge como una función del tiempo.
-    -   Un físico realista agregaría que la pérdida de moléculas de gas causaron el encogimiento observado.
--   Es decir, no se trata sólo de una relación causal construida en la mente del físico, se trata de que existe una relación causal real entre las entidades fuera de la mente humana:
-    -   “Las aseveraciones teóricas tienen un contenido objetivo que puede ser cierto o falso”.
+-   Nos queda meditar el significado de las relaciones de causalidad
+    descubiertas.
+-   Para los realistas (¡en el sentido filosófico!), se trata de un
+    logro en el camino de la búsqueda de la verdad acerca de mecanismos
+    ocultos, pero reales, cuyas propiedades y relaciones explican los
+    fenómenos observables.
+    -   Un físico positivista diría solamente que un globo se encoge
+        como una función del tiempo.
+    -   Un físico realista agregaría que la pérdida de moléculas de gas
+        causaron el encogimiento observado.
+-   Es decir, no se trata sólo de una relación causal construida en la
+    mente del físico, se trata de que existe una relación causal real
+    entre las entidades fuera de la mente humana:
+    -   “Las aseveraciones teóricas tienen un contenido objetivo que
+        puede ser cierto o falso”.
 :::
 
 ## Causalidad finita
 
--   La ciencia no sólo presupone que **hay causas naturaleza de los eventos** , sino también que **esas causas son finitas en número** y que **pueden ser descubiertas**.
+-   La ciencia no sólo presupone que **hay causas naturaleza de los
+    eventos** , sino también que **esas causas son finitas en número** y
+    que **pueden ser descubiertas**.
 
--   La ciencia se construye sobre la convicción de que **la generalización de algún tipo es posible** . Es decir, no es necesario reproducir el prácticamente infinito número de elementos que operan cuando un efecto es observado inicialmente, a fin de tener una causa suficiente para volver a producir el efecto.
+-   La ciencia se construye sobre la convicción de que **la
+    generalización de algún tipo es posible** . Es decir, no es
+    necesario reproducir el prácticamente infinito número de elementos
+    que operan cuando un efecto es observado inicialmente, a fin de
+    tener una causa suficiente para volver a producir el efecto.
 
--   Si la ciencia es posible, debemos **suponer que el efecto de un factor no depende de todos los posibles niveles de todas las otras variables presentes** cuando se efectúa la observación.
+-   Si la ciencia es posible, debemos **suponer que el efecto de un
+    factor no depende de todos los posibles niveles de todas las otras
+    variables presentes** cuando se efectúa la observación.
 
 ## Causalidad finita y desprecio...
 
--   Para Bachelard, uno de los signos distintivos del espíritu científico y del espíritu filosófico es el **derecho a despreciar** . Para él, el espíritu científico explicita clara y distintamente este derecho a despreciar lo despreciable
+-   Para Bachelard, uno de los signos distintivos del espíritu
+    científico y del espíritu filosófico es el **derecho a despreciar**
+    . Para él, el espíritu científico explicita clara y distintamente
+    este derecho a despreciar lo despreciable
 -   Derecho que incansablemente el espíritu filosófico le rehúsa.
 -   Para ilustrar esto, recurre a Ostwald:
-    -   [“Cualquiera]{style="color:#A64D79"} [que sea el fenómeno considerado, siempre hay un número extremadamente grande de circunstancias que no tienen influencia mesurable sobre él”.]{style="color:#A64D79"}
-    -   [¿Cómo influye el color de un proyectil en sus propiedades balísticas?]{style="color:#BF9000"}
+    -   [“Cualquiera]{style="color:#A64D79"} [que sea el fenómeno
+        considerado, siempre hay un número extremadamente grande de
+        circunstancias que no tienen influencia mesurable sobre
+        él”.]{style="color:#A64D79"}
+    -   [¿Cómo influye el color de un proyectil en sus propiedades
+        balísticas?]{style="color:#BF9000"}
 
 ## 3. ¿Conoces alguna metodología científica para describir y analizar estructuras de relación causa efecto?
 
@@ -271,48 +367,53 @@ Elije la respuesta que consideres más apropiada
 **Participa: vevox.app ID: 144-565-419**
 :::
 
-
-##  {background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
+##  {#vevox-3 background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true" data-menu-title="vevox-3"}
 
 ::: {.texto-libre style="--x: 90%; --y: 90%; font-size: 0.5em"}
 Vamos al [siguiente bloque](#bloque-3)
 :::
 
-# ![](img/icon-3.png){.icono} Simplicidad, complejidad y límites {.texto-fig style="--sep: 1.5rem" #bloque-3}
+# ![](img/icon-3.png){.icono} Simplicidad, complejidad y límites {#bloque-3 .texto-fig style="--sep: 1.5rem"}
 
-
-::: {.notes}
-≈10 min
-**Pregunta guía:**
+::: notes
+≈10 min **Pregunta guía:**
 
 > ¿Hasta dónde puede simplificar la ciencia?
 
-**Objetivo didáctico:**
-Preparar el terreno para **aceptar límites sin abandonar rigor**.
+**Objetivo didáctico:** Preparar el terreno para **aceptar límites sin
+abandonar rigor**.
 
-🧠 *Mensaje clave:*
-La ciencia **necesita simplificar**, pero **no puede creerse simple**.
-
+🧠 *Mensaje clave:* La ciencia **necesita simplificar**, pero **no puede
+creerse simple**.
 :::
 
 ## Simplicidad...
 
--   Muchos científicos, particularmente los físicos, enfatizan la importancia de la fuerte creencia en la simplicidad última de las leyes científicas.
+-   Muchos científicos, particularmente los físicos, enfatizan la
+    importancia de la fuerte creencia en la simplicidad última de las
+    leyes científicas.
 -   Albert Einstein escribió alguna vez
-    -   [“Nuestras experiencias nos justifican al creer que la naturaleza es la realización de las ideas matemáticas más simples concebibles”.]{style="color:#A64D79"}
--   Sin embargo, como cualquier ecólogo sabe, hay una enorme complejidad en los sistemas vivientes, lo que puede hacer cuestionable o por lo menos dificultar grandemente el empleo de modelos simples.
+    -   [“Nuestras experiencias nos justifican al creer que la
+        naturaleza es la realización de las ideas matemáticas más
+        simples concebibles”.]{style="color:#A64D79"}
+-   Sin embargo, como cualquier ecólogo sabe, hay una enorme complejidad
+    en los sistemas vivientes, lo que puede hacer cuestionable o por lo
+    menos dificultar grandemente el empleo de modelos simples.
 
 ## ...Simplicidad...
 
--   Una buena guía a seguir la encontramos en las palabras del científico Alfred North Whitehead:
-    -   [“Busca la simplicidad y desconfía de ella”]{style="color:#A64D79"}
+-   Una buena guía a seguir la encontramos en las palabras del
+    científico Alfred North Whitehead:
+    -   [“Busca la simplicidad y desconfía de
+        ella”]{style="color:#A64D79"}
 -   El mismo autor afirmaba que la ciencia tiene como meta
-    -   [“Buscar la explicación más simple de hechos complejos, tratando al mismo tiempo de evitar el error de concluir que la naturaleza es más simple de lo que realmente es”.]{style="color:#134F5C"}
+    -   [“Buscar la explicación más simple de hechos complejos, tratando
+        al mismo tiempo de evitar el error de concluir que la naturaleza
+        es más simple de lo que realmente es”.]{style="color:#134F5C"}
 
+##  {#bisagra-3 data-menu-title="Pregunta bisagra-3"}
 
-##
-
-:::{.centrar-contenedor}
+::: centrar-contenedor
 > ¿Cuándo es que simplificar se vuelve engañoso?
 :::
 
@@ -320,429 +421,432 @@ La ciencia **necesita simplificar**, pero **no puede creerse simple**.
 Vamos al [siguiente bloque](#bloque-4)
 :::
 
-# ![](img/icon-4-B.png){.icono} Crisis del ideal positivista {.texto-fig style="--sep: 1.5rem" #bloque-4}
+# ![](img/icon-4-B.png){.icono} Crisis del ideal positivista {#bloque-4 .texto-fig style="--sep: 1.5rem"}
 
-
-::: {.notes}
-≈10 min
-**Pregunta guía:**
+::: notes
+≈10 min **Pregunta guía:**
 
 > ¿Por qué el positivismo deja de ser suficiente?
 
-**Objetivo didáctico:**
-Mostrar que la crisis es:
+**Objetivo didáctico:** Mostrar que la crisis es:
 
-* epistemológica,
-* social,
-* política.
+-   epistemológica,
+-   social,
+-   política.
 
-🧠 *Mensaje clave:*
-La crisis no es “anti-ciencia”, es **anti-simplificación excesiva**.
+🧠 *Mensaje clave:* La crisis no es “anti-ciencia”, es
+**anti-simplificación excesiva**.
 
 📌 **Slide bisagra (discusión):** crítica posmoderna
-
 :::
 
-##
+##  {#bisagra-4 data-menu-title="Pregunta bisagra-4"}
 
-:::{.centrar-contenedor}
+::: centrar-contenedor
 > ¿La crítica posmoderna debilita o fortalece a la ciencia?
 :::
 
 ## Ciencia en Problemas
 
--   Al inicio del siglo XXI la profesión científica enfrenta serios problemas en relación con su postura pública y credibilidad.
--   Crisis del posmodernismo. En todas las esferas culturales (arte, literatura, diseño)
-    -   [La idea de un]{style="color:#A64D79"} [*estilo superior*]{style="color:#A64D79"} [y las ideas de]{style="color:#A64D79"} [*avance*]{style="color:#A64D79"} [y]{style="color:#A64D79"} [*progreso*]{style="color:#A64D79"} [están siendo cuestionadas]{style="color:#A64D79"}
-    -   [El pluralismo y la multiplicidad son preferidos.]{style="color:#38761D"}
--   La condición posmodernista implica una pérdida de aprecio a la autoridad.
+-   Al inicio del siglo XXI la profesión científica enfrenta serios
+    problemas en relación con su postura pública y credibilidad.
+-   Crisis del posmodernismo. En todas las esferas culturales (arte,
+    literatura, diseño)
+    -   [La idea de un]{style="color:#A64D79"} [*estilo
+        superior*]{style="color:#A64D79"} [y las ideas
+        de]{style="color:#A64D79"} [*avance*]{style="color:#A64D79"}
+        [y]{style="color:#A64D79"} [*progreso*]{style="color:#A64D79"}
+        [están siendo cuestionadas]{style="color:#A64D79"}
+    -   [El pluralismo y la multiplicidad son
+        preferidos.]{style="color:#38761D"}
+-   La condición posmodernista implica una pérdida de aprecio a la
+    autoridad.
 -   Existe también una crisis del determinismo (Lyotard, 1984)
 
-**Fuente: Yearley, S. (2005).** *Making sense of science (understanding the social study of science).* **Sage. London, 205 pp.**
+**Fuente: Yearley, S. (2005).** *Making sense of science (understanding
+the social study of science).* **Sage. London, 205 pp.**
 
 ## Verdades posmodernistas
 
--   El oficio de la ciencia es construir y defender representaciones de la realidad.
--   Irónicamente, el mismo éxito y alto perfil social de la ciencia la han abierto a la reconstrucción y al escepticismo.
--   La ciencia es cada vez más y más una necesidad, pero al mismo tiempo, es menos y menos suficiente para la definición socialmente aglutinadora de verdad (Beck, 1992).
+-   El oficio de la ciencia es construir y defender representaciones de
+    la realidad.
+-   Irónicamente, el mismo éxito y alto perfil social de la ciencia la
+    han abierto a la reconstrucción y al escepticismo.
+-   La ciencia es cada vez más y más una necesidad, pero al mismo
+    tiempo, es menos y menos suficiente para la definición socialmente
+    aglutinadora de verdad (Beck, 1992).
 
-**Fuente: Yearley, S. (2005).** *Making sense of science (understanding the social study of science).* **Sage. London, 205 pp.**
+**Fuente: Yearley, S. (2005).** *Making sense of science (understanding
+the social study of science).* **Sage. London, 205 pp.**
 
 ::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
 Vamos al [siguiente bloque](#bloque-5)
 :::
 
-# ![](img/icon-5-C.png){.icono} Racionalidad humana real {.texto-fig style="--sep: 1.5rem" #bloque-5}
+# ![](img/icon-5-C.png){.icono} Racionalidad humana real {#bloque-5 .texto-fig style="--sep: 1.5rem"}
 
-
-::: {.notes}
-≈20 min
-**Pregunta guía:**
+::: notes
+≈20 min **Pregunta guía:**
 
 > ¿Cómo decidimos realmente?
 
-**Objetivo didáctico:**
-Desplazar la pregunta:
+**Objetivo didáctico:** Desplazar la pregunta:
 
-> ¿Somos racionales?  
-> **hacia**
-> ¿Qué tipo de racionalidad es posible?
+> ¿Somos racionales?\
+> **hacia** ¿Qué tipo de racionalidad es posible?
 
-🧠 *Mensaje clave:*
-La racionalidad **no es defectuosa**; es **situada y distribuida**.
-       
-
+🧠 *Mensaje clave:* La racionalidad **no es defectuosa**; es **situada y
+distribuida**.
 :::
 
 ## Punto de partida histórico
 
-- Lógica clásica → certeza
-- Probabilidad moderna → incertidumbre
-- Ciencia como cálculo del comportamiento humano
+\
+
+-   Lógica clásica → certeza
+-   Probabilidad moderna → incertidumbre
+-   Ciencia como cálculo del comportamiento humano
 
 > “La probabilidad es sentido común reducido a cálculo”
 
-
 ## El proyecto positivista (Comte 1798-1857)
 
-- Leyes empíricas universales
-- Ciencia como base del orden social
-- Supresión de la metafísica
-- Sociedad como objeto gobernable
+-   Leyes empíricas universales
+-   Ciencia como base del orden social
+-   Supresión de la metafísica
+-   Sociedad como objeto gobernable
 
-**Supuesto fuerte:**  
+**Supuesto fuerte:**
 
 > la ciencia puede gobernar a la sociedad
 
-
 ## Ideal positivista de la racionalidad
 
-- Racionalidad universal
-- Formalización matemática
-- Predicción y control
-- Neutralidad del observador
+\
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg){.absolute top=200 left=650 width="450"}
+-   Racionalidad universal
+-   Formalización matemática
+-   Predicción y control
+-   Neutralidad del observador
+
+![](https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg){.absolute
+top="200" left="650" width="450"}
 
 ## Racionalidad limitada
 
-- Información incompleta
-- Tiempo y capacidades finitas
-- Decisiones satisfactorias
-- Uso sistemático de heurísticas
+-   Información incompleta
+-   Tiempo y capacidades finitas
+-   Decisiones satisfactorias
+-   Uso sistemático de heurísticas
 
-::: {.apuntar}
-- La racionalidad se vuelve empírica
+::: apuntar
+-   La racionalidad se vuelve empírica
 :::
 
-![](https://upload.wikimedia.org/wikipedia/commons/2/25/Simple_decision_tree.svg){.absolute top=100 left=750 width="350"}
-
-
+![](https://upload.wikimedia.org/wikipedia/commons/2/25/Simple_decision_tree.svg){.absolute
+top="100" left="750" width="350"}
 
 ## Heurísticas y sesgos
 
-- Reglas simples de decisión
-- Funcionan rápido
-- Producen errores sistemáticos
-- No son anomalías individuales
+\
+\
 
+-   Reglas simples de decisión
+-   Funcionan rápido
+-   Producen errores sistemáticos
+-   No son anomalías individuales
 
 ## ¿Fallamos al razonar? {.smaller}
 
 Dos interpretaciones:
 
-- Sesgos → desviaciones del modelo normativo
-- Heurísticas → adaptaciones a entornos reales
+-   Sesgos → desviaciones del modelo normativo
+-   Heurísticas → adaptaciones a entornos reales
 
-::: {.apuntar}
-- El error se vuelve estructural
-
+::: apuntar
+-   El error se vuelve estructural
 :::
 
-![](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg){.absolute top=50 left=550 width=550}
-
-
+![](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg){.absolute
+top="50" left="550" width="550"}
 
 ## Límite del positivismo clásico
 
 El modelo normativo:
 
-- Describe mal cómo decidimos
-- Ignora valores y poder
-- No resuelve conflictos sociales
+-   Describe mal cómo decidimos
+-   Ignora valores y poder
+-   No resuelve conflictos sociales
 
 Pregunta clave:
 
 > ¿Quién define qué es racional?
 
-
-
 ## Enfoques no positivistas
+
+\
 
 Tres críticas convergentes:
 
-- El sentido del asunto concreto importa
-- La experiencia importa
-- El poder importa
+-   El sentido del asunto concreto importa
+-   La experiencia importa
+-   El poder importa
 
-::: {.apuntar}
-- La racionalidad no es solo cálculo
+::: apuntar
+-   La racionalidad no es solo cálculo
 :::
-
 
 ## Hermenéutica
 
-- Comprensión como proceso iterativo
-- Lenguaje, historia, tradición
-- Decisión como interpretación
+::: {layout="[1, 2]"}
+-   Comprensión como proceso iterativo
+-   Lenguaje, historia, tradición
+-   Decisión como interpretación
 
-![](https://upload.wikimedia.org/wikipedia/commons/8/87/Hermeneutic_Circle.jpg ){.absolute top=100 left=750 width=450}
+![](img/ilustracion_hermeneutica_circulo.png){width="550"
+fig-align="right"}
+:::
 
+## Cognición encarnada - Fenomenología {.smaller}
 
-##
-![Hermenéutica: círculo de comprensión](img/ilustracion_hermeneutica_circulo.svg)
-
-
-## Cognición encarnada - Fenomenología{.smaller}
-
-::: {.columns style="font-size: 0.8em;"}
-::::{.column width="20%" }
+::::: {.columns style="font-size: 1.1em;"}
+::: {.column width="20%"}
 La experiencia humana es lo central.
 
-- Cuerpo y mente inseparables
-- Percepción–acción unificadas
-- Conocimiento como experiencia
-::::
-::::{.column width="80%"}
-![](img/ilustracion_fenomenologia_percepcion_accion.png){width="90%"}
-::::
+-   Cuerpo y mente inseparables
+-   Percepción–acción unificadas
+-   Conocimiento como experiencia
 :::
+
+::: {.column width="80%"}
+![](img/ilustracion_fenomenologia_percepcion_accion.png){width="90%"
+fig-align="right"}
+:::
+:::::
 
 ## Cognición situada
 
-- Saber inseparable de la acción
-- Contexto, cultura y ambiente
-- Cognición como actividad integrada
- 
- 
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/Sgimage1.gif){.absolute top=75 left=750}
+::: {layout="[1,3]" style="font-size:0.8em;"}
+-   Saber inseparable de la acción
+-   Contexto, cultura y ambiente
+-   Cognición como actividad integrada
 
-##
-![Cognición situada: mente–tarea–entorno–instituciones](img/ilustracion_cognicion_situada.png)
-
+![](img/ilustracion_cognicion_situada.png){layout-valign="bottom"
+fig-align="right"}
+:::
 
 ## Teoría crítica
 
-- Racionalidad instrumental
-- Orientada a eficiencia y control
-- Modelos como tecnologías de poder
+-   Racionalidad instrumental
+-   Orientada a eficiencia y control
+-   Modelos como tecnologías de poder
 
-![Pensamiento sistémico](https://upload.wikimedia.org/wikipedia/commons/7/72/Systems_Thinking_Diagram.png)
-
+![Pensamiento
+sistémico](https://upload.wikimedia.org/wikipedia/commons/7/72/Systems_Thinking_Diagram.png)
 
 ## Síntesis epistemológica
 
-| Enfoque | Racionalidad | Heurísticas |
-|------|-------------|-------------|
-| Positivismo | Mecanismo | Reglas |
-| Hermenéutica | Comprensión | Prácticas |
-| Fenomenología | Experiencia | Acción |
-| Constructivismo | Producto social | Rutinas |
-| Teoría crítica | Instrumento | Normalización |
+\
+\
 
+| Enfoque         | Racionalidad    | Heurísticas   |
+|-----------------|-----------------|---------------|
+| Positivismo     | Mecanismo       | Reglas        |
+| Hermenéutica    | Comprensión     | Prácticas     |
+| Fenomenología   | Experiencia     | Acción        |
+| Constructivismo | Producto social | Rutinas       |
+| Teoría crítica  | Instrumento     | Normalización |
 
 ::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
 Vamos al [siguiente bloque](#bloque-6)
 :::
 
-# ![](img/icon-6-B.png){.icono} Salida constructiva: ciencia hoy {.texto-fig style="--sep: 1.5rem" #bloque-6}
+# ![](img/icon-6-B.png){.icono} Salida constructiva: ciencia hoy {#bloque-6 .texto-fig style="--sep: 1.5rem"}
 
-
-::: {.notes}
+::: notes
 ≈15 min
 
 **Pregunta guía:**
 
 > ¿Cómo hacer ciencia y decidir hoy?
 
-🧠 *Mensaje clave:*
-Usamos ciencia **consciente de sus límites**, no a pesar de ellos.
-
+🧠 *Mensaje clave:* Usamos ciencia **consciente de sus límites**, no a
+pesar de ellos.
 :::
 
 ## ¿Fracasó el positivismo?
 
-:::{.centrar-contenedor}
+::: centrar-contenedor
 Respuesta corta:
 
->[💀]{style="font-style: normal;"} Como proyecto totalizante  
->[🗽]{style="font-style: normal;"} Como infraestructura científica  
+> [💀]{style="font-style: normal;"} Como proyecto totalizante\
+> [🗽]{style="font-style: normal;"} Como infraestructura científica
 :::
 
 ## La paradoja
 
-:::{.columns}
-::::{.column width="50%"}
-> El positivismo fracasa  
+::::: columns
+::: {.column width="50%"}
+> El positivismo fracasa\
 > **porque tiene demasiado éxito**
+:::
 
-::::
-
-::::{.column width="50%"}
+::: {.column width="50%"}
 \
 \
 \
 
 Al medir y modelar:
 
-- revela incertidumbre
-- expone límites cognitivos
-- muestra complejidad social
-::::
-::: 
-
+-   revela incertidumbre
+-   expone límites cognitivos
+-   muestra complejidad social
+:::
+:::::
 
 ## Emergencia de modelos híbridos
 
 Aparecen cuando:
 
-- la incertidumbre es alta
-- los valores están en disputa
-- las decisiones son urgentes
-- el riesgo es colectivo
+-   la incertidumbre es alta
+-   los valores están en disputa
+-   las decisiones son urgentes
+-   el riesgo es colectivo
 
-::: {.apuntar}
-- La ciencia sola no basta
-- La sociedad sola tampoco
+::: apuntar
+-   La ciencia sola no basta
+-   La sociedad sola tampoco
 :::
-
 
 ## ¿Qué es un modelo híbrido?
 
-:::{.columns}
-::::{.column width=60%}
-> La ciencia informa  
-> la sociedad delibera  
+\
+
+::::: columns
+::: {.column width="70%"}
+> La ciencia informa\
+> la sociedad delibera\
 > la decisión emerge de su interacción
-::::
-
-::::{.column width=40%}
-\
-\
-
-No es:
-
-- divulgación
-- relativismo
-- tecnocracia
-::::
 :::
 
+::: {.column width="30%"}
+\
+\
+\
+\
+No es:
+
+-   divulgación
+-   relativismo
+-   tecnocracia
+:::
+:::::
 
 ## Lógicas que se articulan
 
 \
 
-| Ciencia | Sociedad |
-|------|---------|
-| Evidencia | Valores |
+| Ciencia      | Sociedad    |
+|--------------|-------------|
+| Evidencia    | Valores     |
 | Probabilidad | Experiencia |
-| Modelos | Legitimidad |
-| Predicción | Sentido |
----
+| Modelos      | Legitimidad |
+| Predicción   | Sentido     |
+
+------------------------------------------------------------------------
 
 ## Heurísticas colectivas diseñadas
 
 Ejemplos:
 
-- umbrales ecológicos
-- semáforos de riesgo
-- principio de precaución
-- escenarios plausibles
+-   umbrales ecológicos
+-   semáforos de riesgo
+-   principio de precaución
+-   escenarios plausibles
 
-::: {.apuntar}
-- Racionalidad limitada institucionalizada
+::: apuntar
+-   Racionalidad limitada institucionalizada
 :::
----
 
+------------------------------------------------------------------------
 
-##
+##  {#bisagra-5 data-menu-title="Pregunta bisagra-5"}
 
-:::{.centrar-contenedor .r-fit-text}
-> ¿Sesgos o adaptaciones?
+::: centrar-contenedor
+> ¿Sesgos o adaptaciones?{.r-fit-text}
 :::
 
 ## desafíos de la ciencia en crisis
 
 La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
-- nadie entiende todo  
-- nadie controla todo  
-- nadie decide solo  
+-   nadie entiende todo\
+-   nadie controla todo\
+-   nadie decide solo
 
-::: {.apuntar}
-- Heurísticas explícitas en lugar de una optimización perfecta
+::: apuntar
+-   Heurísticas explícitas en lugar de una optimización perfecta
 :::
----
 
-##
+------------------------------------------------------------------------
 
-:::{.centrar-contenedor}
+##  {#bisagra-6 data-menu-title="Pregunta bisagra-6"}
+
+::: centrar-contenedor
 > ¿Quién debe decidir bajo incertidumbre?
 :::
 
 ## Oferta de la Ciencia Abierta
 
-- Evidencia como bien común  
-- Datos con supuestos visibles  
-- Incertidumbre explícita  
-- Heurísticas colectivas compartidas  
-- Aprendizaje adaptativo
+-   Evidencia como bien común\
+-   Datos con supuestos visibles\
+-   Incertidumbre explícita\
+-   Heurísticas colectivas compartidas\
+-   Aprendizaje adaptativo
 
-::: {.apuntar}
-- Infraestructura práctica para modelos híbridos ciencia–sociedad
+::: apuntar
+-   Infraestructura práctica para modelos híbridos ciencia–sociedad
 :::
----
 
+------------------------------------------------------------------------
 
-##
+##  {#heurística-CA data-menu-title="heurística-CA"}
 
 ![](img/esquema_ciencia_abierta_heuristicas.png)
 
-
-## {background-image="img/figura_modelo_hibrido_ciencia_sociedad.png" background-size="80%"}
-
+##  {#modelo-hibrido-sociedad background-image="img/figura_modelo_hibrido_ciencia_sociedad.png" background-size="80%" data-menu-title="modelo-hibrido-sociedad"}
 
 ## ¿Qué cambia respecto al positivismo de Comte?
 
-- La ciencia ya no gobierna sola
-- La racionalidad no es universal
-- La incertidumbre no se elimina
-- Los valores se hacen explícitos
+\
 
-::: {.apuntar}
-- Pero la ciencia sigue siendo indispensable
+-   La ciencia ya no gobierna sola
+-   La racionalidad no es universal
+-   La incertidumbre no se elimina
+-   Los valores se hacen explícitos
+
+::: apuntar
+-   Pero la ciencia sigue siendo indispensable
 :::
----
+
+------------------------------------------------------------------------
 
 ## Implicación final
 
-:::{.centrar-contenedor}
-> Usamos herramientas positivistas  
+::: centrar-contenedor
+> Usamos herramientas positivistas\
 > para decidir en un mundo no positivista
 :::
 
----
+------------------------------------------------------------------------
 
 ## Para una reflexión en calma
 
-:::{.centrar-contenedor}
-> Gobernar procesos bajo incertidumbre  
-> no se resuelve sólo con aplicar modelos,  
-> se requiere 
-> **articular evidencia, valores
-> y también las reglas prácticas 
-> de la cultura involucrada**
+::: centrar-contenedor
+> Gobernar procesos bajo incertidumbre\
+> no se resuelve sólo con aplicar modelos,\
+> se requiere **articular evidencia, valores y también las reglas
+> prácticas de la cultura involucrada**
 :::
 
 ## 4 ¿Cuáles son los aspectos CLAVE para diseñar un experimento/estudio?
@@ -751,4 +855,9 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 **Participa: vevox.app ID: 144-565-419**
 :::
 
-##  {background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
+##  {#vevox-4 data-menu-title="vevox-4" background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
+
+# Referencias
+
+::: refs
+:::
