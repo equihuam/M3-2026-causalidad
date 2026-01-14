@@ -232,10 +232,12 @@ Elije la respuesta que consideres más apropiada
 
 ## Positivismo
 
--   Las ideas de Hume permean en el positivismo del siglo XIX de Auguste
-    Comte (1798-1857), que empujó al quehacer científico bajo su
-    influencia a tomar una actitud temerosa para proponer relaciones
-    causales como base de la construcción de hipótesis.
+-   Las ideas de Hume permean en el positivismo del siglo XIX de
+    [Auguste
+    Comte(1798-1857)](Auguste%20Comte:%20quién%20fue%20y%20cuáles%20fueron%20sus%20aportes%20a%20la%20filosofía),
+    que empujó al quehacer científico bajo su influencia a tomar una
+    actitud temerosa para proponer relaciones causales como base de la
+    construcción de hipótesis.
 
 -   En lugar de causas, se buscan **relaciones funcionales** entre
     observables o entre términos teóricos, cada uno de los cuales es
@@ -256,7 +258,8 @@ Elije la respuesta que consideres más apropiada
 
 -   Cook y Campbell (1979) afirmaban hace tiempo que “la epistemología
     de la causalidad y de los métodos científicos más en general,
-    atraviesaba por un *productivo estado* de casi caos”.
+    atravesaban por un *productivo estado* de casi caos”[@campbell1979;
+    @cook1986].
 
 -   ¿Habremos superado ya esta compleja encrusijada?
 
@@ -264,7 +267,7 @@ Elije la respuesta que consideres más apropiada
     probabilística** .
 
 -   Judea Pearl y Dana Mackenzie publicaron en 2018 *The Book of Why:
-    The New Science of Cause and Effect.*
+    The New Science of Cause and Effect* [@pearl2020].
 :::
 
 ## 2. ¿Qué tan de acuerdo estás con la siguiente aseveración?
@@ -348,7 +351,7 @@ Elije la respuesta que consideres más apropiada
 
 ## Causalidad finita y desprecio...
 
--   Para Bachelard, uno de los signos distintivos del espíritu
+-   Para @bachelard2013, uno de los signos distintivos del espíritu
     científico y del espíritu filosófico es el **derecho a despreciar**
     . Para él, el espíritu científico explicita clara y distintamente
     este derecho a despreciar lo despreciable
@@ -403,7 +406,7 @@ creerse simple**.
 ## ...Simplicidad...
 
 -   Una buena guía a seguir la encontramos en las palabras del
-    científico Alfred North Whitehead:
+    científico Alfred North Whitehead ([@kll2020]):
     -   [“Busca la simplicidad y desconfía de
         ella”]{style="color:#A64D79"}
 -   El mismo autor afirmaba que la ciencia tiene como meta
