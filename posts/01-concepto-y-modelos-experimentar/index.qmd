@@ -188,7 +188,7 @@ recordar la frase que se atribuye al economista John Maynard Keynes:
 > Cuando las circunstancias cambian, yo cambio de opinión. 
 > ¿Tú que haces?"
 
-Si hubiera nueva evidencia dispoible, el proceso se aplicaría en secuencia. Lo que lleva a la siguiente expresión que sugiere como se puede [*generalizar este proceso de razoamiento*](https://youtu.be/D7KKlC0LOyw?si=6e_kZ0-1lBDpaTjE). Pero por ahora ya no ahondaremos más en esto.
+Si hubiera nueva evidencia dispoible, el proceso se aplicaría en secuencia. Lo que lleva a la siguiente expresión que sugiere como se puede [*generalizar este proceso de razonamiento*](https://youtu.be/D7KKlC0LOyw?si=6e_kZ0-1lBDpaTjE). Pero por ahora ya no ahondaremos más en esto.
 
 $$
 Pr[H|E_1,E_2] = \frac{Pr[E_2|H,E_1] \times Pr[H|E_1]} {Pr[E_2|E_1]}
@@ -689,7 +689,7 @@ igualdad de todas las medias) de un jalón!
 :::
 
 Para ver como es que opera el anova veamos el ejemplo que sigue.
-Considera un solo factor, "f", con dos niveles.
+Considera un solo factor, "$f$", con dos niveles.
 
 ```{webr-r}
 
@@ -731,8 +731,8 @@ dist_tot_y
 ```
 :::
 
-Ahora incorporemos la información del factor ***f***. Para esto hay que
-calcular los promedios de "y" que corresponden a los niveles de ***f***
+Ahora incorporemos la información del factor $f$. Para esto hay que
+calcular los promedios de "y" que corresponden a los niveles de $f$
 
 ```{webr-r}
 

@@ -9,12 +9,22 @@ draft: false
 code-fold: true
 categories: [operación]
 
-bibliography: references.bib
+bibliography: ../../references.bib
+csl: apa.csl
+
+resources: 
+   - lecturas/*.pdf
+
+format:
+  html: 
+    code-tools: true
+    embed-resources: true
+    css: ../../styles.css
 
 nocite: |
-  @bezanilla-albisua2018,
-  @reviewf2024, 
-  @cookjohn2025
+  @saltelli2024,
+  @borger,
+  @giraldo2022
 ---
 
 ```{r warning=FALSE,echo=FALSE, message=FALSE}
@@ -29,25 +39,47 @@ library(patchwork)
 
 ```
 
-![](img/causalidad-dags-diseño.png){width=600}
+![](img/causalidad-dags-diseño.png){width="600"}
 
 ## Objetivos del Módulo 3
 
-Durante las últimas semanas revisaron conceptos de probabilidad y matemáticas que necesitamos como un **lenguaje eficiente de comunicación**. También empezaron a explorar como es que se pueden analizar proposiciones sobre la existencia de asociación o incluso relaciones de dependencia entre dos variables: **modelos de regresión simple**. Ahora vamos a aplicar y extender estos aprendizajes para abordar el desafío de producir conocimiento que nos permita comprender como funciona el mundo. Asumir un interés en la comprensión causal requiere desarrollar las habilidades de pensamiento crítico, lo que constituye por tanto otro de los propósitos del módulo.
+Durante las últimas semanas revisaron conceptos de probabilidad y
+matemáticas que necesitamos como un **lenguaje eficiente de
+comunicación**. También empezaron a explorar como es que se pueden
+analizar proposiciones sobre la existencia de asociación o incluso
+relaciones de dependencia entre dos variables: **modelos de regresión
+simple**. Ahora vamos a aplicar y extender estos aprendizajes para
+abordar el desafío de producir conocimiento que nos permita comprender
+como funciona el mundo. Asumir un interés en la comprensión causal
+requiere desarrollar las habilidades de pensamiento crítico, lo que
+constituye por tanto otro de los propósitos del módulo.
 
-Utilizaremos el lenguaje de programación **R** como plataforma de cómputo para el análisis de datos. Aspiramos a ofrecerles así un curso introductorio para su uso. También nos interesa acercarnos a los enfoques formales para el análisis causal actual, mediante la formulación de *Grafos Acíclicos Dirigidos* (**DAG**). Los invitamos a hacer explícitas y a dibujar las relaciones causales de sus proyectos para comprenderlas, comunicarlas y analizarlas con mayor eficiencia.
+Utilizaremos el lenguaje de programación **R** como plataforma de
+cómputo para el análisis de datos. Aspiramos a ofrecerles así un curso
+introductorio para su uso. También nos interesa acercarnos a los
+enfoques formales para el análisis causal actual, mediante la
+formulación de *Grafos Acíclicos Dirigidos* (**DAG**). Los invitamos a
+hacer explícitas y a dibujar las relaciones causales de sus proyectos
+para comprenderlas, comunicarlas y analizarlas con mayor eficiencia.
 
-Como ejercicio inicial les pedimos preparen y nos entreguen en **una sola cuartilla** la descripción de una de las preguntas de investigación que se han planteado en su proyecto de posgrado, con suficiente detalle como para comprender el asunto y la propuesta sobre como poner a prueba la idea planteada. *No se trata de todo el protocolo de su proyecto de investigación*. Escojan sólo un aspecto de él. Sólo lo que deseen compartir y explorar en este curso como oportunidad de aprendizaje.
+Como ejercicio inicial les pedimos preparen y nos entreguen en **una
+sola cuartilla** la descripción de una de las preguntas de investigación
+que se han planteado en su proyecto de posgrado, con suficiente detalle
+como para comprender el asunto y la propuesta sobre como poner a prueba
+la idea planteada. *No se trata de todo el protocolo de su proyecto de
+investigación*. Escojan sólo un aspecto de él. Sólo lo que deseen
+compartir y explorar en este curso como oportunidad de aprendizaje.
 
 [Pacto del participante](pacto-contribuyente.qmd)
 
 ## Plan de clase
 
-Habilité un espacio en [Milaulas](https://m3causalidad2026.milaulas.com/course/view.php?id=2) para llevar control de nuestras comunicaciones en una forma lo más ordenado posible.
-
+Habilité un espacio en
+[Milaulas](https://m3causalidad2026.milaulas.com/course/view.php?id=2)
+para llevar control de nuestras comunicaciones en una forma lo más
+ordenado posible.
 
 ::: {.callout-note title="Calendario" collapse="true"}
-
 ```{r }
 #| label: calendario
 #| tbl-cap: Aactividades del Módulo 3 
@@ -83,7 +115,6 @@ feb <- calendR(month = 2,
 ene
 feb
 ```
-
 :::
 
 ```{r }
@@ -100,24 +131,42 @@ contenido %>% flextable(col_keys = c("dia", "lectura", "tema")) %>%
 
 ```
 
-
 ## Lecturas
 
-Como parte de las experiencias de aprendizaje que realizaremos tenemos tres lecturas. Les pedimos que hagan una lectura crítica de los textos propuestos y que preparen un comentario que contenga sus apreciaciones en favor o en contra de los argumentos presentados. También esperamos comenten sobre las implicaciones amplias y para la práctica científica en lo general, de los argumentos que exponen los autores. Sus reacciones tendrán oportunidad de ser expuestas y debatidas en un espacio del programa del módulo 3 a lo largo de 60 minutos.
-
+Como parte de las experiencias de aprendizaje que realizaremos tenemos
+tres lecturas. Les pedimos que hagan una lectura crítica de los textos
+propuestos y que preparen un comentario que contenga sus apreciaciones
+en favor o en contra de los argumentos presentados. También esperamos
+comenten sobre las implicaciones amplias y para la práctica científica
+en lo general, de los argumentos que exponen los autores. Sus reacciones
+tendrán oportunidad de ser expuestas y debatidas en un espacio del
+programa del módulo 3 a lo largo de 60 minutos.
 
 ::: {#refs}
 :::
 
+\
+
+::: {layout="[1,1,1]"}
+{{< downloadthis  ../../_lecturas/lectura-1.pdf label = "lectura 1: Borger" id = btn1  dname = "lectura-1" class = ".boton" >}}
+
+{{< downloadthis  ../../_lecturas/lectura-2.pdf label = "lectura 2: Giraldo" id = btn2  dname="lectura-2" class = ".boton" >}}
+
+{{< downloadthis  ../../_lecturas/lectura-3.pdf label = "lectura 3: Saltelli"  id = btn3 dname="lectura-3" class = ".boton" >}}
+:::
+
+\
 
 ## Evaluación
 
 ![](img/virtual-5663279_1280.png){width="400"}
 
-El Módulo III será evaluado a través de las tareas y controles de lectura que les pediremos que hagan conforme se desarrolle el curso. La participación en *quizes* y preguntas en línea vía [vevox](https://www.vevox.com/) tamién será considerada.
+El Módulo 3 será evaluado a través de las tareas y controles de
+lectura que les pediremos que hagan conforme se desarrolle el curso. La
+participación en *quizes* y preguntas en línea vía
+[vevox](https://www.vevox.com/) tamién será considerada.
 
-
-#  Estudiantes
+# Estudiantes
 
 ```{r}
 #| echo: false
@@ -137,7 +186,6 @@ estudiantes_2026  |>
 
 ```
 
-
 # Participación activa
 
 Hemos previsto tener frecuentes eventos interactivos para dar
@@ -147,27 +195,29 @@ reflexionar sobre cómo es que hacemos ciencia. Para hacer esto
 utilizaremos la aplicación en línea a la que podrán acceder desde sus
 computadoras o teléfonos celulares:
 
-
 ## Instrucciones para participar
 
-::: {.callout-tip appearance="default"}
+::::::: {.callout-tip appearance="default"}
 ### lo que hay que hacer es
 
-- **En tu computadora ir** [vevox.app]{style="color:#00AEEF"}
-- **Para usar el celular instala** [Vevox]{style="color:#00AEEF"} **desde la tienda de** *apps*
+-   **En tu computadora ir** [vevox.app]{style="color:#00AEEF"}
+-   **Para usar el celular instala** [Vevox]{style="color:#00AEEF"}
+    **desde la tienda de** *apps*
 
-:::: {.columns}
-:::::{.column width=30%}
+:::::: columns
+::: {.column width="30%"}
 ![](img/clase_1-Leyes-en-ecologia0.png)
-:::::
-:::::{.column width=30%}
-:::::
-:::::{.column width=30%}
-![](img/clase_1-Leyes-en-ecologia1.png)
-:::::
-::::
+:::
 
-``` {=html}
+::: {.column width="30%"}
+:::
+
+::: {.column width="30%"}
+![](img/clase_1-Leyes-en-ecologia1.png)
+:::
+::::::
+
+```{=html}
 <iframe 
    width="100%" 
    height="100%" 
@@ -177,6 +227,4 @@ computadoras o teléfonos celulares:
    title="participación Vevox">
   </irame>
 ```
-:::
-
-
+:::::::

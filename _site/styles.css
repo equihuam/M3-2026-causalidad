@@ -1,1 +1,26 @@
 /* css styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+.boton {
+  font-family: 'Itim', cursive;
+  font-size: 10px;
+}
+
+.btn {
+  text-transform: none;
+}
+
+#btn3 {
+  background-color: #ca2a12;
+}
+
+#btn2 {
+  background-color: #ffc107;
+}
+
+#btn1 {
+  background-color: #198754;
+}
+
+
