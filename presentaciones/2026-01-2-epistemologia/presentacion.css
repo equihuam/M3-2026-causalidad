@@ -14,6 +14,10 @@ figcaption {
   padding-left: 20px; 
 }
 
+/* For semi-transparent (e.g., 50% black) */
+.gslide-image img {
+    background-color: #3b4b42 !important;
+}
 
 /* centrar todo elcontenido de la diapo y apilar los items*/
 .centrar-contenedor {
@@ -26,7 +30,6 @@ figcaption {
   align-items: center;     /* Centers horizontally */
   margin: 0;
 }
-
 
 
 /* Aplica a títulos dentro de secciones con .texto-fig */

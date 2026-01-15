@@ -11,19 +11,23 @@ categories: [presentación]
 lang: es
 footer: "[M3-Causalidad](https://2026-m3-causalidad.netlify.app/)"
 logo:  "img/Logo-Inecol.png"
+
+lightbox: true
+
 title-slide-attributes:
-    
     data-background-image: "img/gamma-plantilla_alfa.png"
     data-background-size: "100%"
     data-background-opacity: "60%"
 format: 
     metropolis-revealjs:
       chalkboard: true
+      link-external-newwindow: true
       css: presentacion.css
       auto-stretch: false
       navigation-mode: grid
       controls: false
       fig-align: center 
+      
 reveal-header:
     sc-sb-title: false  
     header: "."
@@ -522,31 +526,41 @@ distribuida**.
 
 \
 
+:::{layout="[1,1.5]" style="font-size: 0.8em;"}
+
 -   Racionalidad universal
 -   Formalización matemática
 -   Predicción y control
 -   Neutralidad del observador
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg){.absolute
-top="200" left="650" width="450"}
+![](img/Normal_Distribution_PDF.png){fig-align="right" width="550"}
+:::
 
 ## Racionalidad limitada
 
-::: {layout="[1,-1]"}
+\
+
+:::::: {.columns style="font-size: 0.8em;"}
+::::{.column width="50%" }
+
 -   Información incompleta
 -   Tiempo y capacidades finitas
 -   Decisiones satisfactorias
 -   Uso sistemático de heurísticas
-:::
 
- 
+\
 
-::: apuntar
+::: {.apuntar}
 -   La racionalidad se vuelve empírica
 :::
+::::
 
-![](https://upload.wikimedia.org/wikipedia/commons/2/25/Simple_decision_tree.svg){.absolute
-top="100" left="750" width="350"}
+::::{.column width="50%"}
+
+![](img/Simple_decision_tree.svg){width="450" fig-align="right"}
+::::
+::::::
+
 
 ## Heurísticas y sesgos
 
@@ -663,8 +677,7 @@ fig-align="right"}
 -   Orientada a eficiencia y control
 -   Modelos como tecnologías de poder
 
-![Pensamiento
-sistémico](https://upload.wikimedia.org/wikipedia/commons/7/72/Systems_Thinking_Diagram.png)
+![Pensamiento sistémico](img/Systems_Thinking_Diagram.png)
 
 ## Síntesis epistemológica
 
