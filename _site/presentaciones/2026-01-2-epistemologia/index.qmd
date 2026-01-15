@@ -5,19 +5,17 @@ author:
   - name: "Miguel Equihua"
     email: "equihuam@gmail.com"
 date: "2026-01-28"
-
 draft: false
 date-format: "[Xalapa, Ver.,] D MMMM, YYYY"
 categories: [presentación]
 lang: es
 footer: "[M3-Causalidad](https://2026-m3-causalidad.netlify.app/)"
 logo:  "img/Logo-Inecol.png"
-
 title-slide-attributes:
+    
     data-background-image: "img/gamma-plantilla_alfa.png"
     data-background-size: "100%"
     data-background-opacity: "60%"
-    
 format: 
     metropolis-revealjs:
       chalkboard: true
@@ -26,23 +24,21 @@ format:
       navigation-mode: grid
       controls: false
       fig-align: center 
-
 reveal-header:
     sc-sb-title: false  
     header: "."
-
 transition: convex
-
 image: img/pay-937884_1280.jpg
-
 execute: 
   eval: true
   echo: true
 embed-resources: false
 preload-iframes: true
-
 bibliography: ../../references.bib
 csl: apa.csl
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 # ![](img/icon-1-A-alfa.png){.icono} Fundamentos del ideal científico {#bloque-1 .texto-fig style="--sep: 1.5rem"}
@@ -63,12 +59,12 @@ supuestos fuertes**, no de neutralidad pura.
 
 ## Bacon y la ciencia occidental
 
--   **Sir Francis Bacon (1561-1626)** clave en el origen de la ciencia
-    occidental.
--   En su *Novum Organum* (1620) [@bacon2010]plantea substituir el ya
-    entonces viejo método aristotélico (dominate por más de 1800 años),
-    por un *nuevo órgano* basado en el **estudio inductivo de la
-    naturaleza**.
+-   [**Sir Francis Bacon
+    (1561-1626)**](http://juango.es/files/baconnovumorganon.pdf) clave
+    en el origen de la ciencia occidental.
+-   En su *Novum Organum* [@bacon1620] plantea substituir el ya entonces
+    viejo método aristotélico (dominate por más de 1800 años), por un
+    *nuevo órgano* basado en el **estudio inductivo de la naturaleza**.
 -   Intentaba:
     -   [*Iniciar una reconstrucción total de las ciencias, las artes
         prácticas y todo el conocimiento humano, erigida sobre
@@ -253,11 +249,11 @@ Elije la respuesta que consideres más apropiada
     en relación con lo que se entiende al decir que **un evento causa a
     otro**
 
--   También se ha cestionado si reaalmente podemos **adquirir
+-   También se ha cestionado si realmente podemos **adquirir
     conocimiento acerca de una relación causal**.
 
--   Cook y Campbell (1979) afirmaban hace tiempo que “la epistemología
-    de la causalidad y de los métodos científicos más en general,
+-   Cook y Campbell afirmaban hace casi 50 años que “la epistemología de
+    la causalidad y de los métodos científicos más en general,
     atravesaban por un *productivo estado* de casi caos” [@campbell1979;
     @cook1986].
 
@@ -406,13 +402,12 @@ creerse simple**.
 ## ...Simplicidad...
 
 -   Una buena guía a seguir la encontramos en las palabras del
-    científico Alfred North @whitehead1956:
-    -   [“Busca la simplicidad y desconfía de
-        ella”]{style="color:#A64D79"}
+    científico Alfred North Whitehead [@kll2020]:
+-   [“Busca la simplicidad y desconfía de ella”]{style="color:#A64D79"}
 -   El mismo autor afirmaba que la ciencia tiene como meta
-    -   [“Buscar la explicación más simple de hechos complejos, tratando
-        al mismo tiempo de evitar el error de concluir que la naturaleza
-        es más simple de lo que realmente es”.]{style="color:#134F5C"}
+-   [“Buscar la explicación más simple de hechos complejos, tratando al
+    mismo tiempo de evitar el error de concluir que la naturaleza es más
+    simple de lo que realmente es”.]{style="color:#134F5C"}
 
 ##  {#bisagra-3 data-menu-title="Pregunta bisagra-3"}
 
@@ -464,10 +459,10 @@ Vamos al [siguiente bloque](#bloque-4)
         preferidos.]{style="color:#38761D"}
 -   La condición posmodernista implica una pérdida de aprecio a la
     autoridad.
--   Existe también una crisis del determinismo [@lyotard1984].
+-   Existe también una crisis del determinismo [@lyotard1984]
 
-**Fuente: Yearley, S. (2005).** *Making sense of science (understanding
-the social study of science).* **Sage. London, 205 pp.**
+**Fuente**: @yearley2005. *Making sense of science (understanding the
+social study of science).* **Sage. London, 205 pp.**
 
 ## Verdades posmodernistas
 
@@ -477,10 +472,10 @@ the social study of science).* **Sage. London, 205 pp.**
     han abierto a la reconstrucción y al escepticismo.
 -   La ciencia es cada vez más y más una necesidad, pero al mismo
     tiempo, es menos y menos suficiente para la definición socialmente
-    aglutinadora de verdad (Beck, 1992).
+    aglutinadora de verdad [@mythen2004; @beck1992a].
 
-**Fuente: Yearley, S. (2005).** *Making sense of science (understanding
-the social study of science).* **Sage. London, 205 pp.**
+**Fuente**: @yearley2005. *Making sense of science (understanding the
+social study of science).* **Sage. London, 205 pp.**
 
 ::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
 Vamos al [siguiente bloque](#bloque-5)
@@ -537,10 +532,14 @@ top="200" left="650" width="450"}
 
 ## Racionalidad limitada
 
+::: {layout="[1,-1]"}
 -   Información incompleta
 -   Tiempo y capacidades finitas
 -   Decisiones satisfactorias
 -   Uso sistemático de heurísticas
+:::
+
+ 
 
 ::: apuntar
 -   La racionalidad se vuelve empírica
@@ -557,21 +556,27 @@ top="100" left="750" width="350"}
 -   Reglas simples de decisión
 -   Funcionan rápido
 -   Producen errores sistemáticos
--   No son anomalías individuales
+-   No son anomalías individuales [@gigerenzer2017]
 
-## ¿Fallamos al razonar? {.smaller}
+## ¿Fallamos al razonar? 
 
+\
+
+::: {style="font-size: 0.9em; margin-right: 19.0em"}
 Dos interpretaciones:
 
 -   Sesgos → desviaciones del modelo normativo
 -   Heurísticas → adaptaciones a entornos reales
+:::
+
+\
+\
 
 ::: apuntar
 -   El error se vuelve estructural
 :::
 
-![](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg){.absolute
-top="50" left="550" width="550"}
+![](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg){.absolute top="100" left="560" width="550"}
 
 ## Límite del positivismo clásico
 
@@ -584,6 +589,19 @@ El modelo normativo:
 Pregunta clave:
 
 > ¿Quién define qué es racional?
+
+## La reacción al positivismo
+
+\
+\
+
+- Rechaza los enfoques cuantitativos.
+- Concibe métodos de investigación cualitativos.
+- Los hayazgos se contextualizan historicamente.
+- La regularidad no es tan importante.
+- La generalización puede no ser posible.
+
+
 
 ## Enfoques no positivistas
 
@@ -598,6 +616,7 @@ Tres críticas convergentes:
 ::: apuntar
 -   La racionalidad no es solo cálculo
 :::
+
 
 ## Hermenéutica
 
@@ -614,7 +633,7 @@ fig-align="right"}
 
 ::::: {.columns style="font-size: 1.1em;"}
 ::: {.column width="20%"}
-La experiencia humana es lo central.
+La experiencia humana es lo central .
 
 -   Cuerpo y mente inseparables
 -   Percepción–acción unificadas
@@ -716,10 +735,12 @@ Aparecen cuando:
 -   las decisiones son urgentes
 -   el riesgo es colectivo
 
+:::: {.absolute left="50%"}
 ::: apuntar
 -   La ciencia sola no basta
 -   La sociedad sola tampoco
 :::
+::::
 
 ## ¿Qué es un modelo híbrido?
 
@@ -775,8 +796,8 @@ Ejemplos:
 
 ##  {#bisagra-5 data-menu-title="Pregunta bisagra-5"}
 
-::: centrar-contenedor
-> ¿Sesgos o adaptaciones?{.r-fit-text}
+::: {.texto-libre style="--x: 50%; --y: 50%; font-size: 1.5em"}
+> ¿Sesgos o adaptaciones?
 :::
 
 ## desafíos de la ciencia en crisis
@@ -787,6 +808,8 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 -   nadie controla todo\
 -   nadie decide solo
 
+\
+
 ::: apuntar
 -   Heurísticas explícitas en lugar de una optimización perfecta
 :::
@@ -795,7 +818,7 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 ##  {#bisagra-6 data-menu-title="Pregunta bisagra-6"}
 
-::: centrar-contenedor
+::: {.texto-libre style="--x: 50%; --y: 50%; font-size: 1.5em"}
 > ¿Quién debe decidir bajo incertidumbre?
 :::
 
@@ -806,6 +829,8 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 -   Incertidumbre explícita\
 -   Heurísticas colectivas compartidas\
 -   Aprendizaje adaptativo
+
+ 
 
 ::: apuntar
 -   Infraestructura práctica para modelos híbridos ciencia–sociedad
@@ -828,6 +853,8 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 -   La incertidumbre no se elimina
 -   Los valores se hacen explícitos
 
+\
+
 ::: apuntar
 -   Pero la ciencia sigue siendo indispensable
 :::
@@ -843,14 +870,16 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 ------------------------------------------------------------------------
 
-## Para una reflexión en calma
+## Para una reflexión con calma {.smaller}
 
-::: centrar-contenedor
-> Gobernar procesos bajo incertidumbre\
-> no se resuelve sólo con aplicar modelos,\
-> se requiere **articular evidencia, valores y también las reglas
-> prácticas de la cultura involucrada**
+:::: centrar-contenedor
+::: {style="text-align:left;"}
+> -   Gobernar procesos bajo incertidumbre\
+>     no se resuelve sólo con aplicar modelos.\
+> -   Se requiere **articular evidencia, valores y las reglas prácticas
+>     (tradiciones) de la cultura involucrada.**
 :::
+::::
 
 ## 4 ¿Cuáles son los aspectos CLAVE para diseñar un experimento/estudio?
 
@@ -860,7 +889,7 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 ##  {#vevox-4 data-menu-title="vevox-4" background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
 
-# Referencias
+## Referencias
 
 ::: refs
 :::

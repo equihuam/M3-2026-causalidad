@@ -9,4 +9,6 @@
 .DS_Store
 .quarto
 
+/_literatura/
+
 **/*.quarto_ipynb
