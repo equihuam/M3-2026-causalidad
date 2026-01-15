@@ -258,7 +258,7 @@ Elije la respuesta que consideres más apropiada
 
 -   Cook y Campbell (1979) afirmaban hace tiempo que “la epistemología
     de la causalidad y de los métodos científicos más en general,
-    atravesaban por un *productivo estado* de casi caos”[@campbell1979;
+    atravesaban por un *productivo estado* de casi caos” [@campbell1979;
     @cook1986].
 
 -   ¿Habremos superado ya esta compleja encrusijada?
@@ -356,7 +356,7 @@ Elije la respuesta que consideres más apropiada
     . Para él, el espíritu científico explicita clara y distintamente
     este derecho a despreciar lo despreciable
 -   Derecho que incansablemente el espíritu filosófico le rehúsa.
--   Para ilustrar esto, recurre a Ostwald:
+-   Para ilustrar esto, recurre a Friedrich Ostwald:
     -   [“Cualquiera]{style="color:#A64D79"} [que sea el fenómeno
         considerado, siempre hay un número extremadamente grande de
         circunstancias que no tienen influencia mesurable sobre
@@ -406,7 +406,7 @@ creerse simple**.
 ## ...Simplicidad...
 
 -   Una buena guía a seguir la encontramos en las palabras del
-    científico Alfred North Whitehead ([@kll2020]):
+    científico Alfred North @whitehead1956:
     -   [“Busca la simplicidad y desconfía de
         ella”]{style="color:#A64D79"}
 -   El mismo autor afirmaba que la ciencia tiene como meta
@@ -464,7 +464,7 @@ Vamos al [siguiente bloque](#bloque-4)
         preferidos.]{style="color:#38761D"}
 -   La condición posmodernista implica una pérdida de aprecio a la
     autoridad.
--   Existe también una crisis del determinismo (Lyotard, 1984)
+-   Existe también una crisis del determinismo [@lyotard1984].
 
 **Fuente: Yearley, S. (2005).** *Making sense of science (understanding
 the social study of science).* **Sage. London, 205 pp.**
