@@ -9,17 +9,17 @@ draft: false
 code-fold: true
 categories: [operación]
 
+resources: 
+  - images/*.*
+  - lecturas/*.pdf
+
 bibliography: ../../references.bib
 csl: apa.csl
 
-resources: 
-   - lecturas/*.pdf
-
 format:
-  html: 
-    code-tools: true
-    embed-resources: true
-    css: ../../styles.css
+  html: default
+
+engine: knitr
 
 nocite: |
   @saltelli2024,
@@ -27,7 +27,12 @@ nocite: |
   @giraldo2022
 ---
 
-```{r warning=FALSE,echo=FALSE, message=FALSE}
+```{r}
+#| label: setup
+#| warning: false
+#| echo: false
+#| message: false
+
 suppressPackageStartupMessages(library(tidyverse))
 library(flextable)
 library(readr)
@@ -39,7 +44,8 @@ library(patchwork)
 
 ```
 
-![](img/causalidad-dags-diseño.png){width="600"}
+
+![](images/causalidad-dags-diseno.png){width="600"}
 
 ## Objetivos del Módulo 3
 
@@ -159,7 +165,7 @@ programa del módulo 3 a lo largo de 60 minutos.
 
 ## Evaluación
 
-![](img/virtual-5663279_1280.png){width="400"}
+![](images/virtual-5663279_1280.png){width="400"}
 
 El Módulo 3 será evaluado a través de las tareas y controles de
 lectura que les pediremos que hagan conforme se desarrolle el curso. La
@@ -206,14 +212,14 @@ computadoras o teléfonos celulares:
 
 :::::: columns
 ::: {.column width="30%"}
-![](img/clase_1-Leyes-en-ecologia0.png)
+![](images/clase_1-Leyes-en-ecologia0.png)
 :::
 
 ::: {.column width="30%"}
 :::
 
 ::: {.column width="30%"}
-![](img/clase_1-Leyes-en-ecologia1.png)
+![](images/clase_1-Leyes-en-ecologia1.png)
 :::
 ::::::
 

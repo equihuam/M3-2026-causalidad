@@ -10,12 +10,14 @@ engine: knitr
 
 filters:
   - webr
+  
 theme: 
     dark: Sandstone
+
 webr:
   packages: ['gt', 'dplyr', 'tidyr']
   
-bibliography: references.bib
+bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
