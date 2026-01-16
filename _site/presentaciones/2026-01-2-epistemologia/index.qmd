@@ -67,7 +67,7 @@ supuestos fuertes**, no de neutralidad pura.
     (1561-1626)**](http://juango.es/files/baconnovumorganon.pdf) clave
     en el origen de la ciencia occidental.
 -   En su *Novum Organum* [@bacon1620] plantea substituir el ya entonces
-    viejo método aristotélico (dominate por más de 1800 años), por un
+    viejo método aristotélico (dominante por más de 1800 años), por un
     *nuevo órgano* basado en el **estudio inductivo de la naturaleza**.
 -   Intentaba:
     -   [*Iniciar una reconstrucción total de las ciencias, las artes
@@ -116,7 +116,7 @@ Aunque esta visión de la ciencia todavía está presente en algunos
 círculos, es claro que tiene **defectos** serios.
 
 ::: r-fit-text
--   Inevitalemente los **juicios personale** tienen un papel en la
+-   Inevitablemente los **juicios personales** tienen un papel en la
     ciencia.
 -   En gran parte juegan un papel creativo fundamental.
     -   Están presentes a cada paso de la creación científica
@@ -202,7 +202,7 @@ ingenua**.
     los efectos ocurran en “constante conjunción”** , es decir que la
     causa es necesaria y suficiente para el efecto.
 
--   Naturalmente se concebia que la **causalidad en ciencia
+-   Naturalmente se concebía que la **causalidad en ciencia
     documentaba** **procesos** **deterministas**.
 
 -   ¿Sigue siendo esta nuestra convicción o habrá cambiado?
@@ -253,7 +253,7 @@ Elije la respuesta que consideres más apropiada
     en relación con lo que se entiende al decir que **un evento causa a
     otro**
 
--   También se ha cestionado si realmente podemos **adquirir
+-   También se ha cuestionado si realmente podemos **adquirir
     conocimiento acerca de una relación causal**.
 
 -   Cook y Campbell afirmaban hace casi 50 años que “la epistemología de
@@ -261,7 +261,7 @@ Elije la respuesta que consideres más apropiada
     atravesaban por un *productivo estado* de casi caos” [@campbell1979;
     @cook1986].
 
--   ¿Habremos superado ya esta compleja encrusijada?
+-   ¿Habremos superado ya esta compleja encrucijada?
 
 -   Actualmente se acepta que **la causalidad puede tomar una forma
     probabilística** .
@@ -465,8 +465,9 @@ Vamos al [siguiente bloque](#bloque-4)
     autoridad.
 -   Existe también una crisis del determinismo [@lyotard1984]
 
-**Fuente**: @yearley2005. *Making sense of science (understanding the
-social study of science).* **Sage. London, 205 pp.**
+::: {style="font-size: 0.7em; text-align: right;"}
+**Fuente**: @yearley2005.
+:::
 
 ## Verdades posmodernistas
 
@@ -478,8 +479,9 @@ social study of science).* **Sage. London, 205 pp.**
     tiempo, es menos y menos suficiente para la definición socialmente
     aglutinadora de verdad [@mythen2004; @beck1992a].
 
-**Fuente**: @yearley2005. *Making sense of science (understanding the
-social study of science).* **Sage. London, 205 pp.**
+::: {style="font-size: 0.7em; text-align: right;"}
+**Fuente**: @yearley2005.
+:::
 
 ::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
 Vamos al [siguiente bloque](#bloque-5)
@@ -518,7 +520,7 @@ distribuida**.
 -   Supresión de la metafísica
 -   Sociedad como objeto gobernable
 
-**Supuesto fuerte:**
+**Supuesto comprometedor:**
 
 > la ciencia puede gobernar a la sociedad
 
@@ -534,6 +536,144 @@ distribuida**.
 -   Neutralidad del observador
 
 ![](img/Normal_Distribution_PDF.png){fig-align="right" width="550"}
+:::
+
+## Positivismo filosófico y positivismo lógico {.smaller}
+
+El positivismo **no es un planteamiento monolítico**: ha evolucionado y transformado.
+
+::: {.columns}
+:::: {.column width="50%"}
+**Positivismo filosófico (Comte, siglo XIX)**  
+
+- Ciencia como motor del orden social  
+- Leyes empíricas y progreso histórico  
+- Rechazo de la metafísica especulativa  
+::::
+
+:::: {.column width="50%"}
+**Positivismo lógico (Círculo de Viena, siglo XX)**  
+
+- Ciencia como sistema lógico–lingüístico  
+- Verificación, formalización, análisis del lenguaje  
+- Rechazo de la metafísica por falta de significado empírico  
+::::
+:::
+
+::: {.apuntar}
+- Comparten el anti-metafisicismo
+- **divergen en su concepción de la ciencia y la sociedad**.
+:::
+
+## Positivismo y prueba de hipótesis
+
+\
+
+::: {style="font-size: 0.6em"}
+| Aspecto     | Círculo de Viena    | Prueba de hipótesis | Relación                            |
+|-------------|---------------------|--------------------|-------------------------------------|
+| **Epistemología**   | Positivismo lógico: la ciencia debe basarse en enunciados verificables | Estadística inferencial: pruebas de hipótesis y diseño experimental | Ambos buscan criterios rigurosos de validación científica                 |
+| **Metodología**     | Lógica y análisis del lenguaje científico          | Métodos estadísticos para evaluar datos empíricos      | Complementarios: filosofía del método y técnica de análisis             |
+| **Impacto**         | Filosofía de la ciencia y epistemología            | Biología, agricultura, psicología y ciencias sociales  | Ambos marcaron la transición hacia una ciencia más formalizada y cuantitativa |
+| **Objetivo común**  | Depurar teorías y eliminar la metafísica           | Validar hipótesis mediante experimentos controlados    | Proyecto compartido: hacer de la ciencia una disciplina verificable y precisa |
+:::
+
+![](img/gaussian_logo_300dpi_transparent.png){.absolute .nolightbox top="55%" left="75%" width="50%"}
+
+::: {.notes}
+Implicaciones a destacar
+
+La discusión contemporánea no abandona el positivismo,
+hereda su método,
+rechaza su pretensión totalizante,
+y corrige su versión lógico-formal extrema.
+:::
+
+## Gödel y el límite del positivismo lógico {.r-fit-text}
+
+Los **teoremas de incompletitud** de Gödel muestran que:
+
+- Ningún sistema formal consistente y suficientemente potente  
+  puede ser **completo**  
+- Siempre existen proposiciones verdaderas  
+  que no pueden demostrarse dentro del sistema  
+- La consistencia no puede probarse desde el propio sistema  
+
+> **G** si, y solo si, **G** no es demostrable
+
+::: {.apuntar}
+- La idea de una ciencia fundada en un sistema lógico completo y autosuficiente es **inviable incluso en matemáticas**.
+:::
+
+## De un ideal lógico a la ciencia real {.smaller}
+
+\
+
+::: columns
+
+:::: column
+### El sueño positivista  
+**Positivismo lógico**
+
+- Lenguaje observacional privilegiado  
+- Verificación como criterio central  
+- Explicación = deducción lógica  
+- Ideal de sistema completo y neutro  
+
+::::
+:::: column
+### Lo que recuperamos  
+**Ciencia contemporánea**
+
+- Múltiples niveles de lenguaje  
+- Modelos e idealizaciones legítimos  
+- Explicaciones causales, probabilísticas y pragmáticas  
+- Rigor sin pretensión de completitud  
+
+::::
+:::
+
+::: {.apuntar}
+- No abandonar el rigor al renunciar a la idea de un lenguaje perfecto
+- Ampliar la capacidad para describir cómo la ciencia realmente explica y decide.
+:::
+
+::: {.notes}
+Distinguir niveles de lenguaje y explicación significa reconocer que
+describir datos, construir modelos y reflexionar sobre sus límites
+son actividades distintas, todas científicamente legítimas.”
+
+### Niveles de lenguaje
+
+Se refiere a que no todo lo que decimos en ciencia está en el mismo plano lingüístico.
+
+Al menos tres niveles relevantes:
+
+1. Lenguaje observacional
+
+    - Describe datos y mediciones
+    - Ejemplo: “La temperatura aumentó 1.5 °C”
+
+2. Lenguaje teórico / modelístico
+
+    - Introduce entidades, relaciones, supuestos
+    - Ejemplo: “El forzamiento radiativo aumenta la probabilidad de olas de calor”
+
+3. Meta-lenguaje
+
+    - Habla sobre los modelos, datos y teorías
+    - Ejemplo: “Este modelo asume estacionariedad y tiene alta incertidumbre estructural”
+
+### Niveles de explicación
+
+No todas las explicaciones científicas responden al mismo tipo de “por qué”.
+
+Ejemplos de niveles legítimos:
+
+- Causal: qué factores influyen en qué
+- Mecanístico: cómo se produce un efecto
+- Estadístico / probabilístico: con qué frecuencia o tendencia
+- Funcional / pragmático: para qué sirve una regla o modelo
 :::
 
 ## Racionalidad limitada
@@ -611,7 +751,7 @@ Pregunta clave:
 
 - Rechaza los enfoques cuantitativos.
 - Concibe métodos de investigación cualitativos.
-- Los hayazgos se contextualizan historicamente.
+- Los hallazgos se contextualizan históricamente.
 - La regularidad no es tan importante.
 - La generalización puede no ser posible.
 

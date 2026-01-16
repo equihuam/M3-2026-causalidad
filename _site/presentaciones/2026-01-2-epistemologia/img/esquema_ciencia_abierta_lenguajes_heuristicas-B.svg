@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill:#fafafa; }
+      .title { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:34px; font-weight:800; fill:#111; }
+      .subtitle { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:18px; font-weight:500; fill:#333; }
+      .h { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:22px; font-weight:800; fill:#111; }
+      .t { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:18px; font-weight:600; fill:#111; }
+      .s { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:16px; font-weight:500; fill:#222; }
+      .small { font-family: "Inter","Segoe UI",Arial,sans-serif; font-size:14px; font-weight:500; fill:#444; }
+      .box { fill:#fff; stroke:#111; stroke-width:2.2; rx:18; ry:18; }
+      .pill { fill:#fff; stroke:#111; stroke-width:2.2; rx:999; ry:999; }
+      .panel { fill:#f4f4f5; stroke:#111; stroke-width:2.2; rx:22; ry:22; }
+      .arrow { fill:none; stroke:#111; stroke-width:2.2; marker-end:url(#arrow); }
+      .arrowDash { fill:none; stroke:#111; stroke-width:2.2; stroke-dasharray:7 7; marker-end:url(#arrow); }
+      .muted { fill:#555; }
+    ]]></style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900"/>
+
+  <text class="title" x="70" y="70">Ciencia abierta: datos, lenguajes y heurísticas colectivas</text>
+  <text class="subtitle" x="70" y="102">Integración de niveles de lenguaje y explicación en un modelo híbrido</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel" x="70" y="135" width="1260" height="150"/>
+  </g>
+  <text class="h" x="110" y="180">Racionalidad limitada (condición de partida)</text>
+  <text class="s muted" x="110" y="208">Nadie entiende todo el modelo · nadie controla todos los datos · nadie decide solo</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel" x="70" y="310" width="1260" height="210"/>
+  </g>
+  <text class="h" x="110" y="355">Niveles de lenguaje y explicación</text>
+
+  <rect class="box" x="110" y="380" width="360" height="110"/>
+  <text class="t" x="135" y="415">Datos / observaciones</text>
+  <text class="small muted" x="135" y="440">lenguaje observacional</text>
+
+  <rect class="box" x="520" y="380" width="360" height="110"/>
+  <text class="t" x="545" y="415">Modelos / explicaciones</text>
+  <text class="small muted" x="545" y="440">lenguaje teórico</text>
+
+  <rect class="box" x="930" y="380" width="360" height="110"/>
+  <text class="t" x="955" y="415">Meta-explicación</text>
+  <text class="small muted" x="955" y="440">supuestos y límites</text>
+
+  <path class="arrowDash" d="M 470 435 C 500 435, 500 435, 520 435"/>
+  <path class="arrowDash" d="M 880 435 C 910 435, 910 435, 930 435"/>
+
+  <g filter="url(#shadow)">
+    <rect class="panel" x="250" y="545" width="900" height="140"/>
+  </g>
+  <text class="h" x="295" y="585">Ciencia abierta (infraestructura socio‑técnica)</text>
+  <text class="s muted" x="295" y="615">datos abiertos · metadatos · versionado · revisión</text>
+  <rect class="box" x="295" y="635" width="810" height="36"/>
+  <text class="s" x="320" y="660">Hace visibles y reutilizables los niveles de lenguaje</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel" x="70" y="705" width="1260" height="160"/>
+  </g>
+  <text class="h" x="110" y="745">Heurísticas explícitas y colectivas</text>
+
+  <rect class="box" x="110" y="770" width="280" height="70"/>
+  <text class="t" x="135" y="800">Visualizaciones</text>
+
+  <rect class="box" x="420" y="770" width="280" height="70"/>
+  <text class="t" x="445" y="800">Indicadores</text>
+
+  <rect class="box" x="730" y="770" width="280" height="70"/>
+  <text class="t" x="755" y="800">Umbrales</text>
+
+  <rect class="box" x="1040" y="770" width="280" height="70"/>
+  <text class="t" x="1065" y="800">Reglas</text>
+
+  <path class="arrow" d="M 700 285 C 700 300, 700 300, 700 310"/>
+  <path class="arrow" d="M 700 520 C 700 535, 700 535, 700 545"/>
+  <path class="arrow" d="M 700 685 C 700 700, 700 700, 700 705"/>
+
+</svg>
