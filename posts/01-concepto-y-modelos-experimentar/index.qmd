@@ -1072,7 +1072,7 @@ el posible tamaño del efecto.
 
 A la luz de las críticas, Muchos autores ven necesario actualmente
 adoptar el marco Bayesiano para enfrentar las deficiencias del enfoque
-*clásico*. También queda claro que el [falsacionismo no resulta ser un camino inequívoco](https://culturacientifica.com/2013/11/12/la-tesis-duhem-quine-introduccion/), cosa que ya advertía el mismo Popper.
+*clásico*. También queda claro que el [falsacionismo no resulta ser un camino inequívoco](https://culturacientifica.com/2013/11/12/la-tesis-duhem-quine-introduccion/), cosa que ya advertía el mismo Popper, aunque no al extremo de la tesis tesis Duhem-Quine, que sostiene la imposibilidad de hacer **experimentos cruciales**.
 
 ### Potencia de la prueba
 
