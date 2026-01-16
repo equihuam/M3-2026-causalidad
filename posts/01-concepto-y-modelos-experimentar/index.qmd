@@ -39,21 +39,23 @@ library(dplyr)
 
 ![](images/vampiro-dracula.png){width="300"}
 
-Lógica, probabilidad y heurística son tres ideas centrales en la historia
-del intelecto humano. A la aspiración de la lógica aristotélica se
-agregó a mediados del siglo XVII la teoría de las probabilidades, que
+Lógica, probabilidad y heurística son tres ideas centrales en la
+historia del intelecto humano. A la aspiración de la lógica aristotélica
+se agregó a mediados del siglo XVII la teoría de las probabilidades, que
 matizó la certeza de la lógica al aportar una teoría con una postura más
 modesta en torno a la racionalidad. Su aparición ayudó a reconocer la
 existencia de una incertidumbre fundamental en la conducta humana.
 @einstein1905 revaloró la intuición, con su uso de la noción de
-[heurística](https://psicologiaymente.com/inteligencia/heuristicos-atajos-mentales-pensamiento),como recurso que recurre a la imaginación creativa y a la perspicacia de los seres humanos para descubrir cosas nuevas. Desde entonces el término ha florecido con matices diversos en todos los campos de la ciencia, la
+[heurística](https://psicologiaymente.com/inteligencia/heuristicos-atajos-mentales-pensamiento),como
+recurso que recurre a la imaginación creativa y a la perspicacia de los
+seres humanos para descubrir cosas nuevas. Desde entonces el término ha
+florecido con matices diversos en todos los campos de la ciencia, la
 tecnología y las artes. Usamos estas tres herramientas para *decidir
 científicamente*, a veces suponiendo que reproducen la forma como [opera
 nuestra mente](https://www.bbc.com/mundo/noticias-59060022). Veremos a
 continuación un ejemplo a este respecto que nos comparte McElreath
 (2020). Se trata del hipotético ejemplo de *la prueba de sangre para
 vampirismo*, que nos ayudaría a decidir si alguien es mortal o vampiro.
-
 
 Inicia por pedirnos imaginar que hay un análisis de sangre que detecta
 correctamente 95% de las veces, la afiliación de un individuo al linaje
@@ -150,7 +152,9 @@ $$
 
 Esto equivale a preguntarnos, dado que ya vimos el resultado científico
 que significa la prueba de sangre, ¿será vampiro el sujeto de quien se
-obtuvo esa muestra?. Esta es una manera de estimar la probabilidad de que el amigo sea en realidad un vampiro, dado el conocimiento y la evidencia que tenemos a la mano.
+obtuvo esa muestra?. Esta es una manera de estimar la probabilidad de
+que el amigo sea en realidad un vampiro, dado el conocimiento y la
+evidencia que tenemos a la mano.
 
 $$
 Pr[vampiro|positivo]
@@ -180,8 +184,6 @@ pr |>
 
 ```
 
-
-
 ::: {.callout-tip title="¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?"}
 ![](images/questions-1922477_1280.jpg){width="30%"}
 :::
@@ -189,21 +191,25 @@ pr |>
 Quizás para ayudar a apreciar lo que todo esto significa conviene
 recordar la frase que se atribuye al economista John Maynard Keynes:
 
-> Cuando las circunstancias cambian, yo cambio de opinión. 
-> ¿Tú que haces?"
+> Cuando las circunstancias cambian, yo cambio de opinión. ¿Tú que
+> haces?"
 
-Si hubiera nueva evidencia disponible, el proceso se aplicaría en secuencia. Lo que lleva a la siguiente expresión que sugiere como se puede [*generalizar este proceso de razonamiento*](https://youtu.be/D7KKlC0LOyw?si=6e_kZ0-1lBDpaTjE). Pero por ahora ya no ahondaremos más en esto.
+Si hubiera nueva evidencia disponible, el proceso se aplicaría en
+secuencia. Lo que lleva a la siguiente expresión que sugiere como se
+puede [*generalizar este proceso de
+razonamiento*](https://youtu.be/D7KKlC0LOyw?si=6e_kZ0-1lBDpaTjE). Pero
+por ahora ya no ahondaremos más en esto.
 
 $$
 Pr[H|E_1,E_2] = \frac{Pr[E_2|H,E_1] \times Pr[H|E_1]} {Pr[E_2|E_1]}
 $$
 
-
 Este es un resultado muy importante. Exactamente así, o algo muy
 parecido, es el procedimiento que se sigue en la realidad al efectuar
 pruebas diagnósticas: *las pruebas de PCR*, *antígeno* o *anticuerpos
-para SarsCov-2*, *la prueba del VIH* la del *DNA en un perfil criminal*, etc.
-La *prueba de significancia estadística*, ¿entrará en este mismo marco conceptual?.
+para SarsCov-2*, *la prueba del VIH* la del *DNA en un perfil criminal*,
+etc. La *prueba de significancia estadística*, ¿entrará en este mismo
+marco conceptual?.
 
 Quizás ayude a mejorar la intuición que tenemos de las cosas el
 considerar que siempre que la condición de interés sea muy rara,
@@ -218,14 +224,15 @@ que tendremos, incluso si todos los *verdaderos positivos* fueran
 *detectados correctamente*.
 
 La regla de Bayes es útil aquí, aunque, como dice McElreath, no es la
-única manera de razonar en este caso. Podríamos cuestionar que la ecuación
-que usamos aquí salio de la nada; aunque quizás la recuerdes de algún
-curso previo, de alguna charla interesante por ahí o incluso de lo que
-viste con Rosario ¡hace unas semanas!
+única manera de razonar en este caso. Podríamos cuestionar que la
+ecuación que usamos aquí salio de la nada; aunque quizás la recuerdes de
+algún curso previo, de alguna charla interesante por ahí o incluso de lo
+que viste con Rosario ¡hace unas semanas!
 
 Quizás el ejemplo puede verse en forma más intuitiva utilizando otra
 narrativa para comprender lo que está ocurriendo. Digamos que en lugar
-de informar sobre las probabilidades, como hicimos arriba, te digo lo siguiente:
+de informar sobre las probabilidades, como hicimos arriba, te digo lo
+siguiente:
 
 1.  En una población de 100,000 personas, 100 son *vampiros*.
 2.  De los 100 que son vampiros 95 darán positivo en la prueba de
@@ -238,7 +245,8 @@ proporción de los que dan positivo en las pruebas de vampirismo son
 realmente *vampiros*?
 
 Muchas personas, aunque ciertamente no todas, encuentran esta forma de
-contar la historia mucho más fácil de comprender. Sigamos por este camino.
+contar la historia mucho más fácil de comprender. Sigamos por este
+camino.
 
 ::: {.callout-tip title="¿Qué tal si contamos el número de personas que dan positivo?" collapse="true"}
 Anota los valores que consideres adecuados en el recuadro
@@ -249,9 +257,9 @@ Anota los valores que consideres adecuados en el recuadro
 ```
 
 De este total de pruebas positivas, sabemos que sólo 95 provienen
-verdaderamente de vampiros, lo que nos lleva sencillamente a preguntarnos
-sobre la fracción que significa esa cantidad de vampiros entre la
-totalidad de pruebas positivas.
+verdaderamente de vampiros, lo que nos lleva sencillamente a
+preguntarnos sobre la fracción que significa esa cantidad de vampiros
+entre la totalidad de pruebas positivas.
 
 ```{webr-r}
 
@@ -261,19 +269,19 @@ totalidad de pruebas positivas.
 ¿Qué valor obtuviste?
 
 Si todo marcho bien deberías tener exactamente la misma respuesta que
-por el camino bayesiano que encontramos antes. La diferencia es que ahora, 
-no tuvimos que recordar la "formula mágica" de Bayes, nada
-más tuvimos que imaginar la situación de otra manera y simplemente
-contar y pensar con calma.
+por el camino bayesiano que encontramos antes. La diferencia es que
+ahora, no tuvimos que recordar la "formula mágica" de Bayes, nada más
+tuvimos que imaginar la situación de otra manera y simplemente contar y
+pensar con calma.
 
 Esta forma de presentar el problema mediante el "conteo de los actores"
 en lugar de recurrir a probabilidades, suele denominarse *formato de
 frecuencia* o *frecuencias naturales*. En todo caso, lo importante es
-apreciar que el razonamiento puede beneficiarse de adoptar formas de 
+apreciar que el razonamiento puede beneficiarse de adoptar formas de
 razonamiento *frugales e intuitivas* [@gigerenzer2017; @hicks2012].
 
-Las razones propuestas para explicar el por qué el *formato de frecuencia* 
-ayuda a la gente a intuir el enfoque correcto siguen siendo
+Las razones propuestas para explicar el por qué el *formato de
+frecuencia* ayuda a la gente a intuir el enfoque correcto siguen siendo
 polémicas. Podría ser que de entrada sólo podemos encontrarnos con
 conteos en el mundo real. Quizás sea cierto que nadie ha visto nunca una
 probabilidad andando por ahí. Independientemente de la explicación de
@@ -287,7 +295,7 @@ una "materialización" empírica exacta.
 
 El formalismo bayesiano trata las distribuciones de los parámetros como
 una plausibilidad relativa, no como un proceso aleatorio que ocurre en
-el mundo físico. En cualquier caso, la  aleatoriedad es siempre una
+el mundo físico. En cualquier caso, la aleatoriedad es siempre una
 propiedad de la información, nunca del mundo real. Para continuar
 explorando esta idea puede interesarte los textos de
 [Gigerenzer](https://onlinelibrary.wiley.com/authored-by/Gigerenzer/Gerd?pageSize=20&startPage=1))
@@ -295,7 +303,6 @@ explorando esta idea puede interesarte los textos de
 ## Estadística para mejorar la ciencia
 
 ::: {.callot-tip title="¿Podemos confiar en que la estadística nos proteja de la mala ciencia?"}
-
 El ejemplo del vampirismo que acabamos de ver tiene la misma estructura
 lógica que muchos problemas de *detección* considerando que:
 
@@ -385,8 +392,8 @@ asumiendo un razonamiento específico, nos da oportunidad de valorar la
 utilidad de hacer un *escript*, *algoritmo* o *programa*. Así podemos
 automatizar una tarea repetitiva y potencialmente aburrida para ver las
 implicaciones de la idea en todo tipo de situaciones. Quizás podríamos
-considerarlo semejante a lo que Einstein llamaba **experimento pensado**.
-Veamos como hacerlo.
+considerarlo semejante a lo que Einstein llamaba **experimento
+pensado**. Veamos como hacerlo.
 
 ```{webr-r}
 
@@ -837,17 +844,17 @@ $$
 $$
 
 En este DAG, el marco que rodea a la *A* indica *aleatorización*, y como
-sugiere el diagrama, es la única causa que actúa sobre el tratamiento. Si
-hubiera una vía de influencia alternativa (*backdoor*), a través de
+sugiere el diagrama, es la única causa que actúa sobre el tratamiento.
+Si hubiera una vía de influencia alternativa (*backdoor*), a través de
 alguna tercera variable como podría ser en un caso de germinación de
-semillas, la luminosidad del sitio o el grado de humedad en el
-sustrato; entonces, la aleatorización no sería el único factor que
-influiría sobre el tratamiento. El recuadro alrededor de *A* (el proceso
-de aleatorización) indica que no existen otros factores actuando sobre
-*T*, es decir, *A* es una influencia puramente estocástica. Esta idea y
-el proceso de realización de un experimento controlado con
-aleatorización, da cuenta con toda claridad del valor de esta forma de
-realizar estudios para desentrañar relaciones de causalidad.
+semillas, la luminosidad del sitio o el grado de humedad en el sustrato;
+entonces, la aleatorización no sería el único factor que influiría sobre
+el tratamiento. El recuadro alrededor de *A* (el proceso de
+aleatorización) indica que no existen otros factores actuando sobre *T*,
+es decir, *A* es una influencia puramente estocástica. Esta idea y el
+proceso de realización de un experimento controlado con aleatorización,
+da cuenta con toda claridad del valor de esta forma de realizar estudios
+para desentrañar relaciones de causalidad.
 
 Este DAG nos conduce al modelo linear siguiente
 
@@ -857,9 +864,9 @@ $$
 
 En donde *y* son las mediciones de la variable *Y* en respuesta al
 efecto de *T*, $\mu$ es un valor de referencia general (tradicionalmente
-la media general de la variable *Y*, aunque puede elegirse cualquier otro
-valor de referencia que convenga al estudio) y la épsilon da cuenta del
-efecto aleatorio inducido por $\fbox{A}$, por lo que es necesario
+la media general de la variable *Y*, aunque puede elegirse cualquier
+otro valor de referencia que convenga al estudio) y la épsilon da cuenta
+del efecto aleatorio inducido por $\fbox{A}$, por lo que es necesario
 postular una distribución de probabilidades apropiada para caracterizar
 su comportamiento.
 
@@ -1072,7 +1079,12 @@ el posible tamaño del efecto.
 
 A la luz de las críticas, Muchos autores ven necesario actualmente
 adoptar el marco Bayesiano para enfrentar las deficiencias del enfoque
-*clásico*. También queda claro que el [falsacionismo no resulta ser un camino inequívoco](https://culturacientifica.com/2013/11/12/la-tesis-duhem-quine-introduccion/), cosa que ya advertía el mismo Popper, aunque no al extremo de la tesis tesis Duhem-Quine, que sostiene la imposibilidad de hacer **experimentos cruciales**.
+*clásico*. También queda claro que el [falsacionismo no resulta ser un
+camino
+inequívoco](https://culturacientifica.com/2013/11/12/la-tesis-duhem-quine-introduccion/),
+cosa que ya advertía el mismo Popper, aunque no al extremo de la tesis
+Duhem-Quine [@kemeny1952], que sostiene la imposibilidad de hacer
+**experimentos cruciales**.
 
 ### Potencia de la prueba
 
