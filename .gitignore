@@ -2,13 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
-
 /.quarto/
 .Rdata
 .httr-oauth
 .DS_Store
 .quarto
-
 /_literatura/
-
 **/*.quarto_ipynb
+~$sta de presentación.docx

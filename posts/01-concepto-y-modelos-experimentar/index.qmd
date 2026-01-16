@@ -8,14 +8,18 @@ categories: [clase]
 format: html
 engine: knitr 
 
+link-external-newwindow: true
+
 filters:
   - webr
+  
 theme: 
     dark: Sandstone
+
 webr:
   packages: ['gt', 'dplyr', 'tidyr']
   
-bibliography: references.bib
+bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
@@ -35,21 +39,23 @@ library(dplyr)
 
 ![](images/vampiro-dracula.png){width="300"}
 
-Lógica, probabilidad y heurísticason tres ideas centrales en la historia
-del intelecto humano. A la aspiración de la lógica aristotélica se
-agregó a mediados del siglo XVII la teoría de las probabilidades, que
+Lógica, probabilidad y heurística son tres ideas centrales en la
+historia del intelecto humano. A la aspiración de la lógica aristotélica
+se agregó a mediados del siglo XVII la teoría de las probabilidades, que
 matizó la certeza de la lógica al aportar una teoría con una postura más
 modesta en torno a la racionalidad. Su aparición ayudó a reconocer la
 existencia de una incertidumbre fundamental en la conducta humana.
 @einstein1905 revaloró la intuición, con su uso de la noción de
-[heurística](https://psicologiaymente.com/inteligencia/heuristicos-atajos-mentales-pensamiento),como recurso que recurre a la imaginación creativa y a la perspicacia de los seres humanos para descubrir cosas nuevas. Desde entonces el término ha florecido con matices diversos en todos los campos de la ciencia, la
+[heurística](https://psicologiaymente.com/inteligencia/heuristicos-atajos-mentales-pensamiento),como
+recurso que recurre a la imaginación creativa y a la perspicacia de los
+seres humanos para descubrir cosas nuevas. Desde entonces el término ha
+florecido con matices diversos en todos los campos de la ciencia, la
 tecnología y las artes. Usamos estas tres herramientas para *decidir
 científicamente*, a veces suponiendo que reproducen la forma como [opera
 nuestra mente](https://www.bbc.com/mundo/noticias-59060022). Veremos a
 continuación un ejemplo a este respecto que nos comparte McElreath
 (2020). Se trata del hipotético ejemplo de *la prueba de sangre para
 vampirismo*, que nos ayudaría a decidir si alguien es mortal o vampiro.
-
 
 Inicia por pedirnos imaginar que hay un análisis de sangre que detecta
 correctamente 95% de las veces, la afiliación de un individuo al linaje
@@ -146,7 +152,9 @@ $$
 
 Esto equivale a preguntarnos, dado que ya vimos el resultado científico
 que significa la prueba de sangre, ¿será vampiro el sujeto de quien se
-obtuvo esa muestra?. Esta es una manera de estimar la probabilidad de que el amigo sea en realidad un vampiro, dado el conocimiento y la evidencia que tenemos a la mano.
+obtuvo esa muestra?. Esta es una manera de estimar la probabilidad de
+que el amigo sea en realidad un vampiro, dado el conocimiento y la
+evidencia que tenemos a la mano.
 
 $$
 Pr[vampiro|positivo]
@@ -176,8 +184,6 @@ pr |>
 
 ```
 
-
-
 ::: {.callout-tip title="¿Encuentras este resultado afin o contrario a lo que pensabas antes de hacer los cálculos?"}
 ![](images/questions-1922477_1280.jpg){width="30%"}
 :::
@@ -185,26 +191,30 @@ pr |>
 Quizás para ayudar a apreciar lo que todo esto significa conviene
 recordar la frase que se atribuye al economista John Maynard Keynes:
 
-> Cuando las circunstancias cambian, yo cambio de opinión. 
-> ¿Tú que haces?"
+> Cuando las circunstancias cambian, yo cambio de opinión. ¿Tú que
+> haces?"
 
-Si hubiera nueva evidencia dispoible, el proceso se aplicaría en secuencia. Lo que lleva a la siguiente expresión que sugiere como se puede [*generalizar este proceso de razonamiento*](https://youtu.be/D7KKlC0LOyw?si=6e_kZ0-1lBDpaTjE). Pero por ahora ya no ahondaremos más en esto.
+Si hubiera nueva evidencia disponible, el proceso se aplicaría en
+secuencia. Lo que lleva a la siguiente expresión que sugiere como se
+puede [*generalizar este proceso de
+razonamiento*](https://youtu.be/D7KKlC0LOyw?si=6e_kZ0-1lBDpaTjE). Pero
+por ahora ya no ahondaremos más en esto.
 
 $$
 Pr[H|E_1,E_2] = \frac{Pr[E_2|H,E_1] \times Pr[H|E_1]} {Pr[E_2|E_1]}
 $$
 
-
 Este es un resultado muy importante. Exactamente así, o algo muy
-parecido, es el procedimiento que se sigue en la realiad al efectuar
+parecido, es el procedimiento que se sigue en la realidad al efectuar
 pruebas diagnósticas: *las pruebas de PCR*, *antígeno* o *anticuerpos
-para SarsCov-2*, *la prueba del VIH* la del *DNA en un perfil criminal*, etc.
-La *prueba de significancia estadística*, ¿entrará en este mismo marco conceptual?.
+para SarsCov-2*, *la prueba del VIH* la del *DNA en un perfil criminal*,
+etc. La *prueba de significancia estadística*, ¿entrará en este mismo
+marco conceptual?.
 
 Quizás ayude a mejorar la intuición que tenemos de las cosas el
 considerar que siempre que la condición de interés sea muy rara,
 desarrollar una *prueba excelente*, capaz de diagnosticar bien todos los
-casos verdaderos (aunque invitablemente produzca también algunos falsos
+casos verdaderos (aunque inevitablemente produzca también algunos falsos
 positivos), puede no ser garantía suficiente de que un resultado
 positivo en general conlleve información categóricamente significativa.
 
@@ -214,14 +224,15 @@ que tendremos, incluso si todos los *verdaderos positivos* fueran
 *detectados correctamente*.
 
 La regla de Bayes es útil aquí, aunque, como dice McElreath, no es la
-única manera de razonar en este caso. Podríamos cuestionar que la ecuación
-que usamos aquí salio de la nada; aunque quizás la recuerdes de algún
-curso previo, de alguna charla interesante por ahí o incluso de lo que
-viste con Rosario ¡hace unas semanas!
+única manera de razonar en este caso. Podríamos cuestionar que la
+ecuación que usamos aquí salio de la nada; aunque quizás la recuerdes de
+algún curso previo, de alguna charla interesante por ahí o incluso de lo
+que viste con Rosario ¡hace unas semanas!
 
 Quizás el ejemplo puede verse en forma más intuitiva utilizando otra
 narrativa para comprender lo que está ocurriendo. Digamos que en lugar
-de informar sobre las probabilidades, como hicimos arriba, te digo lo siguiente:
+de informar sobre las probabilidades, como hicimos arriba, te digo lo
+siguiente:
 
 1.  En una población de 100,000 personas, 100 son *vampiros*.
 2.  De los 100 que son vampiros 95 darán positivo en la prueba de
@@ -234,7 +245,8 @@ proporción de los que dan positivo en las pruebas de vampirismo son
 realmente *vampiros*?
 
 Muchas personas, aunque ciertamente no todas, encuentran esta forma de
-contar la historia mucho más fácil de comprender. Sigamos por este camino.
+contar la historia mucho más fácil de comprender. Sigamos por este
+camino.
 
 ::: {.callout-tip title="¿Qué tal si contamos el número de personas que dan positivo?" collapse="true"}
 Anota los valores que consideres adecuados en el recuadro
@@ -245,9 +257,9 @@ Anota los valores que consideres adecuados en el recuadro
 ```
 
 De este total de pruebas positivas, sabemos que sólo 95 provienen
-verdaderamente de vampiros, lo que nos lleva sencillamente a pregutarnos
-sobre la fracción que significa esa cantidad de vampiros entre la
-totalidad de pruebas positivas.
+verdaderamente de vampiros, lo que nos lleva sencillamente a
+preguntarnos sobre la fracción que significa esa cantidad de vampiros
+entre la totalidad de pruebas positivas.
 
 ```{webr-r}
 
@@ -257,19 +269,19 @@ totalidad de pruebas positivas.
 ¿Qué valor obtuviste?
 
 Si todo marcho bien deberías tener exactamente la misma respuesta que
-por el camino bayesiano que encontramos antes. La diferencia es que ahora, 
-no tuvimos que recordar la "formula mágica" de Bayes, nada
-más tuvimos que imgainar la situación de otra manera y simplemente
-contar y pensar con calma.
+por el camino bayesiano que encontramos antes. La diferencia es que
+ahora, no tuvimos que recordar la "formula mágica" de Bayes, nada más
+tuvimos que imaginar la situación de otra manera y simplemente contar y
+pensar con calma.
 
 Esta forma de presentar el problema mediante el "conteo de los actores"
 en lugar de recurrir a probabilidades, suele denominarse *formato de
 frecuencia* o *frecuencias naturales*. En todo caso, lo importante es
-apreciar que el razonamiento puede beneficiarse de adoptar formas de 
+apreciar que el razonamiento puede beneficiarse de adoptar formas de
 razonamiento *frugales e intuitivas* [@gigerenzer2017; @hicks2012].
 
-Las razones propuestas para explicar el por qué el *formato de frecuencia* 
-ayuda a la gente a intuir el enfoque correcto siguen siendo
+Las razones propuestas para explicar el por qué el *formato de
+frecuencia* ayuda a la gente a intuir el enfoque correcto siguen siendo
 polémicas. Podría ser que de entrada sólo podemos encontrarnos con
 conteos en el mundo real. Quizás sea cierto que nadie ha visto nunca una
 probabilidad andando por ahí. Independientemente de la explicación de
@@ -283,7 +295,7 @@ una "materialización" empírica exacta.
 
 El formalismo bayesiano trata las distribuciones de los parámetros como
 una plausibilidad relativa, no como un proceso aleatorio que ocurre en
-el mundo físico. En cualquier caso, la  aleatoriedad es siempre una
+el mundo físico. En cualquier caso, la aleatoriedad es siempre una
 propiedad de la información, nunca del mundo real. Para continuar
 explorando esta idea puede interesarte los textos de
 [Gigerenzer](https://onlinelibrary.wiley.com/authored-by/Gigerenzer/Gerd?pageSize=20&startPage=1))
@@ -291,7 +303,6 @@ explorando esta idea puede interesarte los textos de
 ## Estadística para mejorar la ciencia
 
 ::: {.callot-tip title="¿Podemos confiar en que la estadística nos proteja de la mala ciencia?"}
-
 El ejemplo del vampirismo que acabamos de ver tiene la misma estructura
 lógica que muchos problemas de *detección* considerando que:
 
@@ -380,9 +391,9 @@ Una manera de explorar lo que puede pasar en distintos escenarios,
 asumiendo un razonamiento específico, nos da oportunidad de valorar la
 utilidad de hacer un *escript*, *algoritmo* o *programa*. Así podemos
 automatizar una tarea repetitiva y potencialmente aburrida para ver las
-implicaciones de la idea en todo tipo de situaciones. Qizás podríamos
-considerarlo semejante a lo qe Einstein llamaba **experimento pensado**.
-Veamos como hacerlo.
+implicaciones de la idea en todo tipo de situaciones. Quizás podríamos
+considerarlo semejante a lo que Einstein llamaba **experimento
+pensado**. Veamos como hacerlo.
 
 ```{webr-r}
 
@@ -438,7 +449,7 @@ par(mar=c(4,4,2,2) + 0.7)
 # Tamaño de la gráfica
 options(repr.plot.width = 15, repr.plot.height = 5)
 
-# fondo de las gráficas evita aparrezca un bloque obscurro en su lugar
+# fondo de las gráficas evita aparezca un bloque obscuro en su lugar
 par(bg = "white")
 
 # Gráfica
@@ -466,7 +477,7 @@ y si fuera una razonable aproximación ¿a qué nos conduce?
     ${Pr(V)}$?
 -   [ ] ¿Qué implicaría y cómo se podría lograr mejorar ${Pr(V)}$?
 -   [ ] ¿Es posible hacer que esa probabilidad crezca?
--   [ ] ¿Simpre incrementar el número de veces que se repite el
+-   [ ] ¿Siempre incrementar el número de veces que se repite el
     tratamiento (tamaño de muestra?
 -   [ ] ¿Sólo aceptar como significativos resultados muy altamente
     significativos?
@@ -564,7 +575,7 @@ elegimos abstraer.
 :::
 
 El modelo que contiene todas las variables explicativas que proponemos
-tinen que ver con el fenómeno que estamos analizando lo llamaremos
+tienen que ver con el fenómeno que estamos analizando lo llamaremos
 **modelo completo**. Tiene todos los parámetros posibles de acuerdo con
 el diseño del estudio, usualmente al menos un término por cada grupo
 experimental (tratamiento). En general el método para llegar a un
@@ -603,8 +614,8 @@ la diferencia en el error asociado con cada modelo. Como esta diferencia
 estará afectada por la escala de medición del fenómeno estudiado,
 conviene *normalizarla*, es decir expresarla como un \*error relativo
 **para obtenerlo sólo habremos de dividir por el error más pequeño que
-podríamos tener:** la del modelo completo**. Llamarémos a este valor,
-provisionalmene, el *índice proporcional de error* (**IPE\*\*). Un
+podríamos tener:** la del modelo completo**. Llamaremos a este valor,
+provisionalmente, el *índice proporcional de error* (**IPE\*\*). Un
 índice grande corresponde con modelos que difieren mucho en su *ajuste*
 a los datos. Por tanto, estaremos ante la necesidad de elegir alguno de
 los dos.
@@ -635,10 +646,10 @@ $F = t^{2}$
     comparando distintos modelos.
 -   Cada modelo corresponde con alguna hipótesis particular.
 -   Los distintos modelos abarcan las varias hipótesis nulas que podrían
-    plantearse, H<sub>0</sub>, pero también pueden incluir cuaquiera de
+    plantearse, H<sub>0</sub>, pero también pueden incluir cualquiera de
     las *hipótesis alternativa*, H<sub>A</sub>, que nos interese
     valorar.
--   El procesos de selección de modelos y las caracterísiticas de los
+-   El procesos de selección de modelos y las características de los
     modelos que finalmente elijamos serán los protagonistas de la
     historia que habremos de narrar en el reporte de resultados y
     discusión de hallazgos.
@@ -684,7 +695,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 $$
 
 ::: {.callout-tip title="¿Cómo es que esta hipótesis se pone a prueba en un ANDEVA?"}
-Por cierto esta es una prueba "omnibus", es decir ¡prueba todo (la
+Por cierto esta es una prueba "ómnibus", es decir ¡prueba todo (la
 igualdad de todas las medias) de un jalón!
 :::
 
@@ -700,7 +711,7 @@ anova.data$f <- factor(rep(c("a", "b"), each = 7))
 
 ```
 
-Pongamos estos datos en una gráfica simple, sgún el orden en el que
+Pongamos estos datos en una gráfica simple, según el orden en el que
 fueron obtenidas las mediciones. Lo primero que haremos es definir la
 tabla de datos **anova.data**, como espacio de trabajo. Haremos esto con
 la función `attach()`. Esto hace que las variables contenidas en la
@@ -802,7 +813,7 @@ En el cuadro de análisis de varianza se suele etiquetar a los
 componentes de error de acuerdo con su *fuente*. Se les acompaña con los
 grados de libertad, la *suma de cuadrados* de las distancias que mostré
 en las tres gráficas anteriores y luego los llamados *cuadrados medios*.
-Para referencia podemos pedrle a **R** que nos reporte el cuadro de
+Para referencia podemos pedirle a **R** que nos reporte el cuadro de
 ANOVA de este modelo.
 
 ::: {.callout-tip title="Analiza la correspondencia entre los valores y las gráficas que vimos arriba con lo que reporta **R**" collapse="true"}
@@ -822,7 +833,7 @@ detach(anova.data)
 ## DAG de un diseño experimental simple
 
 Un experimento con asignación de tratamientos en forma completamente al
-azar, garantiza al máximo posile las vías de influencias ocultas o
+azar, garantiza al máximo posible las vías de influencias ocultas o
 inadvertidas. Por diseño, la respuesta de las unidades experimentales,
 *Y*, al tratamiento *T* sólo tiene a la asignación aleatoria *A* como
 única causa que antecede al tratamiento. Esto lo podemos representar con
@@ -833,17 +844,17 @@ $$
 $$
 
 En este DAG, el marco que rodea a la *A* indica *aleatorización*, y como
-sugiere el diagrama, es la única causa que actua sore el tratamiento. Si
-hubiera una vía de influencia alternativa (*backdoor*), a través de
+sugiere el diagrama, es la única causa que actúa sobre el tratamiento.
+Si hubiera una vía de influencia alternativa (*backdoor*), a través de
 alguna tercera variable como podría ser en un caso de germinación de
-semillas, la luminosidad del sitio o el grado de humendad en el
-sustrato; entonces, la aleatorización no sería el único factor que
-influiría sore el tratamiento. El recuadro alrededor de *A* (el proceso
-de aleatorización) indica que no existen otros factores actuando sobre
-*T*, es decir, *A* es una influencia puramente estocástica. Esta idea y
-el proceso de realización de un experimento controlado con
-aleatorización, da cuenta con toda claridad del valor de esta forma de
-realizar estudios para desentrañar relaciones de causalidad.
+semillas, la luminosidad del sitio o el grado de humedad en el sustrato;
+entonces, la aleatorización no sería el único factor que influiría sobre
+el tratamiento. El recuadro alrededor de *A* (el proceso de
+aleatorización) indica que no existen otros factores actuando sobre *T*,
+es decir, *A* es una influencia puramente estocástica. Esta idea y el
+proceso de realización de un experimento controlado con aleatorización,
+da cuenta con toda claridad del valor de esta forma de realizar estudios
+para desentrañar relaciones de causalidad.
 
 Este DAG nos conduce al modelo linear siguiente
 
@@ -853,9 +864,9 @@ $$
 
 En donde *y* son las mediciones de la variable *Y* en respuesta al
 efecto de *T*, $\mu$ es un valor de referencia general (tradicionalmente
-la media general de la variale *Y*, aunque puede elegirse cualquier otro
-valor de referencia que convenga al estudio) y la épsilon da cuenta del
-efecto aleatorio inducido por $\fbox{A}$, por lo que es necesario
+la media general de la variable *Y*, aunque puede elegirse cualquier
+otro valor de referencia que convenga al estudio) y la épsilon da cuenta
+del efecto aleatorio inducido por $\fbox{A}$, por lo que es necesario
 postular una distribución de probabilidades apropiada para caracterizar
 su comportamiento.
 
@@ -867,7 +878,7 @@ realmente ocurre en los años 20 y 30 del siglo XX con las publicaciones
 de Sir Ronald Fisher, Jerzy Neyman y Egon Pearson.
 
 Entre estos autores existieron diferencias filosóficas y conceptuales
-entre sus planteamientos y posturas. En special Fisher y Neyman
+entre sus planteamientos y posturas. En especial Fisher y Neyman
 sostuvieron acres debates que sólo se interrumpieron con el
 fallecimiento de Fisher en 1962. No obstante [el debate continua hasta
 hoy](http://www.elsevier.es/es-revista-investigacion-educacion-medica-343-articulo-la-prueba-hipotesis-nula-sus-X2007505712427368).
@@ -911,7 +922,7 @@ emocional, quizás hasta un alivio, finalmente, el investigador sospecha
 (desea mostrar) que lo interesante está en otra parte, en su juego de
 hipótesis alternativas.
 
-### [**¿Es este procedimiento afín al refutacionismo Popperiano?.**]{style="color:GoldenRod"}
+### [**¿Es este procedimiento afín al [falsacionismo](https://www.uaeh.edu.mx/scige/boletin/prepa3/n9/r1.html) Popperiano?.**]{style="color:GoldenRod"}
 
 Para interpretar correctamente un valor *p* se necesita tener claro que
 se opera dentro de una marco conceptual frecuentista. Esto lleva a que
@@ -945,7 +956,7 @@ valores que podemos comparar con un conjunto de valores a los que
 consideramos *observados*. La diferencia entre estos dos conjuntos de
 valores nos permiten valorar la factibilidad de nuestra proposición.
 
-![](images/Potencia_estad%C3%ADstica.png){width="700"}
+![](images/Potencia_estadistica.png){width="700"}
 
 En la práctica, suele ocurrir que se concentre la atención en la
 hipótesis nula expresada con la gran simplicidad que implica la
@@ -1068,7 +1079,12 @@ el posible tamaño del efecto.
 
 A la luz de las críticas, Muchos autores ven necesario actualmente
 adoptar el marco Bayesiano para enfrentar las deficiencias del enfoque
-*clásico*.
+*clásico*. También queda claro que el [falsacionismo no resulta ser un
+camino
+inequívoco](https://culturacientifica.com/2013/11/12/la-tesis-duhem-quine-introduccion/),
+cosa que ya advertía el mismo Popper, aunque no al extremo de la tesis
+Duhem-Quine [@kemeny1952], que sostiene la imposibilidad de hacer
+**experimentos cruciales**.
 
 ### Potencia de la prueba
 
@@ -1076,7 +1092,7 @@ En la práctica, la potencia de la prueba depende del *grado de
 dispersión* en los datos. Si se está asumiendo un modelo de
 probabilidades Gaussiano (distribución normal), el factor de dispersión
 o escala se relaciona con la varianza. Por lo tanto, es usual notar que
-el mismo cálculo del error estandar, $s_{e}=\frac{\sigma}{\sqrt{n}}$,
+el mismo cálculo del error estándar, $s_{e}=\frac{\sigma}{\sqrt{n}}$,
 sugiere la solución.
 
 ![](images/Potencia_estad%C3%ADstica.png){width="700"}
@@ -1125,7 +1141,7 @@ Quizás la forma más simple de identificar las variables explicativas que
 tienen efectos fijos es pensar en ellas como variables cuyos niveles
 identifican en forma completa las condiciones de interés para el
 investigador. Por ejemplo, en el caso de un experimento que analiza el
-desempeño de larvas de mariposa que toman una dieta rica en proteinas y
+desempeño de larvas de mariposa que toman una dieta rica en proteínas y
 al mismo tiempo están expuestas a la presencia o no de un alcaloide.
 Estamos interesados precisamente en esas dietas y en la presencia o no
 del alcaloide. Estos dos factores son fijos. Es el tipo de variables que
@@ -1155,7 +1171,7 @@ pensar en esta forma de proceder como equivalente a un *muestreo
 estratificado*, en este caso, los tipos de ambiente son los estratos. No
 es el caso del tratamiento pisoteo. aprovechando podemos ver que en este
 experimento tendremos un mínimo de 4 combinaciones experimentales, y que
-ese arreglo mínimo se repetirá 5 veces, así que reqeriremos 20 unidades
+ese arreglo mínimo se repetirá 5 veces, así que requeriremos 20 unidades
 experimentales para realizar el estudio.
 
 ::: {.callout-tip title="¿Puedes darnos un ejemplo en el que distingas entre efectos fijos y aleatorios?"}
