@@ -21,7 +21,8 @@ highlight-style: tango
 format:
   html:
     theme: 
-      dark: Sandstone
+      light: Sandstone
+      dark: Sandstone_dark
     css: styles.css
     
 # Enable webR on all post pages
