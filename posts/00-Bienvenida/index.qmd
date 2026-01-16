@@ -88,7 +88,7 @@ ordenado posible.
 ::: {.callout-note title="Calendario" collapse="true"}
 ```{r }
 #| label: calendario
-#| tbl-cap: Aactividades del Módulo 3 
+#| tbl-cap: Actividades del Módulo 3 
 #| warning: false
 #| echo: false
 
@@ -169,8 +169,8 @@ programa del módulo 3 a lo largo de 60 minutos.
 
 El Módulo 3 será evaluado a través de las tareas y controles de
 lectura que les pediremos que hagan conforme se desarrolle el curso. La
-participación en *quizes* y preguntas en línea vía
-[vevox](https://www.vevox.com/) tamién será considerada.
+participación en *quizzes* o cuestionarios en línea vía
+[Vevox](https://www.vevox.com/) también será considerada.
 
 # Estudiantes
 
@@ -206,7 +206,7 @@ computadoras o teléfonos celulares:
 ::::::: {.callout-tip appearance="default"}
 ### lo que hay que hacer es
 
--   **En tu computadora ir** [vevox.app]{style="color:#00AEEF"}
+-   **En tu computadora ir** [Vevox.app]{style="color:#00AEEF"}
 -   **Para usar el celular instala** [Vevox]{style="color:#00AEEF"}
     **desde la tienda de** *apps*
 
