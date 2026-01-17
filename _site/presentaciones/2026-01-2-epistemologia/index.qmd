@@ -64,7 +64,7 @@ supuestos fuertes**, no de neutralidad pura.
 ## Bacon y la ciencia occidental
 
 -   [**Sir Francis Bacon
-    (1561-1626)**](http://juango.es/files/baconnovumorganon.pdf) clave
+    (1561-1626)**](baconnovumorganon.pdf) clave
     en el origen de la ciencia occidental.
 -   En su *Novum Organum* [@bacon1620] plantea substituir el ya entonces
     viejo método aristotélico (dominate por más de 1800 años), por un

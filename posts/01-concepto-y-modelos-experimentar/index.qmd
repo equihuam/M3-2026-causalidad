@@ -298,7 +298,7 @@ una plausibilidad relativa, no como un proceso aleatorio que ocurre en
 el mundo físico. En cualquier caso, la aleatoriedad es siempre una
 propiedad de la información, nunca del mundo real. Para continuar
 explorando esta idea puede interesarte los textos de
-[Gigerenzer](https://onlinelibrary.wiley.com/authored-by/Gigerenzer/Gerd?pageSize=20&startPage=1))
+[Gigerenzer](https://onlinelibrary.wiley.com/authored-by/Gigerenzer/Gerd?pageSize=20&startPage=1) sobre la importancia de la intuición.
 
 ## Estadística para mejorar la ciencia
 
@@ -315,9 +315,9 @@ lógica que muchos problemas de *detección* considerando que:
 
 La inferencia científica puede enmarcase en términos similares:
 
-1.  Una hipótesis es verdadera o falsa, pero no podemos saberlo;
+1.  Una hipótesis es verdadera o falsa, pero no lo sabemos todavía;
 2.  Obtenemos un indicio estadístico de la **falsedad** de la hipótesis;
-3.  Debemos/podemos utilizar el teorema de Bayes para deducir
+3.  Podemos utilizar el teorema de Bayes para deducir
     lógicamente el impacto del indicio en el estado de la hipótesis.
 
 Es el tercer paso el que casi nunca se hace. Sin debatir por lo pronto
@@ -331,16 +331,16 @@ un ejemplo de juguete.
 
 Supongamos que la probabilidad de obtener un hallazgo positivo, cuando
 la hipótesis postulada es cierta, es
-${Pr[señal~detectada|verdadero]=Pr[H|V]= 0.95}$.
+${Pr[señal~detectada | verdadera]=Pr[H|d]= 0.95}$.
 
 Ese es lo que se suele llamar **la potencia de la prueba**.
 
 #### Probabilidad de *errar*
 
 Supongamos que la probabilidad de un hallazgo positivo, cuando una
-hipótesis es falsa, es ${Pr[señal~detectada|falso]= Pr[H|F]= 0.05}$.
+hipótesis es falsa, es ${Pr[señal~detectada|falsa]= Pr[H|\neg d]= 0.05}$.
 
-Esa es la tasa de falsos positivos, se trata del, digamos 5%, de la
+Esa es la tasa de falsos positivos, digamos 5%, de la
 **prueba de significancia** que usamos convencionalmente.
 
 #### ¿Cuál será el estado real del mundo?
@@ -349,45 +349,39 @@ Finalmente, tenemos que establecer la tasa base con la que ocurren las
 hipótesis que son verdaderas. Supongamos, por ejemplo, que 1 de cada 100
 hipótesis resulta ser verdadera. Entonces
 
-${Pr[verdadero]= P(V) = 0.01}$.
+${Pr[verdadero]= Pr(H) = 0.01}$.
 
 En realidad nadie conoce este valor ni se ve posible conocerlo, pero la
 historia de la ciencia sugiere que es pequeño.
 
 #### Probabilidad de haber acertado con una hipótesis
 
-Para averiguar esto, calculamos la componente *a posteriori*:
+Se trata de una proposición que hemos aventurado para explicar algo, que resulta ser cierta y que hemos obtenido alguna prueba que calificamos de positiva para reconocerla . Para averiguar esto hay que calcular la probabilidad *a posteriori*:
 
 $$
-Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipótesis)} = \\
+Pr[H|d]=Pr[Hipótesis|detección]= \frac{Pr[detección|Hipótesis] \cdot Pr(deteción)} {Pr(Hipótesis)} = \\
 \\
-\frac{Pr[H|V]Pr[V)} {Pr(H|V]Pr[V]+ Pr[H|F]Pr(F)}
+\frac{Pr[d|H] \cdot Pr[d)} {Pr(d|H] \cdot Pr[d]+ Pr[\neg d|H] \cdot Pr(\neg d)}
 \\
 $$
 
 ```{webr-r}
-
-Pr_posterior_hallazgo_cierto <- (0.95 * 0.01) / 
-                                   ((0.95 * 0.01) + (0.05 * (1-0.01)))
+# (0.95 * 0.01) / ((0.95 * 0.01) + (0.05 * (1-0.01)))
+Pr_posterior_hallazgo_cierto <- NA
 
 Pr_posterior_hallazgo_cierto
 ```
 
-Como podemos ver, al substituir los valores *imaginados*, encontramos
-que la respuesta es aproximadamente ${Pr[V|H]= 0.16}$.
+Al substituir los valores *imaginados* y hacer los cálculos obtenemos una esimación de que tan probable es que sea cierta la hipótesis propuesta, dado que observamos un resultado positivo (${Pr[H|d]}$). 
 
-Así que un resultado positivo corresponde a un 16% de probabilidad de
-que la hipótesis sea cierta.
-
-Este es el mismo fenómeno de baja tasa de base que se aplica en las
-pruebas médicas (y también en nuestro ejemplo de *vampiros*).
+¿Qué valor obtuviste? Observa que este valor muestra el mismo patrón de baja tasa de base que se aplica en las pruebas médicas (y también en nuestro ejemplo de *vampiros*).
 
 ::: {.callout-warning title="¿Podremos mejorar la práctica científica?"}
 ![](images/confundida.png){width="50%"}
 :::
 
-:::: {.callout-note title="Experimentos pensados" collapse="true"}
-Una manera de explorar lo que puede pasar en distintos escenarios,
+::: {.callout-note title="Experimentos pensados" collapse="true"}
+Una manera de explorar lo que puede pasar en distintos escenarios 
 asumiendo un razonamiento específico, nos da oportunidad de valorar la
 utilidad de hacer un *escript*, *algoritmo* o *programa*. Así podemos
 automatizar una tarea repetitiva y potencialmente aburrida para ver las
@@ -460,29 +454,28 @@ plot(x = 1 - resultados$p_error, y = resultados$p_post,
 
 ![](images/doubt-2137526_1280.png){width="10%"}
 
-::: {.callout-tip title="¿Tú que piensas?" collapse="true"}
 Una investigación muy exigente que reduce la detección de falsos
-positivos a 1%, nos permite llevar la probabilidad posterior de
-*descubrimientos exitosos* hasta 0.5.
-
-Apenas tan buena como el lanzamiento de una moneda.
+positivos a 1%, ¿hasta cuánto nos permite llevar la probabilidad posterior de
+*descubrimientos exitosos*?
 
 Podemos pensar que lo que hemos hecho hasta aquí es prácticamente un
 juego, pero ¿qué tan cercano podría ser a lo que ocurre en la vida real?
 y si fuera una razonable aproximación ¿a qué nos conduce?
 
-¿Qué conclusiones surgen de esta experiencia?
+
+### ¿Qué conclusiones surgen de esta experiencia?
 
 -   [ ] ¿Lo más importante es mejorar la probabilidad de detección base,
-    ${Pr(V)}$?
--   [ ] ¿Qué implicaría y cómo se podría lograr mejorar ${Pr(V)}$?
--   [ ] ¿Es posible hacer que esa probabilidad crezca?
--   [ ] ¿Siempre incrementar el número de veces que se repite el
-    tratamiento (tamaño de muestra?
+    $Pr(H)$?
+-   [ ] ¿Qué implicaría y cómo se podría lograr mejorar $Pr(H)$?
+-   [ ] ¿Es posible hacer que $Pr[H]$ crezca?
+-   [ ] ¿Habrá que incrementar siempre el número de veces que se repite el
+    tratamiento?
 -   [ ] ¿Sólo aceptar como significativos resultados muy altamente
     significativos?
+  
 :::
-::::
+
 
 ## Crisis de reproducibilidad
 
@@ -704,7 +697,7 @@ Considera un solo factor, "$f$", con dos niveles.
 
 ```{webr-r}
 
-set.seed(1234) # para fines didácticos: obtener resultados reproducibles 
+set.seed(1234) # para fines didácticos: obtener resultados repetibles 
 
 anova.data <- data.frame(y=c(rnorm(7, 5.4, 1), rnorm(7, 10.8, 1)))
 anova.data$f <- factor(rep(c("a", "b"), each = 7))  
@@ -1003,15 +996,14 @@ nula es cierta; esto hace imposible, por construcción, interpretarlo
 como la probabilidad de que la hipótesis alternativa sea cierta. La
 probabilidad a la que se refiere el valor *p* guarda más relación con la
 probabilidad inversa, $P(E|H{0})$. ¿Qué tan probable sería tener una
-muestra como la que tenemos enfrente, si la hipótesis considerada fuera
+muestra como la que tenemos enfrente, si la hipótesis nula considerada fuera
 cierta?. Esto se conoce como la **verosimilitud**, es decir, la
 probabilidad de observar los datos que se han obtenido en un estudio
 suponiendo que los atributos del modelo fueran ciertos. La verosimilitud
 valora a la muestra como un resultado *condicional* a los supuestos
 hechos en el modelo estadístico y en este caso, la hipótesis nula.
 
-Sin embargo, la probabilidad que realmente interesa -por ejemplo, al
-investigador de nuestro ejemplo- es la anteriormente mencionada
+Sin embargo, la probabilidad que realmente interesa es la anteriormente mencionada
 $P(H_{0}|E)$. Aunque no está definida dentro del marco frecuentista, en
 el marco Bayesiano sí se define. Las probabilidades $P(E|H_{0})$ y
 $P(H_{0}|E)$ no son iguales.

@@ -64,9 +64,9 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e41caad1b6b9b62eb3087831f3b4c651.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9f9210b263e96d54cf2af0ff29f9e6a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2fb77ccd341c7b5dc4ea2940181b5c0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-2fb77ccd341c7b5dc4ea2940181b5c0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-9f9210b263e96d54cf2af0ff29f9e6a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2fb77ccd341c7b5dc4ea2940181b5c0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -394,7 +394,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"pr <- tribble(~concepto,                      ~momento,    ~valor,\n              \"prueba positiva en vampiros\", \"al inicio\",   NA,\n              \"prueba positiva en mortales\", \"al inicio\",   NA,\n              \"ser un vampiro en Xalapa\",    \"al inicio\",   NA) ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"pr","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"pr |> \n  gt() |> \n  cols_label(concepto = \"Concepto\", \n             momento = \"¿Cuándo lo sé?\", \n             valor   = \"Probabilidad\") |> \n  fmt_percent(valor, decimals = 1)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"as-is","warning":"true"}},{"code":"Pr_positivo <- pr$valor[pr$concepto == \"prueba positiva en vampiros\"] * \n               pr$valor[pr$concepto == \"ser un vampiro en Xalapa\"] +     # vampiro da positivo\n  \n               pr$valor[pr$concepto == \"prueba positiva en mortales\"] * \n               (1 - pr$valor[pr$concepto == \"ser un vampiro en Xalapa\"]) # Mortal da positivo\n\npr |> \n  rows_append(\n    tibble(concepto = \"ser vampiro con prueba positiva\",\n           momento = \"después de conocer la prueba positiva\",\n           valor = pr$valor[pr$concepto == \"prueba positiva en vampiros\"] *\n           pr$valor[pr$concepto == \"ser un vampiro en Xalapa\"] / \n           Pr_positivo)) |> \n  gt() |> \n  cols_label(concepto = \"Concepto\", \n             momento = \"¿Cuándo lo sé?\", \n             valor   = \"Probabilidad\") |> \n  fmt_percent(valor, decimals = 1)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"as-is","warning":"true"}},{"code":"","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"Pr_posterior_hallazgo_cierto <- (0.95 * 0.01) / \n                                   ((0.95 * 0.01) + (0.05 * (1-0.01)))\n\nPr_posterior_hallazgo_cierto","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ciencia <- function (pr_pos_cierto = 0.95, pr_cierto = 0.01)\n{\n    pr_falso <- 1 - pr_cierto\n    pr_pos_falso <- 1 - pr_pos_cierto\n\n    pr_cierto_pos <- pr_pos_cierto * pr_cierto / \n                    (pr_pos_cierto * pr_cierto + pr_pos_falso * pr_falso)\n\n    return(pr_cierto_pos)\n}","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"valores_de_interés <- seq(0.9, 0.99, 0.01)\nstr(valores_de_interés)\nhead(valores_de_interés)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"resultados <- data.frame(numeric(0), numeric(0))\nfor (pr in valores_de_interés) \n    resultados <- rbind(resultados, c(pr, ciencia(pr, 0.01)))\n\nnames(resultados) <- c(\"p_error\", \"p_post\")","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# fondo de las gráficas\npar(bg = \"white\")\n\n# Área de graficación. mar() para el margen. oma() alrededor del margen.\npar(oma=c(2,3,1,2)) # abajo=2, izq=3, arriba=1, der=2\npar(mar=c(4,4,2,2) + 0.7)\n\n# Tamaño de la gráfica\noptions(repr.plot.width = 15, repr.plot.height = 5)\n\n# fondo de las gráficas evita aparezca un bloque obscuro en su lugar\npar(bg = \"white\")\n\n# Gráfica\nplot(x = 1 - resultados$p_error, y = resultados$p_post,\n     type = \"b\", xlab = \"valor de P\", ylab = \"Pr post detección positiva\", \n     cex = 2, cex.axis  = 1, cex.lab = 2)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"pf(198.50, 1, 2, lower.tail=F)\npt(sqrt(198.50), 2, lower.tail = F)*2","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"set.seed(1234) # para fines didácticos: obtener resultados reproducibles \n\nanova.data <- data.frame(y=c(rnorm(7, 5.4, 1), rnorm(7, 10.8, 1)))\nanova.data$f <- factor(rep(c(\"a\", \"b\"), each = 7))  ","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"attach(anova.data)\n\n# fondo de las gráficas\npar(bg = \"white\")\n\nplot(y)\nabline(mean(y), 0)\nfor (i in 1:length(y)) lines (c(i,i), c(mean(y), y[i]))","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dist_tot_y <- sum((y - mean(y))**2)\ndist_tot_y","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"means <- tapply(y, f, mean)\nmeans","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# fondo de las gráficas\npar(bg = \"white\")\n\nplot(y)\nlines(c(1, 7.5), c(means[1], means[1]))\nlines(c(7.5, 14), c(means[2], means[2]))\nfor (i in 1:7 ) lines (c(i,i), c(means[1], y[i]))\nfor (i in 8:14) lines (c(i,i), c(means[2], y[i]))","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dist_tot_s <- sum(m1=sum((y[1:7] - means[1])**2), \n                  m2=sum((y[8:14] - means[2])**2))\n\ndist_tot_s","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# fondo de las gráficas\npar(bg = \"white\")\n\nmodelo <- lm(y ~ f) # ¿qué estoy haciendo aquí?\nplot (y, col = \"red\")\nabline (mean(y), 0)\npoints(predict(modelo), pch = 16, col = \"lightblue\")\nfor (i in 1:14) lines(c(i, i), c(mean(y), predict(modelo)[i]), col = \"gray\")","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dist_tot_s_y <- sum(sum((rep(means[1], 7) - mean(anova.data$y))**2),  \n                    sum((rep(means[2], 7) - mean(anova.data$y))**2))\ndist_tot_s_y","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"anova(modelo)\n\ndist_tot_y\ndist_tot_s\ndist_tot_s_y \n\ndetach(anova.data)","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"pr <- tribble(~concepto,                      ~momento,    ~valor,\n              \"prueba positiva en vampiros\", \"al inicio\",   NA,\n              \"prueba positiva en mortales\", \"al inicio\",   NA,\n              \"ser un vampiro en Xalapa\",    \"al inicio\",   NA) ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"pr","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"pr |> \n  gt() |> \n  cols_label(concepto = \"Concepto\", \n             momento = \"¿Cuándo lo sé?\", \n             valor   = \"Probabilidad\") |> \n  fmt_percent(valor, decimals = 1)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"as-is","warning":"true"}},{"code":"Pr_positivo <- pr$valor[pr$concepto == \"prueba positiva en vampiros\"] * \n               pr$valor[pr$concepto == \"ser un vampiro en Xalapa\"] +     # vampiro da positivo\n  \n               pr$valor[pr$concepto == \"prueba positiva en mortales\"] * \n               (1 - pr$valor[pr$concepto == \"ser un vampiro en Xalapa\"]) # Mortal da positivo\n\npr |> \n  rows_append(\n    tibble(concepto = \"ser vampiro con prueba positiva\",\n           momento = \"después de conocer la prueba positiva\",\n           valor = pr$valor[pr$concepto == \"prueba positiva en vampiros\"] *\n           pr$valor[pr$concepto == \"ser un vampiro en Xalapa\"] / \n           Pr_positivo)) |> \n  gt() |> \n  cols_label(concepto = \"Concepto\", \n             momento = \"¿Cuándo lo sé?\", \n             valor   = \"Probabilidad\") |> \n  fmt_percent(valor, decimals = 1)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"as-is","warning":"true"}},{"code":"","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# (0.95 * 0.01) / ((0.95 * 0.01) + (0.05 * (1-0.01)))\nPr_posterior_hallazgo_cierto <- NA\n\nPr_posterior_hallazgo_cierto","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ciencia <- function (pr_pos_cierto = 0.95, pr_cierto = 0.01)\n{\n    pr_falso <- 1 - pr_cierto\n    pr_pos_falso <- 1 - pr_pos_cierto\n\n    pr_cierto_pos <- pr_pos_cierto * pr_cierto / \n                    (pr_pos_cierto * pr_cierto + pr_pos_falso * pr_falso)\n\n    return(pr_cierto_pos)\n}","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"valores_de_interés <- seq(0.9, 0.99, 0.01)\nstr(valores_de_interés)\nhead(valores_de_interés)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"resultados <- data.frame(numeric(0), numeric(0))\nfor (pr in valores_de_interés) \n    resultados <- rbind(resultados, c(pr, ciencia(pr, 0.01)))\n\nnames(resultados) <- c(\"p_error\", \"p_post\")","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# fondo de las gráficas\npar(bg = \"white\")\n\n# Área de graficación. mar() para el margen. oma() alrededor del margen.\npar(oma=c(2,3,1,2)) # abajo=2, izq=3, arriba=1, der=2\npar(mar=c(4,4,2,2) + 0.7)\n\n# Tamaño de la gráfica\noptions(repr.plot.width = 15, repr.plot.height = 5)\n\n# fondo de las gráficas evita aparezca un bloque obscuro en su lugar\npar(bg = \"white\")\n\n# Gráfica\nplot(x = 1 - resultados$p_error, y = resultados$p_post,\n     type = \"b\", xlab = \"valor de P\", ylab = \"Pr post detección positiva\", \n     cex = 2, cex.axis  = 1, cex.lab = 2)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"pf(198.50, 1, 2, lower.tail=F)\npt(sqrt(198.50), 2, lower.tail = F)*2","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"set.seed(1234) # para fines didácticos: obtener resultados repetibles \n\nanova.data <- data.frame(y=c(rnorm(7, 5.4, 1), rnorm(7, 10.8, 1)))\nanova.data$f <- factor(rep(c(\"a\", \"b\"), each = 7))  ","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"attach(anova.data)\n\n# fondo de las gráficas\npar(bg = \"white\")\n\nplot(y)\nabline(mean(y), 0)\nfor (i in 1:length(y)) lines (c(i,i), c(mean(y), y[i]))","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dist_tot_y <- sum((y - mean(y))**2)\ndist_tot_y","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"means <- tapply(y, f, mean)\nmeans","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# fondo de las gráficas\npar(bg = \"white\")\n\nplot(y)\nlines(c(1, 7.5), c(means[1], means[1]))\nlines(c(7.5, 14), c(means[2], means[2]))\nfor (i in 1:7 ) lines (c(i,i), c(means[1], y[i]))\nfor (i in 8:14) lines (c(i,i), c(means[2], y[i]))","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dist_tot_s <- sum(m1=sum((y[1:7] - means[1])**2), \n                  m2=sum((y[8:14] - means[2])**2))\n\ndist_tot_s","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# fondo de las gráficas\npar(bg = \"white\")\n\nmodelo <- lm(y ~ f) # ¿qué estoy haciendo aquí?\nplot (y, col = \"red\")\nabline (mean(y), 0)\npoints(predict(modelo), pch = 16, col = \"lightblue\")\nfor (i in 1:14) lines(c(i, i), c(mean(y), predict(modelo)[i]), col = \"gray\")","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dist_tot_s_y <- sum(sum((rep(means[1], 7) - mean(anova.data$y))**2),  \n                    sum((rep(means[2], 7) - mean(anova.data$y))**2))\ndist_tot_s_y","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"anova(modelo)\n\ndist_tot_y\ndist_tot_s\ndist_tot_s_y \n\ndetach(anova.data)","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1681,7 +1681,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -1823,8 +1823,10 @@ window.Quarto = {
         changeGiscusTheme();
       }
     };
-    const authorPrefersDark = true;
+    const authorPrefersDark = false;
     const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -2339,7 +2341,7 @@ Pr[H|E_1,E_2] = \frac{Pr[E_2|H,E_1] \times Pr[H|E_1]} {Pr[E_2|E_1]}
 </div>
 </div>
 <p>Los eventos muestreados en el análisis de las distribuciones de probabilidades de modelos estadísticos en algún análisis de datos, son los valores de los parámetros. La mayoría de los parámetros no tienen una “materialización” empírica exacta.</p>
-<p>El formalismo bayesiano trata las distribuciones de los parámetros como una plausibilidad relativa, no como un proceso aleatorio que ocurre en el mundo físico. En cualquier caso, la aleatoriedad es siempre una propiedad de la información, nunca del mundo real. Para continuar explorando esta idea puede interesarte los textos de <a href="https://onlinelibrary.wiley.com/authored-by/Gigerenzer/Gerd?pageSize=20&amp;startPage=1">Gigerenzer</a>)</p>
+<p>El formalismo bayesiano trata las distribuciones de los parámetros como una plausibilidad relativa, no como un proceso aleatorio que ocurre en el mundo físico. En cualquier caso, la aleatoriedad es siempre una propiedad de la información, nunca del mundo real. Para continuar explorando esta idea puede interesarte los textos de <a href="https://onlinelibrary.wiley.com/authored-by/Gigerenzer/Gerd?pageSize=20&amp;startPage=1">Gigerenzer</a> sobre la importancia de la intuición.</p>
 <section id="estadística-para-mejorar-la-ciencia" class="level2">
 <h2 class="anchored" data-anchor-id="estadística-para-mejorar-la-ciencia">Estadística para mejorar la ciencia</h2>
 <div class="callot-tip" title="¿Podemos confiar en que la estadística nos proteja de la mala ciencia?">
@@ -2351,9 +2353,9 @@ Pr[H|E_1,E_2] = \frac{Pr[E_2|H,E_1] \times Pr[H|E_1]} {Pr[E_2|E_1]}
 </ol>
 <p>La inferencia científica puede enmarcase en términos similares:</p>
 <ol type="1">
-<li>Una hipótesis es verdadera o falsa, pero no podemos saberlo;</li>
+<li>Una hipótesis es verdadera o falsa, pero no lo sabemos todavía;</li>
 <li>Obtenemos un indicio estadístico de la <strong>falsedad</strong> de la hipótesis;</li>
-<li>Debemos/podemos utilizar el teorema de Bayes para deducir lógicamente el impacto del indicio en el estado de la hipótesis.</li>
+<li>Podemos utilizar el teorema de Bayes para deducir lógicamente el impacto del indicio en el estado de la hipótesis.</li>
 </ol>
 <p>Es el tercer paso el que casi nunca se hace. Sin debatir por lo pronto si debemos o no usar a Bayes, consideremos por un momento la idea como un ejemplo de juguete.</p>
 </div>
@@ -2361,34 +2363,33 @@ Pr[H|E_1,E_2] = \frac{Pr[E_2|H,E_1] \times Pr[H|E_1]} {Pr[E_2|E_1]}
 <h3 class="anchored" data-anchor-id="resultados-posibles-de-un-estudio-científico">Resultados posibles de un estudio científico</h3>
 <section id="probabilidad-de-acertar" class="level4">
 <h4 class="anchored" data-anchor-id="probabilidad-de-acertar">Probabilidad de <em>acertar</em></h4>
-<p>Supongamos que la probabilidad de obtener un hallazgo positivo, cuando la hipótesis postulada es cierta, es <span class="math inline">\({Pr[señal~detectada|verdadero]=Pr[H|V]= 0.95}\)</span>.</p>
+<p>Supongamos que la probabilidad de obtener un hallazgo positivo, cuando la hipótesis postulada es cierta, es <span class="math inline">\({Pr[señal~detectada | verdadera]=Pr[H|d]= 0.95}\)</span>.</p>
 <p>Ese es lo que se suele llamar <strong>la potencia de la prueba</strong>.</p>
 </section>
 <section id="probabilidad-de-errar" class="level4">
 <h4 class="anchored" data-anchor-id="probabilidad-de-errar">Probabilidad de <em>errar</em></h4>
-<p>Supongamos que la probabilidad de un hallazgo positivo, cuando una hipótesis es falsa, es <span class="math inline">\({Pr[señal~detectada|falso]= Pr[H|F]= 0.05}\)</span>.</p>
-<p>Esa es la tasa de falsos positivos, se trata del, digamos 5%, de la <strong>prueba de significancia</strong> que usamos convencionalmente.</p>
+<p>Supongamos que la probabilidad de un hallazgo positivo, cuando una hipótesis es falsa, es <span class="math inline">\({Pr[señal~detectada|falsa]= Pr[H|\neg d]= 0.05}\)</span>.</p>
+<p>Esa es la tasa de falsos positivos, digamos 5%, de la <strong>prueba de significancia</strong> que usamos convencionalmente.</p>
 </section>
 <section id="cuál-será-el-estado-real-del-mundo" class="level4">
 <h4 class="anchored" data-anchor-id="cuál-será-el-estado-real-del-mundo">¿Cuál será el estado real del mundo?</h4>
 <p>Finalmente, tenemos que establecer la tasa base con la que ocurren las hipótesis que son verdaderas. Supongamos, por ejemplo, que 1 de cada 100 hipótesis resulta ser verdadera. Entonces</p>
-<p><span class="math inline">\({Pr[verdadero]= P(V) = 0.01}\)</span>.</p>
+<p><span class="math inline">\({Pr[verdadero]= Pr(H) = 0.01}\)</span>.</p>
 <p>En realidad nadie conoce este valor ni se ve posible conocerlo, pero la historia de la ciencia sugiere que es pequeño.</p>
 </section>
 <section id="probabilidad-de-haber-acertado-con-una-hipótesis" class="level4">
-<h4 class="anchored" data-anchor-id="probabilidad-de-haber-acertado-con-una-hipótesis">Probabilidad de haber acertado con una hipótesis</h4>
-<p>Para averiguar esto, calculamos la componente <em>a posteriori</em>:</p>
+<h4 class="anchored">Probabilidad de haber acertado con una hipótesis</h4>
+<p>Se trata de una proposición que hemos aventurado para explicar algo, que resulta ser cierta y que hemos obtenido alguna prueba que calificamos de positiva para reconocerla . Para averiguar esto hay que calcular la probabilidad <em>a posteriori</em>:</p>
 <p><span class="math display">\[
-Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipótesis)} = \\
+Pr[H|d]=Pr[Hipótesis|detección]= \frac{Pr[detección|Hipótesis] \cdot Pr(deteción)} {Pr(Hipótesis)} = \\
 \\
-\frac{Pr[H|V]Pr[V)} {Pr(H|V]Pr[V]+ Pr[H|F]Pr(F)}
+\frac{Pr[d|H] \cdot Pr[d)} {Pr(d|H] \cdot Pr[d]+ Pr[\neg d|H] \cdot Pr(\neg d)}
 \\
 \]</span></p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Como podemos ver, al substituir los valores <em>imaginados</em>, encontramos que la respuesta es aproximadamente <span class="math inline">\({Pr[V|H]= 0.16}\)</span>.</p>
-<p>Así que un resultado positivo corresponde a un 16% de probabilidad de que la hipótesis sea cierta.</p>
-<p>Este es el mismo fenómeno de baja tasa de base que se aplica en las pruebas médicas (y también en nuestro ejemplo de <em>vampiros</em>).</p>
+<p>Al substituir los valores <em>imaginados</em> y hacer los cálculos obtenemos una esimación de que tan probable es que sea cierta la hipótesis propuesta, dado que observamos un resultado positivo (<span class="math inline">\({Pr[H|d]}\)</span>).</p>
+<p>¿Qué valor obtuviste? Observa que este valor muestra el mismo patrón de baja tasa de base que se aplica en las pruebas médicas (y también en nuestro ejemplo de <em>vampiros</em>).</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="¿Podremos mejorar la práctica científica?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2403,7 +2404,7 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Experimentos pensados">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2412,9 +2413,9 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Una manera de explorar lo que puede pasar en distintos escenarios, asumiendo un razonamiento específico, nos da oportunidad de valorar la utilidad de hacer un <em>escript</em>, <em>algoritmo</em> o <em>programa</em>. Así podemos automatizar una tarea repetitiva y potencialmente aburrida para ver las implicaciones de la idea en todo tipo de situaciones. Quizás podríamos considerarlo semejante a lo que Einstein llamaba <strong>experimento pensado</strong>. Veamos como hacerlo.</p>
+<p>Una manera de explorar lo que puede pasar en distintos escenarios asumiendo un razonamiento específico, nos da oportunidad de valorar la utilidad de hacer un <em>escript</em>, <em>algoritmo</em> o <em>programa</em>. Así podemos automatizar una tarea repetitiva y potencialmente aburrida para ver las implicaciones de la idea en todo tipo de situaciones. Quizás podríamos considerarlo semejante a lo que Einstein llamaba <strong>experimento pensado</strong>. Veamos como hacerlo.</p>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Hemos definido un programa como una <em>función</em> en <strong>R</strong>. Esta función puede tomar datos y procesarlos de acuerdo con la lógica que le hemos especificado.</p>
@@ -2435,32 +2436,18 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><img src="images/doubt-2137526_1280.png" class="img-fluid" style="width:10.0%"></p>
-<div class="callout callout-style-default callout-tip callout-titled" title="¿Tú que piensas?">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>¿Tú que piensas?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Una investigación muy exigente que reduce la detección de falsos positivos a 1%, nos permite llevar la probabilidad posterior de <em>descubrimientos exitosos</em> hasta 0.5.</p>
-<p>Apenas tan buena como el lanzamiento de una moneda.</p>
+<p>Una investigación muy exigente que reduce la detección de falsos positivos a 1%, ¿hasta cuánto nos permite llevar la probabilidad posterior de <em>descubrimientos exitosos</em>?</p>
 <p>Podemos pensar que lo que hemos hecho hasta aquí es prácticamente un juego, pero ¿qué tan cercano podría ser a lo que ocurre en la vida real? y si fuera una razonable aproximación ¿a qué nos conduce?</p>
-<p>¿Qué conclusiones surgen de esta experiencia?</p>
+<section id="qué-conclusiones-surgen-de-esta-experiencia" class="level3">
+<h3 class="anchored" data-anchor-id="qué-conclusiones-surgen-de-esta-experiencia">¿Qué conclusiones surgen de esta experiencia?</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">¿Lo más importante es mejorar la probabilidad de detección base, <span class="math inline">\({Pr(V)}\)</span>?</label></li>
-<li><label><input type="checkbox">¿Qué implicaría y cómo se podría lograr mejorar <span class="math inline">\({Pr(V)}\)</span>?</label></li>
-<li><label><input type="checkbox">¿Es posible hacer que esa probabilidad crezca?</label></li>
-<li><label><input type="checkbox">¿Siempre incrementar el número de veces que se repite el tratamiento (tamaño de muestra?</label></li>
+<li><label><input type="checkbox">¿Lo más importante es mejorar la probabilidad de detección base, <span class="math inline">\(Pr(H)\)</span>?</label></li>
+<li><label><input type="checkbox">¿Qué implicaría y cómo se podría lograr mejorar <span class="math inline">\(Pr(H)\)</span>?</label></li>
+<li><label><input type="checkbox">¿Es posible hacer que <span class="math inline">\(Pr[H]\)</span> crezca?</label></li>
+<li><label><input type="checkbox">¿Habrá que incrementar siempre el número de veces que se repite el tratamiento?</label></li>
 <li><label><input type="checkbox">¿Sólo aceptar como significativos resultados muy altamente significativos?</label></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
 </div>
 </div>
 </div>
@@ -2482,7 +2469,7 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 <br>
 </p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2491,7 +2478,7 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-layout-panel" data-layout="[[100],[-100], [60,-5, 35]]">
 <div class="quarto-layout-row">
@@ -2521,7 +2508,7 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 </div>
 <p>Sin duda la forma como hemos optado por hacer ciencia está teniendo problemas que debemos afrontar. La cuestión es que podemos o más bien que debemos hacer para enfrentarlos productivamente y así producir una ciencia mejor.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Buscar la verdad">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2530,7 +2517,7 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-layout-panel" data-layout="[60, -5, 35]">
 <div class="quarto-layout-row">
@@ -2609,7 +2596,7 @@ Pr[detectada|Hipótesis]= \frac{Pr[Hipótesis|detectada]Pr(detectado)} {Pr(Hipó
 y_{i} = \mu + \varepsilon_{i}
 \]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2618,7 +2605,7 @@ Importante
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="images/ANOVA_Modelo_hojas-01.png" class="img-fluid"></p>
 </div>
@@ -2689,7 +2676,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2698,7 +2685,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2712,7 +2699,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Qué muestra esta gráfica? ¿a que equivale la suma de los trazos verticales?">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2721,7 +2708,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2732,7 +2719,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 <section id="si-las-dos-medias-fueran-iguales-cómo-compararían-estas-dos-gráficas" class="level3">
 <h3 class="anchored" data-anchor-id="si-las-dos-medias-fueran-iguales-cómo-compararían-estas-dos-gráficas"><span style="color:GoldenRod"><strong>Si las dos <em>medias</em> fueran iguales ¿cómo compararían estas dos gráficas?</strong></span></h3>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Qué interpretación tiene la diferencia entre las dos sumas mencionadas arriba?">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2741,7 +2728,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Esta diferencia se asocia con la siguiente gráfica:</p>
 <div id="qwebr-insertion-location-19"></div>
@@ -2760,7 +2747,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 </ol>
 <p>En el cuadro de análisis de varianza se suele etiquetar a los componentes de error de acuerdo con su <em>fuente</em>. Se les acompaña con los grados de libertad, la <em>suma de cuadrados</em> de las distancias que mostré en las tres gráficas anteriores y luego los llamados <em>cuadrados medios</em>. Para referencia podemos pedirle a <strong>R</strong> que nos reporte el cuadro de ANOVA de este modelo.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Analiza la correspondencia entre los valores y las gráficas que vimos arriba con lo que reporta **R**">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2769,7 +2756,7 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2836,8 +2823,8 @@ y = \mu + T +  \varepsilon
 <section id="puedes-reconocer-esta-inconsistencia" class="level3">
 <h3 class="anchored" data-anchor-id="puedes-reconocer-esta-inconsistencia"><span style="color:GoldenRod"><strong>¿Puedes reconocer esta inconsistencia?</strong></span></h3>
 <p>La inconsistencia está en que, en primer lugar como dije arriba, el valor <em>p</em> se define dentro del marco frecuentista y se concibe que los parámetros son valores constantes, aunque desconocidos (¡supuesto estadístico de efectos fijos!). No se trata de los parámetros de alguna distribución de probabilidades (observada o no). Por tanto, no tiene sentido asignar probabilidades a los distintos valores estimados del parámetro.</p>
-<p>Además, el valor <em>p</em> se calcula bajo el supuesto de que la hipótesis nula es cierta; esto hace imposible, por construcción, interpretarlo como la probabilidad de que la hipótesis alternativa sea cierta. La probabilidad a la que se refiere el valor <em>p</em> guarda más relación con la probabilidad inversa, <span class="math inline">\(P(E|H{0})\)</span>. ¿Qué tan probable sería tener una muestra como la que tenemos enfrente, si la hipótesis considerada fuera cierta?. Esto se conoce como la <strong>verosimilitud</strong>, es decir, la probabilidad de observar los datos que se han obtenido en un estudio suponiendo que los atributos del modelo fueran ciertos. La verosimilitud valora a la muestra como un resultado <em>condicional</em> a los supuestos hechos en el modelo estadístico y en este caso, la hipótesis nula.</p>
-<p>Sin embargo, la probabilidad que realmente interesa -por ejemplo, al investigador de nuestro ejemplo- es la anteriormente mencionada <span class="math inline">\(P(H_{0}|E)\)</span>. Aunque no está definida dentro del marco frecuentista, en el marco Bayesiano sí se define. Las probabilidades <span class="math inline">\(P(E|H_{0})\)</span> y <span class="math inline">\(P(H_{0}|E)\)</span> no son iguales.</p>
+<p>Además, el valor <em>p</em> se calcula bajo el supuesto de que la hipótesis nula es cierta; esto hace imposible, por construcción, interpretarlo como la probabilidad de que la hipótesis alternativa sea cierta. La probabilidad a la que se refiere el valor <em>p</em> guarda más relación con la probabilidad inversa, <span class="math inline">\(P(E|H{0})\)</span>. ¿Qué tan probable sería tener una muestra como la que tenemos enfrente, si la hipótesis nula considerada fuera cierta?. Esto se conoce como la <strong>verosimilitud</strong>, es decir, la probabilidad de observar los datos que se han obtenido en un estudio suponiendo que los atributos del modelo fueran ciertos. La verosimilitud valora a la muestra como un resultado <em>condicional</em> a los supuestos hechos en el modelo estadístico y en este caso, la hipótesis nula.</p>
+<p>Sin embargo, la probabilidad que realmente interesa es la anteriormente mencionada <span class="math inline">\(P(H_{0}|E)\)</span>. Aunque no está definida dentro del marco frecuentista, en el marco Bayesiano sí se define. Las probabilidades <span class="math inline">\(P(E|H_{0})\)</span> y <span class="math inline">\(P(H_{0}|E)\)</span> no son iguales.</p>
 </section>
 <section id="recuerdas-qué-representa-cada-uno-de-ellas-cuál-es-la-relación-entre-ambas" class="level3">
 <h3 class="anchored" data-anchor-id="recuerdas-qué-representa-cada-uno-de-ellas-cuál-es-la-relación-entre-ambas"><span style="color:GoldenRod"><strong>¿Recuerdas qué representa cada uno de ellas? ¿cuál es la relación entre ambas?</strong></span></h3>
