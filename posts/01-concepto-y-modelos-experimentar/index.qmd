@@ -146,12 +146,8 @@ Tomamos la fórmula de Bayes para *invertir la probabilidad*, pues
 queremos saber qué está pasando cuando tenemos la fortuna o desgracia de
 toparnos con un resultado positivo en la prueba de sangre:
 
-$$
-Pr[positivo|vampiro]
-$$
-
 Esto equivale a preguntarnos, dado que ya vimos el resultado científico
-que significa la prueba de sangre, ¿será vampiro el sujeto de quien se
+que significa la prueba de sangre positiva, ¿será vampiro el sujeto de quien se
 obtuvo esa muestra?. Esta es una manera de estimar la probabilidad de
 que el amigo sea en realidad un vampiro, dado el conocimiento y la
 evidencia que tenemos a la mano.
@@ -331,14 +327,14 @@ un ejemplo de juguete.
 
 Supongamos que la probabilidad de obtener un hallazgo positivo, cuando
 la hipótesis postulada es cierta, es
-${Pr[señal~detectada | verdadera]=Pr[H|d]= 0.95}$.
+${Pr[señal~detectada | verdadera]=Pr[d | H]= 0.95}$.
 
 Ese es lo que se suele llamar **la potencia de la prueba**.
 
 #### Probabilidad de *errar*
 
 Supongamos que la probabilidad de un hallazgo positivo, cuando una
-hipótesis es falsa, es ${Pr[señal~detectada|falsa]= Pr[H|\neg d]= 0.05}$.
+hipótesis es falsa, es ${Pr[señal~detectada|falsa]= Pr[d | \neg H]= 0.05}$.
 
 Esa es la tasa de falsos positivos, digamos 5%, de la
 **prueba de significancia** que usamos convencionalmente.
@@ -347,9 +343,7 @@ Esa es la tasa de falsos positivos, digamos 5%, de la
 
 Finalmente, tenemos que establecer la tasa base con la que ocurren las
 hipótesis que son verdaderas. Supongamos, por ejemplo, que 1 de cada 100
-hipótesis resulta ser verdadera. Entonces
-
-${Pr[verdadero]= Pr(H) = 0.01}$.
+hipótesis resulta ser verdadera. Entonces ${Pr[verdadero]= Pr(H) = 0.01}$.
 
 En realidad nadie conoce este valor ni se ve posible conocerlo, pero la
 historia de la ciencia sugiere que es pequeño.
@@ -359,14 +353,14 @@ historia de la ciencia sugiere que es pequeño.
 Se trata de una proposición que hemos aventurado para explicar algo, que resulta ser cierta y que hemos obtenido alguna prueba que calificamos de positiva para reconocerla . Para averiguar esto hay que calcular la probabilidad *a posteriori*:
 
 $$
-Pr[H|d]=Pr[Hipótesis|detección]= \frac{Pr[detección|Hipótesis] \cdot Pr(deteción)} {Pr(Hipótesis)} = \\
-\\
-\frac{Pr[d|H] \cdot Pr[d)} {Pr(d|H] \cdot Pr[d]+ Pr[\neg d|H] \cdot Pr(\neg d)}
-\\
+\begin{align*}
+Pr[Hipótesis|detección]&= \frac{Pr[detección|Hipótesis] \cdot Pr(Hipótesis)} {Pr(detección)} =\\
+& = \frac{Pr[d | H] \cdot Pr[H)} {Pr(d|H] \cdot Pr[H]+ Pr[d | \neg H] \cdot Pr(\neg H)} = Pr[H|d]\\
+\end{align*}
 $$
 
 ```{webr-r}
-# (0.95 * 0.01) / ((0.95 * 0.01) + (0.05 * (1-0.01)))
+# (0.95 * 0.01) / ((0.95 * 0.01) + (1 - 0.95 * (1-0.01)))
 Pr_posterior_hallazgo_cierto <- NA
 
 Pr_posterior_hallazgo_cierto
