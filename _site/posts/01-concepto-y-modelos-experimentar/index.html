@@ -2447,6 +2447,9 @@ Pr[Hipótesis|detección]&amp;= \frac{Pr[detección|Hipótesis] \cdot Pr(Hipóte
 </div>
 </div>
 </div>
+<p><br>
+<br>
+</p>
 </section>
 </section>
 </section>
@@ -2535,8 +2538,8 @@ Pr[Hipótesis|detección]&amp;= \frac{Pr[detección|Hipótesis] \cdot Pr(Hipóte
 </div>
 </div>
 </section>
-<section id="preregistro-y-prepublicación" class="level2">
-<h2 class="anchored" data-anchor-id="preregistro-y-prepublicación">Preregistro y prepublicación</h2>
+<section id="prerregistro-y-prepublicación" class="level2">
+<h2 class="anchored" data-anchor-id="prerregistro-y-prepublicación">Prerregistro y prepublicación</h2>
 <p><a href="https://blog.scielo.org/es/2020/10/15/son-los-preprints-un-problema-5-formas-de-mejorar-la-calidad-y-credibilidad-de-los-preprints/">Reflexión sobre prepublicación</a></p>
 <p><a href="https://ecoevorxiv.org/">EcoEvorxiv</a></p>
 <p><a href="https://www.preprints.org/instructions-for-authors">preprints.org</a></p>
@@ -2547,7 +2550,7 @@ Pr[Hipótesis|detección]&amp;= \frac{Pr[detección|Hipótesis] \cdot Pr(Hipóte
 </section>
 <section id="el-enfoque-de-modelación" class="level1">
 <h1>El enfoque de modelación</h1>
-<p>La propuesta que seguiremos en el <strong>Módulo 3</strong> se basa en traducir situaciones reales en abstracciones que escribimos como modelos estadísticos. De esta manera buscamos generar expresiones matemáticas que dan cuenta de nuestras concepciones sobre cómo funcionan aspectos concretos de la naturaleza (<em>proposición causal</em>). Es así que nos planteamos generar series de números <em>idealizados por el modelo</em> que podemos comparar con series de números observamos directamente de la naturaleza. Sí estas dos series de números se <em>parecen lo suficiente</em>, nos <em>sentiremos con confianza</em> como para pensar que nuestro modelo es útil para describir el comportamiento del segmento de la naturaleza que elegimos abstraer.</p>
+<p>La propuesta que seguiremos en el <strong>Módulo 3</strong> se basa en traducir situaciones reales en abstracciones que escribimos como modelos estadísticos. De esta manera buscamos generar expresiones matemáticas que dan cuenta de nuestras concepciones sobre cómo funcionan aspectos concretos de la naturaleza (<em>proposición causal</em>). Es así que nos planteamos generar series de números <em>idealizados por el modelo</em> que podemos comparar con series de números observamos directamente de la naturaleza. Sí estas dos series de números se <em>parecen lo suficiente</em>, seguramente nos <em>sentiremos con confianza</em> como para pensar que nuestro modelo es útil para describir el comportamiento del segmento de la naturaleza que elegimos abstraer.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="¿Podríamos usarlo para intervenir en él?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2561,15 +2564,15 @@ Pr[Hipótesis|detección]&amp;= \frac{Pr[detección|Hipótesis] \cdot Pr(Hipóte
 <p><img src="images/confused-880735_1280.jpg" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
-<p>El modelo que contiene todas las variables explicativas que proponemos tienen que ver con el fenómeno que estamos analizando lo llamaremos <strong>modelo completo</strong>. Tiene todos los parámetros posibles de acuerdo con el diseño del estudio, usualmente al menos un término por cada grupo experimental (tratamiento). En general el método para llegar a un segundo modelo es postular restricciones (supuestos que especifican el valor de particulares) sobre los parámetros del primer modelo.</p>
+<p>El modelo que contiene todas las variables explicativas que proponemos tienen que ver con el fenómeno que estamos analizando lo llamaremos <strong>modelo completo</strong>. Tiene todos los parámetros posibles de acuerdo con el diseño del estudio, usualmente al menos un término por cada grupo experimental (tratamiento). En general el método para llegar a un segundo modelo es postular restricciones (supuestos que especifican valores particulares) sobre los parámetros del primer modelo.</p>
 <p>Las restricciones usualmente son nuestra(s) hipótesis nula(s) y en ese caso las usamos para eliminar algunos parámetros del conjunto usado en el modelo completo, equivalente a dar por hecho que el parámetro correspondiente es 0. Naturalmente llamaremos al modelo resultante simplemente el <strong>modelo restringido</strong> o <strong>modelo reducido</strong>.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="¿Piensas que sería válido restringir un modelo con valores de algún parámetro con un valor que no sea cero?">
+<div class="callout callout-style-default callout-tip callout-titled" title="¿Piensas que sería válido o útil restringir un modelo con valores de algún parámetro con un valor que no sea cero?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>¿Piensas que sería válido restringir un modelo con valores de algún parámetro con un valor que no sea cero?
+<span class="screen-reader-only">Tip</span>¿Piensas que sería válido o útil restringir un modelo con valores de algún parámetro con un valor que no sea cero?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2616,7 +2619,8 @@ Importante
 IPE=\frac{\frac{(E_{R}-E_{C})}{gl_{C}-gl_{R}}}{\frac{E_{C}}{gl_{C}}} \\
 \text{ si podemos suponer normalidad en la variable de respuesta }\\
 \sim F_{(gl_{C}-gl_{R}), gl_{C}}
-\]</span> Así, el estadístico de prueba que hemos construido es el <strong>IPE</strong>. Si suponemos que las variables son adecuadamente descritas por un modelo de probabilidades <em>normal</em> (Gaussiano), entones el IPE se distribuirá como una función de probabilidades <em>F</em>. Por cierto, si el experimento sólo compara dos medias entonces se cumple que los estadísticos <em>t</em> y <em>F</em> refieren en última instancia a la misma distribución de probabilidades: <span class="math inline">\(F = t^{2}\)</span></p>
+\]</span></p>
+<p>Así, el estadístico de prueba que hemos construido es el <strong>IPE</strong>. Si suponemos que las variables son adecuadamente descritas por un modelo de probabilidades <em>normal</em> (Gaussiano), entones el IPE se distribuirá como una función de probabilidades <em>F</em>. Por cierto, si el experimento sólo compara dos medias entonces se cumple que los estadísticos <em>t</em> y <em>F</em> refieren en última instancia a la misma distribución de probabilidades: <span class="math inline">\(F = t^{2}\)</span></p>
 <div class="callout callout-style-default callout-important callout-titled" title="Mesaje clave">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2641,7 +2645,7 @@ IPE=\frac{\frac{(E_{R}-E_{C})}{gl_{C}-gl_{R}}}{\frac{E_{C}}{gl_{C}}} \\
 <h2 class="anchored" data-anchor-id="anova">ANOVA</h2>
 <section id="conceptos-básicos-modelo-de-una-vía-un-criterio-completamente-aleatorizado" class="level3">
 <h3 class="anchored" data-anchor-id="conceptos-básicos-modelo-de-una-vía-un-criterio-completamente-aleatorizado">Conceptos básicos (modelo de una vía, un criterio, completamente aleatorizado)</h3>
-<p>Hay situaciones en las que la información que tenemos para predecir una respuesta la tenemos en forma cualitativa, incluso la presencia o ausencia de una categoría. Una variable categórica es una medición discreta y las clases no tienen ningún orden particular. Por ejemplo, consideremos de nuevo las diferentes especies en los datos de energía láctea. Algunas de ellas son simios, mientras que otras son monos del Nuevo Mundo. Podríamos preguntarnos cómo deberían variar las predicciones cuando la especie es un simio en lugar de un mono. El grupo taxonómico es una variable categórica, porque ninguna especie puede ser mitad simio y mitad mono (discreción), y no hay ningún sentido en el que uno sea más grande o más pequeño que el otro (desorden). Otros ejemplos comunes de variables categóricas son:</p>
+<p>Hay situaciones en las que la información que tenemos para predecir una respuesta la tenemos en forma cualitativa, incluso la presencia o ausencia de una categoría. Una variable categórica es una medición discreta y las clases no tienen ningún orden particular. Por ejemplo, consideremos que entre los antropoides algunas especies son simios, mientras que otras son monos del Nuevo Mundo. Podríamos preguntarnos cómo deberían variar las predicciones cuando la especie es un simio en lugar de un mono. El grupo taxonómico es una variable categórica, porque ninguna especie puede ser mitad simio y mitad mono (discreción), y no hay ningún sentido en el que uno sea más grande o más pequeño que el otro (desorden). Otros ejemplos comunes de variables categóricas son:</p>
 <ul>
 <li>Sexo: macho, hembra</li>
 <li>Estado de desarrollo: lactante, juvenil, adulto</li>
@@ -2773,6 +2777,9 @@ H_0: m_1 = m_2 = m_3 = ... = m_k
 y = \mu + T +  \varepsilon
 \]</span></p>
 <p>En donde <em>y</em> son las mediciones de la variable <em>Y</em> en respuesta al efecto de <em>T</em>, <span class="math inline">\(\mu\)</span> es un valor de referencia general (tradicionalmente la media general de la variable <em>Y</em>, aunque puede elegirse cualquier otro valor de referencia que convenga al estudio) y la épsilon da cuenta del efecto aleatorio inducido por <span class="math inline">\(\fbox{A}\)</span>, por lo que es necesario postular una distribución de probabilidades apropiada para caracterizar su comportamiento.</p>
+<p><br>
+<br>
+</p>
 </section>
 <section id="la-tradición-de-prueba-de-hipótesis" class="level2">
 <h2 class="anchored" data-anchor-id="la-tradición-de-prueba-de-hipótesis">La tradición de prueba de hipótesis</h2>
@@ -2852,7 +2859,7 @@ y = \mu + T +  \varepsilon
 <section id="potencia-de-la-prueba" class="level3">
 <h3 class="anchored" data-anchor-id="potencia-de-la-prueba">Potencia de la prueba</h3>
 <p>En la práctica, la potencia de la prueba depende del <em>grado de dispersión</em> en los datos. Si se está asumiendo un modelo de probabilidades Gaussiano (distribución normal), el factor de dispersión o escala se relaciona con la varianza. Por lo tanto, es usual notar que el mismo cálculo del error estándar, <span class="math inline">\(s_{e}=\frac{\sigma}{\sqrt{n}}\)</span>, sugiere la solución.</p>
-<p><img src="images/Potencia_estadística.png" class="img-fluid" width="700"></p>
+<p><img src="images/Potencia_estadistica.png" class="img-fluid" width="700"></p>
 <ol type="1">
 <li>Se puede incrementar el tamaño de muestra, <em>n</em>,</li>
 </ol>

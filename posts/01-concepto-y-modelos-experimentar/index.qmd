@@ -470,6 +470,8 @@ y si fuera una razonable aproximación ¿a qué nos conduce?
   
 :::
 
+\
+\
 
 ## Crisis de reproducibilidad
 
@@ -528,7 +530,7 @@ ciencia mejor.
 Saad](https://www.frontiersin.org/articles/10.3389/fpsyg.2020.579578/full)
 ::::
 
-## Preregistro y prepublicación
+## Prerregistro y prepublicación
 
 [Reflexión sobre
 prepublicación](https://blog.scielo.org/es/2020/10/15/son-los-preprints-un-problema-5-formas-de-mejorar-la-calidad-y-credibilidad-de-los-preprints/)
@@ -553,8 +555,7 @@ concretos de la naturaleza (*proposición causal*). Es así que nos
 planteamos generar series de números *idealizados por el modelo* que
 podemos comparar con series de números observamos directamente de la
 naturaleza. Sí estas dos series de números se *parecen lo suficiente*,
-nos *sentiremos con confianza* como para pensar que nuestro modelo es
-útil para describir el comportamiento del segmento de la naturaleza que
+seguramente nos *sentiremos con confianza* como para pensar que nuestro modelo es útil para describir el comportamiento del segmento de la naturaleza que
 elegimos abstraer.
 
 ::: {.callout-tip title="¿Podríamos usarlo para intervenir en él?"}
@@ -566,8 +567,8 @@ tienen que ver con el fenómeno que estamos analizando lo llamaremos
 **modelo completo**. Tiene todos los parámetros posibles de acuerdo con
 el diseño del estudio, usualmente al menos un término por cada grupo
 experimental (tratamiento). En general el método para llegar a un
-segundo modelo es postular restricciones (supuestos que especifican el
-valor de particulares) sobre los parámetros del primer modelo.
+segundo modelo es postular restricciones (supuestos que especifican
+valores particulares) sobre los parámetros del primer modelo.
 
 Las restricciones usualmente son nuestra(s) hipótesis nula(s) y en ese
 caso las usamos para eliminar algunos parámetros del conjunto usado en
@@ -575,7 +576,8 @@ el modelo completo, equivalente a dar por hecho que el parámetro
 correspondiente es 0. Naturalmente llamaremos al modelo resultante
 simplemente el **modelo restringido** o **modelo reducido**.
 
-::: {.callout-tip title="¿Piensas que sería válido restringir un modelo con valores de algún parámetro con un valor que no sea cero?"}
+::: {.callout-tip title="¿Piensas que sería válido o útil restringir un modelo con valores de algún parámetro con un valor que no sea cero?"}
+
 ![](images/building-1080599_1280.jpg){width="50%"}
 :::
 
@@ -620,7 +622,9 @@ $$
 IPE=\frac{\frac{(E_{R}-E_{C})}{gl_{C}-gl_{R}}}{\frac{E_{C}}{gl_{C}}} \\
 \text{ si podemos suponer normalidad en la variable de respuesta }\\
 \sim F_{(gl_{C}-gl_{R}), gl_{C}}
-$$ Así, el estadístico de prueba que hemos construido es el **IPE**. Si
+$$ 
+
+Así, el estadístico de prueba que hemos construido es el **IPE**. Si
 suponemos que las variables son adecuadamente descritas por un modelo de
 probabilidades *normal* (Gaussiano), entones el IPE se distribuirá como
 una función de probabilidades *F*. Por cierto, si el experimento sólo
@@ -656,13 +660,8 @@ Hay situaciones en las que la información que tenemos para predecir una
 respuesta la tenemos en forma cualitativa, incluso la presencia o
 ausencia de una categoría. Una variable categórica es una medición
 discreta y las clases no tienen ningún orden particular. Por ejemplo,
-consideremos de nuevo las diferentes especies en los datos de energía
-láctea. Algunas de ellas son simios, mientras que otras son monos del
-Nuevo Mundo. Podríamos preguntarnos cómo deberían variar las
-predicciones cuando la especie es un simio en lugar de un mono. El grupo
-taxonómico es una variable categórica, porque ninguna especie puede ser
-mitad simio y mitad mono (discreción), y no hay ningún sentido en el que
-uno sea más grande o más pequeño que el otro (desorden). Otros ejemplos
+consideremos que entre los antropoides algunas especies son simios, 
+mientras que otras son monos del Nuevo Mundo. Podríamos preguntarnos cómo deberían variar las predicciones cuando la especie es un simio en lugar de un mono. El grupo taxonómico es una variable categórica, porque ninguna especie puede ser mitad simio y mitad mono (discreción), y no hay ningún sentido en el que uno sea más grande o más pequeño que el otro (desorden). Otros ejemplos
 comunes de variables categóricas son:
 
 -   Sexo: macho, hembra
@@ -857,6 +856,9 @@ del efecto aleatorio inducido por $\fbox{A}$, por lo que es necesario
 postular una distribución de probabilidades apropiada para caracterizar
 su comportamiento.
 
+\
+\
+
 ## La tradición de prueba de hipótesis
 
 El planteamiento de la prueba de significancia estadística de hipótesis
@@ -1043,6 +1045,7 @@ probabilidad posterior de que la hipótesis nula sea cierta a la luz de
 la evidencia recopilada*** $P(H_{0}|E)$.
 
 ::: {.callout-tip title="¿Qué piensas de la paradoja de Lindley y sus implicaciones"}
+
 ![](images/bullet-2728144_1280.jpg){width="50%"}
 :::
 
@@ -1081,7 +1084,7 @@ o escala se relaciona con la varianza. Por lo tanto, es usual notar que
 el mismo cálculo del error estándar, $s_{e}=\frac{\sigma}{\sqrt{n}}$,
 sugiere la solución.
 
-![](images/Potencia_estad%C3%ADstica.png){width="700"}
+![](images/Potencia_estadistica.png){width="700"}
 
 1.  Se puede incrementar el tamaño de muestra, *n*,
 
