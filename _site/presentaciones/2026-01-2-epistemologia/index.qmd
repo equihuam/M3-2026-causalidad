@@ -771,7 +771,7 @@ Tres críticas convergentes:
 :::
 
 
-## Hermenéutica
+## [Hermenéutica](https://plato.stanford.edu/entries/hermeneutics/)
 
 ::: {layout="[1, 2]"}
 -   Comprensión como proceso iterativo
@@ -782,7 +782,7 @@ Tres críticas convergentes:
 fig-align="right"}
 :::
 
-## Cognición encarnada - Fenomenología {.smaller}
+## Cognición encarnada - [Fenomenología](https://plato.stanford.edu/entries/phenomenology/) {.smaller}
 
 ::::: {.columns style="font-size: 1.1em;"}
 ::: {.column width="20%"}
