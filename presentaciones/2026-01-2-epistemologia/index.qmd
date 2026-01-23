@@ -511,7 +511,7 @@ distribuida**.
 -   Probabilidad moderna → incertidumbre
 -   Ciencia como cálculo del comportamiento humano
 
-> “La probabilidad es sentido común reducido a cálculo”
+> La probabilidad es sentido común reducido a cálculo
 
 ## El proyecto positivista (Comte 1798-1857)
 
@@ -1030,10 +1030,12 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 :::: centrar-contenedor
 ::: {style="text-align:left;"}
-> -   Gobernar procesos bajo incertidumbre\
->     no se resuelve sólo con aplicar modelos.\
-> -   Se requiere **articular evidencia, valores y las reglas prácticas
->     (tradiciones) de la cultura involucrada.**
+
+>
+> - Gobernar procesos bajo incertidumbre\
+>   no se resuelve sólo con aplicar modelos.\
+> - Se requiere **articular evidencia, valores y las reglas prácticas
+>   (tradiciones) de la cultura involucrada.**
 :::
 ::::
 
