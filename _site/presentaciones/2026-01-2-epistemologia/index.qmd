@@ -230,7 +230,7 @@ Elije la respuesta que consideres más apropiada
 > ¿Puede haber causalidad sin metafísica?
 :::
 
-## Positivismo
+## [Positivismo](https://historiadelafilosofia.xp.com.es/criticas-al-positivismo-limites-y-debates-en-enfoques-actuales/)
 
 -   Las ideas de Hume permean en el positivismo del siglo XIX de
     [Auguste
@@ -825,7 +825,7 @@ fig-align="right"}
 
 | Enfoque         | Racionalidad    | Heurísticas   |
 |-----------------|-----------------|---------------|
-| [Positivismo](https://dialnet.unirioja.es/descarga/articulo/7485114.pdf)     | Mecanismo       | Reglas        |
+| [Positivismo](https://filosofiasmundiales.net/filosofias-occidentales/impacto-positivismo-logico-ciencia-contemporanea/)     | Mecanismo       | Reglas        |
 | [Hermenéutica](http://bibliotecavirtual.dgb.umich.mx:8083/xmlui/handle/DGB_UMICH/70)    | Comprensión     | Prácticas     |
 | [Fenomenología](https://www.clafen.org/AFL/V3/261-277_Noguera.pdf)   | Experiencia     | Acción        |
 | [Constructivismo](https://doi.org/10.24310/mgnmar.v3i2.13082) | Producto social | Rutinas       |
