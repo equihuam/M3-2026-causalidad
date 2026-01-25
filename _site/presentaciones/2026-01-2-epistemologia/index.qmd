@@ -810,7 +810,7 @@ fig-align="right"}
 fig-align="right"}
 :::
 
-## [Teoría crítica](https://link.springer.com/article/10.1007/s11625-019-00675-y)
+## [Teoría crítica](https://link.springer.com/article/10.1007/s13412-018-0502-9)
 
 -   Racionalidad instrumental
 -   Orientada a eficiencia y control
