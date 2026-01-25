@@ -234,8 +234,8 @@ Elije la respuesta que consideres más apropiada
 
 -   Las ideas de Hume permean en el positivismo del siglo XIX de
     [Auguste
-    Comte(1798-1857)](Auguste%20Comte:%20quién%20fue%20y%20cuáles%20fueron%20sus%20aportes%20a%20la%20filosofía),
-    que empujó al quehacer científico bajo su influencia a tomar una
+    Comte(1798-1857)](Auguste%20Comte:%20quién%20fue%20y%20cuáles%20fueron%20sus%20aportes%20a%20la%20filosofía), y más tarde en el *neopositivismo* o *positivismo lógico* del **Círculo de Viene** en el siglo XX.
+- La visión positivista empujó al quehacer científico bajo su influencia a tomar una
     actitud temerosa para proponer relaciones causales como base de la
     construcción de hipótesis.
 
@@ -825,11 +825,11 @@ fig-align="right"}
 
 | Enfoque         | Racionalidad    | Heurísticas   |
 |-----------------|-----------------|---------------|
-| Positivismo     | Mecanismo       | Reglas        |
-| Hermenéutica    | Comprensión     | Prácticas     |
-| Fenomenología   | Experiencia     | Acción        |
-| Constructivismo | Producto social | Rutinas       |
-| Teoría crítica  | Instrumento     | Normalización |
+| [Positivismo](https://dialnet.unirioja.es/descarga/articulo/7485114.pdf)     | Mecanismo       | Reglas        |
+| [Hermenéutica](http://bibliotecavirtual.dgb.umich.mx:8083/xmlui/handle/DGB_UMICH/70)    | Comprensión     | Prácticas     |
+| [Fenomenología](https://www.clafen.org/AFL/V3/261-277_Noguera.pdf)   | Experiencia     | Acción        |
+| [Constructivismo](https://doi.org/10.24310/mgnmar.v3i2.13082) | Producto social | Rutinas       |
+| [Teoría crítica](https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0719-36962020000100021)  | Instrumento     | Normalización |
 
 ::: {.texto-libre style="--x: 80%; --y: 90%; font-size: 0.5em"}
 Vamos al [siguiente bloque](#bloque-6)
