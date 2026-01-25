@@ -810,7 +810,7 @@ fig-align="right"}
 fig-align="right"}
 :::
 
-## Teoría crítica
+## [Teoría crítica](https://link.springer.com/article/10.1007/s11625-019-00675-y)
 
 -   Racionalidad instrumental
 -   Orientada a eficiencia y control
@@ -982,7 +982,7 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 -   Heurísticas colectivas compartidas\  
 -   Aprendizaje adaptativo
 
- 
+\
 
 ::: apuntar
 -   Infraestructura práctica para modelos híbridos ciencia–sociedad

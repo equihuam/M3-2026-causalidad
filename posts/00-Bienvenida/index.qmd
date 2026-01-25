@@ -23,7 +23,7 @@ engine: knitr
 
 nocite: |
   @saltelli2024,
-  @borger,
+  @borgerLetsDAGHow2025,
   @giraldo2022
 ---
 
@@ -80,12 +80,14 @@ compartir y explorar en este curso como oportunidad de aprendizaje.
 
 ## Plan de clase
 
-Habilité un espacio en
-[Milaulas](https://m3causalidad2026.milaulas.com/course/view.php?id=2)
-para llevar control de nuestras comunicaciones en una forma lo más
-ordenado posible.
+:::{.callout-important}
+## Por favor noten que el día 4 de febrero sí será hábil, no así el 2.
+:::
 
-::: {.callout-note title="Calendario" collapse="true"}
+Para llevar el control adecuado de los ejercicios y controles de lectura que me entreguen, les pido por favor sólo usar la cuenta [miguel.equihua@inecol.mx](mailto:miguel.equihua@inecol.mx ?subject=[M3-2026]). 
+Para poderlos identificar consistentemente anoten en el asunto el código **[M3-2026]**. Denominen sus trabajos (archivos [pdf, docx, qmd o html]{.underline}) utilizando un nombre que indique **tipo de actividad** (*lectura o ejercicio*), **id numérico** y una sola palabra distintiva o abreviatura de su **nombre** (elijan algo a usar consistentemente). Todo separado por guiones, podría ser en mi caso: **lectura-1-migeq**. Adjúntenlos al correo que me envíen como forma de entrega. Las **fechas de entrega de las lecturas son los días de debate** y los de los ejercicios los iremos viemdo según los asigne.
+
+::: {.callout-note title="Calendario" collapse="false"}
 ```{r }
 #| label: calendario
 #| tbl-cap: Actividades del Módulo 3 
@@ -97,20 +99,22 @@ dias_ene[c(26:27, 29:30)] <- "M3 clase"
 dias_ene[c(28, 30)] <- "M3 lectura"
 dias_ene[c(25, 31)] <- "Descanso"
 
-ene <- calendR(month = 1,
+ene <- calendR(year = format(Sys.Date(), "%Y"),  
+        month = 1,
         lunar = TRUE,
         special.days = dias_ene,
         special.col = c("gray", "lightgreen", "pink"),
         title.size = 15,
         day.size = 4)
-
+ 
 dias_feb <- rep(NA, 28) 
-dias_feb[c(2, 5)] <- "M3 clase"
-dias_feb[c(3)] <- "M3 lectura"
+dias_feb[c(3, 5)] <- "M3 clase"
+dias_feb[c(4)] <- "M3 lectura"
 dias_feb[6] <- "M3 Mini simposio"
-dias_feb[c(1,4,7)] <- "Descanso"
+dias_feb[c(1,2,7)] <- "Descanso"
 
-feb <- calendR(month = 2,
+feb <- calendR (year = format(Sys.Date(), "%Y"),
+        month = 2,
         lunar = TRUE,
         special.days = dias_feb,
         special.col = c("gray", "lightgreen", "pink", "gold"),
@@ -121,21 +125,27 @@ feb <- calendR(month = 2,
 ene
 feb
 ```
-:::
 
-```{r }
+
+```{r}
+#| label: actividades
+#| echo: false
+#| warning: false
+
 contenido <- read_csv("contenido.csv", col_names = TRUE, show_col_types = FALSE)
 contenido$lectura <- c(" ", "debate")[contenido$lectura + 1]
 
 contenido %>% flextable(col_keys = c("dia", "lectura", "tema")) %>% 
   set_header_labels(values = list(dia = "Día", 
-                                  lectura= "Lectura", 
+                                  lectura = "Lectura", 
                                   tema = "Tema")) %>% 
   autofit() %>% 
   theme_zebra(odd_body = c("lightcyan1")) %>% 
   bold(i = 1:9, j = 1)
 
 ```
+
+:::
 
 ## Lecturas
 
