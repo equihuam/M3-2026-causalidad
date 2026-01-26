@@ -760,7 +760,13 @@ dist_tot_s
 ```
 :::
 
+\
+\
+
 ### [**Si las dos *medias* fueran iguales ¿cómo compararían estas dos gráficas?**]{style="color:GoldenRod"}
+
+\
+\
 
 ::: {.callout-tip title="¿Qué interpretación tiene la diferencia entre las dos sumas mencionadas arriba?" collapse="true"}
 Esta diferencia se asocia con la siguiente gráfica:
@@ -911,7 +917,13 @@ emocional, quizás hasta un alivio, finalmente, el investigador sospecha
 (desea mostrar) que lo interesante está en otra parte, en su juego de
 hipótesis alternativas.
 
+\
+\
+
 ### [**¿Es este procedimiento afín al [falsacionismo](https://www.uaeh.edu.mx/scige/boletin/prepa3/n9/r1.html) Popperiano?.**]{style="color:GoldenRod"}
+
+\
+\
 
 Para interpretar correctamente un valor *p* se necesita tener claro que
 se opera dentro de una marco conceptual frecuentista. Esto lleva a que
@@ -962,7 +974,13 @@ aporta información completa sobre los valores que sí son plausibles.
 Esto implica que la *significancia estadística* no implica *relevancia
 práctica*.
 
+\
+\
+
 ### [**¿Cómo interpretas esta afirmación?**]{style="color:GoldenRod"}
+
+\
+\
 
 En el mismo razonamiento, un "valor de *p* extremadamente significativo"
 no hace otra cosa que excluir el cero como valor plausible para el
@@ -977,7 +995,13 @@ plantearlo así, formalmente se enuncia como $P(H_{0}|E)$. Pero esto no
 es apropiado, formalmente resulta ser una inconsistencia en la lógica
 del planteamiento.
 
+\
+\
+
 ### [**¿Puedes reconocer esta inconsistencia?**]{style="color:GoldenRod"}
+
+\
+\
 
 La inconsistencia está en que, en primer lugar como dije arriba, el
 valor *p* se define dentro del marco frecuentista y se concibe que los
@@ -1004,7 +1028,17 @@ $P(H_{0}|E)$. Aunque no está definida dentro del marco frecuentista, en
 el marco Bayesiano sí se define. Las probabilidades $P(E|H_{0})$ y
 $P(H_{0}|E)$ no son iguales.
 
-### [**¿Recuerdas qué representa cada uno de ellas? ¿cuál es la relación entre ambas?**]{style="color:GoldenRod"}
+\
+\
+
+
+### [¿Recuerdas qué representa cada uno de ellas?]{style="color:GoldenRod"}
+
+### [¿Cuál es la relación entre ambas?]{style="color:GoldenRod"}
+
+\
+\
+
 
 Otra crítica interesante surge de la llamada paradoja de Lindley (1957),
 quien mostró, con una formulación Bayesiana, que existe la posibilidad
@@ -1084,7 +1118,7 @@ o escala se relaciona con la varianza. Por lo tanto, es usual notar que
 el mismo cálculo del error estándar, $s_{e}=\frac{\sigma}{\sqrt{n}}$,
 sugiere la solución.
 
-![](images/Potencia_estadistica.png){width="700"}
+![](images/hipotesis-alternativas.png){width="700"}
 
 1.  Se puede incrementar el tamaño de muestra, *n*,
 
