@@ -1,7 +1,7 @@
 ---
 title: "El Modelo estadístico lineal"
 author: ["Miguel Equihua"]
-date: "2025-01-30 10:00:00"
+date: "2026-01-28 10:00:00"
 lang: es
 draft: false
 categories: [clase]
