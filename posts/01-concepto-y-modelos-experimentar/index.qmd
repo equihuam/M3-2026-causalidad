@@ -601,10 +601,10 @@ $$
 Una idea simple para comparar los modelos que acabamos de ver es tomar
 la diferencia en el error asociado con cada modelo. Como esta diferencia
 estará afectada por la escala de medición del fenómeno estudiado,
-conviene *normalizarla*, es decir expresarla como un \*error relativo
-**para obtenerlo sólo habremos de dividir por el error más pequeño que
-podríamos tener:** la del modelo completo**. Llamaremos a este valor,
-provisionalmente, el *índice proporcional de error* (**IPE\*\*). Un
+conviene *normalizarla*, es decir expresarla como un*error relativo. 
+Para obtenerlo sólo habremos de dividir por el error más pequeño que
+podríamos tener: la del modelo completo**. Llamaremos a este valor,
+provisionalmente, el *índice proporcional de error* (**IPE**). Un
 índice grande corresponde con modelos que difieren mucho en su *ajuste*
 a los datos. Por tanto, estaremos ante la necesidad de elegir alguno de
 los dos.
@@ -619,7 +619,7 @@ se puede formular para eliminar el efecto de la complejidad de los
 modelos que se comparan. El resultado es este:
 
 $$
-IPE=\frac{\frac{(E_{R}-E_{C})}{gl_{C}-gl_{R}}}{\frac{E_{C}}{gl_{C}}} \\
+IPE=\frac{\frac{(E_{C}-E_{R})}{gl_{C}-gl_{R}}}{\frac{E_{C}}{gl_{C}}} \\
 \text{ si podemos suponer normalidad en la variable de respuesta }\\
 \sim F_{(gl_{C}-gl_{R}), gl_{C}}
 $$ 
