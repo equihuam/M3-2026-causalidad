@@ -67,7 +67,7 @@ preload-iframes: true
 
 
 :::{style="font-size:60%;"}
-**Pearl, J. (1995). Causal Diagrams for Empirical Research.** *Biometrika* **,** *82* **(4), 669–688. https://doi.org/10.2307/2337329**
+[**Pearl, J. (1995). Causal Diagrams for Empirical Research.** *Biometrika* **,** *82* **(4), 669–688. https://doi.org/10.2307/2337329**](https://academic.oup.com/biomet/article-abstract/82/4/669/251647?redirectedFrom=fulltext)
 :::
 
 
