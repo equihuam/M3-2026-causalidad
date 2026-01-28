@@ -515,7 +515,7 @@
     "href": "ejercicios.html",
     "title": "M3-ejercicios",
     "section": "",
-    "text": "No hay resultados"
+    "text": "Registro de entregas\n\n\n\n\n\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "about.html",
@@ -523,6 +523,13 @@
     "title": "Acerca de",
     "section": "",
     "text": "Blog de clase sobre Diseño de experimentos. Es el módulo III del curso de estadística que se imparte en el Inecol."
+  },
+  {
+    "objectID": "ejercicios/control-de-entregas/index.html",
+    "href": "ejercicios/control-de-entregas/index.html",
+    "title": "Registro de entregas",
+    "section": "",
+    "text": "Los documentos que he recibido hasta el día 28 de enero, 2026 son los que están en esta lista.\n\n\n\n\nTable 1"
   },
   {
     "objectID": "index.html",
@@ -742,11 +749,11 @@
     "text": "La paradoja del bajo peso al nacer\nEste es un ejemplo real que desconcertó a la comunidad médica durante muchos años.\nAl estudiar el efecto del tabaco en la mortalidad infantil. Ya se sabía que fumar provocaba un mayor riesgo de bajo peso al nacer y que el bajo peso al nacer aumenta el riesgo de mortalidad infantil.\n¿El tabaquismo tiene algún otro efecto sobre la mortalidad infantil?, aparte de causar bajo peso al nacer.\nLa intuición de los investigadores sugirió condicionar el peso al nacer y entonces observar el efecto del tabaquismo sobre la mortalidad: ¡se descubrió que fumar tenía un efecto protector!\nLa explicación es que ¡se trata de un sesgo del colisionador!\nHay varias causas de bajo peso al nacer. Fumar es una de ellas, pero hay otras.\nLas otras causas de bajo peso al nacer tienen un mayor riesgo negativo sobre la mortalidad infantil, aparte de su efecto sobre el bajo peso al nacer.\nComo reto, dibuja el DAG correspondiente y combina todos estos hechos para averiguar cómo el condicionamiento sobre el peso al nacer puede crear el hallazgo de que fumar tiene un falso efecto protector."
   },
   {
-    "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-generalcenter",
-    "href": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-generalcenter",
+    "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-general",
+    "href": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-general",
     "title": "Modelo Estadístico Lineal",
-    "section": "El modelo estadístico lineal general{center}",
-    "text": "El modelo estadístico lineal general{center}\nEstructura general"
+    "section": "El modelo estadístico lineal general",
+    "text": "El modelo estadístico lineal general\nEstructura general"
   },
   {
     "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#ejemplo-de-modelo-lineal",
@@ -754,6 +761,13 @@
     "title": "Modelo Estadístico Lineal",
     "section": "Ejemplo de modelo lineal",
     "text": "Ejemplo de modelo lineal\n\nGanancia de peso en un grupo de orugas que declina conforme se incrementa el contenido de taninos en la dieta.\nEsta condición puede describirse en forma abreviada así:\n\nganancia de peso de cada oruga=ganancia de peso base en general+efecto del contenido de taninos en la dieta+efecto de otros factores que fluctuan aleatoriamente\nComo modelo lineal se puede escribir así :\n\\[\ny_{ij} = \\beta_0 x_0j + \\sum_{i=1}^{k}\\beta_i x_{ij} + \\varepsilon_{j(i)}  \n\\]"
+  },
+  {
+    "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#interpretación-de-términos",
+    "href": "presentaciones/2026-01-28-modelo-lineal/index.html#interpretación-de-términos",
+    "title": "Modelo Estadístico Lineal",
+    "section": "Interpretación de términos",
+    "text": "Interpretación de términos\n\nlas X ’s proporcionan información sobre el nivel del individuo i en los factores que estamos considerando.\nLas β son incógnitas que debemos estimar (en eso consiste ajustar el modelo).\nLa primera incógnita y la variable \\(X_0\\) que la acompaña, típicamente juegan el papel especial de reflejar el efecto de los factores constantes. Esto es, los factores que son comunes a todas las unidades experimentales. Para esto, usualmente \\(X_0\\) toma simplemente el valor de 1 para todas las unidades experimentales observadas."
   },
   {
     "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#modelos-con-variables-explicativas-cualitativas",
@@ -775,19 +789,5 @@
     "title": "Modelo Estadístico Lineal",
     "section": "¿Qué valores toman las X, las R y las H?",
     "text": "¿Qué valores toman las X, las R y las H?\nLa forma más común de modelar datos cualitativos es:\n\n\n\n\nMediante variables usualmente llamadas factores.\nUn factor es una listas de nombres o códigos de identificación de estados o niveles mutuamente excluyentes.\nEn la modelación se requiere convertir el factor a variables indicadoras o dummy.\nHabrá tantas variables dummy como estados o niveles tenga el factor\nCada variable se construye anotando la presencia/ausencia de la condición del factor.\n\n\n\n\n\\[\nH_1 = \\left\\{\n         \\begin{align*}\n           \\text{si } \\color{red}{sí} \\text{ es híbrido del tipo } a &: 1 \\\\\n           \\text{si } \\color{red}{no} \\text{ es híbrido del tipo } a &: 0\n         \\end{align*}\n      \\right\\}\n\\]"
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-general",
-    "href": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-general",
-    "title": "Modelo Estadístico Lineal",
-    "section": "El modelo estadístico lineal general",
-    "text": "El modelo estadístico lineal general\nEstructura general"
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#interpretación-de-términos",
-    "href": "presentaciones/2026-01-28-modelo-lineal/index.html#interpretación-de-términos",
-    "title": "Modelo Estadístico Lineal",
-    "section": "Interpretación de términos",
-    "text": "Interpretación de términos\n\nlas X ’s proporcionan información sobre el nivel del individuo i en los factores que estamos considerando.\nLas β son incógnitas que debemos estimar (en eso consiste ajustar el modelo).\nLa primera incógnita y la variable \\(X_0\\) que la acompaña, típicamente juegan el papel especial de reflejar el efecto de los factores constantes. Esto es, los factores que son comunes a todas las unidades experimentales. Para esto, usualmente \\(X_0\\) toma simplemente el valor de 1 para todas las unidades experimentales observadas."
   }
 ]

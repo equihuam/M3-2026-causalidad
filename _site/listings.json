@@ -9,7 +9,9 @@
   },
   {
     "listing": "/ejercicios.html",
-    "items": []
+    "items": [
+      "/ejercicios/control-de-entregas/index.html"
+    ]
   },
   {
     "listing": "/index.html",

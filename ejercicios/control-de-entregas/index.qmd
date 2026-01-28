@@ -1,0 +1,89 @@
+---
+title: "Registro de entregas"
+format: html
+
+image: img/bad-mark-624734_1280.jpg
+---
+
+```{r}
+#| label: setup
+#| echo: false
+#| warning: false
+#| message: false
+
+# Outlook 365
+
+
+pacman::p_load(Microsoft365R, dplyr, stringr, DT)
+
+alumnos <- read.csv("../../posts/00-Bienvenida/Lista-de-alumnos-2026.csv")
+
+#outl <- get_personal_outlook()
+
+outlb <- get_business_outlook()
+
+inbox_ref <- outlb$get_inbox()
+
+
+#inbox_ref$get_list_pager(lst = )
+
+correos <- inbox_ref$list_emails(search = "m3-2026", pagesize = 200)
+
+tabla_correo <- tibble(fecha = character(), 
+                       alumno = character(), 
+                       archivo = character())
+
+
+for (correo in correos)
+{
+  remitente <-  correo$properties$sender$emailAddress$address
+  asunto <- correo$properties$subject
+
+  if (str_detect(str_to_lower(asunto), "m3-2026|m3 2026|m3_2026"))
+  {
+    d  <- correo$list_attachments()
+    anexo <- d[[1]]$properties$name
+    fecha  <- as.POSIXlt( as.Date(correo$properties$receivedDateTime))
+    year <- fecha$year + 1900
+    mes <- fecha$mon + 1
+    if (str_detect(str_to_lower(anexo), "lectura"))
+    {
+      d[[1]]$download(dest = paste0("lecturas/",anexo), 
+                    overwrite = TRUE)
+    } else {
+      d[[1]]$download(dest = paste0("tareas/",anexo), 
+                      overwrite = TRUE)
+      
+    }
+    
+    if (remitente == "lucia.8413.17@gmail.com") 
+    {
+      remitente <- "lucia.rodriguez@posgrado.ecologia.edu.mx"
+    }
+    
+    alumno <- alumnos$alumno[str_detect(remitente, alumnos$correo)]
+    fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
+    tabla_correo <- bind_rows(tabla_correo, c(fecha = fecha_str,
+                                              alumno = alumno,
+                                              archivo = anexo))
+  }
+}
+
+
+```
+
+
+Los documentos que he recibido hasta el día `r format(Sys.time(), "%e de %B, %Y")` son los que están en esta lista.
+
+```{r}
+#| label: tbl-entregas
+#| echo: false
+
+tabla_correo |> 
+  arrange(archivo) |> 
+  datatable(colnames = c("Recibido", "Alumno", "Archivo"), filter = "top") 
+
+```
+
+
+
