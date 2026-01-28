@@ -18,7 +18,9 @@ title-slide-attributes:
     data-background-opacity: "60%"
     
 format: 
-    metropolis-revealjs
+    metropolis-revealjs:
+      theme: beige
+      css: estilo.css
 
 reveal-header:
     sc-sb-title: false
@@ -89,7 +91,7 @@ library(flextable)
 :::
 ::::::
 
-# Clasificación y medición {.center}
+# Clasificación y medición {style="text-align: center;"}
 
 -   La obtención de **datos cuantitativos** puede realizarse de muchas formas distintas, pero siempre se parte de alguna forma de **clasificación**.
 
@@ -103,7 +105,7 @@ library(flextable)
 
 -   **A veces resulta útil expresar mediciones continuas en forma nominal.**
 
-## El modelo estadístico lineal general{center}
+## El modelo estadístico lineal general{style="text-align: center;"}
 
 [**Estructura general**]{style="color:#A5A5A5"}
 
@@ -135,7 +137,7 @@ $$
 y_{ij} = \beta_0 x_0j + \sum_{i=1}^{k}\beta_i x_{ij} + \varepsilon_{j(i)}  
 $$
 
-# Interpretación de términos
+## Interpretación de términos
 
 -   las *X* 's proporcionan información sobre el nivel del individuo *i* en los factores que estamos considerando.
 -   Las *β* son incógnitas que debemos estimar (en eso consiste ajustar el modelo).

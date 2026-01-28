@@ -775,5 +775,19 @@
     "title": "Modelo Estadístico Lineal",
     "section": "¿Qué valores toman las X, las R y las H?",
     "text": "¿Qué valores toman las X, las R y las H?\nLa forma más común de modelar datos cualitativos es:\n\n\n\n\nMediante variables usualmente llamadas factores.\nUn factor es una listas de nombres o códigos de identificación de estados o niveles mutuamente excluyentes.\nEn la modelación se requiere convertir el factor a variables indicadoras o dummy.\nHabrá tantas variables dummy como estados o niveles tenga el factor\nCada variable se construye anotando la presencia/ausencia de la condición del factor.\n\n\n\n\n\\[\nH_1 = \\left\\{\n         \\begin{align*}\n           \\text{si } \\color{red}{sí} \\text{ es híbrido del tipo } a &: 1 \\\\\n           \\text{si } \\color{red}{no} \\text{ es híbrido del tipo } a &: 0\n         \\end{align*}\n      \\right\\}\n\\]"
+  },
+  {
+    "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-general",
+    "href": "presentaciones/2026-01-28-modelo-lineal/index.html#el-modelo-estadístico-lineal-general",
+    "title": "Modelo Estadístico Lineal",
+    "section": "El modelo estadístico lineal general",
+    "text": "El modelo estadístico lineal general\nEstructura general"
+  },
+  {
+    "objectID": "presentaciones/2026-01-28-modelo-lineal/index.html#interpretación-de-términos",
+    "href": "presentaciones/2026-01-28-modelo-lineal/index.html#interpretación-de-términos",
+    "title": "Modelo Estadístico Lineal",
+    "section": "Interpretación de términos",
+    "text": "Interpretación de términos\n\nlas X ’s proporcionan información sobre el nivel del individuo i en los factores que estamos considerando.\nLas β son incógnitas que debemos estimar (en eso consiste ajustar el modelo).\nLa primera incógnita y la variable \\(X_0\\) que la acompaña, típicamente juegan el papel especial de reflejar el efecto de los factores constantes. Esto es, los factores que son comunes a todas las unidades experimentales. Para esto, usualmente \\(X_0\\) toma simplemente el valor de 1 para todas las unidades experimentales observadas."
   }
 ]
