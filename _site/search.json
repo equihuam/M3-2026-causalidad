@@ -515,7 +515,7 @@
     "href": "ejercicios.html",
     "title": "M3-ejercicios",
     "section": "",
-    "text": "Registro de entregas\n\n\n\n\n\n\n\n\n\n\n\nNo hay resultados"
+    "text": "Registro de entregas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTareas M3\n\n\n\n\n\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "about.html",
@@ -789,5 +789,33 @@
     "title": "Modelo Estadístico Lineal",
     "section": "¿Qué valores toman las X, las R y las H?",
     "text": "¿Qué valores toman las X, las R y las H?\nLa forma más común de modelar datos cualitativos es:\n\n\n\n\nMediante variables usualmente llamadas factores.\nUn factor es una listas de nombres o códigos de identificación de estados o niveles mutuamente excluyentes.\nEn la modelación se requiere convertir el factor a variables indicadoras o dummy.\nHabrá tantas variables dummy como estados o niveles tenga el factor\nCada variable se construye anotando la presencia/ausencia de la condición del factor.\n\n\n\n\n\\[\nH_1 = \\left\\{\n         \\begin{align*}\n           \\text{si } \\color{red}{sí} \\text{ es híbrido del tipo } a &: 1 \\\\\n           \\text{si } \\color{red}{no} \\text{ es híbrido del tipo } a &: 0\n         \\end{align*}\n      \\right\\}\n\\]"
+  },
+  {
+    "objectID": "ejercicios/tareas/index.html",
+    "href": "ejercicios/tareas/index.html",
+    "title": "Tareas M3",
+    "section": "",
+    "text": "Tarea\nArtículo\nFecha de entrega\n\n\n\n\nlectura-1\nSaltelli et al. (2024)\n28/ene/2026\n\n\nlectura-2\nBorger & Ramesh (2025)\n30/ene/2026\n\n\nlectura-3\nGiraldo (2022)\n4/feb/2026"
+  },
+  {
+    "objectID": "ejercicios/tareas/index.html#lecturas",
+    "href": "ejercicios/tareas/index.html#lecturas",
+    "title": "Tareas M3",
+    "section": "",
+    "text": "Tarea\nArtículo\nFecha de entrega\n\n\n\n\nlectura-1\nSaltelli et al. (2024)\n28/ene/2026\n\n\nlectura-2\nBorger & Ramesh (2025)\n30/ene/2026\n\n\nlectura-3\nGiraldo (2022)\n4/feb/2026"
+  },
+  {
+    "objectID": "ejercicios/tareas/index.html#ejercicios",
+    "href": "ejercicios/tareas/index.html#ejercicios",
+    "title": "Tareas M3",
+    "section": "Ejercicios",
+    "text": "Ejercicios\n\n\n\nTarea\nActividad\nFecha de entrega\n\n\n\n\nejercicio-1\nMi proyecto. Estado 0\n27/ene/2026\n\n\nejercicio-2\nMi DAG.\n3/feb/2026"
+  },
+  {
+    "objectID": "ejercicios/tareas/index.html#divertimentos",
+    "href": "ejercicios/tareas/index.html#divertimentos",
+    "title": "Tareas M3",
+    "section": "Divertimentos",
+    "text": "Divertimentos\n\n¿Cuál es tu aforismo favorito, como para considerarlo vigente y actual, del Novum Organum de Bacon?"
   }
 ]

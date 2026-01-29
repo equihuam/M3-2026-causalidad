@@ -81,7 +81,9 @@ Los documentos que he recibido hasta el día `r format(Sys.time(), "%e de %B, %Y
 
 tabla_correo |> 
   arrange(archivo) |> 
-  datatable(colnames = c("Recibido", "Alumno", "Archivo"), filter = "top") 
+  datatable(colnames = c("Recibido", "Alumno", "Archivo"), 
+            filter = "top", 
+            options = list(pageLength = 15))
 
 ```
 

@@ -1,0 +1,36 @@
+---
+title: "Tareas M3"
+format: html
+
+bibliography: ../../references.bib
+csl: ../../apa.csl
+suppress-bibliography: true
+
+---
+
+## Lecturas
+
+|Tarea     |Artículo              | Fecha de entrega|
+|----------|----------------------|-----------------|
+|lectura-1 |@saltelli2024         |28/ene/2026      |
+|lectura-2 |@borgerLetsDAGHow2025 |30/ene/2026      |
+|lectura-3 |@giraldo2022          |4/feb/2026       |
+
+\
+\
+
+
+## Ejercicios
+
+|Tarea        |Actividad              | Fecha de entrega|
+|-------------|-----------------------|-----------------|
+| ejercicio-1 | Mi proyecto. Estado 0 |27/ene/2026      |
+| ejercicio-2 | Mi DAG.               | 3/feb/2026      |
+
+
+\
+\
+
+## Divertimentos
+
+1. ¿Cuál es tu aforismo favorito, por considerarlo vigente y actual, del *Novum Organum* de Bacon?
