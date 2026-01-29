@@ -18,13 +18,16 @@ title-slide-attributes:
     data-background-size: "100%"
     data-background-opacity: "60%"
     
+    
 format: 
     metropolis-revealjs: 
-      chalkboard: true
       theme: sky
+      raw-html:
+
 reveal-header:
     sc-sb-title: false
     header: "."
+    
 transition: convex
 execute: 
   eval: true
@@ -142,25 +145,24 @@ preload-iframes: true
 
 ## En un DAG con nodos L, A e Y (en este orden de aparición)
 
-Vevox
-
 ¿Qué significa que no haya un arco del nodo A al Y?
 
-**Ingresa a: vevox.app con el ID: 169-614-732**
+[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
+
 
 ## Si nuestro conocimiento en la materia es insuficiente para descartar la existencia de un efecto directo de la variable D sobre la E.
 
-vevox
 
 
 ¿Deberíamos incluir un arco de D a E en el diagrama causal?
 
-**Ingresa a: vevox.app con el ID: 169-614-732**
+[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
+
 
 ## La inteligencia reduce el tiempo necesario de estudio para aprender. Al mismo tiempo, la inteligencia, junto con el tiempo de estudio explican la calificación en el examen. ¿Cuál es el DAG que describe esta proposición causal?
 
-**Ingresa a: vevox.app con el ID: 169-614-732**
-
+[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
+ 
 
 ## Reglas de independencia condicional
 
@@ -216,7 +218,7 @@ El flujo de información en una ruta *p* queda bloqueado por un conjunto de nodo
 
 ## ¿Se puede medir el efecto, sin sesgos, de la aspirina?
 
-**Ingresa a: vevox.app con el ID: 169-614-732**
+[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
 
 
 

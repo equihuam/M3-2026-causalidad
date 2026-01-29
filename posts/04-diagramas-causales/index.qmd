@@ -1,27 +1,24 @@
 ---
 title: "Diagramas Causales"
-author: ["Miguel Equihua", "Octavio Pérez Maqueo", "Elio Lagunes"]
-date: "2025-01-30 12:00:00"
+author: ["Miguel Equihua"]
+date: "2026-01-29 12:00:00"
 lang: es
 draft: false
 categories: [clase]
 
-format: 
-  live-html
+format: html
 engine: knitr 
 
+filters:
+  - webr
+  
 webr:
-  packages:
-    - dplyr
-  repos:
-    - https://r-lib.r-universe.dev
-    - https://jtextor.r-universe.dev
-    - https://cloud.r-project.org
-
+  packages: ['gt', 'dplyr', 'tidyr', 'dagitty', 'v8']
+  
+  
 theme: 
     dark: Sandstone
 ---
-{{<include ../../_extensions/r-wasm/live/_knitr.qmd>}}
 
 ![](images/autores_y_The_Book_of_Why.jpg){width="500"}
 
@@ -32,7 +29,7 @@ Judea Pearl se ha aproximado a la causalidad desde una perspectiva matemática y
 \
 
 ::: {layout="[[-1, 2, -1], [-1, 2, -1]]"}
-[![](images/web-6704764_1280.jpg)](../../presentaciones/04-diagramas-causales/index.qmd)
+[![](images/web-6704764_1280.jpg)](../../presentaciones/2026-01-28-diagramas-causales/index.qmd)
 
 Haz click sobre la imágen para ver la presentación
 :::
@@ -47,7 +44,7 @@ Haz click sobre la imágen para ver la presentación
 
 Construyamos un conjunto de datos artificial que tenga las propiedades que especifica el **DAG**. Que sean, digamos, 1000 pacientes tomados aleatoriamente de la comunidad en nuestro vecindario.  
 
-```{webr}
+```{webr-r}
 set.seed(2024) # Habilita Repetibilidad
 n <- 1000 # Tamaño de muestra
 n
@@ -58,7 +55,7 @@ Ahora, Cada uno de ellos puede estar afectado, en forma continua, por la arterio
 Algo semejante ocurre con la enfermedad cardíaca, _L_, salvo que la agrava la presciencia de arteriosclerosis en el paciente. Digamos que la enfermedad cardíaca puede ser cero (la condición que tiene un paciente normal), menor que cero entre más sano más pequeño este valor) y los valores positivos indica que está enfermo. Además, el mal se agrava añadiendo 10 veces el grado de arteriosclerosis que padezca el paciente. Todo esto, nos lleva a estas líneas de cálculo.
 
 
-```{webr}
+```{webr-r}
 # De acuerdo con el ejemplo
 U <- rnorm(n)  # Arteriosclerosis
 L <- 10 * U + rnorm(n)  # Enfermedad cardíaca
@@ -72,7 +69,7 @@ Un poquito más complicado es el **factor aspirina**, _A_. Se trata de un tratam
 
 Primero, considero que entre los 1000 pacientes algunos ya toman aspirina y otros no. La función  `sample` de **R** toma muestras aleatorias de una colección de números o palabras que le demos, 
 
-```{webr}
+```{webr-r}
 # Tratamiento con aspirina 
 A <- sample(c("con aspirina", "sin aspirina"), n, replace = TRUE)
 
@@ -81,7 +78,7 @@ A[1:10]
 
 Ahora, a todos los pacientes que sean detectados con _enfermedad cardíaca_ se les indica tomar aspirina y supondremos que todos ellos la tomarán.
 
-```{webr}
+```{webr-r}
 A[L > 0 ] <-  "con aspirina"
 A <- factor(A, levels = c("sin aspirina", "con aspirina"))
 
@@ -91,7 +88,7 @@ A[1:10]
 Finalmente, calculamos la respuesta de los pacientes al tratamiento y a los padecimientos que lo afectan y ponemos todos los datos en una tabla, es decir un "data.frame" de tipo modernizado llamado "tibble" cuyas funcionalidad se carga con la bibliotteca "dplyr".
 
 
-```{webr}
+```{webr-r}
 Y <-  -2 * (A=="con aspirina") + U + rnorm(n)  # Accidente cerebral
 
 # Junto todos los datos en una tabla.
@@ -108,7 +105,7 @@ $$
 
 #### Situación erronea, no se controló el factor de confusión *enfermedad cardíaca*
 
-```{webr}
+```{webr-r}
 lm(Y ~ A, datos_aspirina)
 ```
 
@@ -116,19 +113,37 @@ lm(Y ~ A, datos_aspirina)
 
 Con este procedimiento *cierro la puerta trasera* y logro estimar el efecto de la aspirina sin confusión.
 
-```{webr}
+```{webr-r}
 lm(Y ~ A + L, datos_aspirina)
 ```
 
 #### Situación imposile en la práctica, control de factor de confusión por *enfermedad cardíaca* y documentación de una _variable no observada_.
 
-```{webr}
+```{webr-r}
 lm(Y ~ A + L + U, datos_aspirina)
 ```
 
 #### Usar `dagitty` para probar las implicaciones del **DAG** propuesto.
 
 Para animarlos a sacar provecho de la capacidad de formular y analizar **DAGs** en **R** anoto a continuación algunas líneas a manera de ejemplo, tomando el caso de la _aspirina_.
+
+```{webr-r}
+#| echo: false
+
+suppressPackageStartupMessages(library(dplyr))
+
+set.seed(2024) # Habilita Repetibilidad
+n <- 1000 # Tamaño de muestra
+U <- rnorm(n)  # Arteriosclerosis
+L <- 10 * U + rnorm(n)  # Enfermedad cardíaca
+A <- sample(c("con aspirina", "sin aspirina"), n, replace = TRUE)
+A[L > 0 ] <-  "con aspirina"
+A <- factor(A, levels = c("sin aspirina", "con aspirina"))
+Y <-  -2 * (A=="con aspirina") + U + rnorm(n)  # Accidente cerebral
+datos_aspirina <- tibble(U, L, A, Y)
+
+```
+
 
 ```{r}
 #| echo: false

@@ -76,7 +76,7 @@ for (correo in correos)
 Los documentos que he recibido hasta el día `r format(Sys.time(), "%e de %B, %Y")` son los que están en esta lista.
 
 ```{r}
-#| label: tbl-entregas
+#| label: entregas
 #| echo: false
 
 tabla_correo |> 

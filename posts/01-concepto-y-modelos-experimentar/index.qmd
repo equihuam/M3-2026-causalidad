@@ -10,12 +10,12 @@ engine: knitr
 
 link-external-newwindow: true
 
-filters:
-  - webr
-  
 theme: 
     dark: Sandstone
 
+filters:
+  - webr
+  
 webr:
   packages: ['gt', 'dplyr', 'tidyr']
   
