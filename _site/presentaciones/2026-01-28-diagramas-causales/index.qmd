@@ -147,7 +147,20 @@ preload-iframes: true
 
 ¿Qué significa que no haya un arco del nodo A al Y?
 
-[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
+##
+
+```{=html}
+<div style="height:80vh;">
+  <iframe 
+     width="100%" 
+     height="100%"
+     src="https://vevox.app/#/m/169614732?integration=embed"
+     style="min-height: 80vh;" 
+     frameBorder="0"
+     title="participación Vevox">
+    </iframe>
+</div>
+```
 
 
 ## Si nuestro conocimiento en la materia es insuficiente para descartar la existencia de un efecto directo de la variable D sobre la E.
@@ -156,13 +169,40 @@ preload-iframes: true
 
 ¿Deberíamos incluir un arco de D a E en el diagrama causal?
 
-[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
+##
+
+```{=html}
+<div style="height:80vh;">
+  <iframe 
+     width="100%" 
+     height="100%"
+     src="https://vevox.app/#/m/169614732?integration=embed"
+     style="min-height: 80vh;" 
+     frameBorder="0"
+     title="participación Vevox">
+    </iframe>
+</div>
+```
+
 
 
 ## La inteligencia reduce el tiempo necesario de estudio para aprender. Al mismo tiempo, la inteligencia, junto con el tiempo de estudio explican la calificación en el examen. ¿Cuál es el DAG que describe esta proposición causal?
 
-[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
- 
+##
+
+```{=html}
+<div style="height:80vh;">
+  <iframe 
+     width="100%" 
+     height="100%"
+     src="https://vevox.app/#/m/169614732?integration=embed"
+     style="min-height: 80vh;" 
+     frameBorder="0"
+     title="participación Vevox">
+    </iframe>
+</div>
+```
+
 
 ## Reglas de independencia condicional
 
@@ -218,8 +258,20 @@ El flujo de información en una ruta *p* queda bloqueado por un conjunto de nodo
 
 ## ¿Se puede medir el efecto, sin sesgos, de la aspirina?
 
-[**Ingresa a: vevox.app con el ID: 169-614-732**](https://vevox.app/#/m/169614732)
+##
 
+```{=html}
+<div style="height:80vh;">
+  <iframe 
+     width="100%" 
+     height="100%"
+     src="https://vevox.app/#/m/169614732?integration=embed"
+     style="min-height: 800px;" 
+     frameBorder="0"
+     title="participación Vevox">
+    </iframe>
+</div>
+```
 
 
 ## Colisionadores
