@@ -127,23 +127,6 @@ lm(Y ~ A + L + U, datos_aspirina)
 
 Para animarlos a sacar provecho de la capacidad de formular y analizar **DAGs** en **R** anoto a continuación algunas líneas a manera de ejemplo, tomando el caso de la _aspirina_.
 
-```{webr-r}
-#| echo: false
-
-suppressPackageStartupMessages(library(dplyr))
-
-set.seed(2024) # Habilita Repetibilidad
-n <- 1000 # Tamaño de muestra
-U <- rnorm(n)  # Arteriosclerosis
-L <- 10 * U + rnorm(n)  # Enfermedad cardíaca
-A <- sample(c("con aspirina", "sin aspirina"), n, replace = TRUE)
-A[L > 0 ] <-  "con aspirina"
-A <- factor(A, levels = c("sin aspirina", "con aspirina"))
-Y <-  -2 * (A=="con aspirina") + U + rnorm(n)  # Accidente cerebral
-datos_aspirina <- tibble(U, L, A, Y)
-
-```
-
 
 ```{r}
 #| echo: false
@@ -184,6 +167,8 @@ aspirina_dag <- dagitty('dag{A[exposure, pos="1, 0"]
 
 plot(aspirina_dag)
 ```
+
+
 ahora averiguo que condiciones de independencia implica este _grafo_. Para hacerlo sin restricciones usaré un **DAG** sin información sobre las características de las variables.   
 
 ```{r}
