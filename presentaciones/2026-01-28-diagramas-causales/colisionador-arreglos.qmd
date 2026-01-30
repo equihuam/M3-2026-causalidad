@@ -1,6 +1,8 @@
 ---
 title: "Sufriendo con los colisionadores"
 format: html
+
+draft: true
 ---
 
 ```{r}
@@ -157,7 +159,9 @@ ggdag_adjust(dag_ecologia)
 
 ggdag_paths(dag_ecologia, adjust_for = "C") 
 
-ggdag_adjustment_set(dag_ecologia, exposure = "X", outcome = "Y")
+
+adjustmentSets(mi_dag)
+
 
 ```
 

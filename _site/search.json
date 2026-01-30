@@ -4,7 +4,7 @@
     "href": "presentaciones.html",
     "title": "M3-Presentaciones",
     "section": "",
-    "text": "Sufriendo con los colisionadores\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModelo Estadístico Lineal\n\n\nmodelación y prueba de hipótesis\n\n\n\npresentación\n\n\n\n\n\n\n\n\n\n28 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nIntroducción a Diagramas Causales\n\n\n\n\n\n\npresentación\n\n\n\n\n\n\n\n\n\n28 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nContraste de epistemologías\n\n\nDiseño de estudios y experimentos\n\n\n\npresentación\n\n\n\n\n\n\n\n\n\n28 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\nNo hay resultados"
+    "text": "Modelo Estadístico Lineal\n\n\nmodelación y prueba de hipótesis\n\n\n\npresentación\n\n\n\n\n\n\n\n\n\n28 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nIntroducción a Diagramas Causales\n\n\n\n\n\n\npresentación\n\n\n\n\n\n\n\n\n\n28 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nContraste de epistemologías\n\n\nDiseño de estudios y experimentos\n\n\n\npresentación\n\n\n\n\n\n\n\n\n\n28 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "presentaciones/2026-01-28-epistemologia/index.html#bacon-y-la-ciencia-occidental",
@@ -831,54 +831,5 @@
     "title": "Modelo Estadístico Lineal",
     "section": "¿Qué valores toman las X, las R y las H?",
     "text": "¿Qué valores toman las X, las R y las H?\nLa forma más común de modelar datos cualitativos es:\n\n\n\n\nMediante variables usualmente llamadas factores.\nUn factor es una listas de nombres o códigos de identificación de estados o niveles mutuamente excluyentes.\nEn la modelación se requiere convertir el factor a variables indicadoras o dummy.\nHabrá tantas variables dummy como estados o niveles tenga el factor\nCada variable se construye anotando la presencia/ausencia de la condición del factor.\n\n\n\n\n\\[\nH_1 = \\left\\{\n         \\begin{align*}\n           \\text{si } \\color{red}{sí} \\text{ es híbrido del tipo } a &: 1 \\\\\n           \\text{si } \\color{red}{no} \\text{ es híbrido del tipo } a &: 0\n         \\end{align*}\n      \\right\\}\n\\]"
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html",
-    "href": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html",
-    "title": "Sufriendo con los colisionadores",
-    "section": "",
-    "text": "En un DAG (Directed Acyclic Graph), cada tipo de nodo tiene un significado específico que ayuda a interpretar relaciones causales. “Exposure” es la variable de interés que se supone causa un efecto, “Outcome” es el resultado que se estudia, y las demás categorías (Adjusted, Selected, Unobserved, Other) indican cómo se manejan las variables en el análisis."
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#triángulo-de-confusión-básico",
-    "href": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#triángulo-de-confusión-básico",
-    "title": "Sufriendo con los colisionadores",
-    "section": "Triángulo de confusión básico",
-    "text": "Triángulo de confusión básico\nUn triángulo de confusión se forma cuando una variable externa afecta tanto al factor de exposición como al resultado. Esta situación genera sesgo, es decir altera la estimación del efecto que nos interesa valorar. Considera la siguiente situación\n\nExposición (\\(X\\)): Sombra del dosel arbóreo\nResultado (\\(Y\\)): Crecimiento de plantas del sotobosque\nConfusor (\\(C\\)): Humedad del suelo\n\nImagina que en el proceso que estoy estudiando la humedad influye en:\n\nla densidad del dosel (más humedad favorece mayor cobertura), y\nel crecimiento de las plantas (más agua implica mayor crecimiento y vigor).\n\nAhora añadimos los mediadores y colisionadores que consideramos están actuando en el sistema de mi interés.\nLa sombra aumenta la acumulación de hojarasca, que a su vez modifica la oferta de nutrientes y por tanto influye en el crecimiento de las plantas.\n\nMediador (M): Profundidad de la hojarasca\n\nFinamente considero que tanto la sombra como la humedad son factores que se relacionan con la atracción de herbívoros a las parcelas.\n\nColisionador (K): Presencia de herbívoros\n\n\nmi_dag &lt;-  dagitty('dag {C [pos=\"0.5, 1\"]\n                         Y [outcome, pos=\"-0.5, 1\"]\n                         K [pos=\"1,  0\"]\n                         X [exposure, pos=\"0, 0\"]\n                         M [pos=\"-1, 0\"]\n                         C -&gt; X\n                         C -&gt; Y \n                         X -&gt; Y\n                         X -&gt; K\n                         C -&gt; K\n                         X -&gt; M\n                         M -&gt; Y  }')\n\nplot(mi_dag)\n\n\n\n\n\n\n\n\n\nggdag(mi_dag) + theme_dag()\n\n\n\n\n\n\n\n\nOtra manera de definir un DAG es recurrir a la forma como se escriben modelos estadísticos en R. Veamos un ejemplo\n\n# Definir el DAG\ndag_ecologia &lt;- dagify(Y ~ X + C + M,  \n                       X ~ C, \n                       M ~ X, \n                       K ~ X + C,\n\n                       coords = list(C = c(0.5, 1),\n                                     X = c(0, 0),\n                                     M = c(-1, 0),\n                                     Y = c(-0.5, 1),\n                                     K = c(1, 0)),\n                       exposure = \"X\",\n                       outcome = \"Y\")\n\n\n# Asignar roles manualmente\nroles &lt;- tibble(\n  name = c(\"X\", \"Y\", \"C\", \"M\", \"K\"),\n  rol = c(\"Exposición\", \"Resultado\", \"Confusor\", \"Mediador\", \"Colisionador\"),\n  control = c(F,F,T,F,F)\n)\n\n# Graficar con colores por rol\ndag_ecologia %&gt;%\n  tidy_dagitty(seed = 3334) %&gt;%\n  left_join(roles, by = \"name\") %&gt;%\n  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +\n  geom_dag_edges() +\n  geom_dag_point(aes(fill = rol), color = \"black\", shape = 21, size = 10) +\n  geom_dag_text(color = \"white\") +\n  scale_fill_manual(values = c(\n    \"Exposición\" = \"steelblue\",\n    \"Resultado\" = \"forestgreen\",\n    \"Confusor\" = \"orange\",\n    \"Mediador\" = \"purple\",\n    \"Colisionador\" = \"red\"\n  )) +\n  theme_dag()\n\n\n\n\n\n\n\n\n\ndag_ecologia &lt;- control_for(dag_ecologia, var = \"C\")\nggdag_adjust(dag_ecologia)\n\n\n\n\n\n\n\nggdag_paths(dag_ecologia, adjust_for = \"C\") \n\n\n\n\n\n\n\nggdag_adjustment_set(dag_ecologia, exposure = \"X\", outcome = \"Y\")"
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#definiciones-clave-en-un-dag",
-    "href": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#definiciones-clave-en-un-dag",
-    "title": "Sufriendo con los colisionadores",
-    "section": "Definiciones clave en un DAG",
-    "text": "Definiciones clave en un DAG\n\n\n\n\n\n\n\n\nTérmino\nDefinición\nEjemplo práctico\n\n\n\n\nExposure\nVariable de exposición. Es la la variable que se concibe como causa principal bajo la hipótesis y los objetivos del estudio. Define o forma parte de lo que en algunos contextos se denomina tratamiento.\nFumar cigarrillos.\n\n\nOutcome\nVariable de resultado (respuesta). Es el efecto que, de acuerdo con la hipótesis del estudio, resulta de exponer a las unidades experimentales al efecto de la variable de exposición.\nCáncer de pulmón.\n\n\nAdjusted\nVariables que se incluyen en el modelo para controlar procesos o siuaciones de confusión de los efectos. Se opta por incluirlos en el modelo estadístico para evitar que afecten la estimación de la exposición sobre el resultado.\nEdad y sexo.\n\n\nSelected\nVariables que en el contexto del sistema de estudio, representan un sesgo de selección. Dan cuenta de las situaciones en las que la muestra o población está condicionada por los criterios que definen a estas variables y que se concibe, puede distorsionar las relaciones causales.\nSolo estudiar pacientes hospitalizados, lo que excluye a quienes no buscan atención médica.\n\n\nUnobserved (Latent)\nVariables no medidas, ocultas o latentes que se postula podrían existir e influir en la relación causal, pero que no están disponibles en los datos.\nPredisposición genética al cáncer que no se midió en el estudio.\n\n\n\nEn un DAG, el total effect (efecto total) se refiere al impacto combinado que una variable de exposición tiene sobre un resultado, incluyendo tanto el efecto directo como todos los efectos indirectos que pasan a través de mediadores. Dicho de otra forma: es la suma del efecto directo y de los efectos transmitidos por las rutas intermedias, todos cobinados."
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#modalidades-de-estimación-de-efectos-en-un-estudio",
-    "href": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#modalidades-de-estimación-de-efectos-en-un-estudio",
-    "title": "Sufriendo con los colisionadores",
-    "section": "Modalidades de estimación de efectos en un estudio",
-    "text": "Modalidades de estimación de efectos en un estudio\n\n\n\n\n\n\n\n\nTipo de efecto\nDefinición\nEjemplo práctico\n\n\n\n\nTotal effect\nEl impacto global de la exposición sobre el resultado, considerando todas las rutas (directas e indirectas).\nFumar → cáncer de pulmón (directo) + fumar → inflamación crónica → cáncer de pulmón (indirecto).\n\n\nDirect effect\nEl impacto de la exposición sobre el resultado que no pasa por mediadores.\nFumar → daño celular → cáncer de pulmón.\n\n\nIndirect effect\nEl impacto que se transmite a través de una o más variables mediadoras.\nFumar → inflamación → cáncer de pulmón."
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#cómo-se-interpreta-el-total-effect",
-    "href": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#cómo-se-interpreta-el-total-effect",
-    "title": "Sufriendo con los colisionadores",
-    "section": "Cómo se interpreta el total effect",
-    "text": "Cómo se interpreta el total effect\n\nIncluye todas las rutas causales: tanto las que van directamente de la exposición al resultado como las que pasan por mediadores.\nNo se ajusta por mediadores: si se ajusta por mediadores, se elimina parte del efecto indirecto y se estima solo el efecto directo.\nEs útil para preguntas de política pública o intervención: por ejemplo, si queremos saber el impacto global de dejar de fumar en la incidencia de cáncer, necesitamos el total effect."
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#ejemplo-aplicado",
-    "href": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#ejemplo-aplicado",
-    "title": "Sufriendo con los colisionadores",
-    "section": "Ejemplo aplicado",
-    "text": "Ejemplo aplicado"
-  },
-  {
-    "objectID": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#consideraciones-prácticas",
-    "href": "presentaciones/2026-01-28-diagramas-causales/colisionador-arreglos.html#consideraciones-prácticas",
-    "title": "Suriendo con los colisionadores",
-    "section": "Consideraciones prácticas",
-    "text": "Consideraciones prácticas\n\nPara estimar el total effect, se ajusta únicamente por confusores, no por mediadores.\nPara estimar el direct effect, se ajusta tanto por confusores como por mediadores.\nInterpretación: el total effect responde a la pregunta “¿qué pasa si elimino la exposición?”, mientras que el direct effect responde a “¿qué parte del efecto ocurre sin pasar por mediadores?”.\n\n\nEn resumen, el total effect en un DAG es la medida integral del impacto causal de una exposición sobre un resultado, incluyendo todas las rutas posibles. Esto lo convierte en la estimación más relevante cuando se busca entender el efecto global de una intervención o política.\nejemplos"
   }
 ]
