@@ -1,0 +1,163 @@
+---
+title: "Sufriendo con los colisionadores"
+format: html
+---
+
+```{r}
+#| label: setup
+#| echo: false
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(dagitty)
+library(ggdag)
+library(ggplot2)
+
+
+```
+
+
+**En un DAG (Directed Acyclic Graph), cada tipo de nodo tiene un significado específico que ayuda a interpretar relaciones causales. “Exposure” es la variable de interés que se supone causa un efecto, “Outcome” es el resultado que se estudia, y las demás categorías (Adjusted, Selected, Unobserved, Other) indican cómo se manejan las variables en el análisis.**  
+
+---
+
+## Definiciones clave en un DAG
+
+| Término | Definición | Ejemplo práctico |
+|---------|------------|------------------|
+| **Exposure** | Variable de exposición. Es la la variable que se concibe como causa principal bajo la hipótesis y los objetivos del estudio. Define o forma parte de lo que en algunos contextos se denomina **tratamiento**.  | Fumar cigarrillos. |
+| **Outcome** | Variable de resultado (respuesta). Es el efecto que, de acuerdo con la hipótesis del estudio, resulta de exponer a las unidades experimentales al efecto de la variable de exposición. | Cáncer de pulmón. |
+| **Adjusted** | Variables que se incluyen en el modelo para controlar procesos o siuaciones de confusión de los efectos. Se opta por incluirlos en el modelo estadístico para evitar que afecten la estimación de la exposición sobre el resultado. | Edad y sexo. |
+| **Selected** | Variables que en el contexto del sistema de estudio, representan un sesgo de selección. Dan cuenta de las situaciones en las que la muestra o población está condicionada por los criterios que definen a estas variables y que se concibe, puede distorsionar las relaciones causales. | Solo estudiar pacientes hospitalizados, lo que excluye a quienes no buscan atención médica. |
+| **Unobserved (Latent)** | Variables no medidas, ocultas o latentes que se postula podrían existir e influir en la relación causal, pero que no están disponibles en los datos. | Predisposición genética al cáncer que no se midió en el estudio. |
+
+
+**En un DAG, el *total effect* (efecto total) se refiere al impacto combinado que una variable de exposición tiene sobre un resultado, incluyendo tanto el efecto directo como todos los efectos indirectos que pasan a través de mediadores.** Dicho de otra forma: es la suma del efecto directo y de los efectos transmitidos por las rutas intermedias, todos cobinados.  
+
+---
+
+## Modalidades de estimación de efectos en un estudio
+
+| Tipo de efecto | Definición | Ejemplo práctico |
+|----------------|------------|------------------|
+| **Total effect** | El impacto global de la exposición sobre el resultado, considerando todas las rutas (directas e indirectas). | Fumar → cáncer de pulmón (directo) + fumar → inflamación crónica → cáncer de pulmón (indirecto). |
+| **Direct effect** | El impacto de la exposición sobre el resultado que no pasa por mediadores. | Fumar → daño celular → cáncer de pulmón. |
+| **Indirect effect** | El impacto que se transmite a través de una o más variables mediadoras. | Fumar → inflamación → cáncer de pulmón. |
+
+
+
+## Cómo se interpreta el *total effect*
+- **Incluye todas las rutas causales**: tanto las que van directamente de la exposición al resultado como las que pasan por mediadores.
+- **No se ajusta por mediadores**: si se ajusta por mediadores, se elimina parte del efecto indirecto y se estima solo el efecto directo.
+- **Es útil para preguntas de política pública o intervención**: por ejemplo, si queremos saber el impacto global de dejar de fumar en la incidencia de cáncer, necesitamos el *total effect*.
+
+---
+
+## Ejemplo aplicado
+## Triángulo de confusión básico
+
+Un triángulo de confusión se forma cuando una variable externa afecta tanto al *factor de exposición* como al *resultado*. Esta situación genera sesgo, es decir *altera* la estimación del efecto que nos interesa valorar. Considera la siguiente situación
+
+- Exposición ($X$): Sombra del dosel arbóreo
+- Resultado ($Y$): Crecimiento de plantas del sotobosque
+- Confusor ($C$): Humedad del suelo
+
+Imagina que en el proceso que estoy estudiando la humedad influye en:
+
+- la densidad del dosel (más humedad favorece mayor cobertura), y
+- el crecimiento de las plantas (más agua implica mayor crecimiento y vigor).
+
+Ahora añadimos los mediadores y colisionadores que consideramos están actuando en el sistema de mi interés.
+
+La sombra aumenta la acumulación de hojarasca, que a su vez modifica la oferta de nutrientes y por tanto influye en el crecimiento de las plantas.
+
+- Mediador (M): Profundidad de la hojarasca
+
+Finamente considero que tanto la sombra como la humedad son factores que se relacionan con la atracción de herbívoros a las parcelas.
+
+- Colisionador (K): Presencia de herbívoros
+
+
+
+```{r}
+mi_dag <-  dagitty('dag {C [pos="0.5, 1"]
+                         Y [outcome, pos="-0.5, 1"]
+                         K [pos="1,  0"]
+                         X [exposure, pos="0, 0"]
+                         M [pos="-1, 0"]
+                         C -> X
+                         C -> Y 
+                         X -> Y
+                         X -> K
+                         C -> K
+                         X -> M
+                         M -> Y  }')
+
+plot(mi_dag)
+```
+
+
+```{r}
+ggdag(mi_dag) + theme_dag()
+
+
+```
+Otra manera de definir un DAG es recurrir a la forma como se escriben modelos estadísticos en R. Veamos un ejemplo
+
+```{r}
+
+
+# Definir el DAG
+dag_ecologia <- dagify(Y ~ X + C + M,  
+                       X ~ C, 
+                       M ~ X, 
+                       K ~ X + C,
+
+                       coords = list(C = c(0.5, 1),
+                                     X = c(0, 0),
+                                     M = c(-1, 0),
+                                     Y = c(-0.5, 1),
+                                     K = c(1, 0)),
+                       exposure = "X",
+                       outcome = "Y")
+
+
+# Asignar roles manualmente
+roles <- tibble(
+  name = c("X", "Y", "C", "M", "K"),
+  rol = c("Exposición", "Resultado", "Confusor", "Mediador", "Colisionador"),
+  control = c(F,F,T,F,F)
+)
+
+# Graficar con colores por rol
+dag_ecologia %>%
+  tidy_dagitty(seed = 3334) %>%
+  left_join(roles, by = "name") %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges() +
+  geom_dag_point(aes(fill = rol), color = "black", shape = 21, size = 10) +
+  geom_dag_text(color = "white") +
+  scale_fill_manual(values = c(
+    "Exposición" = "steelblue",
+    "Resultado" = "forestgreen",
+    "Confusor" = "orange",
+    "Mediador" = "purple",
+    "Colisionador" = "red"
+  )) +
+  theme_dag()
+
+
+```
+
+```{r}
+
+dag_ecologia <- control_for(dag_ecologia, var = "C")
+ggdag_adjust(dag_ecologia)
+
+ggdag_paths(dag_ecologia, adjust_for = "C") 
+
+ggdag_adjustment_set(dag_ecologia, exposure = "X", outcome = "Y")
+
+```
+
