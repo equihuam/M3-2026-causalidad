@@ -992,9 +992,6 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 ##  {background-image="img/esquema_ciencia_abierta_heuristicas.png" background-size="75%" #heurística-CA data-menu-title="heurística-CA"}
 
-
-##  {#modelo-hibrido-sociedad background-image="img/figura_modelo_hibrido_ciencia_sociedad.png" background-size="75%" data-menu-title="modelo-hibrido-sociedad"}
-
 ## ¿Qué cambia respecto al positivismo de Comte?
 
 \
@@ -1010,7 +1007,9 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 -   Pero la ciencia sigue siendo indispensable
 :::
 
-------------------------------------------------------------------------
+
+##  {#modelo-hibrido-sociedad background-image="img/figura_modelo_hibrido_ciencia_sociedad.png" background-size="75%" data-menu-title="modelo-hibrido-sociedad"}
+
 
 ## Implicación final
 
@@ -1039,13 +1038,6 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 :::
 ::::
 
-## 4 ¿Cuáles son los aspectos CLAVE para diseñar un experimento/estudio?
-
-::: header
-**Participa: vevox.app ID: 144-565-419**
-:::
-
-##  {#vevox-4 data-menu-title="vevox-4" background-iframe="https://vevox.app/#/m/144565419?integration=embed" background-interactive="true"}
 
 ## Referencias
 
