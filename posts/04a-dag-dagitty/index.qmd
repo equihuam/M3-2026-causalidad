@@ -1,11 +1,22 @@
 ---
 title: "Aprovechando mi **DAG** "
+author: ["Miguel Equihua"]
+date: "2026-02-03 12:00:00"
+lang: es
+categories: [DAG]
 
 format: html
 code-fold: true
 
 draft: false  
+
 ---
+
+![](images/network-3148727_1280.jpg){width=60% fig-align="center"}
+
+\
+\
+
 
 ```{r}
 #| label: setup
@@ -22,6 +33,9 @@ library(flextable)
 
 ```
 
+\
+\
+
 En un **DAG**, cada tipo de nodo tiene un significado específico que
 surge de los intereses de la investigación. A partir de esa información
 derivamos perspectivas específicas sobre la forma como se expresan los
@@ -37,7 +51,8 @@ Esto ayuda a ampliar la capacidad expresiva del **DAG**, y al mismo
 tiempo no ayuda a clarificar acciones de "diseño del estudio" que
 habremos de poner en práctica.
 
-------------------------------------------------------------------------
+\
+\
 
 ## Definiciones clave en un **DAG**
 
@@ -345,6 +360,10 @@ summary(modelo_ajustado_hum_hoj)
         causal**.\
     -   El **DAG** ayuda a ver que identificar confusores es clave para
         separar correlaciones espurias de efectos reales.
+
+
+Con la bibliiteca `flextable` puedes generar una tabla en formato bonito del ajuste de tus modelos. Te doy un ejemplo en seguida. Uso como parámetro el *objeto ajustado con lm*. 
+
 
 ```{r}
 
