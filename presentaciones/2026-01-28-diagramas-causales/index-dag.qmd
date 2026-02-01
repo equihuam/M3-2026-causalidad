@@ -1,0 +1,308 @@
+---
+title: "Aprovechando mi DAG "
+
+format: html
+code-fold: true
+
+draft: false  
+
+---
+
+```{r}
+#| label: setup
+#| echo: false
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(dagitty)
+library(ggdag)
+library(ggplot2)
+library(flextable)
+
+
+```
+
+
+**En un DAG, cada tipo de nodo tiene un significado específico que surge de los intereses de la investigación. A partir de esa información derivamos perspectivas específicas sobre la forma como se expresan los patrones de correlación y sobre la credibilidad de las relaciones causales propuestas. Conviene distinguir entre la o las "variables de interés", que se propone responden según lo que hagamos con otro conjunto de variables de nuestro interés que podemos asociar con "tratamientos" o "exposición". Desde luego hay algunas otra variables importantes que podemos reconocer en el sistema de nuestro interés, pero que más bien tienen un papel que nos interesa eliminar, control o simplemente reconocer que aunque importante, no la podemos observar. Esto ayuda a ampliar la capacidad expresiva del DAG, y al mismo tiempo no ayuda a clarificar acciones de "diseño del estudio" que habremos de poner en práctica.**  
+
+---
+
+## Definiciones clave en un DAG
+
+
+| Término | Definición                                         | Ejemplo práctico             |
+|---------|----------------------------------------------------|------------------------------|
+| **Exposure** | Variable de exposición. Es la causa principal bajo la hipótesis y los objetivos del estudio. Define o forma parte de lo que en algunos contextos se denomina **tratamiento**. | Sombra del dosel arbóreo. |
+| **Outcome** | Variable de resultado (respuesta). Es el efecto que, de acuerdo con la hipótesis del estudio, resulta de exponer a las unidades experimentales a la variable de exposición. | Crecimiento de plantas del sotobosque. |
+| **Adjusted** | Variables que se incluyen en el modelo para controlar procesos o situaciones de confusión de los efectos. Se opta por incluirlos en el modelo estadístico para evitar que afecten la estimación de la exposición sobre el resultado. | Humedad del suelo. |
+| **Selected** | Variables que en el contexto del sistema de estudio representan un sesgo de selección (colicionador)     . Dan cuenta de las situaciones en las que la muestra o población está condicionada por criterios que pueden distorsionar las relaciones causales. | Solo medir plantas en claros accesibles, lo que excluye parcelas más profundas del bosque. |
+| **Unobserved (Latent)** | Variables no medidas, ocultas o latentes que se postula podrían existir e influir en la relación causal, pero que no están disponibles en los datos. | Presencia de micorrizas en el suelo que no se midieron, pero que influyen en el crecimiento. |
+
+
+
+## Modalidades de estimación de efectos en un estudio
+
+En un DAG, el *total effect* (efecto total) se refiere al impacto combinado que una variable de exposición tiene sobre un resultado, incluyendo tanto el efecto directo como todos los efectos indirectos que pasan a través de mediadores. **Dicho de otra forma: es la suma del efecto directo y de los efectos transmitidos por las rutas intermedias, todos combinados.**  
+
+| Tipo de efecto | Definición                    | Ejemplo práctico (ecología) |
+|----------------|-------------------------------|-----------------------------|
+| **Total effect** | El impacto global de la exposición sobre el resultado, considerando todas las rutas (directas e indirectas). | Sombra del dosel → crecimiento reducido de plantas (directo) + sombra → más hojarasca → cambios en nutrientes → crecimiento reducido (indirecto). |
+| **Direct effect** | El impacto de la exposición sobre el resultado que no pasa por mediadores. | Sombra → menor fotosíntesis → crecimiento reducido. |
+| **Indirect effect** | El impacto que se transmite a través de una o más variables mediadoras. | Sombra → acumulación de hojarasca → alteración de nutrientes → crecimiento reducido. |
+
+
+## Cómo se interpretan las estimaciones de *efectos*
+- **Incluye todas las rutas causales**: tanto las que van directamente de la exposición al resultado como las que pasan por mediadores.  
+- **No se ajusta por mediadores**: si se ajusta por mediadores, se elimina parte del efecto indirecto y se estima solo el efecto directo.  
+- **Es útil para preguntas de manejo ecológico o conservación**: por ejemplo, si queremos saber el impacto global de abrir claros en el bosque sobre el crecimiento del sotobosque, necesitamos el *total effect*.  
+ 
+
+```{r}
+#| label: dag
+#| out-height: "500px"
+#| fig-height: 5       
+
+
+# Definir DAG 
+dag_ecologia <- dagify(
+  Crec ~ Somb + Hum + Hoj,
+  Somb ~ Hum,
+  Hoj ~ Somb,
+  Sel ~ Crec,   # Sesgo de selección: solo plantas en claros accesibles
+  Lat ~ Crec,   # Variable latente: micorrizas no observadas
+  coords = list(
+    Somb = c(0, 2),
+    Hum = c(0, 0),
+    Hoj = c(1, 1),
+    Crec = c(2, 2),
+    Sel = c(3, 1.5),
+    Lat = c(2, 3)
+  ),
+  exposure = "Somb",
+  outcome = "Crec",
+  latent =  "Lat"
+)
+
+ # Asignar roles
+roles <- tibble(
+  name = c("Somb", "Crec", "Hum", "Hoj", "Sel", "Lat"),
+  rol = c("Exposición", "Resultado", "Confusor", "Mediador", "Seleccionada", "Latente")
+)
+
+# Graficar con colores y formas
+dag_ecologia %>%
+  tidy_dagitty() %>%
+  left_join(roles, by = "name") %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges() +
+  geom_dag_point(aes(fill = rol, shape = rol), color = "black", size = 20) +
+  geom_dag_text(color = "black", size = 4) +
+  scale_fill_manual(values = c(
+    "Exposición" = "steelblue",
+    "Resultado" = "forestgreen",
+    "Confusor" = "orange",
+    "Mediador" = "purple",
+    "Seleccionada" = "brown",
+    "Latente" = "grey50"
+  )) +
+  scale_shape_manual(values = c(
+    "Exposición" = 22,   # cuadrado
+    "Resultado" = 21,    # óvalo
+    "Confusor" = 23,     # rombo
+    "Mediador" = 24,     # triángulo
+    "Seleccionada" = 25, # cuadrado
+    "Latente" = 21       # óvalo
+  )) +
+  theme_dag() +
+  ggtitle("DAG ecológico ") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+```
+
+
+\
+\
+
+
+## Triángulo de confusión
+
+En ecología, un triángulo de confusión aparece cuando una variable externa afecta tanto al factor de exposición como al resultado, generando un sesgo. En este ejemplo la humedad influye en:
+
+- la densidad del dosel (más humedad favorece mayor cobertura).
+- El crecimiento de las plantas (más agua provoca mayor productividad).
+
+Así se forma el triángulo:
+
+$$
+Sombra ~ (X) \leftarrow ~ Humedad~del~suelo~(C) \rightarrow ~ Crecimiento ~ (Y)
+$$
+
+- **Pregunta:** ¿La sombra reduce el crecimiento de plantas?  
+- **Problema:** La humedad también afecta sombra y crecimiento.  
+- **¿Debería?:** Ajustar por humedad en el modelo o controlar humedad en el diseño experimental.  
+- **¿Qué ganaría?:** Una estimación más válida del efecto causal de la sombra.
+
+---
+
+
+### Implicaciones
+
+
+- **Sesgo en la estimación:**  
+  Si no controlas la humedad, el efecto estimado de la sombra sobre el crecimiento estará mezclado con el efecto de la humedad.  
+- **Camino falso:**  
+  La humedad abre un camino alternativo entre sombra y crecimiento que no es causal, sino confusor.
+- **Interpretación incorrecta:**  
+  Podrías concluir que la sombra tiene un efecto más fuerte (o más débil) de lo que realmente tiene, porque parte del efecto proviene de la humedad.
+ 
+
+```{r}
+#| label: triangulo
+#| out-height: "500px"
+#| fig-height: 5
+
+# Asignar roles y marcar el triángulo de confusión
+roles <- tibble(
+  name = c("Somb", "Crec", "Hum", "Hoj", "Sel", "Lat"),
+  rol = c("Exposición", "Resultado", "Confusor", "Mediador", "Seleccionada", "Latente"),     
+  conf_triangle = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE) 
+)
+  
+# Graficar con colores diferenciados
+dag_ecologia %>%
+  tidy_dagitty() %>%
+  left_join(roles, by = "name") %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges() +
+  geom_dag_point(
+    aes(fill = conf_triangle, shape = rol),
+    color = "black", size = 20
+  ) +
+  geom_dag_text(color = "black", size = 4) +
+  scale_fill_manual(values = c(
+    `TRUE` = "red",      # nodos del triángulo de confusión
+    `FALSE` = "grey70"   # otros nodos
+  )) +
+  scale_shape_manual(values = c(
+    "Exposición" = 22,   # cuadrado
+    "Resultado" = 21,    # óvalo
+    "Confusor" = 23,     # rombo
+    "Mediador" = 24,      # triángulo
+    "Seleccionada" = 25, # cuadrado
+    "Latente" = 21       # óvalo
+  )) +
+
+  theme_dag() +
+  ggtitle("DAG ecológico con triángulo de confusión destacado") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+Podemos explorar este sistema ecológico con `dagitty` y también recurriendo a ensayos por simulación.
+
+Le podemos pedir a `dagitty` que nos identifique el conjunto de variables que deberíamos controlar para lograr una estimación de efectos entre *exposure* y *outcome*. Lo hacemos así.
+
+
+
+
+```{r}
+adjustmentSets(dag_ecologia)
+```
+
+Podemos ver con ayuda gráfica de la biblioteca `ggdag` (integra `dagitty` con `ggplot2`)   ,   el patrón de interés cuando nos interesa la relación entre *sombra* y *crecimiento*. 
+
+
+```{r}
+ggdag_adjustment_set(dag_ecologia)
+```
+
+
+Ahora, hagamos una simulación de la situación descrita. Empezamos por construir el patrón en los datos, de acuerdo con la misma proposición causal que hemos capturado en el DAG
+
+```{r}
+set.seed(1234)
+
+# Número de observaciones
+n <- 500
+
+# Variable confusora: Humedad
+Hum <- rnorm(n, mean = 1, sd = 1)
+
+# Exposición: Sombra, influida por Humedad
+Somb <- 0.7 * Hum + rnorm(n, mean = 1, sd = 1)
+
+# Mediador: Hojarasca, influida por Sombra 
+Hoj <- 0.5 * Somb + rnorm(n, mean = 1, sd = 1)
+
+# Resultado: Crecimiento, influido por Sombra, Humedad y Hojarasca
+Crec <- -0.8 * Somb + 0.6 * Hum - 0.4 * Hoj + rnorm(n, mean = 1, sd = 1)
+```
+
+
+De acuerdo con estos datos, tenemos un *efecto directo*  del sombreado (el esperado simulado es de 0.8 unidades). Además deberíamos poder obtener una estimación del *efecto total* asociado con la sombra que sería:
+
+```{r}
+
+somb_prom = mean(Hum)      
+hoj_prom = mean(Hoj)
+efecto_total <- -0.8 +  (-0.4 * 0.5)
+cat("Efecto total esperado: ", efecto_total, "unidades")
+```
+
+Ahora ajustemos modelos para ver qué pasa.
+
+
+Primero el caso equivocado se intentar estimar directamente el efecto del sombreado. Está equivocado pues existe el efecto de confusión o sesgo que no se ha controlado. No produce una buena estimación   ni del efecto directo ni del total.
+  
+
+```{r}
+# Modelo sin ajustar por Humedad (sesgado)
+modelo_sesgado <- lm(Crec ~ Somb)
+summary(modelo_sesgado)
+```
+
+Ahora hacemos lo que el DAG nos sugiere es la forma apropiada de obtener el estimador del *efecto total*. Controlamos el la ruta que está provocando confusión a través del papel de la humedad en el sistema.
+   
+```{r}
+# Modelo ajustado por Humedad (controla confusión), efecto total 
+modelo_ajustado_hum <- lm(Crec ~ Somb + Hum)
+summary(modelo_ajustado_hum )
+```
+
+El *efecto total* asociado a sombreado resulta bastante cercano al que esperaríamos: -1.   
+
+Si separamos el efecto de la hojarasca, agregando esa variable en el modelo, entonces obtenemos un estimador del efecto directo atribuible al sombreado. El esperado de esto es: -0.8 unidades.   
+
+
+```{r}
+# Modelo ajustado por Humedad y hojarasca efecto directo
+modelo_ajustado_hum_hoj <- lm(Crec ~ Somb + Hum + Hoj)
+summary(modelo_ajustado_hum_hoj)
+  
+```
+
+
+### Para reflexionar
+
+1. **Identificación en el DAG**  
+   - El DAG permite reconocer que Humedad es un confusor porque afecta tanto a la exposición (Sombra) como al resultado (Crecimiento).  
+   - Visualmente, el triángulo ayuda a ver en dónde está el sesgo.
+2. **Ajuste estadístico**  
+   - Lo que habría que hacer es incluir la humedad como covariable en el modelo.  
+   - Al incluir esta variable bloqueas el camino de confusión y logras estimar adecuadamente el efecto causal de la sombra sobre el crecimiento.
+3. **Diseño experimental**  
+   - Controlar la humedad en el diseño (igualación de condiciones) (ej. parcelas con riego homogéneo, o seleccionar sitios con humedad similar).  
+   - Esto elimina la variación de humedad como fuente de confusión antes de analizar los datos.
+4. **Interpretación conceptual**  
+   - El triángulo muestra que **no todo lo que correlaciona es causal**.  
+   - El DAG ayuda a ver que identificar confusores es clave para separar correlaciones espurias de efectos reales.
+   
+   
+```{r}
+
+ as_flextable(modelo_ajustado_hum_hoj)
+
+```
+
