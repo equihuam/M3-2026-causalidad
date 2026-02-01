@@ -2,17 +2,9 @@
   {
     "listing": "/presentaciones.html",
     "items": [
-      "/presentaciones/2026-01-28-diagramas-causales/index-dag.html",
       "/presentaciones/2026-01-28-modelo-lineal/index.html",
       "/presentaciones/2026-01-28-diagramas-causales/index.html",
       "/presentaciones/2026-01-28-epistemologia/index.html"
-    ]
-  },
-  {
-    "listing": "/ejercicios.html",
-    "items": [
-      "/ejercicios/control-de-entregas/index.html",
-      "/ejercicios/tareas/index.html"
     ]
   },
   {
@@ -23,6 +15,13 @@
       "/posts/04-diagramas-causales/index.html",
       "/posts/01-concepto-y-modelos-experimentar/index.html",
       "/posts/00-Bienvenida/index.html"
+    ]
+  },
+  {
+    "listing": "/ejercicios.html",
+    "items": [
+      "/ejercicios/control-de-entregas/index.html",
+      "/ejercicios/tareas/index.html"
     ]
   }
 ]

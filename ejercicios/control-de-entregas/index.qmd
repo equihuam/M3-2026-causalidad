@@ -70,6 +70,14 @@ for (correo in correos)
 }
 
 
+# Respumen numérico
+ 
+tabla_correo |> 
+  mutate(lect =  sum(if_else(str_detect(str_to_lower(archivo), "lectura"), 1, 0)),
+         ejerc = sum(if_else(str_detect(str_to_lower(archivo), "ejerc|tarea|descrip"), 1, 0))) |> 
+  select(lect, ejerc) |> 
+  slice(1) 
+
 ```
 
 

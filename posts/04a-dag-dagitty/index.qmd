@@ -12,10 +12,6 @@ draft: false
 
 ---
 
-![](images/network-3148727_1280.jpg){width=60% fig-align="center"}
-
-\
-\
 
 
 ```{r}
@@ -33,11 +29,14 @@ library(flextable)
 
 ```
 
-\
-\
+
+![](images/network-3148727_1280.jpg){width=60% fig-align="center"}
+
+
 
 En un **DAG**, cada tipo de nodo tiene un significado específico que
-surge de los intereses de la investigación. A partir de esa información
+surge de los intereses de la investigación y de la comprensión de la 
+naturaleza misma del sistema que se estudia. A partir de esa información
 derivamos perspectivas específicas sobre la forma como se expresan los
 patrones de correlación y sobre la credibilidad de las relaciones
 causales propuestas. Conviene distinguir entre la o las *variables de
