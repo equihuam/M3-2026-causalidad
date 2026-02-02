@@ -45,9 +45,9 @@ conjunto de variables de nuestro interés que podemos asociar con
 *tratamientos* o *exposición*. Desde luego hay algunas otra variables
 importantes que podemos reconocer en el sistema de nuestro interés, pero
 que más bien tienen un papel que nos interesa [eliminar]{.underline}, [controlar]{.underline} o
-simplemente reconocer que aunque importante, [**no** la podemos observar]{.underline}.
+simplemente reconocer que aunque importantes, [**no** las podemos observar]{.underline}.
 Esto ayuda a ampliar la capacidad expresiva del **DAG**, y al mismo
-tiempo no ayuda a clarificar acciones de **diseño del estudio** que
+tiempo nos ayuda a clarificar acciones de **diseño del estudio** que
 habremos de poner en práctica.
 
 \
