@@ -1,5 +1,6 @@
 ---
 title: "Registro de entregas"
+author: "Miguel Equihua"
 format: html
 
 image: img/bad-mark-624734_1280.jpg
@@ -12,23 +13,15 @@ image: img/bad-mark-624734_1280.jpg
 #| message: false
 
 # Outlook 365
+pacman::p_load(Microsoft365R, dplyr, stringr, DT, flextable)
 
-
-pacman::p_load(Microsoft365R, dplyr, stringr, DT)
-
+# Recupera los mensajes de interés
 alumnos <- read.csv("../../posts/00-Bienvenida/Lista-de-alumnos-2026.csv")
-
-#outl <- get_personal_outlook()
-
 outlb <- get_business_outlook()
-
 inbox_ref <- outlb$get_inbox()
-
-
-#inbox_ref$get_list_pager(lst = )
-
 correos <- inbox_ref$list_emails(search = "m3-2026", pagesize = 200)
 
+# Prepara la tabka de registro de coreos y su tipo dw contenido
 tabla_correo <- tibble(fecha = character(), 
                        alumno = character(), 
                        archivo = character())
@@ -46,7 +39,7 @@ for (correo in correos)
     fecha  <- as.POSIXlt( as.Date(correo$properties$receivedDateTime))
     year <- fecha$year + 1900
     mes <- fecha$mon + 1
-    if (str_detect(str_to_lower(anexo), "lectura"))
+    if (str_detect(str_to_lower(anexo), "lect"))
     {
       d[[1]]$download(dest = paste0("lecturas/",anexo), 
                     overwrite = TRUE)
@@ -65,23 +58,47 @@ for (correo in correos)
     fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
     tabla_correo <- bind_rows(tabla_correo, c(fecha = fecha_str,
                                               alumno = alumno,
-                                              archivo = anexo))
+                                              archivo = anexo)) 
   }
 }
 
 
-# Respumen numérico
- 
-tabla_correo |> 
-  mutate(lect =  sum(if_else(str_detect(str_to_lower(archivo), "lectura"), 1, 0)),
-         ejerc = sum(if_else(str_detect(str_to_lower(archivo), "ejerc|tarea|descrip"), 1, 0))) |> 
-  select(lect, ejerc) |> 
-  slice(1) 
-
+# Resumen numérico
+tabla_correo <- tabla_correo |>
+  distinct(archivo, .keep_all = TRUE) |>
+  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip"),
+                        "ejercicio", "lectura"),
+         id_num = str_extract(archivo, "(?<=\\-|_|\\s)(\\d+)(?=\\-|_|\\s)")) |> 
+  arrange(tipo, id_num)
 ```
 
+El conteo de tareas recibidas hasta el día `r format(Sys.time(), "%e de %B, %Y")` es el que sigue.
 
-Los documentos que he recibido hasta el día `r format(Sys.time(), "%e de %B, %Y")` son los que están en esta lista.
+\
+\
+
+```{r}
+#| label: cuadro-resumen
+#| echo: false
+#| warning: false
+#| message: false
+
+
+tabla_correo |> 
+  group_by(tipo, id_num) |> 
+  summarise(cantidad = n(), .groups = "drop") |> 
+  flextable() |> 
+  set_header_labels(tipo = "Tipo", id_num = "id", cantidad = "Cantidad")
+```
+\
+\
+
+
+
+Los documentos que he recibido son los que están en esta lista.
+\
+\
+
 
 ```{r}
 #| label: entregas
@@ -94,6 +111,8 @@ tabla_correo |>
             options = list(pageLength = 15))
 
 ```
+
+
 
 
 
