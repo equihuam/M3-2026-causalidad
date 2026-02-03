@@ -66,7 +66,7 @@ for (correo in correos)
 # Resumen numérico
 tabla_correo <- tabla_correo |>
   distinct(archivo, .keep_all = TRUE) |>
-  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip"),
+  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip|dag"),
                         "ejercicio", "lectura"),
          id_num = str_extract(archivo, "(?<=\\-|_|\\s)(\\d+)(?=\\-|_|\\s)")) |> 
   arrange(tipo, id_num)
