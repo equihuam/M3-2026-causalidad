@@ -311,7 +311,7 @@ modelo_sesgado <- lm(Crec ~ Somb)
 summary(modelo_sesgado)
 ```
 
-Ahora hacemos lo que el **DAG** nos sugiere es la forma apropiada de
+Ahora hacemos lo que el **DAG** nos sugiere que es la forma apropiada de
 obtener el estimador del *efecto total*. Controlamos el la ruta que está
 provocando confusión a través del papel de la humedad en el sistema.
 
@@ -340,13 +340,13 @@ summary(modelo_ajustado_hum_hoj)
 1.  **Identificación en el DAG**
     -   El **DAG** permite reconocer que *Humedad* da origen a un proeso de
         confusión de efectos, porque influye tanto sobre la exposición (*Sombra*) 
-        como al resultado(*Crecimiento*).\
+        como el resultado(*Crecimiento*).\
     -   Visualmente, el triángulo ayuda a ver en dónde está el sesgo.
 2.  **Ajuste estadístico**
     -   Lo que habría que hacer es incluir la *humedad* como covariable en
         el modelo.\
     -   Al incluir esta variable bloqueas el camino de confusión y
-        logras estimar adecuadamente el efecto causal de la *sombra* sobre
+        logras estimar e mejor manera el efecto causal de la *sombra* sobre
         el *crecimiento*.
 3.  **Diseño experimental**
     -   Controlar la *humedad* en el diseño (igualación de condiciones)
