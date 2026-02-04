@@ -229,6 +229,35 @@ ggplot(datos, aes(x=distancia_geo, y=distancia_gen, color=region)) +
 ```
 
 
+En filogeografía, tanto el **test de Mantel** como la **regresión** se usan para evaluar la relación entre matrices de distancia genética y geográfica, pero tienen diferencias importantes:
+
+El Test de Mantel calcula la correlación entre dos matrices de distancia (ej. genética vs geográfica).  
+
+- **Ventajas:**
+  - Es el método clásico para probar la hipótesis de **aislamiento por distancia**.  
+  - Funciona directamente con matrices simétricas de distancias.  
+  - Usa permutaciones para evaluar significancia, lo que lo hace robusto frente a distribuciones no normales.  
+- **Limitaciones:**
+  - No estima coeficientes de regresión ni intercepto (solo da una correlación).  
+  - Puede ser sensible a la autocorrelación espacial y a estructuras jerárquicas.  
+  - Menos flexible si quieres incluir variables adicionales o interacciones.
+
+Por su lado, la regresión (ej. regresión lineal o modelos mixtos) se orienta a construir un modelo que prediga la distancia genética como una función de la distancia geográfica (y otras covariables si quieres).  
+
+- **Ventajas:**
+  - Permite estimar **coeficientes de refresión (efectos), intercepto y significancia estadística**.  
+  - Se puede extender a modelos más complejos (ej. incluir región, ambiente, barreras).  
+  - Más interpretativo: puedes decir “cada 100 km aumenta en X unidades la divergencia genética”. 
+- **Limitaciones:**
+  - Requiere transformar matrices en vectores de pares (lo que rompe la independencia estadística).
+  - Si no se ajusta con métodos adecuados (ej. modelos mixtos o GLS), puede inflar la significancia.  
+  - Menos robusto que Mantel si solo quieres probar correlación simple.
+
+
+
+Auque generalmente se considera a Matel como más directo y simple, en el ejemplo vemos  que, si interesa un **contraste entre regiones**, la **regresión con interacción** es más poderosa porque te permite comparar pendientes e interceptos. El Mantel te daría solo una correlación por región, sin mostrar cómo cambia la intensidad del aislamiento por distancia.  
+
+
 ```{r}
 #| echo: false
 #| eval: false
