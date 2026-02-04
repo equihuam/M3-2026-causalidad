@@ -1,0 +1,123 @@
+---
+title: "Modelación filogeográfica (observacional"
+format: html
+---
+
+```{r}
+#| label: setup
+#| echo: false
+
+library(dplyr)
+library(flextable)
+library(ggplot2)
+library(stringr)
+library(officer)
+
+```
+
+
+
+## Pregunta de investigación
+
+Queremos analizar si la **distancia genética** entre poblaciones de una especie (medida como divergencia en secuencias de ADN mitocondrial) está asociada con la **distancia geográfica** (en kilómetros) entre esas poblaciones. Pensamos que existe una **relación positiva** que provoca que a mayor distancia geográfica ocurra también una mayor divergencia genética.  La razón para pensar así es la la hipótesis de **aislamiento por distancia**, una proposición común en estudios filogeográficos.  En términos biológicos estamos considerando que las poblaciones que están más alejadas físicamente sostienen un menor flujo génico y, por tanto, con el paso del tiempo habrán acumulado mayor cantidad de diferencias genéticas.
+
+Tradicionalmente, al gremio filogeográfico, le gusta analizar este tipo de cuestiones  con la llamada prueba de  **Mantel** (enfoque *no paramétrico* que analiza estadísticamente la correlación entre matrices de distancia genética y geográfica). Además, los resultados de esos análisis se suelen ilustrar con visualizaciones mediante mapas que destacan gradientes que asocian las divergencias. 
+
+La prueba de **Mantel clásica** aplicada a matrices de disimilitud ($D_{1}\ \text{ y } D_{2}$), es linealmente equivalente a una regresión lineal ($y=\beta_{0}+\beta_{1}x$), en donde las observaciones o *datos*, son las parejas que se forman al *empatar los valores correspondientes en las matrices*. Para contrtuir el enfoque de regresión, consideraríamos que la *variable de respuesta* ($y$), son los elementos de la matriz de distancia genética, $D_{1}$.  La *variable explicaiva* ($x$), serán los elementos de la matriz de distancia geográfica $D_{2}$. El modelo, claramente, explora así la posibilidad de *predecir* los valores de la matriz $D_{1}$ dados los de la matriz $D_{2}$.
+
+Para enriquecer el ejemplo, consideremos que además el fenómeno se desarrolla sobre **regiones geográficas**. En tal caso, habría que evaluar si la relación entre distancia genética y distancia geográfica es igual en los distintoss territorios, o si hay diferencias que reflejen historias evolutivas y ecológicas particulares. ¿Habrá variables adicionales que permitan explorar esas historias? ¿habrá procesos de confusión de efectos que habría que considerar?.
+
+
+
+### Datos
+
+Supongamos que estudiamos la especie *Mi alegría* está distribuida en **dos regiones**:  
+- **Región A (bosques húmedos)**  
+- **Región B (zonas áridas)**  
+
+Queremos ver si el patrón de aislamiento por distancia (relación entre distancia genética y distancia geográfica) es un fenómeno que está experimentando la especie en cada región.
+
+
+### Modelo 
+Podemos usar una regresión simple extendida con un **factor cualitativo de región**:
+
+$$
+\begin{align*}
+\text{Distancia genética} &= \beta_0 + \beta_1 \cdot \text{Distancia geográfica} + \beta_2 \cdot \text{Región} + \beta_3 \cdot (\text{Distancia geográfica} \times \text{Región}) + \varepsilon \\ 
+\\
+\text{o, en forma más compacta}\\  
+\\
+D_{gen} &= \mu + D_{geo} + R + RD_{geo} + \varepsilon
+\end{align*}
+$$
+En donde:
+
+- $D{geo}$: grado de relación entre distancias (genética y geográfica)  
+- $R$: efecto de la región sobre la relación entre distancias.  
+- $RD{geo}$: compotamiento diferencial de la distancia geográfica entre regiones.  
+
+### Procesos biológicos hipotéticos
+- En **bosques húmedos**, las poblaciones están más aisladas y la distancia geográfica se traduce en mayor divergencia genética (probablemente por barreras físicas como montañas o ríos).  
+- En **zonas áridas**, el flujo génico puede ser más amplio (quizá por dispersión aérea o menor fragmentación), reduciendo el efecto del aislamiento por distancia.  
+- El contraste muestra que **los procesos filogeográficos no son homogéneos**: dependen del paisaje y la ecología regional.
+
+
+### Valores hipotéticos (para simular)
+- **Región A (bosques húmedos):**  
+  $D_{geo} = 0.01$ con un efecto adicional de $R = 0.0003$, 
+  imaginamos que está ocurriendo un fuerte aislamiento por distancia: cada 100 km aumenta en 0.03 unidades la divergencia genética.  
+
+- **Región B (zonas áridas):**  
+  $D_{geo} = 0.02$ con un efecto adicional de $R = 0.0001$,  
+  imaginamos que el aislamiento por distancia es más débil aca: cada 100 km aumenta sólo en 0.01 unidades la divergencia genética.  
+
+
+### Simulación de datos
+
+```{r}
+
+datos <- data.frame(
+  distancia_geo = c(50,120,300,80,250,200, 60,150,280,90,260,210),
+  distancia_gen = c(0.01,0.03,0.06,0.02,0.05,0.04, 0.02,0.025,0.04,0.022,0.03,0.028),
+  region = rep(c("_bosque_humedo","_zona_arida"), each = 6)
+)
+
+datos |> 
+  mutate(reg_alfa = if_else(str_detect(region, "bosq"),
+                            "Bosque húmedo", 
+                            "Matorral xerófilo")) |> 
+  select(distancia_gen,distancia_geo,reg_alfa) |> 
+  flextable() |> 
+  add_header_row(values = c("Distancia", ""), colwidths = c(2,1)) |> 
+  set_header_labels(distancia_gen = "Genética",
+                    distancia_geo = "Geográfica",
+                    reg_alfa = "Región") |> 
+  align(i = 1:2, part = "header", align = "center") |> 
+  align(j = 3, align = "center") |> 
+  border(i = 1, j = 3, part = "header", border.bottom = fp_border(color = "white", width = 2)) |> 
+  width(j = 3, width = 2)
+
+```
+
+
+```{r}
+
+# Modelo con interacción
+modelo <- lm(distancia_gen ~ distancia_geo * region, data=datos)
+summary(modelo)
+
+```
+
+
+```{r}
+
+# Visualización
+ggplot(datos, aes(x=distancia_geo, y=distancia_gen, color=region)) +
+  geom_point(size=3) +
+  geom_smooth(method="lm", se=FALSE) +
+  labs(x="Distancia geográfica (km)", 
+       y="Distancia genética (p-dist)",
+       title="Contraste de aislamiento por distancia entre regiones") +
+  theme_minimal()
+
+```

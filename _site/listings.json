@@ -10,6 +10,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/06-Restringir-aleatorizacion/index.html",
       "/posts/04a-dag-dagitty/index.html",
       "/posts/05-dis-comp-aleat/index.html",
       "/posts/04-diagramas-causales/index.html",
@@ -21,6 +22,7 @@
     "listing": "/ejercicios.html",
     "items": [
       "/ejercicios/control-de-entregas/index.html",
+      "/ejercicios/ejemplo-observacional/index.html",
       "/ejercicios/tareas/index.html"
     ]
   }
