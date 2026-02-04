@@ -3,6 +3,8 @@ title: "Registro de entregas"
 author: "Miguel Equihua"
 format: html
 
+lang: es
+
 image: img/bad-mark-624734_1280.jpg
 ---
 
