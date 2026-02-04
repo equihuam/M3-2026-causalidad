@@ -1,11 +1,22 @@
 ---
 title: "Modelación filogeográfica (observacional"
-format: html
+
+author: ["Miguel Equihua"]
+date: "2026-02-04"
+lang: es
+draft: false
+categories: [ejemplo]
+
+format:
+  html:
+    code-fold: true
 ---
 
 ```{r}
 #| label: setup
 #| echo: false
+#| warning: false
+#| message: false
 
 library(dplyr)
 library(flextable)
@@ -74,14 +85,109 @@ En donde:
 
 ### Simulación de datos
 
+Las matrices de distancia se ven así
+
 ```{r}
+#| echo: true
+#| warning: false
+#| message: false
 
 datos <- data.frame(
   distancia_geo = c(50,120,300,80,250,200, 60,150,280,90,260,210),
   distancia_gen = c(0.01,0.03,0.06,0.02,0.05,0.04, 0.02,0.025,0.04,0.022,0.03,0.028),
-  region = rep(c("_bosque_humedo","_zona_arida"), each = 6)
+  region = factor(rep(c("_bosque_humedo","_zona_arida"), each = 6))
 )
 
+
+mat_reg_bosque<- matrix(0, nrow = 4, ncol = 4)
+mat_reg_bosque[lower.tri(mat_reg_bosque)] <- datos$distancia_geo[1:6]
+mat_reg_bosque <- mat_reg_bosque + t(mat_reg_bosque)
+
+mat_reg_matorral <- matrix(0, nrow = 4, ncol = 4)
+mat_reg_matorral[lower.tri(mat_reg_matorral)] <- datos$distancia_geo[7:12]
+mat_reg_matorral <- mat_reg_matorral + t(mat_reg_matorral)
+
+mat_gen_reg_bosque <- matrix(0, nrow = 4, ncol = 4)
+mat_gen_reg_bosque[lower.tri(mat_gen_reg_bosque)] <- datos$distancia_gen[1:6]
+mat_gen_reg_bosque <- mat_gen_reg_bosque + t(mat_gen_reg_bosque)
+
+mat_gen_reg_matorral <- matrix(0, nrow = 4, ncol = 4)
+mat_gen_reg_matorral[lower.tri(mat_gen_reg_matorral)] <- datos$distancia_gen [7:12]
+mat_gen_reg_matorral <- mat_gen_reg_matorral + t(mat_gen_reg_matorral)
+
+
+
+
+# --- Heatmap geográfico --- 
+library(tidyr)
+melt_geo <-  mat_reg_bosque |> 
+  as_tibble(rownames = "row", .name_repair = "unique")  |> 
+  pivot_longer(-row, names_to = "col", values_to = "valor") |> 
+  mutate(col = rep(1:4, times = 4),
+         row = as.integer(row))
+
+ggplot(melt_geo, aes(col, -row, fill = valor)) + 
+  geom_tile() + 
+  geom_text(aes(label=valor), color="white") + 
+  scale_fill_gradient(low="lightblue", high="darkblue", name = "dist") + 
+  labs(title="Matriz de distancia geográfica (km)",
+       subtitle = "Bosque húmedo", x="Población", y="Población") + 
+  theme_minimal() +
+  theme(axis.text = element_blank(),
+        axis.title = element_blank())
+
+
+melt_geo <-  mat_reg_matorral|> 
+  as_tibble(rownames = "row", .name_repair = "unique"  )  |> 
+  pivot_longer(-row, names_to = "col", values_to = "valor") |> 
+  mutate(col = rep(1:4, times = 4),
+         row = as.integer(row))
+ggplot(melt_geo, aes(col, -row, fill = valor)) + 
+  geom_tile() + 
+  geom_text(aes(label=valor), color="white") + 
+  scale_fill_gradient(low="lightblue", high="darkblue", name = "dist") + 
+  labs(title="Matriz de distancia geográfica (km)",
+       subtitle = "Matorral xerófilo", x="Población", y="Población") + 
+  theme_minimal() +
+  theme(axis.text = element_blank(),
+        axis.title = element_blank())
+
+# --- Heatmap genético --- 
+melt_geo <-  mat_gen_reg_bosque |> 
+  as_tibble(rownames = "row", .name_repair = "unique")  |> 
+  pivot_longer(-row, names_to = "col", values_to = "valor") |> 
+  mutate(col = rep(1:4, times = 4),
+         row = as.integer(row))
+
+ggplot(melt_geo, aes(col, -row, fill = valor)) + 
+  geom_tile() + 
+  geom_text(aes(label=valor), color="white") + 
+  scale_fill_gradient(low="lightgreen", high="darkgreen", name = "dist") + 
+  labs(title="Matriz de distancia genética (p-dist)",
+       subtitle = "Bosque húmedo", x="Población", y="Población") + 
+  theme_minimal() +
+  theme(axis.text = element_blank(),
+        axis.title = element_blank())
+
+
+melt_geo <-  mat_gen_reg_matorral|> 
+  as_tibble(rownames = "row", .name_repair = "unique" )  |> 
+  pivot_longer(-row, names_to = "col", values_to = "valor") |> 
+  mutate(col = rep(1:4, times = 4),
+         row = as.integer(row))
+ggplot(melt_geo, aes(col, -row, fill = valor)) + 
+  geom_tile() + 
+  geom_text(aes(label=valor), color="white") + 
+  scale_fill_gradient(low="lightgreen", high="darkgreen", name = "dist") + 
+  labs(title="Matriz de distancia genética (p-dist)",
+       subtitle = "Matorral xerófilo", x="Población", y="Población") + 
+  theme_minimal() +
+  theme(axis.text = element_blank(),
+        axis.title = element_blank())
+
+```
+
+```{r}
 datos |> 
   mutate(reg_alfa = if_else(str_detect(region, "bosq"),
                             "Bosque húmedo", 
@@ -103,7 +209,7 @@ datos |>
 ```{r}
 
 # Modelo con interacción
-modelo <- lm(distancia_gen ~ distancia_geo * region, data=datos)
+modelo <- lm(distancia_gen ~ distancia_geo * region, data = datos)
 summary(modelo)
 
 ```
@@ -121,3 +227,47 @@ ggplot(datos, aes(x=distancia_geo, y=distancia_gen, color=region)) +
   theme_minimal()
 
 ```
+
+
+```{r}
+#| echo: false
+#| eval: false
+#| include: false
+
+# --- Función para simular datos filogeográficos con contraste regional ---
+simular_datos <- function(
+  n_por_region = 6,
+  beta0_A = 0.01, beta1_A = 0.0003, sd_A = 0.005,
+  beta0_B = 0.02, beta1_B = 0.0001, sd_B = 0.005,
+  rango_dist = c(50, 300)
+){
+  # Distancias geográficas simuladas
+  dist_geo_A <- seq(rango_dist[1], rango_dist[2], length.out = n_por_region)
+  dist_geo_B <- seq(rango_dist[1], rango_dist[2], length.out = n_por_region)
+  
+  # Distancias genéticas simuladas con ruido normal
+  dist_gen_A <- beta0_A + beta1_A * dist_geo_A + rnorm(n_por_region, 0, sd_A)
+  dist_gen_B <- beta0_B + beta1_B * dist_geo_B + rnorm(n_por_region, 0, sd_B)
+  
+  # Construcción del data frame
+  datos <- data.frame(
+    distancia_geo = c(dist_geo_A, dist_geo_B),
+    distancia_gen = c(dist_gen_A, dist_gen_B),
+    region = factor(rep(c("_Bosque_humedo","_Zona_arida"), each = n_por_region))
+  )
+  
+  return(datos)
+}
+
+# --- Ejemplo de uso ---
+set.seed(123)
+datos_sim <- simular_datos(
+  n_por_region = 6,
+  beta0_A = 0.01, beta1_A = 0.0003, sd_A = 0.002,
+  beta0_B = 0.02, beta1_B = 0.0001, sd_B = 0.002
+)
+
+print(datos_sim)
+
+```
+

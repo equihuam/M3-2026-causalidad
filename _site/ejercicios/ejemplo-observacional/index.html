@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Miguel Equihua">
 
 <title>Modelación filogeográfica (observacional – Curso de Estadística (Inecol 2026)</title>
 <style>
@@ -95,19 +96,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
+<link href="../../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="../../site_libs/tabwid-1.1.3/tabwid.js"></script>
+
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -317,8 +322,8 @@ window.Quarto = {
     <span class="navbar-title">Curso de Estadística (Inecol 2026)</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -350,7 +355,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -367,13 +372,28 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Modelación filogeográfica (observacional</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">ejemplo</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Miguel Equihua </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">4 de febrero de 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -398,35 +418,26 @@ window.Quarto = {
 </section>
 <section id="modelo" class="level3">
 <h3 class="anchored" data-anchor-id="modelo">Modelo</h3>
-<p>Podemos usar una regresión simple extendida con un <strong>factor categórico de región</strong>:</p>
+<p>Podemos usar una regresión simple extendida con un <strong>factor cualitativo de región</strong>:</p>
 <p><span class="math display">\[
-\text{Distancia genética} = \beta_0 + \beta_1 \cdot \text{Distancia geográfica} + \beta_2 \cdot \text{Región} + \beta_3 \cdot (\text{Distancia geográfica} \times \text{Región}) + \varepsilon
-\
-\]</span></p>
+\begin{align*}
+\text{Distancia genética} &amp;= \beta_0 + \beta_1 \cdot \text{Distancia geográfica} + \beta_2 \cdot \text{Región} + \beta_3 \cdot (\text{Distancia geográfica} \times \text{Región}) + \varepsilon \\
+\\
+\text{o, en forma más compacta}\\  
+\\
+D_{gen} &amp;= \mu + D_{geo} + R + RD_{geo} + \varepsilon
+\end{align*}
+\]</span> En donde:</p>
 <ul>
-<li>(_1): pendiente en la Región A.<br>
+<li><span class="math inline">\(D{geo}\)</span>: grado de relación entre distancias (genética y geográfica)<br>
 </li>
-<li>(_2): diferencia en intercepto entre Región B y Región A.<br>
+<li><span class="math inline">\(R\)</span>: efecto de la región sobre la relación entre distancias.<br>
 </li>
-<li>(_3): diferencia en pendiente entre Región B y Región A.</li>
+<li><span class="math inline">\(RD{geo}\)</span>: compotamiento diferencial de la distancia geográfica entre regiones.</li>
 </ul>
-<hr>
 </section>
-<section id="resultados-hipotéticos" class="level3">
-<h3 class="anchored" data-anchor-id="resultados-hipotéticos">Resultados hipotéticos</h3>
-<ul>
-<li><p><strong>Región A (bosques húmedos):</strong><br>
-(_0 = 0.01), (_1 = 0.0003)<br>
-→ fuerte aislamiento por distancia: cada 100 km aumenta 0.03 en divergencia genética.</p></li>
-<li><p><strong>Región B (zonas áridas):</strong><br>
-(_0 = 0.02), (_1 = 0.0001)<br>
-→ aislamiento por distancia más débil: cada 100 km aumenta solo 0.01 en divergencia genética.</p></li>
-<li><p>Contraste ((_3)) significativo (p &lt; 0.05).</p></li>
-</ul>
-<hr>
-</section>
-<section id="interpretación-biológica" class="level3">
-<h3 class="anchored" data-anchor-id="interpretación-biológica">Interpretación biológica</h3>
+<section id="procesos-biológicos-hipotéticos" class="level3">
+<h3 class="anchored" data-anchor-id="procesos-biológicos-hipotéticos">Procesos biológicos hipotéticos</h3>
 <ul>
 <li>En <strong>bosques húmedos</strong>, las poblaciones están más aisladas y la distancia geográfica se traduce en mayor divergencia genética (probablemente por barreras físicas como montañas o ríos).<br>
 </li>
@@ -434,26 +445,178 @@ window.Quarto = {
 </li>
 <li>El contraste muestra que <strong>los procesos filogeográficos no son homogéneos</strong>: dependen del paisaje y la ecología regional.</li>
 </ul>
-<hr>
-<p>👉 Este tipo de contraste es muy útil para tus presentaciones bilingües, porque puedes mostrar en un mismo gráfico dos rectas de regresión (una por región) y discutir cómo el ambiente condiciona la relación entre espacio y genética.</p>
-<hr>
-<p>¿Quieres que te arme un <strong>ejemplo visual en R con <code>ggplot2</code></strong>, mostrando dos rectas de regresión (una por región) y cómo se interpreta el contraste?</p>
 </section>
+<section id="valores-hipotéticos-para-simular" class="level3">
+<h3 class="anchored" data-anchor-id="valores-hipotéticos-para-simular">Valores hipotéticos (para simular)</h3>
+<ul>
+<li><p><strong>Región A (bosques húmedos):</strong><br>
+<span class="math inline">\(D_{geo} = 0.01\)</span> con un efecto adicional de <span class="math inline">\(R = 0.0003\)</span>, imaginamos que está ocurriendo un fuerte aislamiento por distancia: cada 100 km aumenta en 0.03 unidades la divergencia genética.</p></li>
+<li><p><strong>Región B (zonas áridas):</strong><br>
+<span class="math inline">\(D_{geo} = 0.02\)</span> con un efecto adicional de <span class="math inline">\(R = 0.0001\)</span>,<br>
+imaginamos que el aislamiento por distancia es más débil aca: cada 100 km aumenta sólo en 0.01 unidades la divergencia genética.</p></li>
+</ul>
 </section>
-<section id="simulación-de-datos" class="level1">
-<h1>Simulación de datos</h1>
+<section id="simulación-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="simulación-de-datos">Simulación de datos</h3>
+<p>Las matrices de distancia se ven así</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">distancia_geo =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">120</span>,<span class="dv">300</span>,<span class="dv">80</span>,<span class="dv">250</span>,<span class="dv">200</span>, <span class="dv">60</span>,<span class="dv">150</span>,<span class="dv">280</span>,<span class="dv">90</span>,<span class="dv">260</span>,<span class="dv">210</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">distancia_gen =</span> <span class="fu">c</span>(<span class="fl">0.01</span>,<span class="fl">0.03</span>,<span class="fl">0.06</span>,<span class="fl">0.02</span>,<span class="fl">0.05</span>,<span class="fl">0.04</span>, <span class="fl">0.02</span>,<span class="fl">0.025</span>,<span class="fl">0.04</span>,<span class="fl">0.022</span>,<span class="fl">0.03</span>,<span class="fl">0.028</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Bosque_humedo"</span>,<span class="st">"Zona_arida"</span>), <span class="at">each=</span><span class="dv">6</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">distancia_geo =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">120</span>,<span class="dv">300</span>,<span class="dv">80</span>,<span class="dv">250</span>,<span class="dv">200</span>, <span class="dv">60</span>,<span class="dv">150</span>,<span class="dv">280</span>,<span class="dv">90</span>,<span class="dv">260</span>,<span class="dv">210</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">distancia_gen =</span> <span class="fu">c</span>(<span class="fl">0.01</span>,<span class="fl">0.03</span>,<span class="fl">0.06</span>,<span class="fl">0.02</span>,<span class="fl">0.05</span>,<span class="fl">0.04</span>, <span class="fl">0.02</span>,<span class="fl">0.025</span>,<span class="fl">0.04</span>,<span class="fl">0.022</span>,<span class="fl">0.03</span>,<span class="fl">0.028</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"_bosque_humedo"</span>,<span class="st">"_zona_arida"</span>), <span class="at">each =</span> <span class="dv">6</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>mat_reg_bosque<span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>mat_reg_bosque[<span class="fu">lower.tri</span>(mat_reg_bosque)] <span class="ot">&lt;-</span> datos<span class="sc">$</span>distancia_geo[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>mat_reg_bosque <span class="ot">&lt;-</span> mat_reg_bosque <span class="sc">+</span> <span class="fu">t</span>(mat_reg_bosque)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>mat_reg_matorral <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>mat_reg_matorral[<span class="fu">lower.tri</span>(mat_reg_matorral)] <span class="ot">&lt;-</span> datos<span class="sc">$</span>distancia_geo[<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>mat_reg_matorral <span class="ot">&lt;-</span> mat_reg_matorral <span class="sc">+</span> <span class="fu">t</span>(mat_reg_matorral)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>mat_gen_reg_bosque <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>mat_gen_reg_bosque[<span class="fu">lower.tri</span>(mat_gen_reg_bosque)] <span class="ot">&lt;-</span> datos<span class="sc">$</span>distancia_gen[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>mat_gen_reg_bosque <span class="ot">&lt;-</span> mat_gen_reg_bosque <span class="sc">+</span> <span class="fu">t</span>(mat_gen_reg_bosque)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>mat_gen_reg_matorral <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>mat_gen_reg_matorral[<span class="fu">lower.tri</span>(mat_gen_reg_matorral)] <span class="ot">&lt;-</span> datos<span class="sc">$</span>distancia_gen [<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>mat_gen_reg_matorral <span class="ot">&lt;-</span> mat_gen_reg_matorral <span class="sc">+</span> <span class="fu">t</span>(mat_gen_reg_matorral)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Heatmap geográfico --- </span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>melt_geo <span class="ot">&lt;-</span>  mat_reg_bosque <span class="sc">|&gt;</span> </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">"row"</span>, <span class="at">.name_repair =</span> <span class="st">"unique"</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>row, <span class="at">names_to =</span> <span class="st">"col"</span>, <span class="at">values_to =</span> <span class="st">"valor"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">col =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">4</span>),</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>         <span class="at">row =</span> <span class="fu">as.integer</span>(row))</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(melt_geo, <span class="fu">aes</span>(col, <span class="sc">-</span>row, <span class="at">fill =</span> valor)) <span class="sc">+</span> </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>valor), <span class="at">color=</span><span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"lightblue"</span>, <span class="at">high=</span><span class="st">"darkblue"</span>, <span class="at">name =</span> <span class="st">"dist"</span>) <span class="sc">+</span> </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Matriz de distancia geográfica (km)"</span>,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Bosque húmedo"</span>, <span class="at">x=</span><span class="st">"Población"</span>, <span class="at">y=</span><span class="st">"Población"</span>) <span class="sc">+</span> </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>melt_geo <span class="ot">&lt;-</span>  mat_reg_matorral<span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">"row"</span>, <span class="at">.name_repair =</span> <span class="st">"unique"</span>  )  <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>row, <span class="at">names_to =</span> <span class="st">"col"</span>, <span class="at">values_to =</span> <span class="st">"valor"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">col =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">4</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">row =</span> <span class="fu">as.integer</span>(row))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(melt_geo, <span class="fu">aes</span>(col, <span class="sc">-</span>row, <span class="at">fill =</span> valor)) <span class="sc">+</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>valor), <span class="at">color=</span><span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"lightblue"</span>, <span class="at">high=</span><span class="st">"darkblue"</span>, <span class="at">name =</span> <span class="st">"dist"</span>) <span class="sc">+</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Matriz de distancia geográfica (km)"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Matorral xerófilo"</span>, <span class="at">x=</span><span class="st">"Población"</span>, <span class="at">y=</span><span class="st">"Población"</span>) <span class="sc">+</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Heatmap genético --- </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>melt_geo <span class="ot">&lt;-</span>  mat_gen_reg_bosque <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">"row"</span>, <span class="at">.name_repair =</span> <span class="st">"unique"</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>row, <span class="at">names_to =</span> <span class="st">"col"</span>, <span class="at">values_to =</span> <span class="st">"valor"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">col =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">4</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">row =</span> <span class="fu">as.integer</span>(row))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(melt_geo, <span class="fu">aes</span>(col, <span class="sc">-</span>row, <span class="at">fill =</span> valor)) <span class="sc">+</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>valor), <span class="at">color=</span><span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"lightgreen"</span>, <span class="at">high=</span><span class="st">"darkgreen"</span>, <span class="at">name =</span> <span class="st">"dist"</span>) <span class="sc">+</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Matriz de distancia genética (p-dist)"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Bosque húmedo"</span>, <span class="at">x=</span><span class="st">"Población"</span>, <span class="at">y=</span><span class="st">"Población"</span>) <span class="sc">+</span> </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>melt_geo <span class="ot">&lt;-</span>  mat_gen_reg_matorral<span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">"row"</span>, <span class="at">.name_repair =</span> <span class="st">"unique"</span> )  <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>row, <span class="at">names_to =</span> <span class="st">"col"</span>, <span class="at">values_to =</span> <span class="st">"valor"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">col =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">4</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">row =</span> <span class="fu">as.integer</span>(row))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(melt_geo, <span class="fu">aes</span>(col, <span class="sc">-</span>row, <span class="at">fill =</span> valor)) <span class="sc">+</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>valor), <span class="at">color=</span><span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"lightgreen"</span>, <span class="at">high=</span><span class="st">"darkgreen"</span>, <span class="at">name =</span> <span class="st">"dist"</span>) <span class="sc">+</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Matriz de distancia genética (p-dist)"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Matorral xerófilo"</span>, <span class="at">x=</span><span class="st">"Población"</span>, <span class="at">y=</span><span class="st">"Población"</span>) <span class="sc">+</span> </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo con interacción</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(distancia_gen <span class="sc">~</span> distancia_geo <span class="sc">*</span> region, <span class="at">data=</span>datos)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">reg_alfa =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(region, <span class="st">"bosq"</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Bosque húmedo"</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Matorral xerófilo"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(distancia_gen,distancia_geo,reg_alfa) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_row</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Distancia"</span>, <span class="st">""</span>), <span class="at">colwidths =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_header_labels</span>(<span class="at">distancia_gen =</span> <span class="st">"Genética"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">distancia_geo =</span> <span class="st">"Geográfica"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">reg_alfa =</span> <span class="st">"Región"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">align</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">part =</span> <span class="st">"header"</span>, <span class="at">align =</span> <span class="st">"center"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">align</span>(<span class="at">j =</span> <span class="dv">3</span>, <span class="at">align =</span> <span class="st">"center"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">border</span>(<span class="at">i =</span> <span class="dv">1</span>, <span class="at">j =</span> <span class="dv">3</span>, <span class="at">part =</span> <span class="st">"header"</span>, <span class="at">border.bottom =</span> <span class="fu">fp_border</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">width =</span> <span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">width</span>(<span class="at">j =</span> <span class="dv">3</span>, <span class="at">width =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-9ac15208{}.cl-9a9c3a86{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9ab7fda2{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9ab7fdc0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9ab87520{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ab8752a{width:2in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(255, 255, 255, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ab87534{width:2in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ab87535{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ab8753e{width:2in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ab87548{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ab87549{width:2in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-9ac15208"><thead><tr style="overflow-wrap:break-word;"><th colspan="2" class="cl-9ab87520"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Distancia</span></p></th><th class="cl-9ab8752a"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86"></span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-9ab87520"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Genética</span></p></th><th class="cl-9ab87520"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Geográfica</span></p></th><th class="cl-9ab87534"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Región</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.010</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">50</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Bosque húmedo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.030</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">120</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Bosque húmedo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.060</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">300</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Bosque húmedo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.020</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">80</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Bosque húmedo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.050</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">250</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Bosque húmedo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.040</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">200</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Bosque húmedo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.020</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">60</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Matorral xerófilo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.025</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">150</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Matorral xerófilo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.040</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">280</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Matorral xerófilo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.022</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">90</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Matorral xerófilo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.030</span></p></td><td class="cl-9ab87535"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">260</span></p></td><td class="cl-9ab8753e"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Matorral xerófilo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9ab87548"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">0.028</span></p></td><td class="cl-9ab87548"><p class="cl-9ab7fdc0"><span class="cl-9a9c3a86">210</span></p></td><td class="cl-9ab87549"><p class="cl-9ab7fda2"><span class="cl-9a9c3a86">Matorral xerófilo</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo con interacción</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(distancia_gen <span class="sc">~</span> distancia_geo <span class="sc">*</span> region, <span class="at">data =</span> datos)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -464,11 +627,11 @@ Residuals:
 -0.0036523 -0.0014395 -0.0002849  0.0009247  0.0049001 
 
 Coefficients:
-                                 Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)                     3.792e-03  2.538e-03   1.494 0.173494    
-distancia_geo                   1.872e-04  1.338e-05  13.991  6.6e-07 ***
-regionZona_arida                1.104e-02  3.815e-03   2.894 0.020076 *  
-distancia_geo:regionZona_arida -1.149e-04  1.990e-05  -5.771 0.000419 ***
+                                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                      3.792e-03  2.538e-03   1.494 0.173494    
+distancia_geo                    1.872e-04  1.338e-05  13.991  6.6e-07 ***
+region_zona_arida                1.104e-02  3.815e-03   2.894 0.020076 *  
+distancia_geo:region_zona_arida -1.149e-04  1.990e-05  -5.771 0.000419 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -478,28 +641,31 @@ F-statistic: 79.68 on 3 and 8 DF,  p-value: 2.671e-06</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualización</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x=</span>distancia_geo, <span class="at">y=</span>distancia_gen, <span class="at">color=</span>region)) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Distancia geográfica (km)"</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Distancia genética (p-dist)"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Contraste de aislamiento por distancia entre regiones"</span>) <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualización</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x=</span>distancia_geo, <span class="at">y=</span>distancia_gen, <span class="at">color=</span>region)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Distancia geográfica (km)"</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Distancia genética (p-dist)"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Contraste de aislamiento por distancia entre regiones"</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -541,12 +707,12 @@ F-statistic: 79.68 on 3 and 8 DF,  p-value: 2.671e-06</code></pre>
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiado");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiado");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",

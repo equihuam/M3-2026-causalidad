@@ -21,8 +21,8 @@
   {
     "listing": "/ejercicios.html",
     "items": [
-      "/ejercicios/control-de-entregas/index.html",
       "/ejercicios/ejemplo-observacional/index.html",
+      "/ejercicios/control-de-entregas/index.html",
       "/ejercicios/tareas/index.html"
     ]
   }
