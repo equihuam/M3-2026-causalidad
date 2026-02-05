@@ -12,6 +12,9 @@ format:
 
 ```{r}
 #| label: setup
+#| echo: false
+#| warning: false
+#| message: false
 
 library(dagitty)
 library(dplyr)
