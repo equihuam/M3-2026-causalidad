@@ -1,5 +1,5 @@
 ---
-title: "Modelación filogeográfica (observacional"
+title: "Modelación filogeográfica (observacional)"
 
 author: ["Miguel Equihua"]
 date: "2026-02-04"

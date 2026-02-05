@@ -72,7 +72,8 @@ diseno$Supervivencia <- with(diseno,
 
 diseno |> 
   flextable::flextable() |> 
-  flextable::set_header_labels(Bloque = "Tipo de territorio") |> 
+  flextable::set_header_labels(Bloque = "Tipo de territorio", 
+                               Supervivencia = "Supervivencia\n(%)") |> 
   flextable::width(j = 2, 1.5) |>
   flextable::colformat_double(j = 3, digits = 1)
 ```

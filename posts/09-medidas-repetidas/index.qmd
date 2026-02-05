@@ -1,0 +1,330 @@
+---
+title: "Modelos de medidas repetidas"
+author: ["Miguel Equihua"]
+date: "2025-02-06"
+lang: es
+draft: false
+categories: [clase]
+format:
+  html:
+    code-fold: true
+---
+
+[![](Picea-sitchensis-Sitka-Spruce-08.jpg){width="300"}](../../presentaciones/09-medidas-repetidas/medidas-repetidas.qmd)
+
+
+
+El tiempo es una variable problemática en el análisis estadístico, sobre todo por la necesidad de postular el supuesto de independencia entre las observaciones, lo que solemos asegurar aleatorizando las unidades experimentales. Las observaciones arregladas a lo largo del tiempo comúnmente no pueden aleatorizarse, por ejemplo cuando estamos dando seguimiento al crecimiento de un organismo. Por otro lado, también puede ocurrir esta falta de independencia por cercanía geográfica, así que el espacio comparte desafíos estadísticos con el tiempo.
+
+
+# Medidas repetidas (seguimiento a lo largo del tiempo)
+
+## Ejemplo con árboles de *Sitka*
+
+Fuente: Venables y Ripley (1999, p.206), tabla Sitka de la biblioteca MASS. Datos de Diggle, Liang y Zeger (1994).
+
+Se trata de mediciones del *tamaño-log* (que se define como el logaritmo de la altura más dos veces el logaritmo del diámetro), de 79 árboles de *Sitka spruce*.
+
+A 54 de ellos se les hizo crecer en cámaras con atmósfera enriquecida con ozono y otros 25 fueron controles. La talla fue medida cinco veces en 1988 a intervalos de aproximadamente un mes (el tiempo se da en días a partir del 1 de enero de 1998). En 1989 se tomaron otras ocho mediciones (que se incluyen en una tabla aparte: Sitka89).
+
+```{r}
+library(MASS)
+library(nlme)
+library(tidyverse)
+sitka88 <- Sitka
+```
+
+```{r}
+str(sitka88)
+```
+
+La estructura de grupos podemos usarla para representar una curva de crecimiento por árbol. Los 79 árboles en los datos "sitka" son demasiados para el ejemplo que quiero ilustrar. Mostraré sólo dos árboles: el 64 y 24.
+
+#### Exploración de los datos de *Sitka*
+
+```{r}
+sitka88 <-groupedData(size ~ Time | tree, data=sitka88)
+plot(sitka88[sitka88$tree == 64 | sitka88$tree == 24, ])
+```
+
+¿Cómo se ven los número de resumen de los datos en general?
+
+```{r}
+formula(sitka88)
+```
+
+```{r}
+head(gsummary(sitka88[, c("size","Time")], groups=sitka88$size, omit=TRUE))
+```
+
+```{r}
+plot.design(size ~ treat, data=sitka88)
+```
+
+Pongo una línea de tendencia en la gráfica con la opción geom_smooth. Tengo multiples opciones, ve la ayuda, pero aquí consideré dos opciones *loess* con el parámetro `span = 1`. La otra opción que consideré fue el método *gam*. Esta solución es demandante en cuanto a número de datos necesarios. En este caso tuve que ajustar el parámetro de número de nudos (*knots*), pues la aproximación a una curva suave por el método aditivo generalizado usado, *gam*, requiere por defecto datos para por lo menos calcular 10 nudos y esto no se logra en este conjunto de datos. Usualmente funciona sin mayores problemas cuando se tienen más de 1000 puntos. Para tener una representación un poco más simple opté por eliminar los intervalos de confianza, eso lo controla el parámetro *se*.
+
+```{r}
+options(repr.plot.width=12, repr.plot.height=6)
+library(ggplot2)
+ggplot(sitka88, aes(x=Time, y=size, color = tree)) + 
+       geom_smooth(method = "loess", span = 1, formula = y ~ x, se = FALSE, show.legend = FALSE) +
+       geom_point(show.legend = FALSE) + facet_grid(. ~ treat) +
+       theme(strip.background = element_rect(fill="#ffe5cc"),
+             text = element_text(size = 20))
+```
+
+```{r}
+ggplot(sitka88, aes(x=Time, y=size, color = tree)) + 
+       geom_smooth(method = "gam", span = 1, formula = y ~ s(x, bs = "cs", k = 5), 
+                   se = FALSE, show.legend = FALSE) +
+       geom_point(show.legend = FALSE) + facet_grid(. ~ treat) +
+       theme(strip.background = element_rect(fill="#ffe5cc"),
+             text = element_text(size = 20))
+```
+
+Ahora ajusto el modelo completo con el tiempo. Fuerzo a que el tiempo sea tratado como un factor ordenado, lo que junto con la opción de contraste usada ajusta polinomios ortogonales en este caso.
+
+```{r}
+options(contrasts=c("contr.treatment", "contr.poly"))
+```
+
+```{r}
+sitka.lme1 <- lme(fixed = size ~ treat * ordered(Time),
+                  random = ~ 1 | tree,
+                  data = sitka88)
+summary(sitka.lme1)$tTable
+```
+
+```{r}
+intervals(sitka.lme1, level = 0.95)$fixed
+```
+### Analiizando la interección
+
+Notando la significancia de los términos de interacción: ¿podría simplificar el modelo limitando el ajuste a un efecto lineal de crecimiento que distingue entre los tratamiento? Veamos, calculo un nuevo vector que me permite hacer el ajuste de un efecto lineal a la diferencia entre tratamientos (que es la interacción).
+
+```{r}
+sitka88$tratGrad <- sitka88$Time * (sitka88$treat=="ozone")
+```
+
+```{r}
+tapply(sitka88$Time,list(sitka88$treat, sitka88$Time), FUN=mean)
+tapply(sitka88$tratGrad,list(sitka88$treat, sitka88$Time), FUN=mean)
+
+```
+
+Ahora ajusto un modelo en el que elimino la interacción de tratamiento con tiempo. Al mismo tiempo substituyo este efecto por el modelo con tiempo lineal en interacción con el tratamiento ozono (la variable que acabo de construir).
+
+```{r}
+sitka.lme2 <- update(sitka.lme1, 
+                     fixed = size ~ ordered(Time) + treat + tratGrad)
+summary(sitka.lme2)$tTable
+```
+
+El resumen del ajuste muestra dos criterios que no hemos comentado mayormente antes. Son útiles para comparar y evaluar modelos. Estas medidas son resultado de la búsqueda de alternativas para valorar modelos que no se centre en el famoso valor de *p*.
+
+-   AIC - Criterio de información de Akaike = -2 \* logVerosimilitud + 2 numParámetros
+-   BIC - Criterio de información bayesiano = -2 \* logVerosimilitud + numParámetros \* log(N)
+
+Es bueno contar con ellos para comparar la calidad general de los modelos ajustados, pero no olvides que centrar nuestra atención en los intervalos de confianza es más informativo y potencialmente interesante.
+
+En cualquier caso, "entre más pequeño el valor del criterio, mejor".
+
+```{r}
+data.frame(AICmodelo_red=summary(sitka.lme2)$AIC, AICmodelo_comp=summary(sitka.lme1)$AIC)
+data.frame(BICmodelo_red=summary(sitka.lme2)$BIC, BICmodelo_comp=summary(sitka.lme1)$BIC)
+```
+
+Tanto el criterio AIC como el BIC sugieren que el modelo reducido es preferible al modelo completo inicial. ¿Qué sugiere la comparación, en devianzas, de ambos modelo?
+
+```{r}
+anova(sitka.lme1, sitka.lme2)
+```
+
+Notese la advertencia que aparece al intentar esta comparación. Para resolverla, hay que volver a ajustar los modelos de interés, pero ahora con el método "ML", que si me permite hacer comparaciones entre modelos.
+
+```{r}
+sitka.lme1.ML <- lme(fixed = size ~ treat * ordered(Time),
+                 random = ~ 1 | tree,
+                 data = sitka88, method="ML")
+
+sitka.lme2.ML <- update(sitka.lme1.ML, 
+                     fixed = size ~ ordered(Time) + treat + tratGrad, method="ML")
+```
+
+Comparemos los resultados obtenidos hasta aquí
+
+```{r}
+anova(sitka.lme1.ML, sitka.lme2.ML)
+```
+
+```{r}
+summary(sitka.lme2.ML)
+```
+
+## Selección del polinomio
+
+Ahora veamos un poco más de cerca el modelo y veamos si la respuesta muestra una curvatura que pueda ser aproximada entonces por un *polinomio* y en ese caso identificar el *polinomio de menor grado* que podríamos usar.
+
+Recuerden que al utilizar factores ordenados le estamos indicando a **R** que optaremos por **contrastes polinomiales ortogonales**. Otra manera de obtener estos contrastes es con la función `poly`. Para ver como funciona esto usemos este comando los datos de tiempo. Del vector `Time` poly produce cuatro columnas nuevas, que dan cuenta de la tendencia lineal, cuadrática, cúbica, etc., con la peculiaridad de que cada columna es *ortogonal* a las demás.
+
+```{r}
+head(poly(sitka88$Time, 4))
+```
+
+El Modelo 2 que hemos ajustado consumió todos los grados de libertad posible y estimó un polinomio de grado 4. Consideremos sólo el polinomio cúbico.
+
+```{r}
+sitka.lme3.ML <- lme(fixed = size ~ treat + poly(Time, 3) + tratGrad,
+                 random = ~ 1 | tree,
+                 data = sitka88, method ="ML")
+```
+
+```{r}
+summary(sitka.lme3.ML)$tTable
+
+```
+
+Ahora podemos compararlo con el modelo "2" que ajustamos antes, para explorar si el nuevo modelo pierde una grado importante de capacidad explicativa.
+
+```{r}
+anova(sitka.lme2.ML, sitka.lme3.ML)
+```
+
+El crecimiento promedio de los árboles a lo largo del tiempo se puede ver así, aunque esto no considera la variación debida a los árboles en lo individual. No obstante veamos el resultado general.
+
+```{r}
+
+
+tapply(fitted(sitka.lme3.ML), list(sitka88$treat, sitka88$Time), mean)
+
+```
+
+Más adecuado es utilizar la función `predict()` para considerar las particularidades del modelo para hacer las predicciones. Estos resultados los pondremos en una gráfica para ver de mejor manera los resultados.
+
+```{r}
+sitka88$ajus <- predict(sitka.lme3.ML)
+```
+
+```{r}
+ggplot(sitka88, aes(x=Time, y=ajus, color = tree)) + 
+       geom_point(show.legend = FALSE) + facet_grid(. ~ treat) +
+       geom_line(show.legend = FALSE) + 
+       theme(strip.background = element_rect(fill="#ffe5cc"),
+             text = element_text(size = 20))
+```
+
+#### Componente aleatorio
+
+Podemos ahora explorar como mejorar la modelación de los componentes aleatorios en este modelo.
+
+```{r}
+VarCorr(sitka.lme1)
+```
+
+Los modelos pueden incorporar una estructura de modelación de los patrones de correlación entre las observaciones. En este caso derivadas del hecho de que las mediciones se realizan a lo largo del tiempo, en intervalos relativamente cortos, sobre el mismo sujeto. Haremos esto aquí solo para ejemplificar el tema, que es amplio. Mi recomendación es más bien recurrir a la literatura existente para profundizar en el tema. Nótese que para la comparación de modelos en donde no estamos cambiando los componentes fijo, puede hacerse aún cuando el método de ajuste sea el *REML*. Usamos una opción del patrón de correlación que estamos asumiendo mediante la opción `cor` que recibe una estructura que da cuenta del patrón de correlación que se asume afecta a la forma como se producen las observaciones. En este caso optamos por un proceso de *autocorrelación de orden 1* en las observaciones con correlación de 70%, derivado de medir a lo largo del tiempo cada árbol. Esto es lo que hace la función `corCAR1`, sobre la que pueden encontrar más información en la ayuda de **R**.
+
+```{r}
+sitka.lme4 <- lme(size~ treat * ordered(Time), random = ~ 1 | tree,
+                  data = sitka88, corr=corCAR1(0.7, ~ Time | tree))
+
+```
+
+Veamos como cambian los estadísticos de los modelos. Comparemos el modelo completo inicial, contra el completo considerando la nueva información sobre la correlación que hemos agregado en el modelo 4.
+
+```{r}
+anova(sitka.lme1,sitka.lme4)
+```
+
+Se ve raro que haya [AIC y BIC negativos](https://www.statology.org/negative-aic/), pero pasa, sí los consideraríamos como valores más pequeños que los positivos, así que aquí, el modelo 4 parece tener un ajuste bastante mejor que el 1.
+
+¿cómo se ve el modelo ajustado finalmente?
+
+```{r}
+summary(sitka.lme4)$tTable
+summary(sitka.lme1)$tTable
+```
+
+Aunque hay obviamente una importante correlaciónn entre observaciones, el efecto de considerar esto en el modelo es mínimo en términos de los valores de los coeficientes, aunque la significación valorada en términos de *p* cambia un poco, pero nada que nos haga modificar la apreciación del modelo. No parece valer la pena incorporar este aspecto de autocorrelación en el ajuste final, si nos atenemos a preferir el modelo más simple. Por otro lado, el asunto de considerar un efecto de autocorrelación en las observaciones parece exigir ser considerado. Tomemos este último camino
+
+Los intervalos de confianza de los coeficientes del modelo 4 son estos:
+
+```{r}
+intervals(sitka.lme4, which = "fixed", level = 0.95)$fixed
+```
+
+```{r}
+sitka.fin <- aggregate(list(ajustado=fitted(sitka.lme4)), 
+                       list(tiempo=sitka88$Time, trat=sitka88$treat), FUN=mean)
+```
+
+```{r}
+sitka.fin$tiempo <- as.numeric(sitka.fin$tiempo)
+```
+
+Una gráfica de los resultados podría ser así. Ilustra la regresión obtenida para cada tratamiento y añado los puntos observados ( para que se vean un poco mejor use el *geoma* "jitter" que grafica los puntos pero procurando que no se sobrepongan. Le pedí que lo hicieran en "bandas" de ancho 2.
+
+```{r}
+ggplot(sitka.fin, aes(x=tiempo, y=ajustado, color = trat)) + 
+       geom_line(show.legend = TRUE) + 
+       geom_point(show.legend = FALSE) + 
+       xlab(label = "tamaño-log") +
+       ylab(label = "tiempo (días)") + 
+       theme(strip.background = element_rect(fill="#ffe5cc"),
+             text = element_text(size = 20)) +
+
+       # componente que agrega los datos a la gráfica
+       geom_jitter(data = sitka88, width = 2, 
+                   mapping = aes(x = Time, y = size, color = treat)) 
+```
+
+Construir los intervalos de confianza a partir del modelo de efectos mixtos puede ser un poco más elaborado, así que a continuación muestro como pueden hacerse. Una posibilidad es usar la función `intervals`con la opción *which = "fixed"* para recuperar los resultados que implica sólo a los componentes de efectos fijos del modelo, que son los que se involucran en la predicción (los aleatorios participan en las varianzas).
+
+```{r}
+library(tidyverse, warn.conflicts = FALSE)
+sitka_intconf <- tibble(Time = sitka88$Time, treat = sitka88$treat)
+sitka_intconf <- sitka_intconf %>% add_column(ajus = fitted(sitka.lme4, level = 0))
+head(sitka_intconf)
+```
+
+Necesitaremos la matriz de diseño para calcular los intervalos de confianza asociados con el mmodelo.
+
+```{r}
+Designmat <- model.matrix(eval(eval(sitka.lme4$call$fixed)[-2]), 
+                          sitka_intconf[-ncol(sitka_intconf)])
+```
+
+Ahora calculamos los errores estándar de las predicciones. La matriz diseño contiene las variables indicadoras de todos los términos en el modelo. Al multiplicarla por la matriz de varianzas y covarianzas del modelo (la que está en el componente `sitka.lme4$varFix` del modelo ajustado), produce los estimadores de varianza requeridos
+
+```{r}
+predvar <- diag(Designmat %*% sitka.lme4$varFix %*% t(Designmat))
+sitka_intconf$SE <- sqrt(predvar) 
+```
+
+```{r}
+head(sitka_intconf)
+```
+
+Solo resta agregar las bandas de confianza en torno a la egresión. Esto lo haré con el *geoma* "ribbon" de **ggplot2**. Esta será una gráfica compleja que se elabora a partir de tres tablas de datos.
+
+```{r}
+ggplot(sitka.fin, aes(x=tiempo, y=ajustado, color = trat)) + 
+       geom_line(show.legend = TRUE) + 
+
+       # Etiquetas y formato de despliegue
+       xlab(label = "tamaño-log") +
+       ylab(label = "tiempo (días)") + 
+       theme(strip.background = element_rect(fill="#ffe5cc"),
+             text = element_text(size = 20)) +
+
+       # bandas de confianza
+       geom_ribbon(data = sitka_intconf, aes(x = Time, y = ajus, color = treat,
+                                             ymin = ajus - 2 * SE,
+                                             ymax = ajus + 2 * SE),
+                   alpha=0.2, fill = "blue") +       
+
+       # componente que agrega los datos a la gráfica
+       geom_jitter(data = sitka88, width = 2, 
+                   mapping = aes(x = Time, y = size, color = treat)) 
+
+
+```
