@@ -73,8 +73,12 @@ diseno$Supervivencia <- with(diseno,
 diseno |> 
   flextable::flextable() |> 
   flextable::set_header_labels(Bloque = "Tipo de territorio") |> 
-  flextable::width(j = 2, 1.5)
+  flextable::width(j = 2, 1.5) |>
+  flextable::colformat_double(j = 3, digits = 1)
 ```
+
+\
+\
 
 Para este ejercicio utiliza por favor la opción de crear tu reporte como un _Quarto Document_.
 Propongo esto como un ejercicio introductorio. Espero que puedas valorar así el gran potencial que esto está adquiriendo, pues [como puedes ver aquí](https://quarto.org/docs/manuscripts/authoring/rstudio.html), podrías escribir tus artículos directamente con _Quarto_. Pero para empezar, te podría interesar más bien [este tutorial introductorio.](https://quarto.org/docs/get-started/hello/rstudio.html) Si sientes que antes o además de entender eso de **Quarto**, te gustaría saber más sobre **R**, te sugiero este [material básico](https://aprendiendo-r-intro.netlify.app/). 
