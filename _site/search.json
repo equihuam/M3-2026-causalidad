@@ -578,14 +578,14 @@
     "href": "ejercicios/control-de-entregas/index.html",
     "title": "Registro de entregas",
     "section": "",
-    "text": "El conteo de tareas recibidas hasta el día 3 de febrero, 2026 es el que sigue.\n\n\n\n\n\nTipoidCantidadejercicio114ejercicio212lectura114lectura212lectura37\n\n\n\n\n\nLos documentos que he recibido son los que están en esta lista."
+    "text": "El conteo de tareas recibidas hasta el día 4 de febrero, 2026 es el que sigue.\n\n\n\n\n\nTipoidCantidadejercicio114ejercicio212lectura114lectura213lectura311\n\n\n\n\n\nLos documentos que he recibido son los que están en esta lista."
   },
   {
     "objectID": "ejercicios.html",
     "href": "ejercicios.html",
     "title": "M3-ejercicios",
     "section": "",
-    "text": "Modelación filogeográfica (observacional\n\n\n\nejemplo\n\n\n\n\n\n\n\n\n\n4 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nRegistro de entregas\n\n\n\n\n\n\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nTareas M3\n\n\n\n\n\n\n\n\n\n\n\nNo hay resultados"
+    "text": "Modelación filogeográfica (observacional\n\n\n\nejemplo\n\n\n\n\n\n\n\n\n\n4 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nControl de Larvas de mosquitos\n\n\n\nejercicio\n\n\n\n\n\n\n\n\n\n4 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nRegistro de entregas\n\n\n\n\n\n\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nTareas M3\n\n\n\n\n\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "posts/00-Bienvenida/index.html#objetivos-del-módulo-3",
@@ -943,5 +943,54 @@
     "title": "Restricciones a la aleatorización",
     "section": "Qué tanto tiempo puede “correr” un experimento",
     "text": "Qué tanto tiempo puede “correr” un experimento\nCuando Fisher concibió hacer experimentos en la estación experimental de Rothamsted en Inglaterra, recurriendo al auxilio del enfoque estadístico que él y otros investigadores de la época idearon, pensaban a largo plazo. Encontré este documento que podría ser de su interés. La estación experimental tiene disponiible los datos de estos experimentos. Por ejemplo Este “dataset” son los rendimientos anuales de trigo de “parcelas selectas” del experimento de trigo que aún hoy corren en Broadbalk . La serie tiene los datos de 1852-1918, tal y como los usó R.A. Fisher para su artículo de 1921 ‘Studies in crop variation’."
+  },
+  {
+    "objectID": "ejercicios/ejercicio-diseño-y-analisis/index.html",
+    "href": "ejercicios/ejercicio-diseño-y-analisis/index.html",
+    "title": "Control de Larvas de mosquitos",
+    "section": "",
+    "text": "Queremos evaluar el efecto de tres pesticidas sobre la supervivencia de larvas de Aedes aegipty. Estamos ensayando el pesticida en una zona en donde sabemos que existen distinta historia de exposición a contaminantes, lo que sospechamos puede afectar su respuesta. Desafortunadamente poco sabemos de los detalles de esas historias de exposición previa por lo que la consideramos como una fuente de variabilidad un poco compleja no medible."
+  },
+  {
+    "objectID": "ejercicios/ejercicio-diseño-y-analisis/index.html#situación-de-investigación",
+    "href": "ejercicios/ejercicio-diseño-y-analisis/index.html#situación-de-investigación",
+    "title": "Control de Larvas de mosquitos",
+    "section": "Situación de investigación",
+    "text": "Situación de investigación\nQueremos evaluar el efecto de tres pesticidas sobre la supervivencia de larvas de Aedes aegipty. Estamos ensayando el pesticida en una zona en donde sabemos que existen distinta historia de exposición a contaminantes, lo que sospechamos puede afectar su respuesta. Desafortunadamente poco sabemos de los detalles de esas historias de exposición previa por lo que la consideramos como una fuente de variabilidad un poco compleja y no medible."
+  },
+  {
+    "objectID": "ejercicios/ejercicio-diseño-y-analisis/index.html#ideas-de-diseño",
+    "href": "ejercicios/ejercicio-diseño-y-analisis/index.html#ideas-de-diseño",
+    "title": "Control de Larvas de mosquitos",
+    "section": "Ideas de diseño",
+    "text": "Ideas de diseño\n\nLos Tratamientos\n\nControl\nA: Mezcla deBacillus thuringiensis, Beauveria bassiana, Peacelomyces fumorosae\nB: Temefos\n\nEn la zona de interés se sabe que hay tres grandes territorios. Uno prácticamente en estado natural, seguramente con muy baja exposición a agroquímicos de todo tipo. Hay otra gran proporción del lugar que se dice ha estado medianamente expuesta y finalmente, hay otro territorio muy afectado por actividades humanas que seguramente lo ha expuesto a una larga historia de uso de agroquímicos.\nEl estudio se realizó de la siguiente manera. Se capturaron en cada lugar 100 adultos de Aedes aegipty. Se llevaron esos mosquitos al laboratorio, en donde se les mantuvo en condiciones homogéneas. Se les ofrecieron contenedores de agua limpia, apropiados para su reproducción. Así se obtuvieron 50 larvas producidas por los adultos colectados en cada lugar y se expusieron a cada tratamiento. Finalmente, se tomó nota de la supervivencia resultante al cabo de 48 horas.\n\nEstos son los resultados que se obtuvieron de este ensayo.\n\n\nTratamientoTipo de territorioSupervivenciaControlprístino 77.19762Pesticida_Aprístino 58.84911Pesticida_Bprístino 57.79354Controluso humano medio80.35254Pesticida_Auso humano medio60.64644Pesticida_Buso humano medio58.57532Controlmuy alterado82.30458Pesticida_Amuy alterado53.67469Pesticida_Bmuy alterado46.56574\n\n\nPara este ejercicio utiliza por favor la opción de crear tu reporte como un Quarto Document. Propongo esto como un ejercicio introductorio. Espero que puedas valorar así el gran potencial que esto está adquiriendo, pues como puedes ver aquí, podrías escribir tus artículos directamente con Quarto. Pero para empezar, te podría interesar más bien este tutorial introductorio. Si sientes que antes o además de entender eso de Quarto, te gustaría saber más sobre R, te sugiero este material básico.\nEn todo caso, mi idea es animarte a brincar al agua. Sigue la figura de abajo y tendrás un embrión de documento listo para que hagas con él lo que tú quieras. Básicamente escribir libremente y de vez en vez, cuando tengas que hacer operaciones con R podrás abrir un espacio para eso (¡un chunk!). En RStudio lo puedes hacer con ayuda del botón verde que está arriba como a la mitad de la pantalla, tien un signo “+” y una “C”, seguramente de chunk. Eso es todo para empezar. Si quieres “ver en bonito”, lo que has escrito, tienes que apreta el botón Render. Normalmente pasará un momento y te llevará al browser para mostrate lo que has escrito como una pagina web de tu creación. Al mismo tiempo habrá creado en tu carpeta de trabajo un archivo html con el nombre que le hayas dado al inicio."
+  },
+  {
+    "objectID": "ejercicios/ejercicio-diseño-y-analisis/index.html#simulación-del-experimento-en-r",
+    "href": "ejercicios/ejercicio-diseño-y-analisis/index.html#simulación-del-experimento-en-r",
+    "title": "index",
+    "section": "📊 Simulación del experimento en R",
+    "text": "📊 Simulación del experimento en R\n\n1️⃣ Crear el diseño experimental\n# Factores\ntratamiento &lt;- factor(c(\"Control\", \"Pesticida_A\", \"Pesticida_B\"))\nbloque &lt;- factor(c(\"Baja\", \"Media\", \"Alta\"))\n\n# Diseño en bloques completos al azar\ndiseno &lt;- expand.grid(\n  Tratamiento = tratamiento,\n  Bloque = bloque\n)\n\ndiseno\n\n\n\n2️⃣ Simular datos (con efecto de bloque)\nSupongamos que:\n\nLos pesticidas reducen la supervivencia\nLos organismos con historia Alta son más resistentes\n\nset.seed(123)\n\ndiseno$Supervivencia &lt;- with(diseno,\n  80 +\n  ifelse(Tratamiento == \"Pesticida_A\", -20, 0) +\n  ifelse(Tratamiento == \"Pesticida_B\", -30, 0) +\n  ifelse(Bloque == \"Media\", 10, 0) +\n  ifelse(Bloque == \"Alta\", 20, 0) +\n  rnorm(nrow(diseno), mean = 0, sd = 5)\n)\n\ndiseno\n\n\n\n3️⃣ Análisis: ANOVA con bloques\nmodelo &lt;- aov(Supervivencia ~ Tratamiento + Bloque, data = diseno)\nsummary(modelo)\n📌 Interpretación clave para estudiantes:\n\nTratamiento → efecto del pesticida (lo que nos interesa)\nBloque → efecto de la historia toxicológica (control de variabilidad)\nEl error residual es menor que en un diseño completamente al azar\n\n\n\n\n4️⃣ Visualización rápida (opcional)\nboxplot(Supervivencia ~ Tratamiento,\n        data = diseno,\n        col = \"lightgray\",\n        ylab = \"Supervivencia (%)\",\n        main = \"Efecto del pesticida\\n(bloques = historia toxicológica)\")"
+  },
+  {
+    "objectID": "ejercicios/ejercicio-diseño-y-analisis/index.html#cómo-explicarlo-en-clase-mensaje-clave",
+    "href": "ejercicios/ejercicio-diseño-y-analisis/index.html#cómo-explicarlo-en-clase-mensaje-clave",
+    "title": "index",
+    "section": "🧠 Cómo explicarlo en clase (mensaje clave)",
+    "text": "🧠 Cómo explicarlo en clase (mensaje clave)\n\n“No estamos interesados en comparar sitios, pero sí queremos evitar que la historia toxicológica distorsione la comparación entre pesticidas.”\n\n📌 El bloqueo:\n\nReduce ruido\nAumenta poder estadístico\nHace el experimento más realista ecológicamente"
+  },
+  {
+    "objectID": "ejercicios/ejercicio-diseño-y-analisis/index.html#variantes-pedagógicas-útiles",
+    "href": "ejercicios/ejercicio-diseño-y-analisis/index.html#variantes-pedagógicas-útiles",
+    "title": "index",
+    "section": "🔄 Variantes pedagógicas útiles",
+    "text": "🔄 Variantes pedagógicas útiles\nSi quieres, puedo ayudarte a:\n\nConvertirlo en ejercicio con datos incompletos\nMostrar qué pasa si NO bloquean\nExtenderlo a bloques anidados (sitios dentro de regiones)\nReescribirlo como modelo lineal mixto (lme4)\n\nDime para qué nivel (licenciatura / posgrado) y si lo quieres en Quarto / RevealJS para clase."
+  },
+  {
+    "objectID": "ejercicios/ejercicio-diseño-y-analisis/index.html#cómo-desarrollar-el-trabajo",
+    "href": "ejercicios/ejercicio-diseño-y-analisis/index.html#cómo-desarrollar-el-trabajo",
+    "title": "Control de Larvas de mosquitos",
+    "section": "¿Cómo desarrollar el trabajo?",
+    "text": "¿Cómo desarrollar el trabajo?\nComo sugerencia para ayudarte a desarrollar tus ideas te ofrezco los siguientes puntos a considerar.\n\n\n\n¿Diseño experimental?\n¿Arreglo de tratamientos?\n¿Modelo que corresponde a este experimento?\n¿Supuestos que harás para apoyar tu análisis estadístico?\n¿Define tu criterio o nivel de significancia?\nRealiza una exploración de los datos, numérica y gráfica, comenta.\nConstruye los modelos necesarios y selecciona el mínimo adecuado.\nValora la calidad del modelo, incluyendo el análisis de los residuos.\nResuelve que tratamientos difieren de los demás.\nArgumenta tus conclusiones.\nIncluye ilustraciones apropiadas y elocuentes para apoyar tus hallazgos"
   }
 ]

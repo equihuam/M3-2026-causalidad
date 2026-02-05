@@ -15,9 +15,9 @@ format:
 ### Restricciones a la aleatorización
 
 Imaginemos que tenemos las dos situaciones experimentales que se ilustran en la figura. El análisis de estas situaciones experimentales sugiere dos posible aproximaciones prácticas
-
-
-![](images/retricciones_a_la_aleatorizaci%C3%B3n_1.png)
+-
+z--
+![](images/retricciones_a_la_aleatorización_1.png,-)
 
 ::: {.callout-tip collapse="true"}
 
