@@ -1,5 +1,5 @@
 ---
-title: "Control de Larvas de mosquitos"
+title: "Control de larvas de mosquitos"
 author: ["Miguel Equihua"]
 date: "2026-02-4"
 lang: es
