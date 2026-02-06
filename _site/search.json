@@ -536,7 +536,7 @@
     "href": "index.html",
     "title": "M3 - Diseño de Experimentos",
     "section": "",
-    "text": "Modelos de Efectos Mixtos\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n5 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nModelos de medidas repetidas\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n5 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nRestricciones a la aleatorización\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n4 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nAprovechando mi DAG\n\n\n\nDAG\n\n\n\n\n\n\n\n\n\n3 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nExperimentos completamente aleatorizados\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n30 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nDiagramas Causales\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n29 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nConceptos y Modelos en la experimentación\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n26 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos al Módulo 3 de estadística\n\n\n\noperación\n\n\n\n\n\n\n\n\n\n26 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\nNo hay resultados"
+    "text": "Experimentación Ecológica\n\n\n\ntaller\n\n\n\n\n\n\n\n\n\n6 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nModelos de Efectos Mixtos\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n5 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nModelos de medidas repetidas\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n5 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nRestricciones a la aleatorización\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n4 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nAprovechando mi DAG\n\n\n\nDAG\n\n\n\n\n\n\n\n\n\n3 feb 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nExperimentos completamente aleatorizados\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n30 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nDiagramas Causales\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n29 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nConceptos y Modelos en la experimentación\n\n\n\nclase\n\n\n\n\n\n\n\n\n\n26 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos al Módulo 3 de estadística\n\n\n\noperación\n\n\n\n\n\n\n\n\n\n26 ene 2026\n\n\nMiguel Equihua\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "ejercicios/tareas/index.html",
@@ -557,7 +557,7 @@
     "href": "ejercicios/tareas/index.html#ejercicios",
     "title": "Tareas M3",
     "section": "Ejercicios",
-    "text": "Ejercicios\n\n\n\nTarea\nActividad\nFecha de entrega\n\n\n\n\nejercicio-1\nMi proyecto. Estado 0\n27/ene/2026\n\n\nejercicio-2\nMi DAG\n3/feb/2026\n\n\nejercicio-3\nControl de Larvas de mosquitos\n6/feb/2026"
+    "text": "Ejercicios\n\n\n\nTarea\nActividad\nFecha de entrega\n\n\n\n\nejercicio-1\nMi proyecto. Estado 0\n27/ene/2026\n\n\nejercicio-2\nMi DAG\n3/feb/2026\n\n\nejercicio-3\nControl de Larvas de mosquitos\n6/feb/2026\n\n\nejercicio-4\nMi protocolo revisado\n6/feb/2026"
   },
   {
     "objectID": "ejercicios/tareas/index.html#divertimentos",
@@ -1090,5 +1090,19 @@
     "title": "Control de larvas de mosquitos",
     "section": "Usa Quarto para escribir el reporte",
     "text": "Usa Quarto para escribir el reporte\nPara este ejercicio utiliza por favor la opción de crear tu reporte como un Quarto Document. Propongo esto como un ejercicio introductorio. Espero que puedas valorar así el gran potencial que esto está adquiriendo, pues como puedes ver aquí, podrías escribir tus artículos directamente con Quarto. Pero para empezar, te podría interesar más bien este tutorial introductorio. Si sientes que antes o además de entender eso de Quarto, te gustaría saber más sobre R, te sugiero este material básico.\nEn todo caso, mi idea es animarte a brincar al agua. Sigue la figura de abajo y tendrás un embrión de documento listo para que hagas con él lo que tú quieras. Básicamente escribir libremente y de vez en vez, cuando tengas que hacer operaciones con R podrás abrir un espacio para eso (¡un chunk!). En RStudio lo puedes hacer con ayuda del botón verde que está arriba como a la mitad de la pantalla, tien un signo “+” y una “C”, seguramente de chunk. Eso es todo para empezar. Si quieres “ver en bonito”, lo que has escrito, tienes que apreta el botón Render. Normalmente pasará un momento y te llevará al browser para mostrate lo que has escrito como una pagina web de tu creación. Al mismo tiempo habrá creado en tu carpeta de trabajo un archivo html con el nombre que le hayas dado al inicio.\n\n\n\n\nQuiero incluir el render en PDF\nEl Asunto de la incompatibilidad de Quarto al producir PDF en español se puede atender con la especificación de la clase de documanto a utilizar. Esto controla los paquetes base que usa LaTex para producir el resultado, así que es un buen camino para atender la problemática. Te sugiero poner esto en la sección de control de tu documento.\n\nformat:\n    pdf:\n       documentclass: scrartcl     \nEn el cuadro siguiente están las clases de documento disponibles. El paquete base KOMA se desarrolló para ofrecer al usuario escripts de mejor diseño y desempeño que los convencionales de LaTex. Ahora son el default en Quarto. Podemos usar varias de estas clases, pero algunas de ellas dan problemas al utilizarlas en combinación con algunos idiomas (como el español). En el cuadro siguiente anoto lo que yo he encontrado al usarlas.\n\n\n\n\n\n\n\n\n\nClase\nBase\nPropósito\nProblema\n\n\n\n\nscrartcl\nKOMA\nArticle-style documents (default for most PDFs).\nNo\n\n\nscrreprt\nKOMA\nReport-style documents (chapters, sections).\nNo\n\n\nscrbook\nKOMA\nBook-style documents (front matter, chapters, back matter).\nNo\n\n\nscrlttr2\nKOMA\nLetters\nSí\n\n\narticle\nLaTeX\nShort papers, articles.\nNo\n\n\nreport\nLaTeX\nLonger reports with chapters.\nNo\n\n\nbook\nLaTeX\nBooks and theses.\nNo\n\n\nletter\nLaTeX\nLetters.\nSí"
+  },
+  {
+    "objectID": "posts/10-experimentar/index.html",
+    "href": "posts/10-experimentar/index.html",
+    "title": "Experimentación Ecológica",
+    "section": "",
+    "text": "La experimentación con diseños adecuadamente aleatorizados es la norma de referencia científica para la exploración de proposiciones causales. Preguntas de gran envergadura para los intereses humanos se resuelven mediante esta aproximación. La experimentación desafía la imaginación y las capacidades materiales y humanas. Exige ingenio y creatividad, pero también está acotada por el marco ético que nos exige evitar dañar a otros seres humanos, así como también evitar hacerlo a otras especies o a la naturaleza misma."
+  },
+  {
+    "objectID": "posts/10-experimentar/index.html#ciencia-abierta",
+    "href": "posts/10-experimentar/index.html#ciencia-abierta",
+    "title": "Experimentación Ecológica",
+    "section": "Ciencia Abierta",
+    "text": "Ciencia Abierta\nCentro de Ciencia Abierta\nCiecia abierta - UNESCO\nCiencia Abierta - CEPAL"
   }
 ]

@@ -10,6 +10,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/10-experimentar/index.html",
       "/posts/08-modelos-mixtos/index.html",
       "/posts/09-medidas-repetidas/index.html",
       "/posts/06-Restringir-aleatorizacion/index.html",

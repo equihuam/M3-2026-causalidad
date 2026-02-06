@@ -25,8 +25,9 @@ suppress-bibliography: true
 |Tarea        |Actividad              | Fecha de entrega|
 |-------------|-----------------------|-----------------|
 | ejercicio-1 | Mi proyecto. Estado 0 |27/ene/2026      |
-| ejercicio-2 | Mi DAG               | 3/feb/2026      |
+| ejercicio-2 | Mi DAG                | 3/feb/2026      |
 | ejercicio-3 | [Control de Larvas de mosquitos](../ejercicio-diseno-y-analisis) |6/feb/2026|
+| ejercicio-4 | Mi protocolo revisado |6/feb/2026 |
 
 
 
