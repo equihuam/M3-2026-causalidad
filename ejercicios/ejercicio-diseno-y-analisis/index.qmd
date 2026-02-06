@@ -5,31 +5,45 @@ date: "2026-02-4"
 lang: es
 draft: false
 categories: [ejercicio ]
-  
-format: 
-  html
 ---
 
-![](img/aedes-aegypti-cdc02-d0a891-1024.jpg ){width="60%" fig-align="center"}
+![](img/aedes-aegypti-cdc02-d0a891-1024.jpg){width="60%"
+fig-align="center"}
 
+## Situación de investigación
 
-## Situación de investigación 
-
-Queremos evaluar el **efecto de tres pesticidas** sobre la **supervivencia de larvas de** ***Aedes aegipty***. Estamos ensayando el pesticida en una zona en donde sabemos que existen **distinta historia de exposición a contaminantes**, lo que sospechamos puede afectar su respuesta. Desafortunadamente poco sabemos de los detalles de esas **historias de exposición previa** por lo que la consideramos como una **fuente de variabilidad un poco compleja y no medible**.
-
-
+Queremos evaluar el **efecto de tres pesticidas** sobre la
+**supervivencia de larvas de** ***Aedes aegipty***. Estamos ensayando el
+pesticida en una zona en donde sabemos que existen **distinta historia
+de exposición a contaminantes**, lo que sospechamos puede afectar su
+respuesta. Desafortunadamente poco sabemos de los detalles de esas
+**historias de exposición previa** por lo que la consideramos como una
+**fuente de variabilidad un poco compleja y no medible**.
 
 ## Ideas de diseño
 
-* Los **Tratamientos**
+-   Los **Tratamientos**
 
-  * `Control`
-  * `A: Mezcla de `*`Bacillus thuringiensis`*, *`Beauveria bassiana`*, *`Peacelomyces fumorosae`*
-  * `B: Temefos`
+    -   `Control`
+    -   `A: Mezcla deBacillus thuringiensis`, *`Beauveria bassiana`*,
+        *`Peacelomyces fumorosae`*
+    -   `B: Temefos`
 
-* En la zona de interés se sabe que hay tres grandes territorios. Uno prácticamente en estado natural, seguramente con muy baja exposición a agroquímicos de todo tipo. Hay otra gran proporción del lugar que se dice ha estado medianamente expuesta y finalmente, hay otro territorio muy afectado por actividades humanas que seguramente lo ha expuesto a una larga historia de uso de agroquímicos.
+-   En la zona de interés se sabe que hay tres grandes territorios. Uno
+    prácticamente en estado natural, seguramente con muy baja exposición
+    a agroquímicos de todo tipo. Hay otra gran proporción del lugar que
+    se dice ha estado medianamente expuesta y finalmente, hay otro
+    territorio muy afectado por actividades humanas que seguramente lo
+    ha expuesto a una larga historia de uso de agroquímicos.
 
-* El estudio se realizó de la siguiente manera. Se capturaron en cada lugar 100 adultos de *Aedes aegipty*. Se llevaron esos mosquitos al laboratorio, en donde se les mantuvo en condiciones homogéneas. Se les ofrecieron contenedores de agua limpia, apropiados para su reproducción. Así se obtuvieron 50 larvas producidas por los adultos colectados en cada lugar y se expusieron a cada tratamiento. Finalmente, se tomó nota de la supervivencia resultante al cabo de 48 horas.
+-   El estudio se realizó de la siguiente manera. Se capturaron en cada
+    lugar 100 adultos de *Aedes aegipty*. Se llevaron esos mosquitos al
+    laboratorio, en donde se les mantuvo en condiciones homogéneas. Se
+    les ofrecieron contenedores de agua limpia, apropiados para su
+    reproducción. Así se obtuvieron 50 larvas producidas por los adultos
+    colectados en cada lugar y se expusieron a cada tratamiento.
+    Finalmente, se tomó nota de la supervivencia resultante al cabo de
+    48 horas.
 
 Estos son los resultados que se obtuvieron de este ensayo.
 
@@ -52,7 +66,6 @@ diseno <- expand.grid(
 
 diseno
 ```
-
 
 ```{r}
 #| label: datos 
@@ -81,35 +94,91 @@ diseno |>
 \
 \
 
-Para este ejercicio utiliza por favor la opción de crear tu reporte como un _Quarto Document_.
-Propongo esto como un ejercicio introductorio. Espero que puedas valorar así el gran potencial que esto está adquiriendo, pues [como puedes ver aquí](https://quarto.org/docs/manuscripts/authoring/rstudio.html), podrías escribir tus artículos directamente con _Quarto_. Pero para empezar, te podría interesar más bien [este tutorial introductorio.](https://quarto.org/docs/get-started/hello/rstudio.html) Si sientes que antes o además de entender eso de **Quarto**, te gustaría saber más sobre **R**, te sugiero este [material básico](https://aprendiendo-r-intro.netlify.app/). 
+## Usa *Quarto* para escribir el reporte
 
-En todo caso, mi idea es animarte a **brincar al agua**. Sigue la figura de abajo y tendrás un embrión de documento listo para que hagas con él lo que tú quieras. Básicamente escribir libremente y de vez en vez, cuando tengas que hacer operaciones con **R** podrás abrir un espacio para eso (¡un chunk!). En **RStudio** lo puedes hacer con ayuda del botón verde que está arriba como a la mitad de la pantalla, tien un signo "+" y una "C", seguramente de *chunk*. Eso es todo para empezar. Si quieres "ver en bonito", lo que has escrito, tienes que apreta el botón **Render**. Normalmente pasará un momento y te llevará al browser para mostrate lo que has escrito como una pagina web de tu creación. Al mismo tiempo habrá creado en tu carpeta de trabajo un archivo **html** con el nombre que le hayas dado al inicio.
+Para este ejercicio utiliza por favor la opción de crear tu reporte como
+un *Quarto Document*. Propongo esto como un ejercicio introductorio.
+Espero que puedas valorar así el gran potencial que esto está
+adquiriendo, pues [como puedes ver
+aquí](https://quarto.org/docs/manuscripts/authoring/rstudio.html),
+podrías escribir tus artículos directamente con *Quarto*. Pero para
+empezar, te podría interesar más bien [este tutorial
+introductorio.](https://quarto.org/docs/get-started/hello/rstudio.html)
+Si sientes que antes o además de entender eso de **Quarto**, te gustaría
+saber más sobre **R**, te sugiero este [material
+básico](https://aprendiendo-r-intro.netlify.app/).
+
+En todo caso, mi idea es animarte a **brincar al agua**. Sigue la figura
+de abajo y tendrás un embrión de documento listo para que hagas con él
+lo que tú quieras. Básicamente escribir libremente y de vez en vez,
+cuando tengas que hacer operaciones con **R** podrás abrir un espacio
+para eso (¡un chunk!). En **RStudio** lo puedes hacer con ayuda del
+botón verde que está arriba como a la mitad de la pantalla, tien un
+signo "+" y una "C", seguramente de *chunk*. Eso es todo para empezar.
+Si quieres "ver en bonito", lo que has escrito, tienes que apreta el
+botón **Render**. Normalmente pasará un momento y te llevará al browser
+para mostrate lo que has escrito como una pagina web de tu creación. Al
+mismo tiempo habrá creado en tu carpeta de trabajo un archivo **html**
+con el nombre que le hayas dado al inicio. 
 
 ::: {.layout="[-1.2,-1]"}
 ![](img/Noteook.png)
 :::
 
+### Quiero incluir el render en PDF
+
+El Asunto de la incompatibilidad de **Quarto** al producir **PDF** en
+español se puede atender con la especificación de la *clase de
+documanto* a utilizar. Esto controla los paquetes base que usa *LaTex*
+para producir el resultado, así que es un buen camino para atender la
+problemática. Te sugiero poner esto en la sección de control de tu
+documento.
+
+``` =yaml
+
+format:
+    pdf:
+       documentclass: scrartcl     
+```
+
+En el cuadro siguiente están las clases de documento disponibles. El
+paquete base **KOMA** se desarrolló para ofrecer al usuario escripts de
+mejor diseño y desempeño que los convencionales de **LaTex**. Ahora son
+el default en *Quarto*. Podemos usar varias de estas clases, pero
+algunas de ellas dan problemas al utilizarlas en combinación con algunos
+idiomas (como el español). En el cuadro siguiente anoto lo que yo he
+encontrado al usarlas.
+
+| Clase | Base | Propósito | Problema |
+|------------|------------|-------------------------------------|------------|
+| scrartcl | KOMA | Article-style documents (default for most PDFs). | No |
+| scrreprt | KOMA | Report-style documents (chapters, sections). | No |
+| scrbook | KOMA | Book-style documents (front matter, chapters, back matter). | No |
+| scrlttr2 | KOMA | Letters | Sí |
+| article | LaTeX | Short papers, articles. | No |
+| report | LaTeX | Longer reports with chapters. | No |
+| book | LaTeX | Books and theses. | No |
+| letter | LaTeX | Letters. | Sí |
+
 ## ¿Cómo desarrollar el trabajo?
 
-Como sugerencia para ayudarte a desarrollar tus ideas te ofrezco los siguientes puntos a considerar.
+Como sugerencia para ayudarte a desarrollar tus ideas te ofrezco los
+siguientes puntos a considerar.
 
---------------------
+------------------------------------------------------------------------
 
 ::: {style="color:GoldenRod"}
-
- 1. ¿Diseño experimental?
- 2. ¿Arreglo de tratamientos?
- 3. ¿Modelo que corresponde a este experimento?
- 4. ¿Supuestos que harás para apoyar tu análisis estadístico?
- 5. ¿Define tu criterio o nivel de significancia?
- 6. Realiza una exploración de los datos, numérica y gráfica, comenta.
- 7. Construye los modelos necesarios y selecciona el mínimo adecuado.
- 8. Valora la calidad del modelo, incluyendo el análisis de los residuos.
- 9. Resuelve que tratamientos difieren de los demás.
+1.  ¿Diseño experimental?
+2.  ¿Arreglo de tratamientos?
+3.  ¿Modelo que corresponde a este experimento?
+4.  ¿Supuestos que harás para apoyar tu análisis estadístico?
+5.  ¿Define tu criterio o nivel de significancia?
+6.  Realiza una exploración de los datos, numérica y gráfica, comenta.
+7.  Construye los modelos necesarios y selecciona el mínimo adecuado.
+8.  Valora la calidad del modelo, incluyendo el análisis de los
+    residuos.
+9.  Resuelve que tratamientos difieren de los demás.
 10. Argumenta tus conclusiones.
-11. Incluye ilustraciones apropiadas y elocuentes para apoyar tus hallazgos
-
+11. Incluye ilustraciones apropiadas y elocuentes para apoyar tus
+    hallazgos
 :::
-
-

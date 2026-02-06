@@ -155,7 +155,7 @@ mixtos*.
 Como hemos estado viendo, actualmente resulta casi obligatorio recurrir
 a `ggplot2` para producir gráficas con *calidad publicación*. Esta
 biblioteca pone en práctica la propuesta que hacen sus autores de una
-semántica de graficación, la que [Hadley Wickham explica originamente en
+semántica de graficación, la que [Hadley Wickham explica originalmente en
 su libro publicado en
 2009](https://link.springer.com/book/10.1007/978-0-387-98141-3).
 Actualmente Hadley trabaja con otros dos coautores (Danielle Navarro y
@@ -173,8 +173,9 @@ ensayados.
 
 ```{r}
 library(nlme)
-library(lattice)
 library(ggplot2)
+
+head(Rail)
 
 rieles <- Rail
 names(rieles) <- c("riel", "viaje")
@@ -229,7 +230,7 @@ cuantitativos de *velocidad de viaje*.
 
 ```{r}
 ggplot(rieles, aes(x = viaje, y = riel, group = riel)) + 
-       geom_point(shape = 19, size = 4, color = "blue") +
+       geom_point(shape = 19, size = 2, color = "brown") +
        labs(title = "Análisis de integridad estructural de rieles") +
        xlab(label = "tiempo de viaje (ns)") +
        ylab(label = "riel") +
@@ -250,6 +251,7 @@ dije al principio, se puede usar la función groupedData de la biblioteca
 
 ```{r}
 rieles.sg <- as.data.frame(rieles)
+attributes(rieles.sg)
 ```
 
 Estructura de la tabla **sin** información de agrupamiento:
@@ -270,11 +272,11 @@ definen la **estructura de agrupamiento** que caracterizan a la tabla :
 ```{r}
 rieles.g <- groupedData (viaje ~ 1 | riel, data = rieles.sg, 
                          FUN = mean,
-                         units = list( x = "(ns)"),
+                         units = list( y = "(ns)"),
                          labels = list(x = "riel", 
                                        y = "tiempo de tránsito de fuerza cero"),
                          )
-str(rieles.g)
+attributes(rieles.g)
 ```
 
 ```{r}
@@ -304,7 +306,7 @@ función `update()`.
 
 Como una demostración simple de esto, le cambiaré la etiqueta, que es un
 atributo asociado a la variable de respuesta en la estructura de
-agrupamiento. El dato lo puedo recuperar entonces con la funcción `attr`
+agrupamiento. El dato lo puedo recuperar entonces con la función `attr`
 para "labels". En seguida te pongo un ejemplo
 
 ```{r}
@@ -334,7 +336,7 @@ Empecemos por construir el modelo nulo. [¿qué resultados nos ofrece este
 modelo?]{style="color:GoldenRod"}.
 
 ```{r}
-rieles.m1 <- lm(viaje ~ 1, data =rieles.g)
+rieles.m1 <- lm(viaje ~ 1, data = rieles.g)
 summary(rieles.m1)
 ```
 
@@ -352,12 +354,12 @@ ves?]{style="color:GoldenRod"}
 ```{r}
 ggplot(rieles.g, aes(x = viaje, y = riel, group = riel)) + 
        stat_boxplot(geom ='errorbar', linetype = 2, width = 0.5) + 
-       geom_boxplot(shape = 19, size = 0.5, color = "blue") +
+       geom_boxplot(shape = 19, size = 0.5, color = "blue", notch = FALSE) +
        labs(title = "Análisis de rieles (rieles.g)") +
        xlab(label = "tiempo de viaje (ns)") +
        ylab(label = "riel") +
        theme(text = element_text(size = 18), 
-             axis.text.x = element_text(angle = 0, hjust = 1)) 
+             axis.text.x = element_text(angle = 0, hjust = 0.5)) 
 ```
 
 Al ignorar el efecto de los rieles, dentro de los que repito la prueba
@@ -377,8 +379,8 @@ diferente. Suponiendo efectos fijos, la estimación del parámetro de
 interés es esta.
 
 ```{r}
-rieles.m2 <- lm(viaje ~ riel - 1, data = rieles.g)
-rieles.m2
+rieles.m2 <- lm(viaje ~ riel -1, data = rieles.g)
+summary(rieles.m2)
 ```
 
 ```{r}
@@ -435,17 +437,15 @@ lineal es `lme()` que se usa de modo muy semejante a `lm()`. Sin
 embargo, nótese que ahora el modelo tiene dos grupos de fórmulas, una
 para describir los efectos fijos (opción *fixed*) y otra para describir
 los aleatorios (opción *random*). Esté último es siempre una fórmula que
-tiene sólo el lado derecho (no hay interés en predecir medias,
-¿recuerdas?) y da cuenta de los efectos aleatorios y de la estructura de
-agrupamiento de los datos. Un agrupamiento se representa mediante el
-símbolo de barra vertical: `|`. Ahora, ajustemos un modelo de este tipo
-para obtener la estimación de *máxima verosimilitud restringida* para
-los rieles.
+tiene sólo el lado derecho (no hay interés en predecir medias de alguna 
+variable de respuesta, ¿recuerdas?) y da cuenta de los efectos aleatorios 
+y de la estructura de agrupamiento de los datos. Un agrupamiento se 
+representa mediante el símbolo de barra vertical: `|`. Ahora, ajustemos 
+un modelo de este tipo para obtener la estimación de 
+*máxima verosimilitud restringida* para los rieles.
 
 ```{r}
-rieles.m3 <- lme(fixed = viaje ~ 1,
-                 random = ~ 1 | riel,
-                 data = rieles.g)
+rieles.m3 <- lme(fixed = viaje ~ 1, random = ~ 1 | riel, data = rieles.g)
 rieles.m3
 ```
 
@@ -497,18 +497,18 @@ podemos interpretar así:
     diferencia es despreciable.
 -   $+2<\Delta AIC\le 4$: Sugiere que posiblemente el modelo reducido
     (mayor AIC) ajusta bien a los datos, aunque sí hay una ligera
-    pérdida, al contrastarlo con lo que logra el modelo más comolejo.
+    pérdida, al contrastarlo con lo que logra el modelo más complejo.
 -   $4<\Delta AIC\le 7$: Si ocurre esto, el modelo reducido sigue
     teniendo soporte defendible en su ajuste a los datos, pero hay ya
-    una pérdida marcada al comparar lo aue logra el modelo comoleto.
--   $\Delta AIC>10$: Esta amgnitud de perdida de ajuste a los datos
-    sugiere aue el modelo reducido en cuesión tiene nulo o
+    una pérdida marcada al comparar lo con lo que logra el modelo completo.
+-   $\Delta AIC>10$: Esta magnitud de perdida de ajuste a los datos
+    sugiere que el modelo reducido en cuestión tiene nulo o
     insignificante apoyo.
 
 Otros criterios de juicio. Desde luego siempre se prefiere el modelo con
 el AIC más bajo. Por el principio de parsimonia, si dos modelos tienen
 un $\Delta AIC$ muy bajo ($\le 2$), se suele preferir el más simple (el
-que tenga menos parámetros).Tamaño de muestra ((AICc)): Si el tamaño de
+que tenga menos parámetros).Tamaño de muestra: Si el tamaño de
 la muestra es pequeño en comparación con el número de parámetros
 ($N/K<40$), es mejor utilizar el AIC corregido ($AICc$) para evitar
 sobreajuste.
@@ -556,9 +556,11 @@ intervals(rieles.m3, 0.95)
 ```
 
 
-![](images/ratas-de-lab.png){width=400}
+
 
 ## Control del glucógeno en hígados de rata
+
+![](images/ratas-de-lab.png){width=400}
 
 Este ejemplo fue presentado originalmente en Sokal & Rohlf (1981). Se
 trata de un experimento con un solo factor con tres dietas: 1 =
@@ -568,13 +570,39 @@ por el hecho de que, para el análisis, se tomaron tres muestras del
 hígado de cada rata y se hicieron dos determinaciones de contenido de
 glucógeno en cada muestra. Podríamos decir, un tanto despectivamente,
 que hay seis **pseudoréplicas** por rata para dar un total de 36
-lecturas en total. Pero quizás en lugar de hablar en estos términos
+lecturas. Pero quizás en lugar de hablar en estos términos
 deberíamos simplemente reconocer que lo que estamos haciendo es
 organizar un muestreo dentro del estudio (lo que genera algo de
 variación aleatoria), para obtener el dato de la variable de respuesta
 en el experimento, que es distinto a lo usual de hacer una "cosecha
-total", que es la práctica ideal (pues evita introducir un fuente de
+total", que es la práctica ideal (pues evita introducir una fuente de
 "ruido" adicional).
+
+El modelo lineal mixto puede escribirse como:
+
+$$
+y_{ijk\ell} = \mu + T_i + \delta_{j(i)} + \phi_{k(ij)} + \varepsilon_{ijk\ell}
+$$
+
+donde:
+
+- $y_{ijk\ell}$ = contenido de glucógeno medido en la medición $\ell$ de la muestra $k$ del hígado de la rata $j$ bajo dieta $i$.  
+- $\mu$ = media general.  
+- $T_i$ = efecto fijo de la dieta $i$.  
+- $\delta_{j(i)}$ = efecto aleatorio de la rata $j$ anidada en dieta $i$, con  
+  
+  $$
+  \delta_{j(i)} \sim N(0, \sigma^2_\delta)
+  $$  
+- $\phi_{k(ij)}$ = efecto aleatorio de la muestra de hígado $k$ dentro de la rata $j$ bajo dieta $i$, con  
+  $$
+  \phi_{k(ij)} \sim N(0, \sigma^2_\phi)
+  $$  
+- $\varepsilon_{ijk\ell}$ = error residual de la medición $\ell$, con  
+  $$
+  \varepsilon_{ijk\ell} \sim N(0, \sigma^2_\varepsilon)
+  $$  
+
 
 [Datos del
 experimento](https://drive.google.com/file/d/1NYuQYRR-ZKy_wlqylIHk_W6wKN10LoHy/view?usp=sharing)
@@ -644,7 +672,7 @@ La estructura aleatoria de los datos, cuando tiene varias fuentes, se
 representa como una lista de efectos (modelos) en la función `lme()` de
 la biblioteca `nlme`. Otra posibilidad es usar la biblioteca `lme4` que
 contiene a la función `lmer()`. Al respecto, [esta lectura puede ser de
-innterés](http://staff.pubhealth.ku.dk/~jufo/courses/rm2018/nlmePackage.pdf)
+interés](http://staff.pubhealth.ku.dk/~jufo/courses/rm2018/nlmePackage.pdf)
 
 Este caso, como ya vimos, hay dos cosas en operación:
 
@@ -657,7 +685,7 @@ Este caso, como ya vimos, hay dos cosas en operación:
     componente de la lista.
 
 En el código siguiente tanto el modelo "1" como el "2" son equivalente.
-Los presento como dos formas interamiables para escribir el modelo de
+Los presento como dos formas intercambiables para escribir el modelo de
 efectos aleatorios. Hay que notar que **no es correcto** hacer
 comparaciones entre modelos que cambian en cuanto al componente "fijo"
 **si el ajuste se hace mediante el método "REML"**, en caso de tener
@@ -883,7 +911,7 @@ t(data.frame(trat_1_y_3 = intervals(ratas.lme.m4C, level = nivel_confianza)$fixe
 # Modelo de las manos
 
 Hagamos juntos aquí en clase el reanálisis del ejemplo de las manos como
-un modelo de efectos mixto. Pero, háganlo usteds y yo los veo.
+un modelo de efectos mixto. Pero, háganlo ustedes y yo los veo.
 
 ::: callout-note
 ## El modelo puede ser este
