@@ -689,6 +689,7 @@ Ejemplos de niveles legítimos:
 
 \
 
+
 ::: {.apuntar}
 -   La racionalidad se vuelve empírica
 :::
@@ -725,7 +726,7 @@ Dos interpretaciones:
 \
 \
 
-::: apuntar
+::: {.apuntar}
 -   El error se vuelve estructural
 :::
 
@@ -766,7 +767,7 @@ Tres críticas convergentes:
 -   La experiencia importa
 -   El poder importa
 
-::: apuntar
+::: {.apuntar}
 -   La racionalidad no es solo cálculo
 :::
 
@@ -816,7 +817,56 @@ fig-align="right"}
 -   Orientada a eficiencia y control
 -   Modelos como tecnologías de poder
 
-![Pensamiento sistémico](img/Systems_Thinking_Diagram.png)
+![Pensamiento sistémico](img/Systems_Thinking_Diagram.png){width="80%"}
+
+
+## Contraste de enfoques
+
+- La **teoría crítica** no rechaza la estadística *per se*. 
+- **cuestiona y problematiza cómo, para qué y bajo qué supuestos** se usa. 
+- La ve como una herramienta ambivalente: puede **emancipar** o **reproducir dominación**, según el marco epistemológico y político que la sostenga.
+
+
+## Estadística como tecnología de poder
+
+Inspirada en [Michel Foucault](https://villaeducacion.mx/descargar.php?idtema=1309&data=415714_microfisica-del-poder.pdf), la teoría crítica subraya que la estadística:
+
+* Es parte de dispositivos de **gubernamentalidad** (censos, indicadores, rankings).
+* Produce **poblaciones legibles** para la administración, el control y la intervención.
+* Define “normalidades” (promedios, desviaciones) que **disciplinan** conductas.
+
+
+::: {.apuntar}
+- El problema aquí no es calcular, sino **qué formas de vida se vuelven gobernables** a través del número.
+:::
+
+
+## Reapropiación crítica de la estadística
+
+Lejos de descartarla, muchas corrientes críticas la **reapropian**
+
+* **Visibilización de desigualdades** (clase, género, raza, territorio).
+* **Denuncia empírica** de injusticias estructurales (salud, ambiente, trabajo).
+* **Contra-indicadores** que cuestionan métricas oficiales (p. ej., bienestar más allá del PIB).
+
+::: {.apuntar}
+- En esta línea dialogan enfoques como la economía política crítica (Karl Marx), el feminismo cuantitativo
+[@Fraser2008ScalesOfJustice] y la crítica de la racionalidad instrumental [@Habermas1984TCA1].
+:::
+
+## Tensiones clave {.smaller}
+
+* **Descripción vs. explicación**: correlación no sustituye causalidad social.
+* **Promedios vs. experiencias**: lo típico puede ocultar lo injusto.
+* **Indicadores vs. sentidos**: medir no equivale a comprender.
+* **Experticia vs. democracia**: ¿quién decide qué cuenta?
+
+## La teoría crítica propone una **estadística reflexiva**
+
+* Hcer conciencia de sus supuestos y efectos.
+* Articularla con teoría social y análisis histórico.
+* Abrirla a métodos mixtos y a la deliberación pública.
+
 
 ## Síntesis epistemológica
 
@@ -888,7 +938,7 @@ Aparecen cuando:
 -   el riesgo es colectivo
 
 :::: {.absolute left="50%"}
-::: apuntar
+::: {.apuntar}
 -   La ciencia sola no basta
 -   La sociedad sola tampoco
 :::
@@ -940,7 +990,7 @@ Ejemplos:
 -   principio de precaución
 -   escenarios plausibles
 
-::: apuntar
+::: {.apuntar}
 -   Racionalidad limitada institucionalizada
 :::
 
@@ -962,7 +1012,7 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 \
 
-::: apuntar
+::: {.apuntar}
 -   Heurísticas explícitas en lugar de una optimización perfecta
 :::
 
@@ -984,7 +1034,7 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 \
 
-::: apuntar
+::: {.apuntar}
 -   Infraestructura práctica para modelos híbridos ciencia–sociedad
 :::
 
@@ -1003,7 +1053,7 @@ La racionalidad limitada no se corrige, se **organiza colectivamente**.
 
 \
 
-::: apuntar
+::: {.apuntar}
 -   Pero la ciencia sigue siendo indispensable
 :::
 
