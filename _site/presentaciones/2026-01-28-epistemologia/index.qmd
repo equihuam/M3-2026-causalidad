@@ -856,10 +856,18 @@ Lejos de descartarla, muchas corrientes críticas la **reapropian**
 
 ## Tensiones clave {.smaller}
 
+:::{layout="[1, -1]"}
+
 * **Descripción vs. explicación**: correlación no sustituye causalidad social.
 * **Promedios vs. experiencias**: lo típico puede ocultar lo injusto.
 * **Indicadores vs. sentidos**: medir no equivale a comprender.
 * **Experticia vs. democracia**: ¿quién decide qué cuenta?
+:::
+
+
+![](img/tension-3.png){width="17em" .nolightbox .absolute top="3em" left="30em"}
+
+
 
 ## La teoría crítica propone una **estadística reflexiva**
 
