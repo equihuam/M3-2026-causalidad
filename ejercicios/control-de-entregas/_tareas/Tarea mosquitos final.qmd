@@ -1,0 +1,70 @@
+---
+title: "Proyecto mosquitos"
+author: "Lucía Rodríguez Muñoz"
+format: html
+editor: visual
+---
+
+## Control de larvas de mosquitos
+
+1.  Diseño experimiental
+
+\$\$
+
+y= /mu + /tau_i + /beta_j + /epsilon\
+\$\$
+
+Donde:
+
+y= Supervivencia de larvas de mosquitos
+
+\\mu= Medida general de supervivencia
+
+\\tau_i = Efecto del pesticida
+
+\\beta_j= Zona
+
+\\epsilon= Error
+
+2.  Supuestos del modelo lineal
+
+Que mis errores se distribuyen normal = 0
+
+3.  Modelo que corresponde a este experimento
+
+Modelo lineal generalizado
+
+4.  Mi nivel de significancia
+
+p=0.05
+
+Tratamiento que difiere de los demás
+
+7.  Construye el modelo:
+
+    rm(list = ls())
+
+    setwd("C:\\Users\\lucia\\Documents\\tareas de r") datos \<- read.csv("Mosquitos.csv") modelo \<- glm(Supervivencia \~ Tratamiento + Territorio, family = binomial(link = "logit"), data = datos) install.packages("car") install.packages("agricolae")
+
+    library(car) library(agricolae) AV_modelo = Anova(modelo, type = "II", test.statistic = "LR") AV_modelo boxplot(datos$Supervivencia~datos$Tratamiento)\
+    boxplot(datos$Supervivencia~datos$Territorio)
+
+    ##### 
+
+    modelo1 \<- glm(Supervivencia\~ Tratamiento, family = binomial(link="logit"), data = datos) \######
+
+    AV_modelo1 = Anova(modelo1, type = "II", test.statistic = "LR") AV_modelo1 \#### modelo1 \<- glm(Supervivencia\~ Tratamiento\*Territorio, family = binomial(link="logit"), data = datos)
+
+El pesticida A y B no difieren entre sí, solo el control
+
+9.  Argumenta tus conclusiones
+
+Ambos pesticidas funcionan de forma similar.
+
+![]("C:\Users\lucia\Documents\tareas de r\Boxplot ecosistemas.png")
+
+![]("C:\Users\lucia\Documents\tareas de r\Boxplot Pesticidas.png")
+
+![](Boxplot Pesticidas.png)
+
+![](Boxplot ecosistemas.png)

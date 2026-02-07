@@ -1,0 +1,62 @@
+---
+title: "Proyecto mosquitos"
+author: "Lucía Rodríguez Muñoz"
+format: html
+editor: visual
+---
+
+## Control de larvas de mosquitos
+
+1.  Diseño experimiental
+
+El diseño experimental corresponde a un "Diseño por bloques al azar"
+
+2.  Arreglo de tratamientos
+
+Debido a que los territorios podrían causar ruido en mi experimento y quiero conocer el efecto de los tratamientos en las larvas de mosquitos, en los bloques se separarán los territorios.
+
+3.  Modelo que corresponde a este experimento
+
+$$
+y= /mu + /tau_i + /beta_j + /epsilon
+$$
+
+Donde:
+
+y= Supervivencia de larvas de mosquitos
+
+\\mu= Medida general de supervivencia
+
+\\tau_i = Efecto del pesticida
+
+\\beta_j= Zona
+
+\\epsilon= Error
+
+4.  Supuestos del modelo lineal
+
+Que mis errores se distribuyen de manera normal
+
+5.  Mi nivel de significancia
+
+p=0.05
+
+6.  Modelo necesario:
+
+    "Modelo sin restricciones"
+
+7.  Análisis de los residuales
+
+Debido a que mi nivel de significancia es significativo, rechazo la hipótesis nula. Los tratamientos no funcionan igual. El pesticida A tiene un efecto mayor al Pesticida B. (Ver summary)
+
+#Summary
+
+```         
+oefficients:                        Estimate Std. Error t value Pr(>|t|)     (Intercept)             0.76833    0.03316  23.174 2.05e-05 *** TratamientoPesticida_A -0.22267    0.03632  -6.131  0.00359 **  TratamientoPesticida_B -0.25633    0.03632  -7.058  0.00213 **  Territoriomedio         0.05667    0.03632   1.560  0.19372     Territoriopristino      0.03733    0.03632   1.028  0.36208  
+```
+
+9.  Resuelve qué tratamientos difieren de los demás
+
+De acuerdo con mis resultados, ambos tratamientos funcionan de manera similar. Aunque el pesticida A parece tener un mejor efecto. (Ver boxplot)
+
+![](images/boxplotfinal-01.png)

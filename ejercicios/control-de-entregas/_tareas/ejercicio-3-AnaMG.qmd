@@ -1,0 +1,104 @@
+---
+title: "ejercicio-3-AnaMG"
+author: Ana Luz Morales Guerrero
+date: "2026/02/06"
+lang: es
+format:
+  html: default
+  docx: default
+  pdf: default
+---
+
+## Control de larvas de mosquitos
+
+### Situación de investigación
+
+Se evaluó el efecto de tres pesticidas sobre la supervivencia de larvas de *Aedes aegipty*. Se ensayó el pesticida en una zona en donde sabemos que existen distinta historia de exposición a contaminantes, lo que sospechaba puedría afectar su respuesta. Desafortunadamente poco se de los detalles de esas historias de exposición previa por lo que la consideramos como una fuente de variabilidad un poco compleja y no medible.
+
+![Figura 1. *Aedes aegipty*](images/aedes-aegypti-cdc02-d0a891-1024.jpg){fig-align="center"}
+
+### Ideas de diseño
+
+#### Los Tratamientos
+
+Control A: Mezcla de*Bacillus thuringiensis, Beauveria bassiana, Peacelomyces fumorosae* B: Temefos
+
+En la zona de interés se sabe que hay tres grandes territorios. Uno prácticamente en estado natural, seguramente con muy baja exposición a agroquímicos de todo tipo. Hay otra gran proporción del lugar que se dice ha estado medianamente expuesta y finalmente, hay otro territorio muy afectado por actividades humanas que seguramente lo ha expuesto a una larga historia de uso de agroquímicos.
+
+El estudio se realizó de la siguiente manera. Se capturaron en cada lugar 100 adultos de Aedes aegipty. Se llevaron esos mosquitos al laboratorio, en donde se les mantuvo en condiciones homogéneas. Se les ofrecieron contenedores de agua limpia, apropiados para su reproducción. Así se obtuvieron 50 larvas producidas por los adultos colectados en cada lugar y se expusieron a cada tratamiento. Finalmente, se tomó nota de la supervivencia resultante al cabo de 48 horas.
+
+El estudio se realizó considerando un diseño experimetal multifactorial (bifactorial) puesto que se considera el tratamiento (Pesticida A y B) como factor fijo y el efecto del territorio como fuente de variación aleatoria.
+
+Del estudio se obtuvieron los siguientes resultados.
+
+![Tabla 1. Resultados de supervivencia.](images/Captura%20de%20pantalla%202026-02-06%20233124.png){fig-align="center"}
+
+### Abordaje estadístico
+
+Los resultados del experimeto se analizaran mediante un ANOVA de dos vías debido a que en el diseño experimental se incluyeron dos factores como se mencionó anteriormente. Esté abordaje permitío la evaluación tanto los efectos principales de los tratamientos como la posible interacción entre el tratamiento y la historia de exposición a contaminantes asociada al territorio.Además, se ajustó un modelo lineal mixto considerando el tipo de territorio como efecto aleatorio.
+
+#### Modelo Lineal Mixto
+
+$$
+y = \mu + P + T + \epsilon
+$$
+
+Donde:
+
+-   μ: media general
+
+-   P: efecto fijo del tratamiento
+
+-   T: efecto aleatorio del territorio
+
+-   ε: error aleatorio
+
+### Análisis estadístico
+
+```{r}
+#| echo: true
+datos <- data.frame(
+  Tratamiento = factor(c(
+    "Control", "A", "B",
+    "Control", "A", "B",
+    "Control", "A", "B"
+  )),
+  Territorio = factor(c(
+    "Pristino", "Pristino", "Pristino",
+    "Uso_medio", "Uso_medio", "Uso_medio",
+    "Muy_alterado", "Muy_alterado", "Muy_alterado"
+  )),
+  Supervivencia = c(
+    77.2, 58.8, 57.8,
+    80.4, 60.6, 58.6,
+    82.3, 53.7, 46.6
+  )
+)
+anova <- aov(
+  Supervivencia ~ Tratamiento * Territorio,
+  data = datos
+)
+
+summary(anova)
+library(lme4)
+modelo_mixto <- lmer(
+  Supervivencia ~ Tratamiento + (1 | Territorio),
+  data = datos
+)
+summary(modelo_mixto)
+
+```
+
+### Análisis de resultados
+
+#### ANOVA
+
+En los resultados del ANOVA, la suma de cuadrados del tratamiento en combinación con el territorio dio un valor del 79.1, 49.8 del territorio y 1164.2 del tratamiento, lo que nos indica que la mayor variación está explicada por el tratamiento y no tanto por el territorio o la combinación de ambos. Sin embargo, debido a la fata de replicas no fue posible calcular las pruebas de significacia estadística, por lo que los resutados se interpretan de manera descriptiva.
+
+#### Modelo Lineal Mixto
+
+Para los efectos aleatorios, la varianza de los residuales fue mayor (19.787) que la varianza de correspondiente al territorio (1.702), lo que nos indicaría que la variación entre territorios es menor, sugiriendo que el efecto del territorio no es tan importante.
+
+Para el caso del los resultados obtenidos de los efectos fijos, la estimación de la supervivencia del tratamiento en combinación con el territorio es 22.267% mayor que la media del tratamiento A (intersepto) con un valor de 57.7, mientras que el tratamiento B tuvo 3.367% menos supervivencia que el tratamiento A.
+
+Cabe resltar que este análisis solo se muestra con fines ilustrativos, ya que al carecer de pruebas de significacia en el ANOVA, no es posible determinar si hay efectos significativos que justifique la realización del modelo lineal mixto.

@@ -21,9 +21,10 @@ pacman::p_load(Microsoft365R, dplyr, stringr, DT, flextable)
 alumnos <- read.csv("../../posts/00-Bienvenida/Lista-de-alumnos-2026.csv")
 outlb <- get_business_outlook()
 inbox_ref <- outlb$get_inbox()
-correos <- inbox_ref$list_emails(search = "m3-2026", pagesize = 200)
+m3_2026 <- inbox_ref$get_folder("m3-2026")
+correos <- m3_2026$list_emails(n = 1000)  # filter = paste0("receivedDateTime ge ", "2026-01-25")
 
-# Prepara la tabka de registro de coreos y su tipo dw contenido
+# Prepara la tabla de registro de correos y su tipo dw contenido
 tabla_correo <- tibble(fecha = character(), 
                        alumno = character(), 
                        archivo = character())
@@ -34,7 +35,7 @@ for (correo in correos)
   remitente <-  correo$properties$sender$emailAddress$address
   asunto <- correo$properties$subject
 
-  if (str_detect(str_to_lower(asunto), "m3-2026|m3 2026|m3_2026"))
+  if (str_detect(str_to_lower(asunto), "m3-2026|m3 2026|m3_2026|mm-2026"))
   {
     d  <- correo$list_attachments()
     if (length(d) > 0)
@@ -51,13 +52,22 @@ for (correo in correos)
         d[[1]]$download(dest = paste0("_tareas/",anexo), 
                         overwrite = TRUE)
       }
-    } else {anexo <- paste0(asunto, " - sin anexo")}
+    } else {
+      anexo <- paste0(asunto, " - sin anexo")
+      if (str_detect(correo$properties$body$content, "subí al Drive "))  
+          anexo <- str_extract(correo$properties$body$content, '(?<=href=")(.*)(?=">https)')
+  
+      }
     
     if (remitente == "lucia.8413.17@gmail.com") 
     {
       remitente <- "lucia.rodriguez@posgrado.ecologia.edu.mx"
     }
-    
+    if (remitente == "alvaradomezaeric@yahoo.com")
+    {
+      remitente <- "eric.alvarado@posgrado.ecologia.edu.mx  "
+    }
+      
     
     alumno <- alumnos$alumno[str_detect(remitente, alumnos$correo)]
     fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
@@ -68,16 +78,17 @@ for (correo in correos)
 }
 
 
-# datos adicionales
+   # datos adicionales
 tabla_correo <- tabla_correo |>
   distinct(archivo, .keep_all = TRUE) |>
-  filter(!str_detect(anexo, "sin anexo")) |> 
-  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip|dag|larva|curso"),
+  filter(!str_detect(archivo, "sin anexo")) |> 
+  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip|dag|larva|curso|http|aedes|ejercicio3_"),
                         "ejercicio", "lectura"), 
          id_num = str_extract(archivo, "(?<=\\-|_|\\s)(\\d+)(?=\\-|_|\\s)"),
          id_num = str_remove(id_num, "0"),
          id_num = if_else(str_detect(str_to_lower(archivo),"dag"), "2", id_num),
-         id_num = if_else(str_detect(str_to_lower(archivo),"larva|curso"), "3", id_num)) |> 
+         id_num = if_else(str_detect(str_to_lower(archivo),"larva|curso|http|aedes|mosquitos"), "3", id_num),
+         id_num = if_else(str_detect(str_to_lower(archivo),"ejercicio3_"), "4", id_num)) |> 
   arrange(tipo, id_num)
 ```
 
