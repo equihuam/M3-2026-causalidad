@@ -51,12 +51,13 @@ for (correo in correos)
         d[[1]]$download(dest = paste0("_tareas/",anexo), 
                         overwrite = TRUE)
       }
-    }
+    } else {anexo <- paste0(asunto, " - sin anexo")}
     
     if (remitente == "lucia.8413.17@gmail.com") 
     {
       remitente <- "lucia.rodriguez@posgrado.ecologia.edu.mx"
     }
+    
     
     alumno <- alumnos$alumno[str_detect(remitente, alumnos$correo)]
     fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
@@ -70,10 +71,13 @@ for (correo in correos)
 # datos adicionales
 tabla_correo <- tabla_correo |>
   distinct(archivo, .keep_all = TRUE) |>
-  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip|dag"),
+  filter(!str_detect(anexo, "sin anexo")) |> 
+  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip|dag|larva|curso"),
                         "ejercicio", "lectura"), 
          id_num = str_extract(archivo, "(?<=\\-|_|\\s)(\\d+)(?=\\-|_|\\s)"),
-         id_num = if_else(str_detect(str_to_lower(archivo),"dag"), "2", id_num)) |> 
+         id_num = str_remove(id_num, "0"),
+         id_num = if_else(str_detect(str_to_lower(archivo),"dag"), "2", id_num),
+         id_num = if_else(str_detect(str_to_lower(archivo),"larva|curso"), "3", id_num)) |> 
   arrange(tipo, id_num)
 ```
 
