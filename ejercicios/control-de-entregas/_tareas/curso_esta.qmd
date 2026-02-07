@@ -1,0 +1,220 @@
+---
+title: "Ejercicio: efecto de pesticidas en la supervivencia de larvas de *Aedes aegypti*"
+author: "Francisco Jeronimo G"
+date: "2026-02-06"
+lang: es
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc_float: true
+    code-fold: true
+  pdf: default
+  docx: default
+  pptx: default
+editor: visual
+bibliography: referneces.bib
+---
+
+```{r}
+#| label: ejecutar-todo
+#| include: false
+
+```
+
+## Introducción
+
+![](https://sir.es/wp-content/uploads/2024/06/Post-Mosquitos.jpg){width="66%"}
+
+Análisis de un experimento diseñado para evaluar la efectividad de dos pesticidas (A y B) en comparación con un control, sobre la supervivencia de larvas de Aedes aegypti.
+
+Factor 1: Tratamiento (3 niveles: Control, Pesticida A, Pesticida B).
+
+Factor 2: Territorio (Bloque) (3 niveles: prístino, uso medio, muy alterado).
+
+Unidad Experimental: Larvas obtenidas de adultos capturados de territorios distintos.
+
+## Modelo estadistico
+
+$Supervivencia_ij = µ + α_i + β_j + ε_ij$
+
+µ: Media general.
+
+α_i: Efecto de los tratamientos (i = Control, A, B).
+
+β_j: Efecto del territorio (j = prístino, medio, alterado).
+
+ε_ij: Error experimental
+
+## Hipotesis
+
+Hipótesis nula (H₀): No existen diferencias en la supervivencia media de las larvas entre los tratamientos (Control, Pesticida A, Pesticida B).
+
+$H0​:α1​=α2​=α3​$
+
+Hipótesis alternativa (H₁): Al menos uno de los tratamientos produce un efecto diferente en la supervivencia.
+
+## Datos
+
+```{r}
+#| label: cargar-datos
+#| echo: true
+
+# datos
+datos_experimento <- data.frame(
+  Tratamiento = c("Control", "Pesticida_A", "Pesticida_B", 
+                  "Control", "Pesticida_A", "Pesticida_B",
+                  "Control", "Pesticida_A", "Pesticida_B"),
+  
+  Territorio = c("Prístino", "Prístino", "Prístino",
+                 "Uso_medio", "Uso_medio", "Uso_medio",
+                 "Muy_alterado", "Muy_alterado", "Muy_alterado"),
+  
+  Supervivencia = c(77.20, 58.85, 57.79,   # Prístino
+                    80.35, 60.65, 58.58,   # Uso medio
+                    82.30, 53.67, 46.57)   # Muy alterado
+)
+
+# Convertir a factores 
+datos_experimento$Tratamiento <- factor(datos_experimento$Tratamiento,
+                                       levels = c("Control", "Pesticida_A", "Pesticida_B"))
+
+datos_experimento$Territorio <- factor(datos_experimento$Territorio,
+                                      levels = c("Prístino", "Uso_medio", "Muy_alterado"))
+
+# Mostrar  datos
+cat("=== DATOS DEL EXPERIMENTO ===\n")
+print(datos_experimento)
+
+cat("\n=== RESUMEN ESTADÍSTICO ===\n")
+summary(datos_experimento)
+
+```
+
+## Grafico
+
+```{r}
+#| label: grafico-combinado
+#| echo: true
+#| fig-width: 10
+#| fig-height: 6
+
+# Configurar área de gráficos: 2 filas, 3 columnas
+par(mfrow = c(2, 3), mar = c(4, 4, 3, 1))
+
+# 1. Boxplot por tratamiento
+boxplot(Supervivencia ~ Tratamiento, data = datos_experimento,
+        col = c("lightgreen", "orange", "coral"),
+        main = "A) Por Tratamiento",
+        ylab = "Supervivencia (%)",
+        ylim = c(40, 90))
+
+# 2. Boxplot por territorio  
+boxplot(Supervivencia ~ Territorio, data = datos_experimento,
+        col = c("lightblue", "lightyellow", "pink"),
+        main = "B) Por Territorio",
+        ylab = "Supervivencia (%)",
+        ylim = c(40, 90))
+
+# 3. Diagrama de puntos coloreados
+plot(1:9, datos_experimento$Supervivencia,
+     pch = 19, cex = 1.5,
+     col = as.numeric(datos_experimento$Tratamiento),
+     xlab = "Observación", ylab = "Supervivencia (%)",
+     main = "C) Todos los datos",
+     ylim = c(40, 90))
+legend("bottomright", legend = levels(datos_experimento$Tratamiento),
+       col = 1:3, pch = 19, bty = "n")
+
+# 4. Gráfico de interacción (tendencias)
+interaction.plot(datos_experimento$Tratamiento, 
+                 datos_experimento$Territorio,
+                 datos_experimento$Supervivencia,
+                 type = "b", col = 1:3, pch = 16:18,
+                 xlab = "Tratamiento", 
+                 ylab = "Supervivencia Media (%)",
+                 trace.label = "Territorio",
+                 main = "D) Tendencias")
+
+# 5. Gráfico de barras por tratamiento
+medias_trat <- tapply(datos_experimento$Supervivencia, 
+                      datos_experimento$Tratamiento, mean)
+barplot(medias_trat,
+        col = c("lightgreen", "orange", "coral"),
+        ylim = c(0, 90),
+        main = "E) Medias por Tratamiento",
+        ylab = "Supervivencia (%)")
+
+# 6. Gráfico de barras por territorio
+medias_terr <- tapply(datos_experimento$Supervivencia,
+                      datos_experimento$Territorio, mean)
+barplot(medias_terr,
+        col = c("lightblue", "lightyellow", "pink"),
+        ylim = c(0, 90),
+        main = "F) Medias por Territorio",
+        ylab = "Supervivencia (%)")
+
+
+
+
+```
+
+## Anova sin tomar en cuenta la interacción
+
+```{r}
+#| label: primer-anova
+#| echo: true
+
+# ANOVA de dos vías sin interacción
+modelo_anova <- aov(Supervivencia ~ Tratamiento + Territorio, 
+                    data = datos_experimento)
+
+cat("=== ANOVA DE DOS VÍAS SIN INTERACCIÓN ===\n")
+print(summary(modelo_anova))
+
+# Inferncias
+cat("\n=== INTERPRETACIÓN ===\n")
+p_valor_trat <- summary(modelo_anova)[[1]]["Tratamiento", "Pr(>F)"]
+p_valor_terr <- summary(modelo_anova)[[1]]["Territorio", "Pr(>F)"]
+
+if(p_valor_trat < 0.05) {
+  cat("1. El TRATAMIENTO tiene un efecto SIGNIFICATIVO (p =", 
+      format(p_valor_trat, digits = 3), ")\n")
+} else {
+  cat("1. El TRATAMIENTO NO tiene efecto significativo\n")
+}
+
+if(p_valor_terr < 0.05) {
+  cat("2. El TERRITORIO tiene un efecto SIGNIFICATIVO (p =", 
+      format(p_valor_terr, digits = 3), ")\n")
+} else {
+  cat("2. El TERRITORIO NO tiene efecto significativo (p =", 
+      format(p_valor_terr, digits = 3), ")\n")
+}
+
+
+```
+
+```{r}
+#| label: comparaciones-simples
+#| echo: true
+
+cat("=== Tuckey para ver difernecias entre tratamientos ===\n\n")
+
+# Diferencias en los tratamientos
+tukey_result <- TukeyHSD(modelo_anova, "Tratamiento")
+print(tukey_result)
+
+# 2. Medias de cada tratamiento
+medias <- aggregate(Supervivencia ~ Tratamiento, data = datos_experimento, mean)
+cat("\nSupervivencia promedio:\n")
+print(medias)
+
+```
+
+## Conclusiones
+
+Ambos pesticidas reducen significativamente la supervivencia, pero no hay diferencia entre ellos.
+
+[@sthle1989; @janczyk2023]
