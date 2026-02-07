@@ -113,11 +113,11 @@ de abajo y tendrás un embrión de documento listo para que hagas con él
 lo que tú quieras. Básicamente escribir libremente y de vez en vez,
 cuando tengas que hacer operaciones con **R** podrás abrir un espacio
 para eso (¡un chunk!). En **RStudio** lo puedes hacer con ayuda del
-botón verde que está arriba como a la mitad de la pantalla, tien un
+botón verde que está arriba como a la mitad de la pantalla, tiene un
 signo "+" y una "C", seguramente de *chunk*. Eso es todo para empezar.
-Si quieres "ver en bonito", lo que has escrito, tienes que apreta el
+Si quieres "ver en bonito", lo que has escrito, tienes que apretar el
 botón **Render**. Normalmente pasará un momento y te llevará al browser
-para mostrate lo que has escrito como una pagina web de tu creación. Al
+para mostrarte lo que has escrito como una pagina web de tu creación. Al
 mismo tiempo habrá creado en tu carpeta de trabajo un archivo **html**
 con el nombre que le hayas dado al inicio. 
 
@@ -125,17 +125,26 @@ con el nombre que le hayas dado al inicio.
 ![](img/Noteook.png)
 :::
 
+### HTML como un solo documento
+
+Cuando se genera un html con **Quarto** el tratamiento simple es poner algunas partes como figuras y cosas así en un directorio anexo que lee el `HTML` cuando se requiere. Esto es inconveniente para distribuir resultados. Para poner todo en un solo documento fácilmente distribuible te sugiero usar esta forma de preparación de tu documento. En lugar de poner `html: default`, pon lo siguiente.
+
+```yaml
+format:
+  html:
+    embed-resources: true
+``` 
+
 ### Quiero incluir el render en PDF
 
 El Asunto de la incompatibilidad de **Quarto** al producir **PDF** en
 español se puede atender con la especificación de la *clase de
-documanto* a utilizar. Esto controla los paquetes base que usa *LaTex*
+documento* a utilizar. Esto controla los paquetes base que usa *LaTex*
 para producir el resultado, así que es un buen camino para atender la
 problemática. Te sugiero poner esto en la sección de control de tu
 documento.
 
-``` =yaml
-
+```yaml
 format:
     pdf:
        documentclass: scrartcl     
