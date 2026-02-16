@@ -15,7 +15,7 @@ image: img/bad-mark-624734_1280.jpg
 #| message: false
 
 # Outlook 365
-pacman::p_load(Microsoft365R, dplyr, stringr, DT, flextable)
+pacman::p_load(Microsoft365R, dplyr, stringr, DT, flextable, glue)
 
 # Recupera los mensajes de interés
 alumnos <- read.csv("../../posts/00-Bienvenida/Lista-de-alumnos-2026.csv")
@@ -34,61 +34,95 @@ for (correo in correos)
 {
   remitente <-  correo$properties$sender$emailAddress$address
   asunto <- correo$properties$subject
+  fecha  <- as.POSIXlt( as.Date(correo$properties$receivedDateTime))
+  year <- fecha$year + 1900
+  mes <- fecha$mon + 1
+  if (remitente == "lucia.8413.17@gmail.com") 
+    remitente <- "lucia.rodriguez@posgrado.ecologia.edu.mx"
+  
+  if (remitente == "alvaradomezaeric@yahoo.com")
+    remitente <- "eric.alvarado@posgrado.ecologia.edu.mx  "
 
   if (str_detect(str_to_lower(asunto), "m3-2026|m3 2026|m3_2026|mm-2026"))
   {
     d  <- correo$list_attachments()
-    if (length(d) > 0)
-    {
-      anexo <- d[[1]]$properties$name
-      fecha  <- as.POSIXlt( as.Date(correo$properties$receivedDateTime))
-      year <- fecha$year + 1900
-      mes <- fecha$mon + 1
-      if (str_detect(str_to_lower(anexo), "lect"))
-      {
-        d[[1]]$download(dest = paste0("_lecturas/",anexo), 
-                      overwrite = TRUE)
-      } else {
-        d[[1]]$download(dest = paste0("_tareas/",anexo), 
-                        overwrite = TRUE)
-      }
-    } else {
+
+    if (length(d) == 0)
+    { 
       anexo <- paste0(asunto, " - sin anexo")
       if (str_detect(correo$properties$body$content, "subí al Drive "))  
           anexo <- str_extract(correo$properties$body$content, '(?<=href=")(.*)(?=">https)')
-  
+      alumno <- alumnos$alumno[str_detect(remitente, alumnos$correo)]
+      fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
+      tabla_correo <- bind_rows(tabla_correo, c(fecha = fecha_str,
+                                                alumno = alumno,
+                                                archivo = anexo)) 
+    } else {
+      if (length(d) == 1)
+      {
+        anexo <- d[[1]]$properties$name
+        if (str_detect(str_to_lower(anexo), "lect"))
+        {
+          d[[1]]$download(dest = paste0("_lecturas/",anexo), 
+                        overwrite = TRUE)
+        } else {
+          d[[1]]$download(dest = paste0("_tareas/",anexo), 
+                          overwrite = TRUE)
+        } 
+        alumno <- alumnos$alumno[str_detect(remitente, alumnos$correo)]
+        fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
+        tabla_correo <- bind_rows(tabla_correo, c(fecha = fecha_str,
+                                                  alumno = alumno,
+                                                  archivo = anexo)) |> 
+              mutate(tipo = if_else(str_detect(str_to_lower(archivo),
+                                    "ejerc|tarea|descrip|dag|larva|curso|http|aedes|ejercicio3_"),
+                                    "ejercicio", "lectura"), 
+                     id_num = str_extract(archivo, "(?<=\\-|_|\\s)(\\d+)(?=\\-|_|\\s)"),
+                     id_num = str_remove(id_num, "0"),
+                     id_num = if_else(str_detect(str_to_lower(archivo),"dag"), "2", id_num),
+                     id_num = if_else(str_detect(str_to_lower(archivo),   
+                                      "larva|curso|http|aedes|mosquitos"), "3", id_num),
+                     id_num = if_else(str_detect(str_to_lower(archivo), 
+                                      "ejercicio3_"), "4", id_num)) 
+      } else {
+          for (i in (1:length(d)))
+          { 
+            if (str_detect(str_to_lower(anexo), "lect"))
+            {
+              d[[i]]$download(dest = paste0("_lecturas/",anexo), 
+                            overwrite = TRUE)
+            } else {
+              d[[i]]$download(dest = paste0("_tareas/",anexo), 
+                              overwrite = TRUE)
+            } 
+            alumno <- alumnos$alumno[str_detect(remitente, alumnos$correo)]
+            fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
+
+            tabla_correo <- bind_rows(tabla_correo, 
+                                      c(fecha = fecha_str,
+                                        alumno = alumno,
+                                        archivo = anexo)) |>
+              mutate(tipo = if_else(str_detect(str_to_lower(archivo),
+                                    "ejerc|tarea|descrip|dag|larva|curso|http|aedes|ejercicio3_"),
+                                    "ejercicio", "lectura"), 
+                     id_num = str_extract(archivo, "(?<=\\-|_|\\s)(\\d+)(?=\\-|_|\\s)"),
+                     id_num = str_remove(id_num, "0"),
+                     id_num = if_else(str_detect(str_to_lower(archivo),"dag"), "2", id_num),
+                     id_num = if_else(str_detect(str_to_lower(archivo),   
+                                      "larva|curso|http|aedes|mosquitos"), "3", id_num),
+                     id_num = if_else(str_detect(str_to_lower(archivo), 
+                                      "ejercicio3_"), "4", id_num)) 
+        }
       }
-    
-    if (remitente == "lucia.8413.17@gmail.com") 
-    {
-      remitente <- "lucia.rodriguez@posgrado.ecologia.edu.mx"
     }
-    if (remitente == "alvaradomezaeric@yahoo.com")
-    {
-      remitente <- "eric.alvarado@posgrado.ecologia.edu.mx  "
-    }
-      
-    
-    alumno <- alumnos$alumno[str_detect(remitente, alumnos$correo)]
-    fecha_str <- str_extract(correo$properties$receivedDateTime, ".*(?=T)")
-    tabla_correo <- bind_rows(tabla_correo, c(fecha = fecha_str,
-                                              alumno = alumno,
-                                              archivo = anexo)) 
   }
+      
 }
 
-
-   # datos adicionales
+# datos adicionales
 tabla_correo <- tabla_correo |>
   distinct(archivo, .keep_all = TRUE) |>
   filter(!str_detect(archivo, "sin anexo")) |> 
-  mutate(tipo = if_else(str_detect(str_to_lower(archivo),"ejerc|tarea|descrip|dag|larva|curso|http|aedes|ejercicio3_"),
-                        "ejercicio", "lectura"), 
-         id_num = str_extract(archivo, "(?<=\\-|_|\\s)(\\d+)(?=\\-|_|\\s)"),
-         id_num = str_remove(id_num, "0"),
-         id_num = if_else(str_detect(str_to_lower(archivo),"dag"), "2", id_num),
-         id_num = if_else(str_detect(str_to_lower(archivo),"larva|curso|http|aedes|mosquitos"), "3", id_num),
-         id_num = if_else(str_detect(str_to_lower(archivo),"ejercicio3_"), "4", id_num)) |> 
   arrange(tipo, id_num)
 ```
 
