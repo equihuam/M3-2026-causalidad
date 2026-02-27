@@ -1,0 +1,204 @@
+---
+title: "ejercicio-3-MIMR"
+format: html
+editor: visual
+---
+
+```{r}
+#| echo: false
+library(dagitty)
+library(ggdag)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+
+```
+
+![Larvas de mosquito (Foto: Centers for Disease Control and Prevention)](https://www.cdc.gov/mosquitoes/media/images/Aedes-aegypti-larvae-16-9.jpg)
+
+# Problema:
+
+" Queremos evaluar el efecto de tres pesticidas sobre la supervivencia de larvas de *Aedes aegipty*. Estamos ensayando el pesticida en una zona en donde sabemos que existen distinta historia de exposición a contaminantes, lo que sospechamos puede afectar su respuesta. Desafortunadamente poco sabemos de los detalles de esas historias de exposición previa por lo que la consideramos como una fuente de variabilidad un poco compleja y no medible. "
+
+### Lo que sabemos:
+
+#### Tratamientos:
+
+-   Control.
+-   Mezcla de *Bacillis thuringiensis*, *Beauveria bassiana* y *Peacelomyces fumorosae*.
+-   Temefos.
+
+#### Sitios:
+
+-   Conservado (Sin o con pocos agroquímicos).
+-   Secundario (Exposición mediana).
+-   Perturbado (Con actividad humana prolongada).
+
+#### Objetos de estudio:
+
+Se capturaron en cada lugar 100 adultos de *Aedes aegipty*. Se llevaron esos mosquitos al laboratorio, en donde se les mantuvo en condiciones homogéneas. Se les ofrecieron contenedores de agua limpia, apropiados para su reproducción. Así se obtuvieron 50 larvas producidas por los adultos colectados en cada lugar y se expusieron a cada tratamiento. Finalmente, se tomó nota de la supervivencia resultante al cabo de 48 horas.
+
+```{r}
+#| echo: false
+#Dibujín de cómo creo que es el modelo
+
+dibujito <- data.frame(
+  x = rep(1:3, each = 3),
+  y = rep(1:3, times = 3),
+  letras = rep(c("C", "p2", "p3"), times = 3), 
+  Grupo = rep(c("Prístino", "Secundario", "Perturbado"), each = 3))
+  
+ggplot(dibujito, aes(x = x, y = y, fill = Grupo)) +
+  geom_tile(width = 0.8, height = 0.8, color = "black", linewidth = 1) +
+  geom_text(aes(label = letras), color = "white", size = 10, fontface = "bold") +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA)
+  ) +
+  labs(title = "Tratamiento en bloques", x = "", y = "")
+
+```
+
+#### Resultados
+
+Después de aplicar los tratamientos en los diferentes sitios, se observó lo siguiente:
+
+```{r}
+#| echo: false
+tablita <- data.frame(
+  Tratamiento = rep(c("C", "p2", "p3"), times = 3),
+  Grupo = rep(c("Prístino", "Secundario", "Perturbado"), each = 3),
+  `Supervivencia (%)` = c(77.2, 58.8, 57.8, 80.4, 60.6, 58.6, 82.3, 53.7, 46.6)
+)
+
+print(tablita)
+
+```
+
+### ¿Qué haremos?
+
+Primero observaremos el DAG del problema, los efectos del pesticida en los mosquitos inmaduros y la "historia" del sitio y el posible efecto que tiene en la supervivencia de los mosquitos.
+
+```{r}
+#| echo: false
+
+# DAG
+DAG.Cul <- dagitty('dag{
+  Pesticida -> Sobrevivencia
+  Historia -> Sobrevivencia
+  
+  Pesticida[exposure, pos="0,0"]
+  Historia[selecteed, pos="0,1"]
+  Sobrevivencia[outcome, pos= "2,0"]
+}')
+
+options(repr.plot.width=10, repr.plot.height=3)
+par(cex=2, lwd = 5)
+plot(DAG.Cul)
+```
+
+Parece ser que el modelo que describiría la variable es:
+
+## y = μ + P + H + delta + Error
+
+Para determinar si existe una diferencia entre los tratamientos, crearemos datos para poder realizar un análisis de varianza con una alpha de 0.05.
+
+```{r}
+#aQUÍ ME USÉ COPILOT
+#datos ficticios
+
+#Son porcentajes
+respuestas <- matrix(c(77.2, 58.8, 57.8,# Prístino
+                       80.4, 60.6, 58.6,# Secundario
+                       82.3, 53.7, 46.6),# Perturbado
+                     nrow = 3, byrow = TRUE) #(C,p2,p3)
+
+colnames(respuestas) <- c("C", "p2", "p3")
+rownames(respuestas) <- c("Pri", "Sec", "Per")
+
+#Pasando a "individuos que sobrevivieron" (enteros)
+
+# Convertir a data frame
+df <- as.data.frame(respuestas) %>%
+  mutate(Grupo = rownames(respuestas))
+
+# Supongamos que cada porcentaje proviene de un total de 100 observaciones
+total <- 50
+
+# Transformar porcentajes a conteos enteros
+df <- df %>%
+  mutate(across(c(C, p2, p3), ~ round(.x/100 * total)))
+
+# Pasar a formato largo
+ficcion <- df %>%
+  pivot_longer(cols = c(C, p2, p3),
+               names_to = "Pesticida",
+               values_to = "IndividuosVivos")
+
+ficcion
+
+```
+
+Una gráfica de los datos ficticios sería algo así:
+
+```{r}
+#| echo: false
+ggplot(ficcion, aes(x = IndividuosVivos, y = Pesticida)) + 
+       geom_point( color = "red") +
+       labs(title = "Supervivencia de mosquitos") +
+       xlab(label = "Individuos Vivos") +
+       ylab(label = "Sitio") +
+       theme(text = element_text(size = 10), 
+             axis.text.x = element_text(angle = 0, hjust = 1),
+        panel.background = element_blank()
+        ) 
+```
+
+Ahora realizaremos los modelos para ver qué tan diferentes son los pesticidas
+
+### Lo observado contra la media
+
+```{r}
+Pes.M1<- lm(IndividuosVivos ~ 1, data = ficcion)
+summary(Pes.M1)
+```
+
+En promedio, con los tratamientos y sitios, sobrevivieron 32 larvas. Se observó que la sobrevivencia es diferente a cero.
+
+### Supervivencia según tratamientos más su efecto aleatorio
+
+```{r}
+
+Pes.M2<- lm(IndividuosVivos ~ Pesticida + Grupo, data = ficcion)
+anova(Pes.M2)
+```
+
+```{r}
+
+summary(Pes.M2)
+```
+
+Parece que los pesticidas tienen efectos diferentes en la supervivencia de las larvas de mosquito independientemente del sitio.
+
+Para ello observaremos qué grupo, o si todos los grupos, es diferente de los demás.
+
+```{r}
+#| echo: false
+
+ggplot(ficcion, aes(x = IndividuosVivos, y = Pesticida, group = Pesticida)) + 
+       stat_boxplot(geom ='errorbar', linetype = 2, width = 0.5) + 
+       geom_boxplot(shape = 19, size = 0.5, color = "red") +
+       labs(title = "Análisis de Supervivencia") +
+       xlab(label = "Individuos") +
+       ylab(label = "Pesticida") +
+       theme(text = element_text(size = 18), 
+             axis.text.x = element_text(angle = 0, hjust = 1)) 
+```
+
+Se puede observar que el "pesticida" **Control** presenta una mayor supervivencia, comparado a los tratamientos p2 y p3, siendo el pesticida *p3¨* el que reduce más larvas de mosquito *Aedes aegypti*.
+
+#### NOTA
+
+Tuve dificultades para la transformación de los datos en porcentaje a una tabla en la que pueda trabajar la ANOVA, por lo tanto hice uso de la IA Copilot.

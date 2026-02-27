@@ -1,0 +1,145 @@
+---
+title: "Control de larvas de Aedes aegypti mediante pesticidas"
+author: "Andrés Del Moral Hernández"
+format: 
+  pdf: default
+  docx: default
+  html: default
+date: "2026/feb/05"
+lang: es
+toc: true
+number-sections: true
+editor: visual
+
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+![Mosco (Aedes aegypti)](Aedes_FotoReal_1024x482.jpg){fig-align="center" width="50%"}
+
+# Introducción
+
+El mosquito *Aedes aegypti* es un vector importante de enfermedades. El control de su fase larvaria representa una estrategia clave para disminuir su impacto sanitario.
+
+El presente estudio evalúa el efecto de distintos pesticidas sobre la supervivencia larvaria considerando la historia ambiental de las poblaciones como fuente potencial de variabilidad.
+
+# Diseño experimental
+
+El experimento corresponde a un **Diseño en Bloques Completos al Azar**.
+
+## Tratamientos
+
+-   Control\
+-   Pesticida A\
+-   Pesticida B
+
+## Bloque
+
+-   Tipo de territorio
+
+## Variable respuesta
+
+-   Supervivencia larvaria (%)
+
+```{r include=FALSE}
+library(tidyverse)
+library(car)
+library(emmeans)
+
+datos <- tibble(
+  Tratamiento = factor(rep(c("Control","Pesticida_A","Pesticida_B"),3)),
+  
+  Territorio = factor(c(rep("Pristino",3),
+                        rep("Uso_medio",3),
+                        rep("Muy_alterado",3))),
+  
+  Supervivencia = c(
+    77.19762,58.84911,57.79354,
+    80.35254,60.64644,58.57532,
+    82.30458,53.67469,46.56574
+  )
+)
+```
+
+# Exploración de los datos
+
+## Estadísticos descriptivos
+
+```{r}
+datos %>%
+  group_by(Tratamiento) %>%
+  summarise(
+    Media = mean(Supervivencia),
+    Desviacion = sd(Supervivencia)
+  )
+```
+
+## Visualización
+
+```{r}
+ggplot(datos, aes(x = Tratamiento, y = Supervivencia)) +
+  geom_point(size = 3) +
+  geom_line(aes(group = Territorio), alpha = 0.6) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(datos, aes(Territorio, Supervivencia, fill = Tratamiento)) +
+  geom_col(position = "dodge") +
+  theme_minimal()
+```
+
+# Modelo estadístico
+
+Se ajustó un modelo ANOVA considerando el efecto del tratamiento y el territorio como bloque.
+
+```{r}
+modelo <- aov(Supervivencia ~ Tratamiento + Territorio, data = datos)
+summary(modelo)
+```
+
+# Supuestos del modelo
+
+## Normalidad de residuos
+
+```{r}
+shapiro.test(residuals(modelo))
+```
+
+```{r}
+qqnorm(residuals(modelo))
+qqline(residuals(modelo))
+```
+
+## Homogeneidad de varianzas
+
+```{r}
+leveneTest(Supervivencia ~ Tratamiento, data = datos)
+```
+
+# Comparación entre tratamientos
+
+```{r}
+emmeans(modelo, pairwise ~ Tratamiento)
+```
+
+# Diagnóstico del modelo
+
+```{r}
+par(mfrow=c(2,2))
+plot(modelo)
+```
+
+# Resultados
+
+El análisis de varianza permitió evaluar diferencias en la supervivencia larvaria entre tratamientos controlando el efecto del territorio.
+
+# Conclusiones
+
+Los tratamientos pesticidas reducen la supervivencia larvaria en comparación con el control. El territorio influye en la respuesta biológica observada, sugiriendo la existencia de variabilidad asociada a la historia ambiental.
+
+# Nivel de significancia
+
+Se utilizó un nivel de significancia de α = 0.05.

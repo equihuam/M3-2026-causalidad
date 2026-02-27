@@ -1,0 +1,152 @@
+---
+title: "Experimento para el control de larvas Aedes aegipty"
+author: Karen Paola Lazcano Aguilar
+format:
+  html: default
+  pdf: default
+  docx: default
+  pptx: default
+toc: TRUE
+editor: visual
+echo: FALSE
+bibliography: references.bib
+---
+
+## Diseño experimental
+
+Se desea evaluar el efecto de tres pesticidas sobre la supervivencia de larvas de *Aedes aegipty*. Se ensayó el pesticida en una zona en donde sabemos que existe distinta historia de exposición a contaminantes, lo que se sospecha puede afectar su respuesta. Desafortunadamente se conoce poco sobre la historia de exposición previa por lo que es considerada como una fuente de variabilidad compleja y no medible.
+
+![](Control de larvas_files/aedes-aegypti-cdc02-d0a891-1024.jpg){fig-align="center" width="333"}
+
+-   En la zona de interés se sabe que hay tres grandes territorios. Uno prácticamente en estado natural, seguramente con muy baja exposición a agroquímicos de todo tipo. Hay otra gran proporción del lugar que se dice ha estado medianamente expuesta y finalmente, hay otro territorio muy afectado por actividades humanas que seguramente lo ha expuesto a una larga historia de uso de agroquímicos.
+
+-   Se capturaron en cada lugar 100 adultos de *Aedes aegipty*. Se llevaron esos mosquitos al laboratorio, en donde se les mantuvo en condiciones homogéneas. Se les ofrecieron contenedores de agua limpia, apropiados para su reproducción. Así se obtuvieron 50 larvas producidas por los adultos colectados en cada lugar y se expusieron a cada tratamiento. Finalmente, se tomó nota de la supervivencia resultante al cabo de 48 horas.
+
+## Tratamientos
+
+| Tratamiento | Territorio       | Supervivencia (%) |
+|-------------|------------------|-------------------|
+| Control     | Prístino         | 77.19762          |
+| Pesticida A | Prístino         | 58.84911          |
+| Pesticida B | Prístino         | 57.79354          |
+| Control     | Uso humano medio | 80.35254          |
+| Pesticida A | Uso humano medio | 60.64644          |
+| Pesticida B | Uso humano medio | 58.57532          |
+| Control     | Muy alterado     | 82.30458          |
+| Pesticida A | Muy alterado     | 53.67469          |
+| Pesticida B | Muy alterado     | 46.56574          |
+
+La composición de los pesticidas es la siguiente:
+
+-   Pesticida A: Mezcla de *Bacillus thuringiensis*, *Beauveria bassiana*, *Peacelomyces fumorosae*
+
+-   Pesticida B: Temefos
+
+## Modelo del experimento
+
+$Y=\mu+Tratamiento+Territorio+εRestricción+εAleatorio$
+
+Donde Y=supervivencia de las larvas en porcentaje (%)
+
+## Supuestos del análisis estadístico
+
+1.  El diseño de este experimento incluye bloques formados por el tipo de territorio (prístino, uso medio y muy alterado) , es decir, hay errores debido a la restricción de la aleatorización.
+
+## Exploración de los datos
+
+```{r}
+larvas <- data.frame(
+  Tratamiento = c("Control","Pesticida A","Pesticida B","Control", "Pesticida A","Pesticida B","Control","Pesticida A","Pesticida B"),
+  Territorio = c("Pristino", "Pristino", "Pristino", "Uso medio", "Uso medio", "Uso medio", "Muy alterado", "Muy alterado", "Muy alterado"),
+  Supervivencia = c(77.19762, 58.84911, 57.79354, 80.35254, 60.64644, 58.57532, 82.30458, 53.67469, 46.56574)
+)
+
+print(larvas)
+```
+
+```{r}
+tapply(larvas$Supervivencia, list(larvas$Territorio, larvas$Tratamiento), mean)
+```
+
+## 
+
+```{r}
+interaction.plot(larvas$Tratamiento,larvas$Territorio,larvas$Supervivencia,
+xlab = "Tipo de Tratamiento",
+                 ylab = "Supervivencia de larvas (%)",
+                 trace.label = "Nivel de Alteración",
+                 col = 2:4,  # Colores diferentes para cada línea
+                 lwd = 2,
+                 type = "b",  # Puntos y líneas
+                 pch = 16)
+```
+
+### Ajuste del modelo
+
+#### Modelo 1 (nulo)
+
+```{r}
+larvas_modelo_1 <- lm(Supervivencia ~ 1, data = larvas)
+summary(larvas_modelo_1)
+```
+
+El intercepto en este primer modelo es la media del conjunto de los datos, pues únicamente se considera la supervivencia de las larvas. Por lo que lo único que este modelo indica con alta significancia es que la supervivencia fue diferente a cero, y resulta inadecuado para describir el experimento.
+
+#### Modelo 2
+
+```{r}
+larvas_modelo_2 <- lm(Supervivencia ~ Tratamiento, data = larvas)
+summary(larvas_modelo_2)
+```
+
+Al considerar un modelo donde la supervivencia está dada, o explicada, por el efecto del tratamiento aplicado (control y pesticidas A y B), se observa que:
+
+-   En el ANOVA de una vía, con respecto al tratamiento "Control" tomado como intercepto, los tratamientos donde se emplean ambos pesticidas tienen un efecto negativo en la supervivencia de las larvas.
+
+-   La supervivencia bajo el efecto de los tratamientos con los pesticidas demuestra ser distinta de la registrada en los controles, siendo un poco más dañino el pesticida B.
+
+#### Modelo 3
+
+```{r}
+larvas_modelo_3 <- lm(Supervivencia ~ Tratamiento + Territorio, data = larvas)
+summary(larvas_modelo_3)
+```
+
+Finalmente en este modelo se considera el efecto tanto del tratamiento, como del territorio con diferentes grados de alteración sobre la supervivencia de las larvas, y lo que se observa es:
+
+-   Se vuelve a observar que los pesticidas presentan diferencias con respecto al tratamiento control, disminuyendo la supervivencia de las larvas.
+
+-   La supervivencia de larvas provenientes de territorios con historial de alteración muy baja y media, no difiere de manera significativa con respecto a la de las larvas provenientes de territorios muy alterados.
+
+#### Análisis de Modelo 3
+
+```{r}
+anova(larvas_modelo_3)
+```
+
+Evaluando este último modelo se puede observar que el efecto del tratamiento es el único que resulta significativo sobre la variable de respuesta (supervivencia de larvas), con diferencias entre cada uno de ellos.
+
+## Selección del modelo
+
+Debido a que no se observó un efecto del factor del territorio, el modelo que explicaría de forma más sencilla el experimento es el Modelo 2 donde la supervivencia está dada por el tratamiento que sea aplicado a las larvas.
+
+```{r}
+print(larvas_modelo_2)
+```
+
+$Y=\mu+Tratamiento+εRestricción+εAleatorio$
+
+Donde Y=supervivencia de las larvas en porcentaje (%)
+
+### Análisis de los residuos
+
+En general no se observan residuos muy extremos, por lo que el Modelo 2 parece pertinente y significativo para explicar el experimento.
+
+```{r}
+qqnorm(resid(larvas_modelo_2)) 
+qqline(resid(larvas_modelo_2))
+```
+
+## Conclusiones
+
+En el control del mosquito *Aedes aegipty*, los pesticidas A y B disminuyen de manera significativa la supervivencia de sus larvas. De igual manera, la previa exposición a contaminantes no demuestra tener un efecto sobre la prevalencia del mosquito en las zonas de interés, por lo que se sugiere que su control efectivo dependerá del tratamiento aplicado sobre su estadío larvario.

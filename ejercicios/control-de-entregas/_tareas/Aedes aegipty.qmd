@@ -1,0 +1,57 @@
+---
+title: "Ejercicio 3- Aedes aegipty"
+author: Charín Mtz Gendrón
+date: "06 /01/ 2026"
+lang: es
+
+format: 
+  html: default
+  docx: default
+  pptx: default
+  pdf: default
+---
+
+### Control de larvas de *Aedes aegipty* con tres pesticidas
+
+![](images/clipboard-3750563042.png){width="858"}
+
+Queremos evaluar el efecto de tres pesticidas sobre la supervivencia de larvas de *Aedes aegipty*. Estamos ensayando el pesticida en una zona en donde sabemos que existen distinta historia de exposición a contaminantes, lo que sospechamos puede afectar su respuesta. Desafortunadamente poco sabemos de los detalles de esas historias de exposición previa por lo que la consideramos como una fuente de variabilidad un poco compleja y no medible.
+
+#### Diseño experimental
+
+Diseño de factorial mixto en bloques al azar
+
+$$
+y=\mu+\ Tt + Trr + \epsilon
+$$
+
+Donde:
+
+Tt = tratamientos
+
+Trr = territorio
+
+#### Tratamientos
+
+1.  Control
+
+2.  A - Mezcla de *Bacillus thuringiensis, Beauveria bassiana, Peacelomyces fumorosae*
+
+3.  B - Temefos
+
+#### Supuestos
+
+Los datos se presentan en condiciones de generar una varianza y desviación estandar
+
+#### Nivel de significancia
+
+Se tomará P cuando sea \<0.05; el cual rechazará o no la hipótesis nula.
+
+#### Datos
+
+![](images/clipboard-1376245209.png)
+
+
+#### Modelos
+
+#### Conclusiones

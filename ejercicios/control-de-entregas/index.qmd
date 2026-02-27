@@ -105,8 +105,8 @@ for (correo in correos)
           # Bloque con 2 o más anexos
           for (i in (1:length(d)))
           { 
-            d[[1]]$properties$sourceUrl
-            anexo <- d[[1]]$properties$name
+            d[[i]]$properties$sourceUrl
+            anexo <- d[[i]]$properties$name
             
             if (str_detect(str_to_lower(anexo), "lect"))
             {

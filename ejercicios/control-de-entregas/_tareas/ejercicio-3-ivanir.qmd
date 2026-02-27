@@ -1,13 +1,174 @@
-Version: 1.0
+---
+title: "ejercicio-3-ivanir"
+author: Ivana Clarisa Irineo Reyes
+lang: es
+date: "2026/february/05"
+format: 
+  html: default
+  pdf: default
+  docx: default
+  pptx: default
+---
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
+```{r}
+#|label: setup
+#|echo: false
+#|eval: false
 
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
+library(knitr)
+```
 
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
+## Situación de investigación
+
+![Aedes agypte](images/aedes.jpg)
+
+Queremos evaluar el **efecto de tres pesticidas** sobre la **supervivencia de larvas de** ***Aedes aegipty***. Estamos ensayando el pesticida en una zona en donde sabemos que existen **distinta historia de exposición a contaminantes**, lo que sospechamos puede afectar su respuesta. Desafortunadamente poco sabemos de los detalles de esas historias de exposición previa por lo que la consideramos como una**ente de variabilidad un poco compleja y no medible**.
+
+Para ello, se toma en cuenta que las zonas de exposición a los contaminantes son: muy baja, media y alta concentración de donde se obtuvieron los mosquitos. En cada zona se atraparon 100 los cuales dieron lugar a 50 larvas de cada zona, estas larvas fueron expuestas a los siguientes tratamientos: control (nada), A: mezcla de *Bacillus thuringiensis, Bauveria bassiana, Peacelomyces fumorosae* y B: temefos.![Ciclo de vida del mosquito Aedes agypte](images/ES-Aedes-Mosquito-Life-Cycle-310138B-01.jpg)
+
+## Diseño experimental
+
+![Larva de mosquito](images/larvas-01.jpg){fig-align="center"}
+
+En base a los datos presentados, se puede observar que se trata de un diseño de bloques aleatorizados donde el tipo de territorio se mantiene fijo porque se desconoce la concentración de los contaminantes de las zonas. Por lo tanto, se presentan los datos de la siguiente manera:
+
+Una vez expuestos por 48h se midió la tasa de supervivencia. De lo cual se obtuvieron los siguientes resultados:
+
+```{r, echo=FALSE}
+library(readxl)
+library(knitr)
+
+Supervivencia_mosquitos<-read_excel("mosquitos.xlsx")
+
+knitr::kable(Supervivencia_mosquitos,caption="Supervivencia larval")
+```
+
+## Arreglo de tratamientos
+
+El modelo por bloques queda de la siguiente manera:
+
+TpTc TpTpa TpTpb
+
+TmeTc TmeTpa TmeTpb
+
+TalTc TalTpa TalTpb
+
+Donde
+
+Tp: Territorio prístino;
+
+Tme: Territorio uso medio;
+
+Tal: Territorio muy alterado
+
+Tc: Tratamiento control;
+
+Tpa: Tratamiento Pesticida A;
+
+Tpb: Tratamiento Pesticida B
+
+## Modelo correspondiente al experimento
+
+$$
+y=\mu+Trat+Terr+\epsilon
+$$
+
+## Supuestos de análisis estadístico
+
+Para el desarrollo del modelo en una primera instancia supongo que los datos son normales y poseen una varianza y desviación estándar propias del tratamiento al que fueron expuestos por lo cual se analizará a través de ANOVAs y otros estadísticos correspondientes.
+
+## Nivel de Criterio
+
+Se tomará en cuenta que la p es de significancia cuando sea \<0.05; este valor lo tomaremos en cuenta para rechazar o no la hipótesis nula.
+
+## Exploración de datos, numérica y gráfica
+
+```{r,echo=FALSE}
+data.frame(promedio = tapply(Supervivencia_mosquitos$Supervivencia, Supervivencia_mosquitos$Tratamiento, 
+function(x) round(mean(x), 2)))
+```
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+
+Supervivencia<-Supervivencia_mosquitos$`Supervivencia (%)`
+Tipo_de_territorio<-Supervivencia_mosquitos$`Tipo de territorio`
+ggplot(Supervivencia_mosquitos,aes(
+  x=Tratamiento, 
+  y=Supervivencia, 
+  color=Tipo_de_territorio, 
+  group=Tipo_de_territorio
+))+
+  geom_point(size=3)+
+  geom_line()+
+  scale_color_manual(values=c(
+    "pristino"="green", 
+    "uso humano medio"="grey", 
+    "muy alterado"="brown"
+  ))+
+  theme_minimal()+
+  labs(
+    title="Efecto de los Pesticidas",
+    y="Supervivencia (%)",
+    x="Pesticida"
+  )
+```
+
+```{r, echo=FALSE}
+ggplot(Supervivencia_mosquitos, aes(x =Tratamiento, y = Supervivencia)) + 
+       stat_boxplot(geom = 'errorbar', linetype = 2, width = 0.5) + 
+       geom_boxplot(shape = 19, size = 0.5, color = "blue", notch = TRUE) 
+```
+
+## Construye los modelos necesarios y selecciona el mínimo adecuado.
+
+```{r,echo=FALSE}
+library(nlme)
+larvas_modelo_1 <- lm(Supervivencia ~ 1, data = Supervivencia_mosquitos)
+summary(larvas_modelo_1)
+```
+
+```{r, echo=FALSE}
+library(nlme)
+
+larvas_modelo_2 <- lm(Supervivencia ~ Tratamiento, data = Supervivencia_mosquitos)
+summary(larvas_modelo_2)
+```
+
+```{r, echo=FALSE}
+larvas_modelo_3 <- lm(Supervivencia ~ Tratamiento + Tipo_de_territorio, data = Supervivencia_mosquitos)
+summary(larvas_modelo_3)
+```
+
+```{r, echo=FALSE}
+anova(larvas_modelo_1,larvas_modelo_2,larvas_modelo_3)
+```
+
+El modelo mínimo adecuado sería el segundo sonde solo evaluamos la supervivencia dada el tratamiento, esto se asemeja a la formulación inicial del modelo
+
+```{r, echo=FALSE}
+anova(larvas_modelo_2)
+```
+
+## Valora la calidad del modelo, incluyendo el análisis de los residuos.
+
+```{r, echo=FALSE}
+df <- data.frame( resid = residuals(larvas_modelo_2, type = "pearson"), 
+                  tratamiento = Supervivencia_mosquitos$Tratamiento, 
+                  larva = Supervivencia_mosquitos$Supervivencia ) 
+
+# Gráfica de cajas de residuos por factor (ej. Sexo) 
+
+ggplot(df, aes(x = resid, y = larva)) + 
+  geom_boxplot(fill = "skyblue", alpha = 0.6) + 
+  facet_wrap(~ tratamiento) +
+  labs(title = "Residuos del modelo lme para supervivencia larva/tratamientos", 
+       y = "Supervivencia", 
+       x = "Residuos (Pearson)") +
+  theme_gray()
+```
+
+## Resuelve que tratamientos difierentes
+
+Con base a lo observado, el tratamiento control es el que difiere con los demás, pues al observar los residuos (que concuerdan con la primer gráfica de cajas) vemos que tanto Pesticida A como Pesticida B, independientemente del lugar donde fueron obtenidas las larvas tienen un efecto en la supervivencia de las mismas, lo interesante es compara si el efecto de ambas son iguales o no; sin embargo, a través de los residuales no se observa una diferencia significativa.

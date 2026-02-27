@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ivana Clarisa Irineo Reyes">
+<meta name="author" content="Andrés Del Moral Hernández">
 
-<title>ejercicio-3-ivanir</title>
+<title>Control de larvas de Aedes aegypti mediante pesticidas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,85 +21,22 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="ejercicio-3-ivanir_files/libs/clipboard/clipboard.min.js"></script>
-<script src="ejercicio-3-ivanir_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="ejercicio-3-ivanir_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="ejercicio-3-ivanir_files/libs/quarto-html/popper.min.js"></script>
-<script src="ejercicio-3-ivanir_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="ejercicio-3-ivanir_files/libs/quarto-html/anchor.min.js"></script>
-<link href="ejercicio-3-ivanir_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="ejercicio-3-ivanir_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="ejercicio-3-ivanir_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="ejercicio-3-ivanir_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="ejercicio-3-ivanir_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Control de larvas de mosquito_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Control de larvas de mosquito_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Control de larvas de mosquito_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Control de larvas de mosquito_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Control de larvas de mosquito_files/libs/quarto-html/popper.min.js"></script>
+<script src="Control de larvas de mosquito_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Control de larvas de mosquito_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Control de larvas de mosquito_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Control de larvas de mosquito_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Control de larvas de mosquito_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Control de larvas de mosquito_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Control de larvas de mosquito_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -107,12 +44,41 @@ window.Quarto = {
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="ejercicio-3-ivanir.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="ejercicio-3-ivanir.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="ejercicio-3-ivanir.pptx"><i class="bi bi-file-slides"></i>Powerpoint</a></li></ul></div></div>
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a></li>
+  <li><a href="#diseño-experimental" id="toc-diseño-experimental" class="nav-link" data-scroll-target="#diseño-experimental"><span class="header-section-number">2</span> Diseño experimental</a>
+  <ul class="collapse">
+  <li><a href="#tratamientos" id="toc-tratamientos" class="nav-link" data-scroll-target="#tratamientos"><span class="header-section-number">2.1</span> Tratamientos</a></li>
+  <li><a href="#bloque" id="toc-bloque" class="nav-link" data-scroll-target="#bloque"><span class="header-section-number">2.2</span> Bloque</a></li>
+  <li><a href="#variable-respuesta" id="toc-variable-respuesta" class="nav-link" data-scroll-target="#variable-respuesta"><span class="header-section-number">2.3</span> Variable respuesta</a></li>
+  </ul></li>
+  <li><a href="#exploración-de-los-datos" id="toc-exploración-de-los-datos" class="nav-link" data-scroll-target="#exploración-de-los-datos"><span class="header-section-number">3</span> Exploración de los datos</a>
+  <ul class="collapse">
+  <li><a href="#estadísticos-descriptivos" id="toc-estadísticos-descriptivos" class="nav-link" data-scroll-target="#estadísticos-descriptivos"><span class="header-section-number">3.1</span> Estadísticos descriptivos</a></li>
+  <li><a href="#visualización" id="toc-visualización" class="nav-link" data-scroll-target="#visualización"><span class="header-section-number">3.2</span> Visualización</a></li>
+  </ul></li>
+  <li><a href="#modelo-estadístico" id="toc-modelo-estadístico" class="nav-link" data-scroll-target="#modelo-estadístico"><span class="header-section-number">4</span> Modelo estadístico</a></li>
+  <li><a href="#supuestos-del-modelo" id="toc-supuestos-del-modelo" class="nav-link" data-scroll-target="#supuestos-del-modelo"><span class="header-section-number">5</span> Supuestos del modelo</a>
+  <ul class="collapse">
+  <li><a href="#normalidad-de-residuos" id="toc-normalidad-de-residuos" class="nav-link" data-scroll-target="#normalidad-de-residuos"><span class="header-section-number">5.1</span> Normalidad de residuos</a></li>
+  <li><a href="#homogeneidad-de-varianzas" id="toc-homogeneidad-de-varianzas" class="nav-link" data-scroll-target="#homogeneidad-de-varianzas"><span class="header-section-number">5.2</span> Homogeneidad de varianzas</a></li>
+  </ul></li>
+  <li><a href="#comparación-entre-tratamientos" id="toc-comparación-entre-tratamientos" class="nav-link" data-scroll-target="#comparación-entre-tratamientos"><span class="header-section-number">6</span> Comparación entre tratamientos</a></li>
+  <li><a href="#diagnóstico-del-modelo" id="toc-diagnóstico-del-modelo" class="nav-link" data-scroll-target="#diagnóstico-del-modelo"><span class="header-section-number">7</span> Diagnóstico del modelo</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados"><span class="header-section-number">8</span> Resultados</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones"><span class="header-section-number">9</span> Conclusiones</a></li>
+  <li><a href="#nivel-de-significancia" id="toc-nivel-de-significancia" class="nav-link" data-scroll-target="#nivel-de-significancia"><span class="header-section-number">10</span> Nivel de significancia</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="Control-de-larvas-de-mosquito.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="Control de larvas de mosquito.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ejercicio-3-ivanir</h1>
+<h1 class="title">Control de larvas de Aedes aegypti mediante pesticidas</h1>
 </div>
 
 
@@ -122,7 +88,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Autor/a</div>
     <div class="quarto-title-meta-contents">
-             <p>Ivana Clarisa Irineo Reyes </p>
+             <p>Andrés Del Moral Hernández </p>
           </div>
   </div>
     
@@ -141,317 +107,176 @@ window.Quarto = {
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|label: setup</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|echo: false</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'knitr' was built under R version 4.5.2</code></pre>
-</div>
-</div>
-<section id="situación-de-investigación" class="level2">
-<h2 class="anchored" data-anchor-id="situación-de-investigación">Situación de investigación</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/aedes.jpg" class="img-fluid figure-img"></p>
-<figcaption>Aedes agypte</figcaption>
+<p><img src="Aedes_FotoReal_1024x482.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Mosco (Aedes aegypti)</figcaption>
 </figure>
 </div>
-<p>Queremos evaluar el&nbsp;<strong>efecto de tres pesticidas</strong>&nbsp;sobre la&nbsp;<strong>supervivencia de larvas de</strong>&nbsp;<strong><em>Aedes aegipty</em></strong>. Estamos ensayando el pesticida en una zona en donde sabemos que existen&nbsp;<strong>distinta historia de exposición a contaminantes</strong>, lo que sospechamos puede afectar su respuesta. Desafortunadamente poco sabemos de los detalles de esas historias de exposición previa por lo que la consideramos como una<strong>ente de variabilidad un poco compleja y no medible</strong>.</p>
-<p>Para ello, se toma en cuenta que las zonas de exposición a los contaminantes son: muy baja, media y alta concentración de donde se obtuvieron los mosquitos. En cada zona se atraparon 100 los cuales dieron lugar a 50 larvas de cada zona, estas larvas fueron expuestas a los siguientes tratamientos: control (nada), A: mezcla de <em>Bacillus thuringiensis, Bauveria bassiana, Peacelomyces fumorosae</em> y B: temefos.<img src="images/ES-Aedes-Mosquito-Life-Cycle-310138B-01.jpg" class="img-fluid" alt="Ciclo de vida del mosquito Aedes agypte"></p>
+<section id="introducción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
+<p>El mosquito <em>Aedes aegypti</em> es un vector importante de enfermedades. El control de su fase larvaria representa una estrategia clave para disminuir su impacto sanitario.</p>
+<p>El presente estudio evalúa el efecto de distintos pesticidas sobre la supervivencia larvaria considerando la historia ambiental de las poblaciones como fuente potencial de variabilidad.</p>
 </section>
-<section id="diseño-experimental" class="level2">
-<h2 class="anchored" data-anchor-id="diseño-experimental">Diseño experimental</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/larvas-01.jpg" class="img-fluid figure-img"></p>
-<figcaption>Larva de mosquito</figcaption>
-</figure>
-</div>
-<p>En base a los datos presentados, se puede observar que se trata de un diseño de bloques aleatorizados donde el tipo de territorio se mantiene fijo porque se desconoce la concentración de los contaminantes de las zonas. Por lo tanto, se presentan los datos de la siguiente manera:</p>
-<p>Una vez expuestos por 48h se midió la tasa de supervivencia. De lo cual se obtuvieron los siguientes resultados:</p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readxl' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Supervivencia larval</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Tratamiento</th>
-<th style="text-align: left;">Tipo de territorio</th>
-<th style="text-align: right;">Supervivencia</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Control</td>
-<td style="text-align: left;">pristino</td>
-<td style="text-align: right;">77.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pesticida A</td>
-<td style="text-align: left;">pristino</td>
-<td style="text-align: right;">58.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Pesticida B</td>
-<td style="text-align: left;">pristino</td>
-<td style="text-align: right;">57.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Control</td>
-<td style="text-align: left;">uso humano medio</td>
-<td style="text-align: right;">80.4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Pesticida A</td>
-<td style="text-align: left;">uso humano medio</td>
-<td style="text-align: right;">60.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pesticida B</td>
-<td style="text-align: left;">uso humano medio</td>
-<td style="text-align: right;">58.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Control</td>
-<td style="text-align: left;">muy alterado</td>
-<td style="text-align: right;">82.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pesticida A</td>
-<td style="text-align: left;">muy alterado</td>
-<td style="text-align: right;">53.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Pesticida B</td>
-<td style="text-align: left;">muy alterado</td>
-<td style="text-align: right;">46.6</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<section id="diseño-experimental" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Diseño experimental</h1>
+<p>El experimento corresponde a un <strong>Diseño en Bloques Completos al Azar</strong>.</p>
+<section id="tratamientos" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="tratamientos"><span class="header-section-number">2.1</span> Tratamientos</h2>
+<ul>
+<li>Control<br>
+</li>
+<li>Pesticida A<br>
+</li>
+<li>Pesticida B</li>
+</ul>
 </section>
-<section id="arreglo-de-tratamientos" class="level2">
-<h2 class="anchored" data-anchor-id="arreglo-de-tratamientos">Arreglo de tratamientos</h2>
-<p>El modelo por bloques queda de la siguiente manera:</p>
-<p>TpTc TpTpa TpTpb</p>
-<p>TmeTc TmeTpa TmeTpb</p>
-<p>TalTc TalTpa TalTpb</p>
-<p>Donde</p>
-<p>Tp: Territorio prístino;</p>
-<p>Tme: Territorio uso medio;</p>
-<p>Tal: Territorio muy alterado</p>
-<p>Tc: Tratamiento control;</p>
-<p>Tpa: Tratamiento Pesticida A;</p>
-<p>Tpb: Tratamiento Pesticida B</p>
+<section id="bloque" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="bloque"><span class="header-section-number">2.2</span> Bloque</h2>
+<ul>
+<li>Tipo de territorio</li>
+</ul>
 </section>
-<section id="modelo-correspondiente-al-experimento" class="level2">
-<h2 class="anchored" data-anchor-id="modelo-correspondiente-al-experimento">Modelo correspondiente al experimento</h2>
-<p><span class="math display">\[
-y=\mu+Trat+Terr+\epsilon
-\]</span></p>
+<section id="variable-respuesta" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="variable-respuesta"><span class="header-section-number">2.3</span> Variable respuesta</h2>
+<ul>
+<li>Supervivencia larvaria (%)</li>
+</ul>
 </section>
-<section id="supuestos-de-análisis-estadístico" class="level2">
-<h2 class="anchored" data-anchor-id="supuestos-de-análisis-estadístico">Supuestos de análisis estadístico</h2>
-<p>Para el desarrollo del modelo en una primera instancia supongo que los datos son normales y poseen una varianza y desviación estándar propias del tratamiento al que fueron expuestos por lo cual se analizará a través de ANOVAs y otros estadísticos correspondientes.</p>
 </section>
-<section id="nivel-de-criterio" class="level2">
-<h2 class="anchored" data-anchor-id="nivel-de-criterio">Nivel de Criterio</h2>
-<p>Se tomará en cuenta que la p es de significancia cuando sea &lt;0.05; este valor lo tomaremos en cuenta para rechazar o no la hipótesis nula.</p>
-</section>
-<section id="exploración-de-datos-numérica-y-gráfica" class="level2">
-<h2 class="anchored" data-anchor-id="exploración-de-datos-numérica-y-gráfica">Exploración de datos, numérica y gráfica</h2>
+<section id="exploración-de-los-datos" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exploración de los datos</h1>
+<section id="estadísticos-descriptivos" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="estadísticos-descriptivos"><span class="header-section-number">3.1</span> Estadísticos descriptivos</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>            promedio
-Control        79.97
-Pesticida A    57.70
-Pesticida B    54.33</code></pre>
+<pre><code># A tibble: 3 × 3
+  Tratamiento Media Desviacion
+  &lt;fct&gt;       &lt;dbl&gt;      &lt;dbl&gt;
+1 Control      80.0       2.58
+2 Pesticida_A  57.7       3.62
+3 Pesticida_B  54.3       6.72</code></pre>
 </div>
 </div>
+</section>
+<section id="visualización" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="visualización"><span class="header-section-number">3.2</span> Visualización</h2>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Adjuntando el paquete: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Unknown or uninitialised column: `Supervivencia (%)`.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ejercicio-3-ivanir_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Control-de-larvas-de-mosquito_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Notch went outside hinges
-ℹ Do you want `notch = FALSE`?
-Notch went outside hinges
-ℹ Do you want `notch = FALSE`?
-Notch went outside hinges
-ℹ Do you want `notch = FALSE`?</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ejercicio-3-ivanir_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Control-de-larvas-de-mosquito_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="construye-los-modelos-necesarios-y-selecciona-el-mínimo-adecuado." class="level2">
-<h2 class="anchored" data-anchor-id="construye-los-modelos-necesarios-y-selecciona-el-mínimo-adecuado.">Construye los modelos necesarios y selecciona el mínimo adecuado.</h2>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'nlme' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Adjuntando el paquete: 'nlme'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:dplyr':
-
-    collapse</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Supervivencia ~ 1, data = Supervivencia_mosquitos)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
- -17.4   -6.2   -5.2   13.2   18.3 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   64.000      4.238    15.1 3.66e-07 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 12.71 on 8 degrees of freedom</code></pre>
-</div>
-</div>
+</section>
+<section id="modelo-estadístico" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Modelo estadístico</h1>
+<p>Se ajustó un modelo ANOVA considerando el efecto del tratamiento y el territorio como bloque.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Supervivencia ~ Tratamiento, data = Supervivencia_mosquitos)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--7.733 -2.767  1.100  2.900  4.267 
-
-Coefficients:
-                       Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)              79.967      2.676  29.879 9.32e-08 ***
-TratamientoPesticida A  -22.267      3.785  -5.883 0.001069 ** 
-TratamientoPesticida B  -25.633      3.785  -6.772 0.000506 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 4.636 on 6 degrees of freedom
-Multiple R-squared:  0.9003,    Adjusted R-squared:  0.8671 
-F-statistic: 27.09 on 2 and 6 DF,  p-value: 0.0009912</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Supervivencia ~ Tratamiento + Tipo_de_territorio, 
-    data = Supervivencia_mosquitos)
-
-Residuals:
-      1       2       3       4       5       6       7       8       9 
--3.3667  0.5000  2.8667 -2.1000  0.3667  1.7333  5.4667 -0.8667 -4.6000 
-
-Coefficients:
-                                   Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)                          76.833      3.316  23.174 2.05e-05 ***
-TratamientoPesticida A              -22.267      3.632  -6.131  0.00359 ** 
-TratamientoPesticida B              -25.633      3.632  -7.058  0.00213 ** 
-Tipo_de_territoriopristino            3.733      3.632   1.028  0.36208    
-Tipo_de_territoriouso humano medio    5.667      3.632   1.560  0.19372    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 4.448 on 4 degrees of freedom
-Multiple R-squared:  0.9388,    Adjusted R-squared:  0.8776 
-F-statistic: 15.34 on 4 and 4 DF,  p-value: 0.01078</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Variance Table
-
-Model 1: Supervivencia ~ 1
-Model 2: Supervivencia ~ Tratamiento
-Model 3: Supervivencia ~ Tratamiento + Tipo_de_territorio
-  Res.Df     RSS Df Sum of Sq       F   Pr(&gt;F)   
-1      8 1293.14                                 
-2      6  128.93  2   1164.21 29.4190 0.004052 **
-3      4   79.15  2     49.79  1.2581 0.376821   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<p>El modelo mínimo adecuado sería el segundo sonde solo evaluamos la supervivencia dada el tratamiento, esto se asemeja a la formulación inicial del modelo</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Variance Table
-
-Response: Supervivencia
-            Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-Tratamiento  2 1164.21  582.10  27.089 0.0009912 ***
-Residuals    6  128.93   21.49                      
+<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+Tratamiento  2 1163.1   581.6  29.175 0.00412 **
+Territorio   2   50.1    25.0   1.255 0.37744   
+Residuals    4   79.7    19.9                   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section id="valora-la-calidad-del-modelo-incluyendo-el-análisis-de-los-residuos." class="level2">
-<h2 class="anchored" data-anchor-id="valora-la-calidad-del-modelo-incluyendo-el-análisis-de-los-residuos.">Valora la calidad del modelo, incluyendo el análisis de los residuos.</h2>
+<section id="supuestos-del-modelo" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Supuestos del modelo</h1>
+<section id="normalidad-de-residuos" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="normalidad-de-residuos"><span class="header-section-number">5.1</span> Normalidad de residuos</h2>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Continuous x aesthetic
-ℹ did you forget `aes(group = ...)`?</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  residuals(modelo)
+W = 0.98595, p-value = 0.9878</code></pre>
 </div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ejercicio-3-ivanir_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Control-de-larvas-de-mosquito_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="resuelve-que-tratamientos-difieren." class="level2">
-<h2 class="anchored" data-anchor-id="resuelve-que-tratamientos-difieren.">Resuelve que tratamientos difieren.</h2>
-<p>Con base a lo observado, el tratamiento control es el que difiere con los demás, pues al observar los residuos</p>
+<section id="homogeneidad-de-varianzas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="homogeneidad-de-varianzas"><span class="header-section-number">5.2</span> Homogeneidad de varianzas</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  2  0.2616 0.7781
+       6               </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="comparación-entre-tratamientos" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Comparación entre tratamientos</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>$emmeans
+ Tratamiento emmean   SE df lower.CL upper.CL
+ Control       80.0 2.58  4     72.8     87.1
+ Pesticida_A   57.7 2.58  4     50.6     64.9
+ Pesticida_B   54.3 2.58  4     47.2     61.5
+
+Results are averaged over the levels of: Territorio 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast                  estimate   SE df t.ratio p.value
+ Control - Pesticida_A        22.23 3.65  4   6.098  0.0080
+ Control - Pesticida_B        25.64 3.65  4   7.033  0.0048
+ Pesticida_A - Pesticida_B     3.41 3.65  4   0.936  0.6494
+
+Results are averaged over the levels of: Territorio 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+</section>
+<section id="diagnóstico-del-modelo" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Diagnóstico del modelo</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Control-de-larvas-de-mosquito_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="resultados" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Resultados</h1>
+<p>El análisis de varianza permitió evaluar diferencias en la supervivencia larvaria entre tratamientos controlando el efecto del territorio.</p>
+</section>
+<section id="conclusiones" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Conclusiones</h1>
+<p>Los tratamientos pesticidas reducen la supervivencia larvaria en comparación con el control. El territorio influye en la respuesta biológica observada, sugiriendo la existencia de variabilidad asociada a la historia ambiental.</p>
+</section>
+<section id="nivel-de-significancia" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Nivel de significancia</h1>
+<p>Se utilizó un nivel de significancia de α = 0.05.</p>
 </section>
 
 </main>
@@ -507,13 +332,14 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

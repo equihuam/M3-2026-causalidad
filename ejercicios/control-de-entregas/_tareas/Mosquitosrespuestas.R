@@ -1,0 +1,54 @@
+#Script
+library(car)
+
+
+setwd("C:\\Users\\lucia\\Documents\\tareas de r")
+datos <- read.csv("Mosquitos.csv", stringsAsFactors = TRUE)
+
+str(datos)
+#anova factorial 
+
+modelo <- aov(Supervivencia ~ Tratamiento + Territorio, data = datos)
+summary(modelo)
+
+Anova(modelo, type = "II", test.statistic = "LR")
+anova(modelo)
+
+boxplot(datos$Supervivencia~datos$Tratamiento,
+        xlab="Tratamientos",
+        ylab = "Supervivencia")
+
+medias <- with(datos, tapply(Supervivencia, Tratamiento, mean))
+points(medias, pch =16, col ="red")
+
+#boxplot(datos$Supervivencia~datos$Territorio)
+#summary(modelo)
+
+TukeyHSD(modelo, which = "Tratamiento")
+
+plot(TukeyHSD(modelo, which = "Tratamiento"))
+
+#Validar el modelo
+plot(modelo, which = 1)
+plot(modelo, which = 2)
+plot(modelo, which = 5)
+
+bartlett.test(Supervivencia ~ Tratamiento , data =datos)
+# No se rechaza Ho de homocedasticidad (P = 0.459)
+shapiro.test(modelo$residuals)
+# No se rechaza Ho de normalidad 
+
+
+
+# Modelo mixto
+
+library(lme4)
+library(lmerTest) # For p-values
+#Modelo lineal mixto
+lmer_model <- lmer(Supervivencia ~ Tratamiento + (1|Territorio), data = datos)
+anova(lmer_model)
+library(emmeans)
+emmeans(lmer_model, list(pairwise ~ Tratamiento), adjust = "tukey")
+
+
+

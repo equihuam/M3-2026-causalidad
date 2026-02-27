@@ -1,0 +1,147 @@
+---
+title: "ejercicio_3_gavm"
+author: "Gabriela Alejandra Valencia Macias"
+format: html
+---
+### Pregunta de investigación:
+
+¿Cuál es el efecto de tres pesticidas sobre la supervivencia de larvas *Aedes aegipty*?
+
+**Diseño experimental**
+Comparativo de medición cuantitativa
+
+**Arreglo experimental**
+
+9 combinaciones de tratamiento con zona, con las 50 larvas repartidas en botes de 10 larvas.
+
+**Modelo que corresponde a este experimento**
+Modelo de efectos fijos
+y: supervivencia
+e: efecto de pesticida (fijo)
+z: efecto de zona (fijo)
+
+y ~ mu+e+z+ez
+
+**Supuestos que harás para apoyar mi análisis estadístico**
+
+- Que mis parametros tienen valores que fluctuan pero son estáticos.
+- Que mis variables tienen una distribución normal y también los errores
+
+**Define tu criterio o nivel de significancia**
+
+Mi estadistico de contraste será alpha de 0.05 
+
+
+**Realiza una exploración de los datos, numérica y gráfica**
+
+```{r}
+library(ggplot2)
+#base de datos
+datos <- data.frame(
+  Tratamiento = factor(c("Control", "Pesticida_A", "Pesticida_B", 
+                        "Control", "Pesticida_A", "Pesticida_B", 
+                        "Control", "Pesticida_A", "Pesticida_B"),
+                      levels = c("Control", "Pesticida_A", "Pesticida_B")),
+  Territorio = c("prístino", "prístino", "prístino", 
+                 "uso humano medio", "uso humano medio", "uso humano medio", 
+                 "muy alterado", "muy alterado", "muy alterado"),
+  Supervivencia = c(77.2, 58.8, 57.8, 80.4, 60.6, 58.6, 82.3, 53.7, 46.6)
+)
+
+#grafico
+ggplot(datos, aes(x = Tratamiento, y = Supervivencia, label = Territorio)) +
+  geom_text(aes(color = Territorio), fontface = "bold", size = 4) +
+  labs(title = "Supervivencia de Larvas por Tratamiento y Territorio",
+       y = "Supervivencia (%)",
+       x = "Tratamiento") +
+    theme_minimal() +
+  theme(legend.position = "none")
+```
+Inspección de datos
+```{r}
+by(datos,datos$Tratamiento,summary)
+```
+Observando la gráfica, a las larvas con pesticida la supervivencia más alta son las de la zona de uso intermedio. Para la zona más dañada, las larvas con pesticida disminuyeron su supervivencia. Para las larvas control, la superivenica es alta para las larvas sin importar la zona. Esto coincidide con la exploración númerica, donde el promedio es mucho más elevado.
+
+**Construye los modelos necesarios y selecciona el mínimo adecuado**
+
+```{r}
+#simulacion de datos
+
+set.seed(1896)
+
+
+zonas <- c("pristino", "uso humano medio", "muy alterado")
+pesticidas <- c("control", "pesticida A", "pesticida B")
+n_replicas <- 5
+
+#tabla
+diseno <- expand.grid(
+  zona = zonas,
+  pesticida = pesticidas
+)
+
+
+datos_nulos <- diseno[rep(1:nrow(diseno), each = n_replicas), ]
+
+#valores de supervivencia
+media_super <- mean(datos$Supervivencia)
+sd_super <- sd(datos$Supervivencia)
+
+#valoreas aleatorios
+datos_nulos$supervivencia <- rnorm(nrow(datos_nulos),mean=media_super,sd=sd_super)
+
+#ajuste
+datos_nulos$supervivencia <- pmax(0,pmin(100,datos_nulos$supervivencia))
+
+```
+
+Prueba de modelo nulo (sin efectos)
+
+```{r}
+
+modelo_base <- lm(supervivencia ~ 1, data = datos_nulos)
+summary(modelo_base)
+```
+
+
+
+```{r}
+# y ~ mu + e + z + ez
+modelo_2 <- update(modelo_base,.~.+pesticida*zona)
+```
+
+anova de los dos modelos
+
+```{r}
+anova(modelo_base, modelo_2)
+```
+El valor de probabilidad fue mayor que el del estadístico de contraste (0.05), por lo que no se puede rechazar el modelo nulo. La adición de las variables de tratamiento y zona no mejora la explicación de la varianza de los datos. 
+
+
+Intervalos de confianza
+```{r}
+confint(modelo_2,level=0.95)
+```
+
+Modelo 2 - Grafico
+```{r}
+plot(modelo_2)
+```
+1. Residuales vs Ajustados
+Aunque hay varios valores que se acercan al modelo ajustado, pero la abundancia de valores extremos mínimos distorsionan la tendencia.
+
+2. En el gráfico Q-Q
+Se observa que las colas se alejan en los extremos, lo que confirma su valor más elevado tanto en el limite inferior y el exterior.
+
+3. Variación
+La varianza no es constante, y es mayor en el límite inferior.
+
+4. Outliers 
+Hay una gran dispersión entre los valores de los datos, si hay valores atípicos en el pesticida A y el control, pero en general los rangos son extensos.
+
+No hubo diferencias entre los tratamientos
+
+**Conclusiones**
+
+A pesar de los indicios de la gráfica, las pruebas no dieron evidencias suficientes para soportar el efecto de las zonas ni en los insecticidas en las larvas puestas aprueba.
